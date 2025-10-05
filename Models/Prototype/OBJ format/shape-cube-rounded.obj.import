@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bxcx5akvbjhdm"
+path="res://.godot/imported/shape-cube-rounded.obj-d3b1262afe6ca66e2c9497126bd385aa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/shape-cube-rounded.obj-d3b1262afe6ca66e2c9497126bd385aa.mesh"]
+
+source_file="res://Models/Prototype/OBJ format/shape-cube-rounded.obj"
+dest_files=["res://.godot/imported/shape-cube-rounded.obj-d3b1262afe6ca66e2c9497126bd385aa.mesh", "res://.godot/imported/shape-cube-rounded.obj-d3b1262afe6ca66e2c9497126bd385aa.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

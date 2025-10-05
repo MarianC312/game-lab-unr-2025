@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkp53ary6lvah"]
+
+[ext_resource type="ArrayMesh" uid="uid://uf5s7r6kqpgl" path="res://Models/Prototype/OBJ format/figurine-large.obj" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dioyk2igoofa4" path="res://AssetsLibraries/PlayerControllerK/addons/srcoder_thirdperson_controller/assets/player.gd" id="1_nqocc"]
+[ext_resource type="PackedScene" uid="uid://ccf670c6bkob8" path="res://AssetsLibraries/PlayerControllerK/addons/srcoder_thirdperson_controller/assets/character-male-e.glb" id="3_ey8ag"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqocc"]
+albedo_color = Color(0.865303, 0.45948982, 0.15636185, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+radius = 0.34179688
+height = 0.91819763
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_nqocc"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_nqocc")
+
+[node name="FigurineLarge" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_nqocc")
+gi_mode = 2
+mesh = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45525664, 0)
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 3, 6, 3)
+visible = false
+near = 0.01
+far = 1000.0
+
+[node name="camera_pivot" type="Node3D" parent="."]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 2, 5, 2)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="camera_pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512907, 0)
+shape = SubResource("SeparationRayShape3D_nqocc")
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="camera_pivot/SpringArm3D"]
+
+[node name="playermodel" type="Node3D" parent="."]
+
+[node name="character-male-e2" parent="playermodel" instance=ExtResource("3_ey8ag")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0071882, 0)
+
+[node name="Skeleton3D" parent="playermodel/character-male-e2/character-male-e" index="0"]
+bones/4/rotation = Quaternion(0, 0, -0.38268346, 0.9238795)
+bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
+
+[editable path="playermodel/character-male-e2"]
