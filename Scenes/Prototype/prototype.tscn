@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cu711dkfvtjjj"]
+[gd_scene load_steps=39 format=3 uid="uid://cu711dkfvtjjj"]
 
 [ext_resource type="ArrayMesh" uid="uid://c3djw3krgu6tl" path="res://Models/Prototype/OBJ format/crate-color.obj" id="2_1e3gs"]
 [ext_resource type="PackedScene" uid="uid://dkp53ary6lvah" path="res://Scenes/Prototype/player.tscn" id="2_gae8q"]
@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cypb82w3ks7h2" path="res://Models/Prototype/OBJ format/figurine-cube.obj" id="4_ax6of"]
 [ext_resource type="ArrayMesh" uid="uid://uf5s7r6kqpgl" path="res://Models/Prototype/OBJ format/figurine-large.obj" id="5_dbpph"]
 [ext_resource type="ArrayMesh" uid="uid://di2e2sq725vpo" path="res://Models/Prototype/OBJ format/indicator-doorway.obj" id="6_lo36x"]
+[ext_resource type="Script" uid="uid://bu2oglhttmcis" path="res://Scenes/Prototype/people.gd" id="6_wbbd7"]
 [ext_resource type="ArrayMesh" uid="uid://c2bc3fwcvvoue" path="res://Models/Prototype/OBJ format/indicator-special-area.obj" id="7_cw0h6"]
 [ext_resource type="ArrayMesh" uid="uid://bwua0mu5a5lmv" path="res://Models/Prototype/OBJ format/indicator-special-cross.obj" id="8_u0pxh"]
 [ext_resource type="ArrayMesh" uid="uid://uhpsloi5em5n" path="res://Models/Prototype/OBJ format/indicator-square-b.obj" id="9_da241"]
@@ -91,7 +92,7 @@ transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70
 [node name="Crates" type="Node3D" parent="World/Objects"]
 
 [node name="CrateColor01" type="MeshInstance3D" parent="World/Objects/Crates"]
-transform = Transform3D(0.6325111, 0, 0, 0, 1, 0, 0, 0, 0.56116724, -0.33285195, 0.72540045, -2.2736855)
+transform = Transform3D(0.6125084, 0.24748373, -0.017746449, -0.1565362, 0.9367516, -0.13887978, -0.020002633, 0.24748373, 0.5434208, -0.3328519, 4.2503257, -2.2736855)
 mesh = ExtResource("2_1e3gs")
 skeleton = NodePath("../../..")
 
@@ -101,7 +102,8 @@ skeleton = NodePath("../../..")
 shape = SubResource("ConvexPolygonShape3D_gae8q")
 
 [node name="CrateColor02" type="MeshInstance3D" parent="World/Objects/Crates"]
-transform = Transform3D(1.2659999, 0, 0, 0, 2, 0, 0, 0, 1.122, -0.33285195, 0.72540045, -3.2972252)
+physics_interpolation_mode = 1
+transform = Transform3D(0.3780981, 1.8336458, -0.29736254, -1.1200142, 0.7402443, 0.31801835, 0.45317248, 0.29963416, 1.034081, -0.3328519, 6.6463227, -3.2972252)
 mesh = ExtResource("2_1e3gs")
 skeleton = NodePath("../../..")
 
@@ -136,20 +138,26 @@ shape = SubResource("ConvexPolygonShape3D_h5wrs")
 
 [node name="FigurineCube" type="MeshInstance3D" parent="World/Objects/Peps"]
 transform = Transform3D(0.6325111, 0, 0, 0, 1, 0, 0, 0, 0.56116724, 2.3009295, 0.7254019, -3.3719532)
+layers = 2
 mesh = ExtResource("4_ax6of")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Objects/Peps/FigurineCube"]
+script = ExtResource("6_wbbd7")
+pep_name = "Subject_01"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Objects/Peps/FigurineCube/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_h762b")
 
 [node name="FigurineLarge" type="MeshInstance3D" parent="World/Objects/Peps"]
 transform = Transform3D(0.6325111, 0, 0, 0, 1, 0, 0, 0, 0.56116724, 3.2915502, 0.7254009, -3.5131152)
+layers = 2
 mesh = ExtResource("5_dbpph")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Objects/Peps/FigurineLarge"]
+script = ExtResource("6_wbbd7")
+pep_name = "Subject_02"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Objects/Peps/FigurineLarge/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_xjwqy")

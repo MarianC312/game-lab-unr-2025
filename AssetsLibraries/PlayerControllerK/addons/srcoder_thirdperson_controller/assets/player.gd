@@ -7,6 +7,8 @@ extends CharacterBody3D
 @export var jump_velocity := 4.5
 const ROTATION_SPEED := 10.0
 
+@onready var text_interact : Label = $CanvasLayer/BoxContainer/TextInteract
+@onready var see_cast : RayCast3D = $"playermodel/character-male-e2/SeeCast"
 @onready var camera_pivot : Node3D = $camera_pivot
 @onready var playermodel : Node3D = $playermodel
 @onready var animation_player : AnimationPlayer = $"playermodel/character-male-e2/AnimationPlayer"
@@ -18,6 +20,17 @@ var target_position: Vector3 = Vector3.ZERO
 var moving_to_target := false
 
 func _physics_process(delta: float) -> void:
+	
+	if see_cast.is_colliding():
+		var target = see_cast.get_collider()
+		if target.has_method("interact"):
+			text_interact.show()
+			if Input.is_action_just_pressed("interact"):
+				target.call("interact")
+	else:
+		text_interact.hide()
+		
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 

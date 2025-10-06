@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkp53ary6lvah"]
+[gd_scene load_steps=5 format=3 uid="uid://dkp53ary6lvah"]
 
-[ext_resource type="ArrayMesh" uid="uid://uf5s7r6kqpgl" path="res://Models/Prototype/OBJ format/figurine-large.obj" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dioyk2igoofa4" path="res://AssetsLibraries/PlayerControllerK/addons/srcoder_thirdperson_controller/assets/player.gd" id="1_nqocc"]
 [ext_resource type="PackedScene" uid="uid://ccf670c6bkob8" path="res://AssetsLibraries/PlayerControllerK/addons/srcoder_thirdperson_controller/assets/character-male-e.glb" id="3_ey8ag"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqocc"]
-albedo_color = Color(0.865303, 0.45948982, 0.15636185, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.34179688
@@ -16,21 +12,9 @@ height = 0.91819763
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_nqocc")
 
-[node name="FigurineLarge" type="MeshInstance3D" parent="."]
-visible = false
-material_override = SubResource("StandardMaterial3D_nqocc")
-gi_mode = 2
-mesh = ExtResource("1_4flbx")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45525664, 0)
 shape = SubResource("CapsuleShape3D_onrkg")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 3, 6, 3)
-visible = false
-near = 0.01
-far = 1000.0
 
 [node name="camera_pivot" type="Node3D" parent="."]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 2, 5, 2)
@@ -47,8 +31,37 @@ spring_length = 3.0
 [node name="character-male-e2" parent="playermodel" instance=ExtResource("3_ey8ag")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0071882, 0)
 
+[node name="SeeCast" type="RayCast3D" parent="playermodel/character-male-e2"]
+transform = Transform3D(-1, 0, 1.748456e-07, 0, 1, 0, -8.74228e-08, 0, -2, 0, 0.40016353, 0)
+target_position = Vector3(0, 0, -1)
+collision_mask = 3
+collide_with_areas = true
+
 [node name="Skeleton3D" parent="playermodel/character-male-e2/character-male-e" index="0"]
 bones/4/rotation = Quaternion(0, 0, -0.38268346, 0.9238795)
 bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 295.0
+offset_right = -1.0
+offset_bottom = -313.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="TextInteract" type="Label" parent="CanvasLayer/BoxContainer"]
+layout_mode = 2
+text = "(E) Interactuar"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [editable path="playermodel/character-male-e2"]
