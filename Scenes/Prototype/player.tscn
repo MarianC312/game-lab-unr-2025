@@ -31,15 +31,15 @@ spring_length = 3.0
 [node name="character-male-e2" parent="playermodel" instance=ExtResource("3_ey8ag")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0071882, 0)
 
+[node name="Skeleton3D" parent="playermodel/character-male-e2/character-male-e" index="0"]
+bones/4/rotation = Quaternion(0, 0, -0.38268346, 0.9238795)
+bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
+
 [node name="SeeCast" type="RayCast3D" parent="playermodel/character-male-e2"]
 transform = Transform3D(-1, 0, 1.748456e-07, 0, 1, 0, -8.74228e-08, 0, -2, 0, 0.40016353, 0)
 target_position = Vector3(0, 0, -1)
 collision_mask = 3
 collide_with_areas = true
-
-[node name="Skeleton3D" parent="playermodel/character-male-e2/character-male-e" index="0"]
-bones/4/rotation = Quaternion(0, 0, -0.38268346, 0.9238795)
-bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true

@@ -72,11 +72,10 @@ points = PackedVector3Array(0.5, 0.9998042, 0.5, -0.5, 0.00019579286, -0.5, -0.5
 [sub_resource type="Compositor" id="Compositor_1e3gs"]
 
 [node name="Prototype" type="Node3D"]
-transform = Transform3D(1.581, 0, 0, 0, 1, 0, 0, 0, 1.782, 0, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_gae8q")]
-transform = Transform3D(0.6325111, 0, 0, 0, 1, 0, 0, 0, 0.56116724, 0.2775482, 1.4894023, -0.24559844)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2775482, 1.4894023, -0.24559844)
 
 [node name="World" type="Node3D" parent="."]
 
