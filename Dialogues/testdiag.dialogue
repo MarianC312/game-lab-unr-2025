@@ -1,11 +1,41 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+Santos: Dicen que vienen máquinas nuevas, que cortan más árboles en un día que un hombre en una semana. 
+	¿Y después, Ramiro? ¿Qué queda del monte?
+Ramiro: Queda el polvo, hermano. 
+	Y el olor del tanino flotando en el aire. Pero el patrón paga en vales, y si no agarrás el machete, no comés.
+Santos: [wave](escupe al suelo)[/wave]
+	Siempre el mismo cuento... el patrón paga, el pobre calla. 
+	Antes, el monte era libre, como los hombres.
+Ramiro: Libre... no sé. El monte también aprieta. Pero te entiendo. 
+	Cada árbol que tumbamos es como si arrancáramos un pedazo de nosotros. 
+	
+	[speed=1.5](Suena una campana de control. Se oye un caballo acercarse.)
+Don Alvarado: ¡Vamos, [[muchachos|apuren muchachos|ey manga de vagos]]! 
+	[wait=1.25]¡La compañía no paga para que filosofen!
+Santos (en voz baja): Un día, Ramiro... [wait=1] un día, el monte va a hablar. 
+	Y no habrá máquina inglesa que lo calle.
+%1 situation: Santos suelta un pedo justo cuando pasa el capataz. => humor
+%1 situation: El caballo de Don Alvarado tropieza y cae. => accident
+%1 situation: (Ramiro piensa como reaccionar...) => react
 => END
+
+~ humor
+Ramiro (conteniendo la risa): Santos... el monte habló antes de lo que pensabas.
+Don Alvarado (confundido): ¿Quién fue?
+=> endmenu
+
+~ accident
+Santos: Mirá vos... hasta el caballo se cansó de arrastrar ingleses.
+Ramiro: Callate, loco, que te oyen.
+=> endmenu
+
+~ react
+- Callar y seguir trabajando
+- Responder al capataz
+- Huir con Santos hacia el monte
+=> endmenu
+
+~ endmenu
+- Empezar nuevamente. => start
+- Salir
+=> END!

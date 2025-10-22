@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dkp53ary6lvah"]
 
-[ext_resource type="Script" uid="uid://dioyk2igoofa4" path="res://AssetsLibraries/PlayerControllerK/addons/srcoder_thirdperson_controller/assets/player.gd" id="1_nqocc"]
+[ext_resource type="Script" uid="uid://c2k3xdanb5thv" path="res://Scripts/Player/Player.gd" id="1_a3d8c"]
 [ext_resource type="PackedScene" uid="uid://ccf670c6bkob8" path="res://AssetsLibraries/PlayerControllerK/addons/srcoder_thirdperson_controller/assets/character-male-e.glb" id="3_ey8ag"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
@@ -10,7 +10,7 @@ height = 0.91819763
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_nqocc"]
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_nqocc")
+script = ExtResource("1_a3d8c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45525664, 0)
@@ -36,8 +36,8 @@ bones/4/rotation = Quaternion(0, 0, -0.38268346, 0.9238795)
 bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
 
 [node name="SeeCast" type="RayCast3D" parent="playermodel/character-male-e2"]
-transform = Transform3D(-1, 0, 1.748456e-07, 0, 1, 0, -8.74228e-08, 0, -2, 0, 0.40016353, 0)
-target_position = Vector3(0, 0, -1)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0.40016353, 0)
+target_position = Vector3(0, 0, -0.625)
 collision_mask = 3
 collide_with_areas = true
 
