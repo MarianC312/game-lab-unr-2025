@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://cu711dkfvtjjj"]
 
-[ext_resource type="PackedScene" uid="uid://dkp53ary6lvah" path="res://Scenes/Player/player.tscn" id="2_gae8q"]
+[ext_resource type="PackedScene" uid="uid://dkp53ary6lvah" path="res://Scenes/Player/Player.tscn" id="2_gae8q"]
 [ext_resource type="Texture2D" uid="uid://1s4tbjg4rokb" path="res://Textures/kenney_prototype_textures/dark/texture_07.png" id="2_r77wl"]
 [ext_resource type="ArrayMesh" uid="uid://db8gl7tvrp4im" path="res://Models/Prototype/OBJ format/column.obj" id="3_gae8q"]
 [ext_resource type="ArrayMesh" uid="uid://cypb82w3ks7h2" path="res://Models/Prototype/OBJ format/figurine-cube.obj" id="4_ax6of"]

@@ -31,6 +31,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 folder_colors={
 "res://AssetsLibraries/": "orange",
 "res://Dialogues/": "pink",
+"res://Materials/": "gray",
 "res://MeshLibraries/": "blue",
 "res://Models/": "yellow",
 "res://Scenes/": "green",

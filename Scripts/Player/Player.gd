@@ -8,10 +8,10 @@ extends CharacterBody3D
 const ROTATION_SPEED := 10.0
 
 @onready var text_interact : Label = $CanvasLayer/BoxContainer/TextInteract
-@onready var see_cast : RayCast3D = $"playermodel/character-male-e2/SeeCast"
+@onready var see_cast : RayCast3D = $playermodel/Prototype/SeeCast
 @onready var camera_pivot : Node3D = $camera_pivot
 @onready var playermodel : Node3D = $playermodel
-@onready var animation_player : AnimationPlayer = $"playermodel/character-male-e2/AnimationPlayer"
+@onready var animation_player : AnimationPlayer = $playermodel/Prototype/Player/AnimationPlayer
 
 enum AnimationState {IDLE, RUNNING, JUMPING}
 var player_animation_state : AnimationState = AnimationState.IDLE
@@ -97,9 +97,9 @@ func _physics_process(delta: float) -> void:
 
 	match player_animation_state:
 		AnimationState.IDLE:
-			animation_player.play("idle")
+			animation_player.play("Idle.001")
 		AnimationState.RUNNING:
-			animation_player.play("sprint")
+			animation_player.play("Walk.001")
 		AnimationState.JUMPING:
 			animation_player.play("jump")
 

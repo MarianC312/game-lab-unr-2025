@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dumclfvb6vnww"]
+
+[ext_resource type="Texture2D" uid="uid://bo6ra86k8hyby" path="res://Models/Trees/High andean/textures/Tronco_Df.png" id="1_3ahuv"]
+[ext_resource type="Texture2D" uid="uid://thoeg84emyru" path="res://Models/Trees/High andean/textures/Tronco_No.png" id="2_c42fq"]
+
+[resource]
+albedo_texture = ExtResource("1_3ahuv")
+normal_enabled = true
+normal_texture = ExtResource("2_c42fq")
+distance_fade_mode = 1

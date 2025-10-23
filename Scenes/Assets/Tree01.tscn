@@ -1,13 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://di1j3e0tdgdln"]
+[gd_scene load_steps=7 format=3 uid="uid://di1j3e0tdgdln"]
 
 [ext_resource type="PackedScene" uid="uid://4sq6yugt75l8" path="res://Models/Trees/High andean/source/Lloque Pro 10m.fbx" id="1_uwpk7"]
+[ext_resource type="Texture2D" uid="uid://mxjdwhx4242u" path="res://Models/Trees/High andean/textures/Hoja_Gl.png" id="2_5lymy"]
+[ext_resource type="Material" uid="uid://dumclfvb6vnww" path="res://Materials/Tree01.tres" id="2_c6wp0"]
+[ext_resource type="Texture2D" uid="uid://cipfsj1kkc0bl" path="res://Models/Trees/High andean/textures/Hoja_No.png" id="3_c6wp0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0uwwn"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtogc"]
+albedo_texture = ExtResource("2_5lymy")
+normal_enabled = true
+normal_texture = ExtResource("3_c6wp0")
+distance_fade_mode = 1
+distance_fade_min_distance = 20.0
+distance_fade_max_distance = 5.0
+
 [node name="Lloque Pro 10m" instance=ExtResource("1_uwpk7")]
+
+[node name="Tronco" parent="Lloque_Pro_10m" index="0"]
+surface_material_override/0 = ExtResource("2_c6wp0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Lloque_Pro_10m/Tronco" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lloque_Pro_10m/Tronco/StaticBody3D" index="0"]
 transform = Transform3D(0.7, 0, 0, 0, 0.995, 0, 0, 0, 0.67, 0, 1, 0.055)
 shape = SubResource("CylinderShape3D_0uwwn")
+
+[node name="Ultima_rama" parent="Lloque_Pro_10m" index="1"]
+surface_material_override/0 = ExtResource("2_c6wp0")
+
+[node name="Hojas" parent="Lloque_Pro_10m" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mtogc")
