@@ -40,6 +40,10 @@ folder_colors={
 "res://addons/": "red"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_left={
