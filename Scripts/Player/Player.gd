@@ -13,7 +13,7 @@ const ROTATION_SPEED := 10.0
 @onready var playermodel : Node3D = $playermodel
 @onready var animation_player : AnimationPlayer = $playermodel/Prototype/Player/AnimationPlayer
 
-enum AnimationState {IDLE, RUNNING, JUMPING}
+enum AnimationState {IDLE, RUNNING, TALKING}
 var player_animation_state : AnimationState = AnimationState.IDLE
 
 var target_position: Vector3 = Vector3.ZERO
@@ -27,81 +27,81 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_dialogue_active:
-		return
-		
-	if see_cast.is_colliding():
-		var target = see_cast.get_collider()
-		if target.has_method("interact"):
-			text_interact.show()
-			if Input.is_action_just_pressed("interact") and not is_dialogue_active:
-				target.call("interact")
-				text_interact.hide()
+		player_animation_state = AnimationState.TALKING
 	else:
-		text_interact.hide()
+		if see_cast.is_colliding():
+			var target = see_cast.get_collider()
+			if target.has_method("interact"):
+				text_interact.show()
+				if Input.is_action_just_pressed("interact") and not is_dialogue_active:
+					target.call("interact")
+					text_interact.hide()
+		else:
+			text_interact.hide()
 
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+		if not is_on_floor():
+			velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = jump_velocity
 
-	if Input.is_action_pressed("sprint"):
-		speed = SPRINT_SPEED
-	else:
-		speed = WALK_SPEED
+		if Input.is_action_pressed("sprint"):
+			speed = SPRINT_SPEED
+		else:
+			speed = WALK_SPEED
 
-	if Input.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
-		var camera = get_viewport().get_camera_3d()
-		var from = camera.project_ray_origin(get_viewport().get_mouse_position())
-		var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
+		if Input.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
+			var camera = get_viewport().get_camera_3d()
+			var from = camera.project_ray_origin(get_viewport().get_mouse_position())
+			var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
 
-		var space_state = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(from, to)
-		query.collide_with_areas = false
-		query.collide_with_bodies = true
-		query.collision_mask = 1
+			var space_state = get_world_3d().direct_space_state
+			var query = PhysicsRayQueryParameters3D.create(from, to)
+			query.collide_with_areas = false
+			query.collide_with_bodies = true
+			query.collision_mask = 1
 
-		var result = space_state.intersect_ray(query)
+			var result = space_state.intersect_ray(query)
 
-		if result and result.has("position"):
-			target_position = result.position
-			moving_to_target = true
-	else:
-		moving_to_target = false
-
-	if moving_to_target:
-		var dir = target_position - global_position
-		dir.y = 0
-		var distance = dir.length()
-
-		if distance > 0.1:
-			dir = dir.normalized()
-			velocity.x = dir.x * speed
-			velocity.z = dir.z * speed
-			rotate_model(dir, delta)
-			player_animation_state = AnimationState.RUNNING
+			if result and result.has("position"):
+				target_position = result.position
+				moving_to_target = true
 		else:
 			moving_to_target = false
+
+		if moving_to_target:
+			var dir = target_position - global_position
+			dir.y = 0
+			var distance = dir.length()
+
+			if distance > 0.1:
+				dir = dir.normalized()
+				velocity.x = dir.x * speed
+				velocity.z = dir.z * speed
+				rotate_model(dir, delta)
+				player_animation_state = AnimationState.RUNNING
+			else:
+				moving_to_target = false
+				velocity.x = move_toward(velocity.x, 0, speed)
+				velocity.z = move_toward(velocity.z, 0, speed)
+				player_animation_state = AnimationState.IDLE
+		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
 			velocity.z = move_toward(velocity.z, 0, speed)
 			player_animation_state = AnimationState.IDLE
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
-		player_animation_state = AnimationState.IDLE
 
-	if not is_on_floor():
-		player_animation_state = AnimationState.JUMPING
-
-	move_and_slide()
+		#if not is_on_floor():
+			#player_animation_state = AnimationState.JUMPING
+		
+		move_and_slide()
 
 	match player_animation_state:
 		AnimationState.IDLE:
-			animation_player.play("Idle.001")
+			animation_player.play("IdleStandard")
 		AnimationState.RUNNING:
-			animation_player.play("Walk.001")
-		AnimationState.JUMPING:
-			animation_player.play("jump")
+			animation_player.play("Walk")
+		AnimationState.TALKING:
+			animation_player.play("Talk2")
 
 func rotate_model(direction: Vector3, delta: float) -> void:
 	var target_basis = Basis.looking_at(direction)

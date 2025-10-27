@@ -1,12 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://cu711dkfvtjjj"]
+[gd_scene load_steps=31 format=3 uid="uid://cu711dkfvtjjj"]
 
 [ext_resource type="PackedScene" uid="uid://dkp53ary6lvah" path="res://Scenes/Player/Player.tscn" id="2_gae8q"]
 [ext_resource type="Texture2D" uid="uid://1s4tbjg4rokb" path="res://Textures/kenney_prototype_textures/dark/texture_07.png" id="2_r77wl"]
 [ext_resource type="ArrayMesh" uid="uid://db8gl7tvrp4im" path="res://Models/Prototype/OBJ format/column.obj" id="3_gae8q"]
-[ext_resource type="ArrayMesh" uid="uid://cypb82w3ks7h2" path="res://Models/Prototype/OBJ format/figurine-cube.obj" id="4_ax6of"]
-[ext_resource type="ArrayMesh" uid="uid://uf5s7r6kqpgl" path="res://Models/Prototype/OBJ format/figurine-large.obj" id="5_dbpph"]
+[ext_resource type="PackedScene" uid="uid://c7vgf32x0rib1" path="res://Scenes/NPCs/NPC001.tscn" id="4_xjwqy"]
 [ext_resource type="ArrayMesh" uid="uid://di2e2sq725vpo" path="res://Models/Prototype/OBJ format/indicator-doorway.obj" id="6_lo36x"]
-[ext_resource type="Script" uid="uid://bu2oglhttmcis" path="res://Scripts/NPCs/NPC.gd" id="6_wbbd7"]
 [ext_resource type="ArrayMesh" uid="uid://c2bc3fwcvvoue" path="res://Models/Prototype/OBJ format/indicator-special-area.obj" id="7_cw0h6"]
 [ext_resource type="Resource" uid="uid://dkbmvtfypna2x" path="res://Dialogues/testdiag.dialogue" id="8_ht8ay"]
 [ext_resource type="ArrayMesh" uid="uid://bwua0mu5a5lmv" path="res://Models/Prototype/OBJ format/indicator-special-cross.obj" id="8_u0pxh"]
@@ -26,12 +24,6 @@ albedo_texture = ExtResource("2_r77wl")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h5wrs"]
 points = PackedVector3Array(0.114263974, 1.0077376, 0.114263974, -0.099999994, 0.028437033, -0.099999994, -0.10791475, -0.0077376366, 0.114263974, 0.114263974, -0.0077376366, -0.10791475, -0.099999994, 0.971563, -0.099999994, 0.114263974, -0.0077376366, 0.114263974, -0.10791475, 1.0077376, 0.114263974, 0.114263974, 1.0077376, -0.10791475)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h762b"]
-points = PackedVector3Array(-0.2547619, 0.0905209, -0.059516348, -0.14995153, -0.0047619343, -0.059516348, -0.095982715, 0.20163631, 0.14999999, -0.09550319, 0.58489573, -0.099999994, 0.25952378, 0.0905209, -0.059516348, -0.09985282, 0.5975555, 0.099999994, 0.102379866, 0.39995083, -0.14762011, 0.100475125, 0.2019529, 0.14952487, 0.099999994, 0.5839877, 0.09554881, -0.10488114, 0.20171577, -0.14511885, 0.14091924, 0.022835178, 0.049999997, 0.099999994, 0.5839877, -0.09967369, -0.23128998, 0.3865312, 0.032657225, -0.23147684, 0.109489866, 0.049999997, 0.1547134, -0.0047619343, -0.059516348, 0.102379866, 0.20004907, -0.14762011, 0.100475125, 0.398047, 0.14952487, 0.23623872, 0.109489866, 0.049999997, -0.13615736, 0.022835178, 0.049999997, -0.095982715, 0.3983636, 0.14999999, -0.10488114, 0.39828414, -0.14511885, -0.22619204, 0.38464338, -0.035712056, 0.23095392, 0.38464338, -0.035712056, 0.23605186, 0.3865312, 0.032657225, -0.2324068, 0.39560655, -0.010652596, -0.049999997, 0.15160696, 0.12895668, 0.23716867, 0.39560655, -0.010652596, -0.049999997, 0.16035847, -0.13293774, 0.2222149, 0.35692382, 0.047144417, -0.21745303, 0.35692382, 0.047144417, -0.049999997, 0.16905531, 0.13769965)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xjwqy"]
-points = PackedVector3Array(0.33208692, 0.6889985, 0.026546149, -0.3234593, 0.16541661, -0.051712956, -0.1570366, -0.007142842, -0.057098106, 0.24540384, 0.6953477, -0.14999999, -0.2453371, 0.6953477, 0.14999999, 0.35714287, 0.2071988, 0.0714034, -0.2453371, 0.6953477, -0.14999999, -0.1570366, -0.007142842, 0.05712887, 0.11424655, 0.9071428, -0.114226975, 0.24540384, 0.6953477, 0.14999999, 0.35714287, 0.2071988, -0.0714034, -0.09835218, 0.9, 0.09842098, -0.35714287, 0.2071988, 0.0714034, -0.35714287, 0.5928348, -0.114226975, 0.15703657, -0.007142842, 0.05712887, -0.2248043, 0.47489235, 0.13744617, 0.22486545, 0.47489235, -0.13744617, 0.15703657, -0.007142842, -0.057098106, -0.33208692, 0.6889985, 0.026546149, 0.35714287, 0.59274524, -0.114226975, -0.2248043, 0.47489235, -0.13744617, 0.22486545, 0.47489235, 0.13744617, 0.099999994, 0.85013705, 0.0875153, -0.35714287, 0.2071988, -0.0714034, -0.08746911, 0.85020566, -0.099999994, -0.3273118, 0.6201919, 0.09163192, 0.3273118, 0.6201919, 0.09163192, -0.3321027, 0.68900985, -0.0265188, 0.3321027, 0.68900985, -0.0265188, 0.3234593, 0.16541661, -0.051712956, 0.32335117, 0.16551173, 0.051723525, -0.32335117, 0.16551173, 0.051723525)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u0pxh"]
 points = PackedVector3Array(0.28568944, 1.007778, 0.50793654, 0.26556382, 9.8241486e-05, -0.5, -0.5, 9.8241486e-05, -0.49990213, 0.28568944, -0.007837057, 0.50793654, 0.48433828, 0.9999422, -0.5, -0.50793654, 1.007778, -0.28568944, 0.5, 9.8241486e-05, 0.5, 0.5, 9.8241486e-05, -0.5, -0.5, 0.9998443, -0.49990213, 0.48433828, 0.9999422, 0.5, -0.50793654, -0.007837057, -0.28568944)
@@ -104,32 +96,14 @@ shape = SubResource("ConvexPolygonShape3D_h5wrs")
 
 [node name="NPCs" type="Node3D" parent="World/Objects"]
 
-[node name="FigurineCube" type="MeshInstance3D" parent="World/Objects/NPCs"]
-transform = Transform3D(0.6325111, 0, 0, 0, 1, 0, 0, 0, 0.56116724, 2.3009295, 0.7254019, -3.3719532)
-layers = 2
-mesh = ExtResource("4_ax6of")
-skeleton = NodePath("../../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Objects/NPCs/FigurineCube"]
-script = ExtResource("6_wbbd7")
-npc_name = "Bertito"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Objects/NPCs/FigurineCube/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_h762b")
-
-[node name="FigurineLarge" type="MeshInstance3D" parent="World/Objects/NPCs"]
-transform = Transform3D(0.6325111, 0, 0, 0, 1, 0, 0, 0, 0.56116724, 3.2915502, 0.7254009, -3.5131152)
-layers = 2
-mesh = ExtResource("5_dbpph")
-skeleton = NodePath("../../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Objects/NPCs/FigurineLarge"]
-script = ExtResource("6_wbbd7")
-npc_name = "Rodolfo"
+[node name="NPC1" parent="World/Objects/NPCs" instance=ExtResource("4_xjwqy")]
+transform = Transform3D(-0.9157188, 0, -0.40181994, 0, 1, 0, 0.40181994, 0, -0.9157188, 2.443192, 0.7231047, -2.443192)
+npc_name = "Carrrrlos"
 dialogue = ExtResource("8_ht8ay")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Objects/NPCs/FigurineLarge/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_xjwqy")
+[node name="NPC2" parent="World/Objects/NPCs" instance=ExtResource("4_xjwqy")]
+transform = Transform3D(-0.5726897, 0, 0.81977254, 0, 1, 0, -0.81977254, 0, -0.5726897, 7.30956, 0.73895717, -1.3732846)
+npc_name = "Esteban Quito"
 
 [node name="Decals" type="Node3D" parent="World/Objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
