@@ -13,7 +13,7 @@ const ROTATION_SPEED := 10.0
 @onready var playermodel : Node3D = $playermodel
 @onready var animation_player : AnimationPlayer = $playermodel/Prototype/Player/AnimationPlayer
 
-enum AnimationState {IDLE, RUNNING, TALKING}
+enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 var player_animation_state : AnimationState = AnimationState.IDLE
 
 var target_position: Vector3 = Vector3.ZERO
@@ -47,8 +47,10 @@ func _physics_process(delta: float) -> void:
 
 		if Input.is_action_pressed("sprint"):
 			speed = SPRINT_SPEED
+			player_animation_state = AnimationState.RUNNING
 		else:
 			speed = WALK_SPEED
+			player_animation_state = AnimationState.WALKING
 
 		if Input.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
 			var camera = get_viewport().get_camera_3d()
@@ -79,7 +81,6 @@ func _physics_process(delta: float) -> void:
 				velocity.x = dir.x * speed
 				velocity.z = dir.z * speed
 				rotate_model(dir, delta)
-				player_animation_state = AnimationState.RUNNING
 			else:
 				moving_to_target = false
 				velocity.x = move_toward(velocity.x, 0, speed)
@@ -98,8 +99,10 @@ func _physics_process(delta: float) -> void:
 	match player_animation_state:
 		AnimationState.IDLE:
 			animation_player.play("IdleStandard")
-		AnimationState.RUNNING:
+		AnimationState.WALKING:
 			animation_player.play("Walk")
+		AnimationState.RUNNING:
+			animation_player.play("Run2")
 		AnimationState.TALKING:
 			animation_player.play("Talk2")
 

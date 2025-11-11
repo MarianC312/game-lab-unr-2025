@@ -6,7 +6,7 @@ extends CharacterBody3D
 
 var is_dialogue_active : bool = false
 
-enum AnimationState {IDLE, WALKING, TALKING}
+enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 var play_animation_state : AnimationState = AnimationState.IDLE
 
 func _ready() -> void:
@@ -21,6 +21,8 @@ func _physics_process(delta: float) -> void:
 			animation_player.play("Walk")
 		AnimationState.TALKING:
 			animation_player.play("Talk4")
+		AnimationState.RUNNING:
+			animation_player.play("Run2")
 			
 
 func interact() -> void:

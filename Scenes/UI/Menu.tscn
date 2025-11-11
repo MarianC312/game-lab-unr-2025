@@ -1,0 +1,132 @@
+[gd_scene load_steps=7 format=3 uid="uid://kei4fk24oicn"]
+
+[ext_resource type="Script" uid="uid://pbkn4u2sgrgk" path="res://Scripts/UI/Menu.gd" id="1_5cock"]
+[ext_resource type="Texture2D" uid="uid://lsqkeues1wpo" path="res://Base/Images/tm01.jpg" id="2_t06ot"]
+[ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="3_s6sq0"]
+[ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="4_6487p"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ytr4m"]
+blend_mode = 2
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Theme" id="Theme_l48gv"]
+default_font = ExtResource("3_s6sq0")
+default_font_size = 0
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5cock")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.30401987, 0.24505061, 0.21848756, 1)
+
+[node name="Tm01" type="Sprite2D" parent="."]
+position = Vector2(526.2127, 322.5)
+scale = Vector2(1.113806, 1.113806)
+texture = ExtResource("2_t06ot")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -877.0
+offset_top = -89.0
+offset_right = -120.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.30401987, 0.24505061, 0.21848756, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1058.2155
+offset_top = -625.9908
+offset_right = -664.21545
+offset_bottom = -550.2062
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 1.5718457
+color = Color(0.30401987, 0.24505061, 0.21848756, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -513.0
+offset_right = -152.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Jugar" type="Button" parent="VBoxContainer"]
+material = SubResource("CanvasItemMaterial_ytr4m")
+layout_mode = 2
+theme = SubResource("Theme_l48gv")
+theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+theme_override_font_sizes/font_size = 36
+text = "Jugar"
+
+[node name="Playground" type="Button" parent="VBoxContainer"]
+material = SubResource("CanvasItemMaterial_ytr4m")
+layout_mode = 2
+theme = SubResource("Theme_l48gv")
+theme_override_font_sizes/font_size = 36
+text = "Playground"
+
+[node name="Opciones" type="Button" parent="VBoxContainer"]
+material = SubResource("CanvasItemMaterial_ytr4m")
+layout_mode = 2
+theme = SubResource("Theme_l48gv")
+theme_override_font_sizes/font_size = 36
+text = "Opciones"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+material = SubResource("CanvasItemMaterial_ytr4m")
+layout_mode = 2
+theme = SubResource("Theme_l48gv")
+theme_override_font_sizes/font_size = 36
+text = "Salir"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 344.0
+offset_top = 42.0
+offset_right = 1003.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+theme_override_colors/font_shadow_color = Color(0.30588236, 0.24313726, 0.21960784, 1)
+theme_override_colors/font_outline_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+theme_override_fonts/font = ExtResource("4_6487p")
+theme_override_font_sizes/font_size = 74
+text = "Ecos del Monte"
+uppercase = true
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Playground" to="." method="_on_playground_pressed"]
+[connection signal="pressed" from="VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
