@@ -8,7 +8,7 @@ extends CharacterBody3D
 const ROTATION_SPEED := 10.0
 
 @onready var text_interact : Label = $CanvasLayer/BoxContainer/TextInteract
-@onready var see_cast : RayCast3D = $playermodel/Prototype/SeeCast
+@onready var see_cast : RayCast3D = $playermodel/Prototype/SeeCast01
 @onready var camera_pivot : Node3D = $camera_pivot
 @onready var playermodel : Node3D = $playermodel
 @onready var animation_player : AnimationPlayer = $playermodel/Prototype/Player/AnimationPlayer
