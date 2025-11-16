@@ -1,14 +1,15 @@
 extends CharacterBody3D
 
 @export_category("Player Movement")
-@export var speed := 3.0
-@export var WALK_SPEED := 3.0
-@export var SPRINT_SPEED := 4.5
+@export var speed := 2.0
+@export var WALK_SPEED := 2.0
+@export var SPRINT_SPEED := 3.5
 @export var jump_velocity := 4.5
 const ROTATION_SPEED := 10.0
 
 @onready var text_interact : Label = $CanvasLayer/BoxContainer/TextInteract
 @onready var see_cast : RayCast3D = $playermodel/Prototype/SeeCast01
+@onready var obj_cast : Area3D = $playermodel/Prototype/Interaction
 @onready var camera_pivot : Node3D = $camera_pivot
 @onready var playermodel : Node3D = $playermodel
 @onready var animation_player : AnimationPlayer = $playermodel/Prototype/Player/AnimationPlayer
@@ -24,6 +25,8 @@ var is_dialogue_active : bool = false
 func _ready() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_start)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
+	obj_cast.body_entered.connect(_on_body_entered)
+	obj_cast.body_exited.connect(_on_body_exited)
 
 func _physics_process(delta: float) -> void:
 	if is_dialogue_active:
@@ -117,6 +120,13 @@ func _on_dialogue_end(dialogue) -> void:
 	await get_tree().create_timer(0.2).timeout
 	is_dialogue_active = false
 
+func _on_body_entered(body) -> void:
+	if body.is_in_group("Interactable"):
+		print("Interactuar con: ", body)
+
+func _on_body_exited(body) -> void:
+	if body.is_in_group("interactable"):
+		print("Fuera de area: ", body)
 
 #extends CharacterBody3D
 #

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c2kivinqxfg3t"
+path="res://.godot/imported/Cuadro.dialogue-863a71850376fb2fbcadeda93bd41ba8.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Prototype/Cuadro.dialogue"
+dest_files=["res://.godot/imported/Cuadro.dialogue-863a71850376fb2fbcadeda93bd41ba8.tres"]
+
+[params]
+
+defaults=true
