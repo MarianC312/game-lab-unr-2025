@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cu711dkfvtjjj"]
+[gd_scene load_steps=45 format=3 uid="uid://cu711dkfvtjjj"]
 
 [ext_resource type="Texture2D" uid="uid://1s4tbjg4rokb" path="res://Textures/kenney_prototype_textures/dark/texture_07.png" id="1_1dcht"]
 [ext_resource type="Script" uid="uid://d1n4qkk0rsqtk" path="res://Scripts/Scene/Prototype/Prototype.gd" id="1_4a7i2"]
@@ -70,8 +70,8 @@ albedo_color = Color(0.45983213, 0.2615088, 0.11278974, 1)
 material = SubResource("StandardMaterial3D_1dcht")
 size = Vector3(0.35, 0.35, 0.01)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ip2s5"]
-size = Vector3(0.99279785, 2.2133179, 0.11755371)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubh04"]
+size = Vector3(1, 1, 0.19360352)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dr2ma"]
 points = PackedVector3Array(0.1777767, 0.17777778, 0.008888889, -0.17774352, -0.17777778, -0.0077777766, 0.1777767, -0.17777778, -0.0077777766, -0.17774352, -0.17777778, 0.008888889, -0.17774352, 0.17777778, -0.0077777766, 0.1777767, -0.17777778, 0.008888889, 0.1777767, 0.17777778, -0.0077777766, -0.17774352, 0.17777778, 0.008888889)
@@ -82,6 +82,9 @@ albedo_color = Color(0.44715494, 0.25970915, 0.048514836, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_ill4j"]
 material = SubResource("StandardMaterial3D_ubh04")
 size = Vector3(1, 2.16, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ip2s5"]
+size = Vector3(0.99279785, 2.2133179, 0.11755371)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w014k"]
 points = PackedVector3Array(0.4857142, 1.0422857, 0.074999996, -0.5171429, -1.0971428, -0.09214285, -0.4914286, -1.0422857, 0.074999996, -0.5171429, 1.0971428, -0.09214285, 0.5114285, -1.0971428, -0.09214285, 0.5114285, 1.0971428, -0.09214285, -0.4914286, 1.0422857, 0.074999996, 0.4857142, -1.0422857, 0.074999996)
@@ -309,8 +312,8 @@ script = ExtResource("5_ip2s5")
 dialogue = ExtResource("6_a321k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mundo/Objetos/Casa/Objetos/Foto/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03552246, 0.012817383, 0.021972656)
-shape = SubResource("BoxShape3D_ip2s5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03552246, 0.012817383, 0.026245117)
+shape = SubResource("BoxShape3D_ubh04")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mundo/Objetos/Casa/Objetos/Foto"]
 
