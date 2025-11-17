@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://1s4tbjg4rokb" path="res://Textures/kenney_prototype_textures/dark/texture_07.png" id="1_1dcht"]
 [ext_resource type="Script" uid="uid://d1n4qkk0rsqtk" path="res://Scripts/Scene/Prototype/Prototype.gd" id="1_4a7i2"]
-[ext_resource type="PackedScene" uid="uid://b2f3wy4i0beom" path="res://Scenes/Prototype/House01.tscn" id="2_ip2s5"]
+[ext_resource type="PackedScene" uid="uid://b2f3wy4i0beom" path="res://Scenes/Assets/House01.tscn" id="2_ip2s5"]
 [ext_resource type="PackedScene" uid="uid://c7vgf32x0rib1" path="res://Scenes/NPCs/NPC001.tscn" id="3_a321k"]
-[ext_resource type="Script" uid="uid://ywl7m0qshqv" path="res://Scenes/Prototype/Objeto.gd" id="5_ip2s5"]
+[ext_resource type="Script" uid="uid://ywl7m0qshqv" path="res://Scripts/Scene/Prototype/Objeto.gd" id="5_ip2s5"]
 [ext_resource type="Resource" uid="uid://vukby6p7boov" path="res://Dialogues/Scene/Prototype/NPC2.dialogue" id="5_ubh04"]
 [ext_resource type="Resource" uid="uid://c2kivinqxfg3t" path="res://Dialogues/Scene/Prototype/Cuadro.dialogue" id="6_a321k"]
 [ext_resource type="Resource" uid="uid://fv1lwwm5bcjp" path="res://Dialogues/Scene/Prototype/Mate.dialogue" id="7_3of7i"]
@@ -300,24 +300,24 @@ spot_angle = 69.75
 
 [node name="Objetos" type="Node" parent="Mundo/Objetos/Casa"]
 
-[node name="Foto" type="MeshInstance3D" parent="Mundo/Objetos/Casa/Objetos"]
+[node name="Cuadro" type="MeshInstance3D" parent="Mundo/Objetos/Casa/Objetos"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.041254, 2.295834, 0.7031013)
 layers = 4
 mesh = SubResource("BoxMesh_3of7i")
 
-[node name="Area3D" type="Area3D" parent="Mundo/Objetos/Casa/Objetos/Foto"]
+[node name="Area3D" type="Area3D" parent="Mundo/Objetos/Casa/Objetos/Cuadro"]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("5_ip2s5")
 dialogue = ExtResource("6_a321k")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mundo/Objetos/Casa/Objetos/Foto/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mundo/Objetos/Casa/Objetos/Cuadro/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03552246, 0.012817383, 0.026245117)
 shape = SubResource("BoxShape3D_ubh04")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Mundo/Objetos/Casa/Objetos/Foto"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Mundo/Objetos/Casa/Objetos/Cuadro"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mundo/Objetos/Casa/Objetos/Foto/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mundo/Objetos/Casa/Objetos/Cuadro/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_dr2ma")
 
 [node name="Puerta01" type="MeshInstance3D" parent="Mundo/Objetos/Casa/Objetos"]

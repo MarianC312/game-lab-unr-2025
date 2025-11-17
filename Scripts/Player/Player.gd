@@ -14,6 +14,8 @@ const ROTATION_SPEED := 10.0
 @onready var playermodel : Node3D = $playermodel
 @onready var animation_player : AnimationPlayer = $playermodel/Prototype/Player/AnimationPlayer
 
+signal toggle_pause
+
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 var player_animation_state : AnimationState = AnimationState.IDLE
 
@@ -23,12 +25,21 @@ var moving_to_target := false
 var is_dialogue_active : bool = false
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	DialogueManager.dialogue_started.connect(_on_dialogue_start)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
 	obj_cast.body_entered.connect(_on_body_entered)
 	obj_cast.body_exited.connect(_on_body_exited)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("escape"):
+		GameManager._toggle_pause()
+
 func _physics_process(delta: float) -> void:
+	if GameManager._get_pause():
+		animation_player.stop(true)
+		return
+	
 	if is_dialogue_active:
 		player_animation_state = AnimationState.TALKING
 	else:
