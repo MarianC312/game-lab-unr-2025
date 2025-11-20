@@ -1,8 +1,9 @@
 extends Node
 
-@onready var pause_menu = $UI/PauseMenu
-@onready var map = $Map
-@onready var player = $Player
+@onready var pause_menu : Control = $UI/PauseMenu
+@onready var map : Node3D = $Map
+@onready var player : CharacterBody3D = $Player
+@onready var loading : Control = $UI/Loading
 
 var current_map: Node = null
 
@@ -16,7 +17,10 @@ func _process(_delta: float) -> void:
 func _ready() -> void:
 	GameManager.toggle_pause.connect(_toggle_pause)
 	pause_menu.visible = false
-	load_map("res://Scenes/Prototype/Prototype.tscn")
+	loading.visible = true
+	loading.scene_loaded.connect(_on_scene_loaded)
+	GameManager._set_new_scene_path("res://Scenes/Prototype/Prototype.tscn")
+	loading._load_new_scene()
 
 func _input(_event: InputEvent) -> void:
 	pass
@@ -31,18 +35,23 @@ func _toggle_pause() -> void:
 		pause_menu.visible = false
 
 
-func load_map(path) -> void:
+func load_map(packed_scene) -> void:
 	if current_map:
 		current_map.queue_free()
-	var new_map = load(path).instantiate()
-	if new_map.has_signal("map_ready"):
-		print("El mapa tiene la señal ready.")
-		new_map.map_ready.connect(_on_map_ready)
+	var new_map = packed_scene.instantiate()
 	map.add_child(new_map)
 	current_map = new_map # Corregir que el nuevo mapa cargado pase a ser hijo del nodo Map
+	GameManager._switch_scene_loaded()
+	_on_map_ready()
+	
 
 func _on_map_ready() -> void:
 	var spawn = get_tree().get_first_node_in_group("CharSpawn")
 	print(player.global_position)
 	print(spawn.global_position)
 	player.global_position = spawn.global_position
+	loading.visible = false
+
+func _on_scene_loaded(new_scene) -> void:
+	print("entered!")
+	load_map(new_scene)

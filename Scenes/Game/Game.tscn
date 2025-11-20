@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwl0t0lg0urkc"]
+[gd_scene load_steps=8 format=3 uid="uid://dwl0t0lg0urkc"]
 
 [ext_resource type="Script" uid="uid://nxf4xejdqb4e" path="res://Scripts/Game/Game.gd" id="1_gwu2e"]
 [ext_resource type="PackedScene" uid="uid://dkp53ary6lvah" path="res://Scenes/Player/Player.tscn" id="2_xbxml"]
+[ext_resource type="PackedScene" uid="uid://dlf3yhsierjcw" path="res://Scenes/UI/Loading.tscn" id="3_ln2h6"]
 [ext_resource type="PackedScene" uid="uid://4ulbnprvg5dc" path="res://Scenes/UI/PauseMenu.tscn" id="3_xbxml"]
 
 [sub_resource type="Environment" id="Environment_ln2h6"]
@@ -17,6 +18,8 @@ script = ExtResource("1_gwu2e")
 layer = 10
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("3_xbxml")]
+
+[node name="Loading" parent="UI" instance=ExtResource("3_ln2h6")]
 
 [node name="Player" parent="." instance=ExtResource("2_xbxml")]
 
