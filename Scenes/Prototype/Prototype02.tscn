@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdn7dnqwgsly6"]
+
+[ext_resource type="Script" uid="uid://bobju6w7cvhgs" path="res://Scripts/Scene/Prototype02/Prototype02.gd" id="1_ql8qw"]
+[ext_resource type="Texture2D" uid="uid://1s4tbjg4rokb" path="res://Textures/kenney_prototype_textures/dark/texture_07.png" id="2_egvnt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1e3gs"]
+albedo_color = Color(0.7154305, 0.6614255, 0.49204367, 1)
+albedo_texture = ExtResource("2_egvnt")
+
+[sub_resource type="Environment" id="Environment_ubh04"]
+background_mode = 3
+ambient_light_source = 3
+
+[sub_resource type="Compositor" id="Compositor_ill4j"]
+
+[node name="Prototype02" type="Node3D"]
+script = ExtResource("1_ql8qw")
+metadata/_edit_group_ = true
+
+[node name="Mundo" type="Node3D" parent="."]
+
+[node name="Piso" type="CSGBox3D" parent="Mundo"]
+transform = Transform3D(0.6325111, 0, 0, 0, 1, 0, 0, 0, 0.56116724, 0.2775482, 0.58480656, -2.549042)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(100, 0.2, 100)
+material = SubResource("StandardMaterial3D_1e3gs")
+
+[node name="Objetos" type="Node3D" parent="Mundo"]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="Arboles" type="Node3D" parent="Mundo/Objetos"]
+
+[node name="CharSpawn" type="Node3D" parent="Mundo" groups=["CharSpawn"]]
+transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 0, 1.25, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Mundo"]
+environment = SubResource("Environment_ubh04")
+compositor = SubResource("Compositor_ill4j")

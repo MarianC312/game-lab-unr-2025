@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://coab6gpht1jxd"
+path="res://.godot/imported/Puerta04.dialogue-aa525540e03a073e02604a211d1089f1.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Prototype01/Puerta04.dialogue"
+dest_files=["res://.godot/imported/Puerta04.dialogue-aa525540e03a073e02604a211d1089f1.tres"]
+
+[params]
+
+defaults=true

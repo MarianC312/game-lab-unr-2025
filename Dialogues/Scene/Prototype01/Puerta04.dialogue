@@ -1,0 +1,9 @@
+~ start
+Voy a ir al boliche a ver si saben algo de papá.
+- Ir al boliche => ir_al_boliche
+- Seguir investigando
+=> END
+
+~ ir_al_boliche
+do GameManager.load_new_map("res://Scenes/Prototype/Prototype02.tscn")
+=> END!

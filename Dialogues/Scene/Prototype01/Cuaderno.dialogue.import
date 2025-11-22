@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://lc4ruq504c41"
+path="res://.godot/imported/Cuaderno.dialogue-00ebcc7bfdead483647278fbe61c991e.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Prototype01/Cuaderno.dialogue"
+dest_files=["res://.godot/imported/Cuaderno.dialogue-00ebcc7bfdead483647278fbe61c991e.tres"]
+
+[params]
+
+defaults=true

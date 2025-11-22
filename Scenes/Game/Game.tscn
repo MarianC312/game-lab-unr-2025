@@ -1,15 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwl0t0lg0urkc"]
+[gd_scene load_steps=5 format=3 uid="uid://dwl0t0lg0urkc"]
 
 [ext_resource type="Script" uid="uid://nxf4xejdqb4e" path="res://Scripts/Game/Game.gd" id="1_gwu2e"]
 [ext_resource type="PackedScene" uid="uid://dkp53ary6lvah" path="res://Scenes/Player/Player.tscn" id="2_xbxml"]
 [ext_resource type="PackedScene" uid="uid://dlf3yhsierjcw" path="res://Scenes/UI/Loading.tscn" id="3_ln2h6"]
 [ext_resource type="PackedScene" uid="uid://4ulbnprvg5dc" path="res://Scenes/UI/PauseMenu.tscn" id="3_xbxml"]
-
-[sub_resource type="Environment" id="Environment_ln2h6"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_y3kpf"]
-
-[sub_resource type="Compositor" id="Compositor_3k6gv"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_gwu2e")
@@ -20,17 +14,8 @@ layer = 10
 [node name="PauseMenu" parent="UI" instance=ExtResource("3_xbxml")]
 
 [node name="Loading" parent="UI" instance=ExtResource("3_ln2h6")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_xbxml")]
 
 [node name="Map" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ln2h6")
-camera_attributes = SubResource("CameraAttributesPractical_y3kpf")
-compositor = SubResource("Compositor_3k6gv")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.85431373, 0, 0.51975775, -0.5048323, -0.23792318, 0.8297813, 0.1236624, -0.97128403, -0.20326105, 6.323311, 16.586319, -7.3127584)
-visible = false
-shadow_enabled = true

@@ -12,7 +12,8 @@ func _ready() -> void:
 	pass
 
 func _process(_delta: float) -> void:
-	if GameManager.current_state == GameManager.game_states.LOADING:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
+	if GameManager._is_game_loading():
 		scene_load_status = ResourceLoader.load_threaded_get_status(GameManager._get_new_scene_path(), progress)
 		progress_bar.value = progress[0] * 100
 

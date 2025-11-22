@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://fv1lwwm5bcjp"
+path="res://.godot/imported/Mate.dialogue-ee933a809326d6bd8dfd61a38dd9c7fb.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Prototype01/Mate.dialogue"
+dest_files=["res://.godot/imported/Mate.dialogue-ee933a809326d6bd8dfd61a38dd9c7fb.tres"]
+
+[params]
+
+defaults=true

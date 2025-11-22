@@ -8,19 +8,17 @@ extends CharacterBody3D
 const ROTATION_SPEED := 10.0
 
 @onready var text_interact : Label = $CanvasLayer/BoxContainer/TextInteract
-@onready var see_cast : RayCast3D = $playermodel/Prototype/SeeCast01
-@onready var obj_cast : Area3D = $playermodel/Prototype/Interaction
+@onready var see_cast : ShapeCast3D = $playermodel/Prototype/SeeCast02
 @onready var camera_pivot : Node3D = $camera_pivot
 @onready var playermodel : Node3D = $playermodel
 @onready var animation_player : AnimationPlayer = $playermodel/Prototype/Player/AnimationPlayer
-
-signal toggle_pause
 
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 var player_animation_state : AnimationState = AnimationState.IDLE
 
 var target_position: Vector3 = Vector3.ZERO
 var moving_to_target := false
+var target
 
 var is_dialogue_active : bool = false
 
@@ -28,30 +26,33 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	DialogueManager.dialogue_started.connect(_on_dialogue_start)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
-	obj_cast.body_entered.connect(_on_body_entered)
-	obj_cast.body_exited.connect(_on_body_exited)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
 		GameManager._toggle_pause()
 
 func _physics_process(delta: float) -> void:
-	if GameManager._get_pause():
+	if GameManager._is_game_paused():
 		animation_player.stop(true)
 		return
 	
 	if is_dialogue_active:
 		player_animation_state = AnimationState.TALKING
 	else:
-		if see_cast.is_colliding():
-			var target = see_cast.get_collider()
-			if target.has_method("interact"):
+		# print("Collision count: ", see_cast.get_collision_count())
+		if see_cast.is_colliding() and see_cast.get_collision_count() > 0:
+			target = see_cast.get_collider(0)
+			if target and target.has_method("interact"):
 				text_interact.show()
+				if target.has_method("glow"):
+					target.call("glow", true)
 				if Input.is_action_just_pressed("interact") and not is_dialogue_active:
 					target.call("interact")
 					text_interact.hide()
 		else:
 			text_interact.hide()
+			if target and target.has_method("glow"):
+				target.call("glow", false)
 
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -72,16 +73,20 @@ func _physics_process(delta: float) -> void:
 			var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
 
 			var space_state = get_world_3d().direct_space_state
-			var query = PhysicsRayQueryParameters3D.create(from, to)
+			var query = PhysicsRayQueryParameters3D.create(from, to, 1 << 2)
 			query.collide_with_areas = false
 			query.collide_with_bodies = true
-			query.collision_mask = 1
-
+			# query.collision_mask = 1 << 2
+			
 			var result = space_state.intersect_ray(query)
-
+			
+			
 			if result and result.has("position"):
+				# print("Hit position:", result.position)
 				target_position = result.position
 				moving_to_target = true
+			else:
+				print("No hit")
 		else:
 			moving_to_target = false
 
@@ -90,7 +95,7 @@ func _physics_process(delta: float) -> void:
 			dir.y = 0
 			var distance = dir.length()
 
-			if distance > 0.1:
+			if distance > 0.05:
 				dir = dir.normalized()
 				velocity.x = dir.x * speed
 				velocity.z = dir.z * speed
@@ -114,9 +119,11 @@ func _physics_process(delta: float) -> void:
 		AnimationState.IDLE:
 			animation_player.play("IdleStandard")
 		AnimationState.WALKING:
-			animation_player.play("Walk")
+			if velocity.length() > 0.02:
+				animation_player.play("Walk")
 		AnimationState.RUNNING:
-			animation_player.play("Run2")
+			if velocity.length() > 0.02:
+				animation_player.play("Run2")
 		AnimationState.TALKING:
 			animation_player.play("Talk2")
 
@@ -124,20 +131,12 @@ func rotate_model(direction: Vector3, delta: float) -> void:
 	var target_basis = Basis.looking_at(direction)
 	playermodel.basis = playermodel.basis.slerp(target_basis, ROTATION_SPEED * delta)
 
-func _on_dialogue_start(dialogue) -> void:
+func _on_dialogue_start(_dialogue) -> void:
 	is_dialogue_active = true
 
-func _on_dialogue_end(dialogue) -> void:
+func _on_dialogue_end(_dialogue) -> void:
 	await get_tree().create_timer(0.2).timeout
 	is_dialogue_active = false
-
-func _on_body_entered(body) -> void:
-	if body.is_in_group("Interactable"):
-		print("Interactuar con: ", body)
-
-func _on_body_exited(body) -> void:
-	if body.is_in_group("interactable"):
-		print("Fuera de area: ", body)
 
 #extends CharacterBody3D
 #

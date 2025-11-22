@@ -13,7 +13,7 @@ func _ready() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_start)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	match play_animation_state:
 		AnimationState.IDLE:
 			animation_player.play("IdleNeutral")
@@ -30,11 +30,11 @@ func interact() -> void:
 	
 	DialogueManager.show_dialogue_balloon(dialogue, "start", [npc_name])
 
-func _on_dialogue_start(dialogue) -> void:
+func _on_dialogue_start(_dialogue) -> void:
 	play_animation_state = AnimationState.TALKING
 	is_dialogue_active = true
 
-func _on_dialogue_end(dialogue) -> void:
+func _on_dialogue_end(_dialogue) -> void:
 	play_animation_state = AnimationState.IDLE
 	await get_tree().create_timer(0.2).timeout
 	is_dialogue_active = false

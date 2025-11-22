@@ -39,6 +39,8 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_835t4")
 theme_override_font_sizes/font_size = 24
+min_value = 22.99
+value = 45.59
 
 [node name="TextLoading" type="RichTextLabel" parent="."]
 layout_mode = 1

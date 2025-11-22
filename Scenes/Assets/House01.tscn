@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2f3wy4i0beom"]
+[gd_scene load_steps=3 format=3 uid="uid://b2f3wy4i0beom"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2gnw"]
 albedo_color = Color(0.31061712, 0.31061712, 0.3106171, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1uum"]
+size = Vector3(15, 0.3, 12)
 
 [node name="House" type="Node3D"]
 
@@ -10,48 +13,55 @@ use_collision = true
 
 [node name="Base" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 2, 0)
+layers = 3
 size = Vector3(15, 2.5, 12)
 material = SubResource("StandardMaterial3D_r2gnw")
 
+[node name="Floor" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.56518793, 0)
+layers = 3
+size = Vector3(15, 0.37158203, 12)
+material = SubResource("StandardMaterial3D_r2gnw")
+
 [node name="Room01" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.00018239208, 2.0454159, 2.7082677)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.00018239208, 1.9892665, 2.7082677)
 operation = 2
-size = Vector3(14.427296, 2.410168, 6.1762695)
+size = Vector3(14.427296, 2.5224667, 6.1762695)
 
 [node name="Room02" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -4.147635, 2.0454159, -3.1945634)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -4.147635, 1.9890224, -3.1945634)
 operation = 2
-size = Vector3(6.115857, 2.410168, 5.0989075)
+size = Vector3(6.116, 2.522, 5.099)
 
 [node name="Room03" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 4.793044, 2.0454159, -3.1945634)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 4.793, 1.989, -3.195)
 operation = 2
-size = Vector3(4.85578, 2.410168, 5.0989075)
+size = Vector3(4.856, 2.522, 5.099)
 
 [node name="Room04" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.6124862, 2.0454159, -3.1945634)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.612, 1.989, -3.195)
 operation = 2
-size = Vector3(2.8396668, 2.410168, 5.0989075)
+size = Vector3(2.84, 2.522, 5.099)
 
 [node name="Door01" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.6124862, 1.94, -0.5082473)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.6124862, 1.890879, -0.5082473)
 operation = 2
-size = Vector3(0.95, 2.2, 0.3)
+size = Vector3(0.95, 2.325, 0.3)
 
 [node name="Door02" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -2.5741305, 1.94, -0.5082473)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -2.574, 1.891, -0.508)
 operation = 2
-size = Vector3(0.95, 2.2, 0.3)
+size = Vector3(0.95, 2.325, 0.3)
 
 [node name="Door03" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3.7383075, 1.94, -0.5082473)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3.738, 1.891, -0.508)
 operation = 2
-size = Vector3(0.95, 2.2, 0.3)
+size = Vector3(0.95, 2.325, 0.3)
 
 [node name="Door04" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 7.355, 1.94, 2.526)
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 7.355, 1.891, 2.526)
 operation = 2
-size = Vector3(0.95, 2.2, 0.3)
+size = Vector3(0.95, 2.325, 0.3)
 
 [node name="Window01" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 7.355, 2.3235981, 4.478964)
@@ -90,4 +100,13 @@ size = Vector3(0.95, 0.95, 0.3)
 
 [node name="Entrance01s" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.102685, 0.7745822, 2.5233078)
+visible = false
 size = Vector3(1.191, 0.03250122, 0.95)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6126387, 0)
+shape = SubResource("BoxShape3D_l1uum")
