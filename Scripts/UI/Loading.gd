@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
-	if GameManager._is_game_loading():
+	if GameManager._is_game_loading() and progress_bar.value != 100:
 		scene_load_status = ResourceLoader.load_threaded_get_status(GameManager._get_new_scene_path(), progress)
 		progress_bar.value = progress[0] * 100
 
@@ -28,7 +28,10 @@ func _on_progress_bar_value_changed(value: float) -> void:
 		print("scene loaded!!")
 		print("Value: ", value)
 		print("scene_load_status: ", scene_load_status)
-		emit_signal("scene_loaded", new_scene)
+		scene_loaded.emit(new_scene)
 	else:
 		print("Value: ", value)
 		print("scene_load_status: ", scene_load_status)
+
+func _reset_progress_bar_value() -> void:
+		progress_bar.value = 0

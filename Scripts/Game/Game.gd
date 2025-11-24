@@ -5,6 +5,8 @@ extends Node
 @onready var player : CharacterBody3D = $Player
 @onready var loading : Control = $UI/Loading
 
+var first_load : bool = true
+
 var current_map: Node = null
 
 func _init() -> void:
@@ -19,6 +21,8 @@ func _ready() -> void:
 	loading.scene_loaded.connect(_on_scene_loaded)
 	pause_menu.visible = false
 	loading.visible = true
+	SceneTransitions.fade_in()
+	await SceneTransitions.fade_complete
 	GameManager.load_new_map("res://Scenes/Prototype/Prototype01.tscn")
 
 func _input(_event: InputEvent) -> void:
@@ -36,6 +40,11 @@ func _on_toggle_pause() -> void:
 func _on_toggle_loading() -> void:
 	print("Toggled loading: ", GameManager._get_current_state())
 	if GameManager._is_game_loading() and not GameManager._is_game_paused():
+		if not first_load:
+			SceneTransitions.fade_out()
+			await SceneTransitions.fade_complete
+		else:
+			first_load = false
 		loading.visible = true
 		loading.process_mode = Node.PROCESS_MODE_INHERIT
 		loading._load_new_scene()
@@ -44,6 +53,8 @@ func _on_toggle_loading() -> void:
 		loading.process_mode = Node.PROCESS_MODE_DISABLED
 
 func load_map(packed_scene) -> void:
+	SceneTransitions.fade_out()
+	await SceneTransitions.fade_complete
 	if current_map:
 		current_map.queue_free()
 	var new_map = packed_scene.instantiate()
@@ -54,10 +65,11 @@ func load_map(packed_scene) -> void:
 
 func _on_map_ready() -> void:
 	var spawn = get_tree().get_first_node_in_group("CharSpawn")
-	print(player.global_position)
-	print(spawn.global_position)
 	player.global_position = spawn.global_position
 	loading.visible = false
+	SceneTransitions.fade_in()
+	await SceneTransitions.fade_complete
+	loading._reset_progress_bar_value()
 	GameManager._toggle_playing()
 
 func _on_scene_loaded(new_scene) -> void:

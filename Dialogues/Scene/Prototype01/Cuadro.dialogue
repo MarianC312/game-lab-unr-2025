@@ -1,3 +1,5 @@
 ~ start
+if not SceneManagerMap01._already_interacted("Cuadro"):
+	do SceneManagerMap01._register_interaction("Cuadro")
 El viejo hace unos días que no vuelve... ya me empiezo a preocupar.
 => END

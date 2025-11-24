@@ -1,4 +1,8 @@
 ~ start
-Un cuaderno...
-Tiene una lista de tareas, y algo borrado junto al nombre de Manuel.
+if SceneManagerMap01._already_interacted("Cuaderno"):
+	El mismo cuaderno de antes...
+else:
+	do SceneManagerMap01._register_interaction("Cuaderno")
+	Un cuaderno...
+	Tiene una lista de tareas, y algo borrado junto al nombre de Manuel.
 => END

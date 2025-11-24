@@ -1,6 +1,7 @@
-[gd_scene load_steps=48 format=3 uid="uid://cu711dkfvtjjj"]
+[gd_scene load_steps=49 format=3 uid="uid://cu711dkfvtjjj"]
 
 [ext_resource type="Script" uid="uid://d1n4qkk0rsqtk" path="res://Scripts/Scene/Prototype/Prototype01.gd" id="1_mayph"]
+[ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_ly18k"]
 [ext_resource type="Texture2D" uid="uid://1s4tbjg4rokb" path="res://Textures/kenney_prototype_textures/dark/texture_07.png" id="2_rdc5u"]
 [ext_resource type="PackedScene" uid="uid://b2f3wy4i0beom" path="res://Scenes/Assets/House01.tscn" id="3_ly18k"]
 [ext_resource type="PackedScene" uid="uid://c7vgf32x0rib1" path="res://Scenes/NPCs/NPC001.tscn" id="4_kg7t3"]
@@ -130,6 +131,29 @@ ambient_light_source = 3
 [node name="Prototype01" type="Node3D"]
 script = ExtResource("1_mayph")
 metadata/_edit_group_ = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="CanvasLayer15" type="CanvasLayer" parent="UI"]
+layer = 15
+
+[node name="ItemList" type="ItemList" parent="UI/CanvasLayer15"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -368.0
+offset_top = 72.0
+offset_right = -67.0
+offset_bottom = 112.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_ly18k")
+theme_override_font_sizes/font_size = 20
+auto_height = true
 
 [node name="Mundo" type="Node3D" parent="."]
 

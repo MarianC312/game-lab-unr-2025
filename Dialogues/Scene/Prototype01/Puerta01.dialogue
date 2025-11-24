@@ -1,3 +1,5 @@
 ~ start
+if not SceneManagerMap01._already_interacted("Puerta01"):
+	do SceneManagerMap01._register_interaction("Puerta01")
 Mis hermanos aun duermen, no los voy a molestar...
 => END

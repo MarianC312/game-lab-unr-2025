@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 			speed = WALK_SPEED
 			player_animation_state = AnimationState.WALKING
 
-		if Input.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
+		if Input.is_action_pressed("right_click"): # Input.is_action_pressed("left_click")
 			var camera = get_viewport().get_camera_3d()
 			var from = camera.project_ray_origin(get_viewport().get_mouse_position())
 			var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
@@ -88,7 +88,8 @@ func _physics_process(delta: float) -> void:
 			else:
 				print("No hit")
 		else:
-			moving_to_target = false
+			# moving_to_target = false
+			pass
 
 		if moving_to_target:
 			var dir = target_position - global_position
@@ -137,6 +138,10 @@ func _on_dialogue_start(_dialogue) -> void:
 func _on_dialogue_end(_dialogue) -> void:
 	await get_tree().create_timer(0.2).timeout
 	is_dialogue_active = false
+
+func _reset_movement_state() -> void:
+	target_position = global_position
+	moving_to_target = false
 
 #extends CharacterBody3D
 #

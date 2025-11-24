@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://btac5qex00jh"]
+
+[ext_resource type="Script" uid="uid://ccrqo1sfo0ec8" path="res://Scripts/UI/SceneTransitions.gd" id="1_vjeyb"]
+
+[sub_resource type="Animation" id="Animation_vjeyb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer50/BGColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.09239707, 0.09239706, 0.09239706, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qplel"]
+resource_name = "fade_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer50/BGColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.09239707, 0.09239706, 0.09239706, 1), Color(0.09239707, 0.09239706, 0.09239706, 1), Color(0.09411765, 0.09411765, 0.09411765, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mn65u"]
+_data = {
+&"RESET": SubResource("Animation_vjeyb"),
+&"fade_in": SubResource("Animation_qplel")
+}
+
+[node name="SceneTransitions" type="Node"]
+script = ExtResource("1_vjeyb")
+
+[node name="CanvasLayer50" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="BGColor" type="ColorRect" parent="CanvasLayer50"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09239707, 0.09239706, 0.09239706, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mn65u")
+}
