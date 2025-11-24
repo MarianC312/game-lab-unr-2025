@@ -4,6 +4,7 @@ var paused : bool = false
 var current_scene : String
 var next_scene : String
 var current_state : game_states = game_states.LOADING
+var current_locale_id : int
 # var load_scene_after_dialogue : bool = false # deprecado
 
 enum game_states {START, LOADING, PLAYING, PAUSED}
@@ -68,3 +69,14 @@ func _is_game_loading() -> bool:
 
 func _map01_completed_tasks() -> bool:
 	return SceneManagerMap01._interacted_with_all()
+
+func _switch_language(lang : String) -> void:
+	TranslationServer.set_locale(lang)
+	match lang:
+		"es":
+			current_locale_id = 0
+		"en":
+			current_locale_id = 1
+
+func _get_current_locale_id() -> int:
+	return current_locale_id

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://kei4fk24oicn"]
 
 [ext_resource type="Script" uid="uid://pbkn4u2sgrgk" path="res://Scripts/UI/Menu.gd" id="1_5cock"]
-[ext_resource type="Texture2D" uid="uid://lsqkeues1wpo" path="res://Base/Images/tm01.jpg" id="2_t06ot"]
+[ext_resource type="PackedScene" uid="uid://c4yck0xdtbl3n" path="res://Scenes/UI/Options.tscn" id="2_s6sq0"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="3_s6sq0"]
-[ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="4_6487p"]
+[ext_resource type="FontFile" uid="uid://dv32lphorn5gv" path="res://Base/Fonts/LoveLight-Regular.ttf" id="4_5cock"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ytr4m"]
 blend_mode = 2
@@ -15,6 +15,7 @@ particles_anim_loop = true
 [sub_resource type="Theme" id="Theme_l48gv"]
 default_font = ExtResource("3_s6sq0")
 default_font_size = 0
+/colors/color_fuente = Color(0.9166399, 0.91663986, 0.9166398, 1)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -25,108 +26,85 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5cock")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Principal" type="Control" parent="CanvasLayer2"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/Principal"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.30401987, 0.24505061, 0.21848756, 1)
+color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 
-[node name="Tm01" type="Sprite2D" parent="."]
-position = Vector2(526.2127, 322.5)
-scale = Vector2(1.113806, 1.113806)
-texture = ExtResource("2_t06ot")
-
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/Principal"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = -877.0
-offset_top = -89.0
-offset_right = -120.0
-offset_bottom = -22.0
-grow_horizontal = 0
-grow_vertical = 0
-color = Color(0.30401987, 0.24505061, 0.21848756, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1058.2155
-offset_top = -625.9908
-offset_right = -664.21545
-offset_bottom = -550.2062
-grow_horizontal = 0
-grow_vertical = 0
-rotation = 1.5718457
-color = Color(0.30401987, 0.24505061, 0.21848756, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -513.0
-offset_right = -152.0
-grow_horizontal = 0
+offset_left = 113.0
+offset_right = 329.0
 grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Jugar" type="Button" parent="VBoxContainer"]
+[node name="Jugar" type="Button" parent="CanvasLayer2/Principal/VBoxContainer"]
 material = SubResource("CanvasItemMaterial_ytr4m")
 layout_mode = 2
 theme = SubResource("Theme_l48gv")
 theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
-theme_override_font_sizes/font_size = 36
-text = "Jugar"
+theme_override_colors/font_focus_color = Color(0.89059, 0.89059, 0.8905901, 1)
+theme_override_font_sizes/font_size = 28
+text = "menu_btn_play"
 
-[node name="Playground" type="Button" parent="VBoxContainer"]
+[node name="Playground" type="Button" parent="CanvasLayer2/Principal/VBoxContainer"]
 material = SubResource("CanvasItemMaterial_ytr4m")
 layout_mode = 2
 theme = SubResource("Theme_l48gv")
-theme_override_font_sizes/font_size = 36
-text = "Playground"
+theme_override_font_sizes/font_size = 28
+text = "menu_btn_playground"
 
-[node name="Opciones" type="Button" parent="VBoxContainer"]
+[node name="Opciones" type="Button" parent="CanvasLayer2/Principal/VBoxContainer"]
 material = SubResource("CanvasItemMaterial_ytr4m")
 layout_mode = 2
 theme = SubResource("Theme_l48gv")
-theme_override_font_sizes/font_size = 36
-text = "Opciones"
+theme_override_font_sizes/font_size = 28
+text = "menu_btn_options"
 
-[node name="Salir" type="Button" parent="VBoxContainer"]
+[node name="Salir" type="Button" parent="CanvasLayer2/Principal/VBoxContainer"]
 material = SubResource("CanvasItemMaterial_ytr4m")
 layout_mode = 2
 theme = SubResource("Theme_l48gv")
-theme_override_font_sizes/font_size = 36
-text = "Salir"
+theme_override_font_sizes/font_size = 28
+text = "menu_btn_exit"
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-offset_left = 344.0
-offset_top = 42.0
-offset_right = 1003.0
-offset_bottom = 131.0
-theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
-theme_override_colors/font_shadow_color = Color(0.30588236, 0.24313726, 0.21960784, 1)
+[node name="Label" type="Label" parent="CanvasLayer2/Principal"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 117.0
+offset_right = 382.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(0.46645814, 0.37998256, 0.09655588, 1)
+theme_override_colors/font_shadow_color = Color(0.7921569, 0.5882353, 0.13725491, 0.59607846)
 theme_override_colors/font_outline_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
-theme_override_fonts/font = ExtResource("4_6487p")
-theme_override_font_sizes/font_size = 74
+theme_override_fonts/font = ExtResource("4_5cock")
+theme_override_font_sizes/font_size = 54
 text = "Ecos del Monte"
-uppercase = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
-[connection signal="pressed" from="VBoxContainer/Playground" to="." method="_on_playground_pressed"]
-[connection signal="pressed" from="VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
-[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
+[node name="OptionsMenu" parent="CanvasLayer2" instance=ExtResource("2_s6sq0")]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Playground" to="." method="_on_playground_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Salir" to="." method="_on_salir_pressed"]

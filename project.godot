@@ -194,6 +194,7 @@ right_click={
 
 [internationalization]
 
+locale/translations=PackedStringArray("res://Translations/Translation.en.translation", "res://Translations/Translation.es.translation")
 locale/translations_pot_files=PackedStringArray("res://Dialogues/testdiag.dialogue", "res://Dialogues/Default/Default.dialogue", "res://Dialogues/Scene/Prototype01/Cuaderno.dialogue", "res://Dialogues/Scene/Prototype01/Cuadro.dialogue", "res://Dialogues/Scene/Prototype01/Mate.dialogue", "res://Dialogues/Scene/Prototype01/NPC2.dialogue", "res://Dialogues/Scene/Prototype01/Puerta01.dialogue", "res://Dialogues/Scene/Prototype01/Puerta04.dialogue")
 
 [layer_names]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://4ulbnprvg5dc"]
+[gd_scene load_steps=6 format=3 uid="uid://4ulbnprvg5dc"]
 
 [ext_resource type="Script" uid="uid://1e4ygn1doepy" path="res://Scripts/UI/PauseMenu.gd" id="1_n4i8v"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="1_nov15"]
+[ext_resource type="PackedScene" uid="uid://c4yck0xdtbl3n" path="res://Scenes/UI/Options.tscn" id="2_238ko"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_etnfi"]
 blend_mode = 2
@@ -39,21 +40,21 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Opciones" type="Button" parent="VBoxContainer"]
-material = SubResource("CanvasItemMaterial_etnfi")
-layout_mode = 2
-theme = SubResource("Theme_q775a")
-theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
-theme_override_font_sizes/font_size = 36
-text = "Opciones"
-
 [node name="Volver" type="Button" parent="VBoxContainer"]
 material = SubResource("CanvasItemMaterial_etnfi")
 layout_mode = 2
 theme = SubResource("Theme_q775a")
 theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
 theme_override_font_sizes/font_size = 36
-text = "Volver"
+text = "menu_btn_back"
+
+[node name="Opciones" type="Button" parent="VBoxContainer"]
+material = SubResource("CanvasItemMaterial_etnfi")
+layout_mode = 2
+theme = SubResource("Theme_q775a")
+theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+theme_override_font_sizes/font_size = 36
+text = "menu_btn_options"
 
 [node name="Salir" type="Button" parent="VBoxContainer"]
 material = SubResource("CanvasItemMaterial_etnfi")
@@ -61,7 +62,11 @@ layout_mode = 2
 theme = SubResource("Theme_q775a")
 theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
 theme_override_font_sizes/font_size = 36
-text = "Salir"
+text = "menu_btn_exit"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("2_238ko")]
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
+[connection signal="pressed" from="VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

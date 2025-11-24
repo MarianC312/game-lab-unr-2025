@@ -1,12 +1,12 @@
 extends Node
 
 @onready var pause_menu : Control = $UI/PauseMenu
+@onready var options_menu: Control = $UI/OptionsMenu
 @onready var map : Node3D = $Map
 @onready var player : CharacterBody3D = $Player
 @onready var loading : Control = $UI/Loading
 
 var first_load : bool = true
-
 var current_map: Node = null
 
 func _init() -> void:

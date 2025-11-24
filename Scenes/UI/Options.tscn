@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4yck0xdtbl3n"]
+
+[ext_resource type="Script" uid="uid://clu6hdbsoyrd5" path="res://Scripts/UI/Options.gd" id="1_h8s0t"]
+[ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="2_eothy"]
+[ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="3_bgrb0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_120pb"]
+blend_mode = 2
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Theme" id="Theme_reoj2"]
+default_font = ExtResource("3_bgrb0")
+default_font_size = 0
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h8s0t")
+
+[node name="BGColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+
+[node name="TextLoading" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -375.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("2_eothy")
+theme_override_font_sizes/normal_font_size = 48
+text = "menu_options_text"
+text_direction = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.675
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_right = -278.60004
+grow_vertical = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Musica" type="Label" parent="VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eothy")
+theme_override_font_sizes/font_size = 28
+text = "menu_options_text_music"
+
+[node name="MusicaSlider" type="HSlider" parent="VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+value = 100.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Sonido" type="Label" parent="VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eothy")
+theme_override_font_sizes/font_size = 28
+text = "menu_options_text_sound"
+
+[node name="SonidoSlider" type="HSlider" parent="VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+value = 100.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Lenguaje" type="Label" parent="VBoxContainer2/HBoxContainer3"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eothy")
+theme_override_font_sizes/font_size = 28
+text = "menu_options_text_lang"
+
+[node name="LenguajeOptionButton" type="OptionButton" parent="VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bgrb0")
+theme_override_font_sizes/font_size = 22
+selected = 0
+item_count = 2
+popup/item_0/text = "Español (Arg)"
+popup/item_0/id = 0
+popup/item_1/text = "English"
+popup/item_1/id = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -104.0
+offset_right = 271.0
+offset_bottom = -40.0
+grow_vertical = 0
+alignment = 1
+
+[node name="Volver" type="Button" parent="VBoxContainer"]
+material = SubResource("CanvasItemMaterial_120pb")
+layout_mode = 2
+theme = SubResource("Theme_reoj2")
+theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+theme_override_font_sizes/font_size = 36
+text = "menu_btn_back"
+
+[connection signal="item_selected" from="VBoxContainer2/HBoxContainer3/LenguajeOptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
