@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://kei4fk24oicn"]
+[gd_scene load_steps=8 format=3 uid="uid://kei4fk24oicn"]
 
 [ext_resource type="Script" uid="uid://pbkn4u2sgrgk" path="res://Scripts/UI/Menu.gd" id="1_5cock"]
 [ext_resource type="PackedScene" uid="uid://c4yck0xdtbl3n" path="res://Scenes/UI/Options.tscn" id="2_s6sq0"]
-[ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="3_s6sq0"]
+[ext_resource type="FontFile" uid="uid://bii6yahl8sc1c" path="res://Base/Fonts/FunnelSans-VariableFont_wght.ttf" id="2_t06ot"]
 [ext_resource type="FontFile" uid="uid://dv32lphorn5gv" path="res://Base/Fonts/LoveLight-Regular.ttf" id="4_5cock"]
+[ext_resource type="AudioStream" uid="uid://f75v0xbjvssa" path="res://Sounds/Music/menu_bg_music.wav" id="5_t06ot"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ytr4m"]
 blend_mode = 2
@@ -13,9 +14,9 @@ particles_anim_v_frames = 1
 particles_anim_loop = true
 
 [sub_resource type="Theme" id="Theme_l48gv"]
-default_font = ExtResource("3_s6sq0")
+default_font = ExtResource("2_t06ot")
 default_font_size = 0
-/colors/color_fuente = Color(0.9166399, 0.91663986, 0.9166398, 1)
+/colors/color_fuente = Color(1, 1, 1, 1)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -103,6 +104,9 @@ vertical_alignment = 1
 
 [node name="OptionsMenu" parent="CanvasLayer2" instance=ExtResource("2_s6sq0")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_t06ot")
 
 [connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Playground" to="." method="_on_playground_pressed"]

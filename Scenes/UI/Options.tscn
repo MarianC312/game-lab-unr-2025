@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4yck0xdtbl3n"]
+[gd_scene load_steps=7 format=3 uid="uid://c4yck0xdtbl3n"]
 
 [ext_resource type="Script" uid="uid://clu6hdbsoyrd5" path="res://Scripts/UI/Options.gd" id="1_h8s0t"]
 [ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="2_eothy"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="3_bgrb0"]
+[ext_resource type="FontFile" uid="uid://bii6yahl8sc1c" path="res://Base/Fonts/FunnelSans-VariableFont_wght.ttf" id="4_bgrb0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_120pb"]
 blend_mode = 2
@@ -135,6 +136,7 @@ material = SubResource("CanvasItemMaterial_120pb")
 layout_mode = 2
 theme = SubResource("Theme_reoj2")
 theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+theme_override_fonts/font = ExtResource("4_bgrb0")
 theme_override_font_sizes/font_size = 36
 text = "menu_btn_back"
 

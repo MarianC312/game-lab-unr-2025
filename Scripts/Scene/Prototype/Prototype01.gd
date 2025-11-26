@@ -1,10 +1,13 @@
 extends Node3D
 
 @onready var item_list: ItemList = $UI/CanvasLayer15/ItemList
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 signal map_ready
 
 func _ready() -> void:
+	# ver o revisar si necesitamos fadein en el sonido
+	audio_stream_player.play()
 	SceneManagerMap01.registered_interaction.connect(_on_registered_interaction)
 	process_mode = Node.PROCESS_MODE_INHERIT
 	emit_signal("map_ready")
@@ -12,6 +15,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# print(SceneManagerMap01._get_interactables())
+	# print("Stream line: ", audio_stream_player.get_playback_position())
 	pass
 
 func _update_item_list() -> void:

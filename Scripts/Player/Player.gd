@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+# Seteo de variables generales
 @export_category("Player Movement")
 @export var speed := 2.0
 @export var WALK_SPEED := 2.0
@@ -14,8 +15,8 @@ const ROTATION_SPEED := 10.0
 @onready var animation_player : AnimationPlayer = $playermodel/Prototype/Player/AnimationPlayer
 
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
-var player_animation_state : AnimationState = AnimationState.IDLE
 
+var player_animation_state : AnimationState = AnimationState.IDLE
 var target_position: Vector3 = Vector3.ZERO
 var moving_to_target := false
 var target
@@ -59,7 +60,8 @@ func _physics_process(delta: float) -> void:
 
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_velocity
-
+		
+		# Seteo de velocidades si corre o camina
 		if Input.is_action_pressed("sprint"):
 			speed = SPRINT_SPEED
 			player_animation_state = AnimationState.RUNNING
@@ -80,7 +82,6 @@ func _physics_process(delta: float) -> void:
 			
 			var result = space_state.intersect_ray(query)
 			
-			
 			if result and result.has("position"):
 				# print("Hit position:", result.position)
 				target_position = result.position
@@ -90,13 +91,13 @@ func _physics_process(delta: float) -> void:
 		else:
 			# moving_to_target = false
 			pass
-
+			
 		if moving_to_target:
 			var dir = target_position - global_position
 			dir.y = 0
 			var distance = dir.length()
-
-			if distance > 0.05:
+			
+			if distance > 0.25:
 				dir = dir.normalized()
 				velocity.x = dir.x * speed
 				velocity.z = dir.z * speed

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://4ulbnprvg5dc"]
+[gd_scene load_steps=7 format=3 uid="uid://4ulbnprvg5dc"]
 
 [ext_resource type="Script" uid="uid://1e4ygn1doepy" path="res://Scripts/UI/PauseMenu.gd" id="1_n4i8v"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="1_nov15"]
 [ext_resource type="PackedScene" uid="uid://c4yck0xdtbl3n" path="res://Scenes/UI/Options.tscn" id="2_238ko"]
+[ext_resource type="FontFile" uid="uid://bii6yahl8sc1c" path="res://Base/Fonts/FunnelSans-VariableFont_wght.ttf" id="3_2bpff"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_etnfi"]
 blend_mode = 2
@@ -45,6 +46,7 @@ material = SubResource("CanvasItemMaterial_etnfi")
 layout_mode = 2
 theme = SubResource("Theme_q775a")
 theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+theme_override_fonts/font = ExtResource("3_2bpff")
 theme_override_font_sizes/font_size = 36
 text = "menu_btn_back"
 
@@ -53,6 +55,7 @@ material = SubResource("CanvasItemMaterial_etnfi")
 layout_mode = 2
 theme = SubResource("Theme_q775a")
 theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+theme_override_fonts/font = ExtResource("3_2bpff")
 theme_override_font_sizes/font_size = 36
 text = "menu_btn_options"
 
@@ -61,6 +64,7 @@ material = SubResource("CanvasItemMaterial_etnfi")
 layout_mode = 2
 theme = SubResource("Theme_q775a")
 theme_override_colors/font_color = Color(0.83137256, 0.6862745, 0.21568628, 1)
+theme_override_fonts/font = ExtResource("3_2bpff")
 theme_override_font_sizes/font_size = 36
 text = "menu_btn_exit"
 
