@@ -55,6 +55,7 @@ size = Vector3(0.95, 2.325, 0.3)
 
 [node name="Door03" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3.738, 1.891, -0.508)
+layers = 0
 operation = 2
 size = Vector3(0.95, 2.325, 0.3)
 

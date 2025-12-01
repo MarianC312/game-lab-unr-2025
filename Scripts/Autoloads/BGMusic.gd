@@ -7,8 +7,9 @@ signal audio_stream_ready
 var last_position : float = 0.0
 
 func _ready() -> void:
-	audio_stream_ready.emit()
-	_play_music()
+	#audio_stream_ready.emit()
+	#_play_music()
+	pass
 
 func _play_music() -> void:
 	print(music)

@@ -3638,6 +3638,7 @@ tracks/52/keys = PackedFloat32Array(0, 1, 0.47558525, -4.6728337e-06, 0.05794909
 [sub_resource type="Animation" id="Animation_8s34j"]
 resource_name = "IdleStandard"
 length = 3.0
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -8039,3 +8040,10 @@ uppercase = true
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20715368, 0)
 max_distance = 50.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+path_max_distance = 5.01
+simplify_path = true
+debug_enabled = true

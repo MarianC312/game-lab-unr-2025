@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq3awe0wjqsih"
-path.s3tc="res://.godot/imported/colormap.png-d80c056a7e720e191306e64a413d65eb.s3tc.ctex"
+uid="uid://bbll7apjrxqsm"
+path="res://.godot/imported/Instructions_01_en.png-54f2027b108d8c5e38d86feb98d30394.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://AssetsLibraries/PlayerControllerK/addons/srcoder_thirdperson_controller/assets/Textures/colormap.png"
-dest_files=["res://.godot/imported/colormap.png-d80c056a7e720e191306e64a413d65eb.s3tc.ctex"]
+source_file="res://Base/Images/Instructions_01_en.png"
+dest_files=["res://.godot/imported/Instructions_01_en.png-54f2027b108d8c5e38d86feb98d30394.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -24,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
