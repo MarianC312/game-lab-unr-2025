@@ -1,8 +1,8 @@
 extends Node
 
-@onready var music: AudioStreamPlayer = $Music
+# @onready var music: AudioStreamPlayer = $Music
 
-signal audio_stream_ready
+# signal audio_stream_ready
 
 var last_position : float = 0.0
 
@@ -12,9 +12,11 @@ func _ready() -> void:
 	pass
 
 func _play_music() -> void:
-	print(music)
+	# print(music)
 	# music.play()
+	pass
 
 func _stop_music() -> void:
 	# last_position = music.get_playback_position()
-	music.stop()
+	# music.stop()
+	pass

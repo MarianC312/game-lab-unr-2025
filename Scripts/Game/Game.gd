@@ -1,7 +1,7 @@
 extends Node
 
 @onready var pause_menu : Control = $UI/PauseMenu
-@onready var options_menu: Control = $UI/OptionsMenu
+# @onready var options_menu: Control = $UI/OptionsMenu
 @onready var map : Node3D = $Map
 @onready var player : CharacterBody3D = $Player
 @onready var loading : Control = $UI/Loading
@@ -66,6 +66,7 @@ func load_map(packed_scene) -> void:
 func _on_map_ready() -> void:
 	var spawn = get_tree().get_first_node_in_group("CharSpawn")
 	player.global_position = spawn.global_position
+	player._clear_movement()
 	loading.visible = false
 	SceneTransitions.fade_in()
 	await SceneTransitions.fade_complete

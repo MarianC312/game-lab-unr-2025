@@ -20,6 +20,7 @@ const CAMERA_ROTATION_SPEED := 0.005
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 
 var player_animation_state : AnimationState = AnimationState.IDLE
+var target_positions : Array = []
 var target_position: Vector3 = Vector3.ZERO
 var moving_to_target : bool = false
 var target
@@ -39,7 +40,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
 		GameManager._toggle_pause()
 	
-	if Input.is_action_pressed("right_click"): # Input.is_action_pressed("left_click")
+	if event.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
 		var camera = get_viewport().get_camera_3d()
 		var from = camera.project_ray_origin(get_viewport().get_mouse_position())
 		var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
@@ -53,26 +54,43 @@ func _input(event: InputEvent) -> void:
 		var result = space_state.intersect_ray(query)
 		
 		if result and result.has("position"):
-			# print("Hit position:", result.position)
-			target_position = result.position
+			target_positions.append(Vector3(result.position.x, 0, result.position.z)) 
 			nav_agent.set_target_position(target_position)
 			has_target = true
-			moving_to_target = true
-			var pointer_instance = CURSOR_POINTER.instantiate()
-			map.add_child(pointer_instance)
-			pointer_instance.global_position = result.position
-			pointer_instance.position.y = 2.0
 			
 		else:
 			print("No hit")
-	else:
-		# moving_to_target = false
-		pass
+			
+	if event.is_action_pressed("right_click"):
+		_clear_movement()
+
+func _clear_movement() -> void:
+	target_positions.clear()
+	has_target = false
+	moving_to_target = false
+	velocity = Vector3.ZERO
+	nav_agent.target_position = global_position
+	nav_agent.set_velocity_forced(Vector3.ZERO)
+
+func _process(_delta: float) -> void:
+	# print("MODEL FORWARD:", playermodel.global_transform.basis.z)
+	pass
+
 
 func _physics_process(delta: float) -> void:
 	if GameManager._is_game_paused():
 		animation_player.stop(true)
 		return
+	
+	if target_positions.size() > 0:
+		if not has_target and not moving_to_target:
+			print("Next targets: ", target_positions)
+			target_position = target_positions.front()
+			target_positions.remove_at(0)
+			print("Setting target: ", target_position)
+			print("Remain targets: ", target_positions)
+			has_target = true
+			
 	
 	if is_dialogue_active:
 		player_animation_state = AnimationState.TALKING
@@ -82,6 +100,7 @@ func _physics_process(delta: float) -> void:
 			target = see_cast.get_collider(0)
 			if target and target.has_method("interact"):
 				text_interact.show()
+				face_interactable(target.position, delta)
 				if target.has_method("glow"):
 					target.call("glow", true)
 				if Input.is_action_just_pressed("interact") and not is_dialogue_active:
@@ -91,12 +110,12 @@ func _physics_process(delta: float) -> void:
 			text_interact.hide()
 			if target and target.has_method("glow"):
 				target.call("glow", false)
-
+		
 		if not is_on_floor():
-			velocity.y -= get_gravity().y * delta
+			velocity.y += get_gravity().y * delta
 		else:
 			velocity.y = 0
-
+		
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_velocity
 		
@@ -115,9 +134,10 @@ func _physics_process(delta: float) -> void:
 			player_animation_state = AnimationState.IDLE
 			
 		
-		#move_type1(delta)
+		# move_type1(delta)
 		move_type2(delta)
 		
+	move_and_slide()
 		
 	match player_animation_state:
 		AnimationState.WALKING:
@@ -131,8 +151,19 @@ func _physics_process(delta: float) -> void:
 		AnimationState.IDLE:
 			animation_player.play("IdleStandard")
 
+func spawn_move_pointer(new_position : Vector3) -> void:
+	var pointer_instance = CURSOR_POINTER.instantiate()
+	map.add_child(pointer_instance)
+	pointer_instance.global_position = new_position
+	pointer_instance.position.y = 0.5
+
+func face_interactable(facing_position : Vector3, delta) -> void:
+	var direction = (facing_position - global_position).project(Vector3(1,0,1)).normalized()
+	rotate_model(direction, delta)
+
+
 func move_type1(delta: float) -> void:
-	if moving_to_target:
+	if has_target:
 		var dir = target_position - global_position
 		dir.y = 0
 		var distance = dir.length()
@@ -141,6 +172,7 @@ func move_type1(delta: float) -> void:
 			dir = dir.normalized()
 			velocity.x = dir.x * speed
 			velocity.z = dir.z * speed
+			moving_to_target = true
 			rotate_model(dir, delta)
 		else:
 			moving_to_target = false
@@ -154,24 +186,27 @@ func move_type1(delta: float) -> void:
 
 	#if not is_on_floor():
 		#player_animation_state = AnimationState.JUMPING
-	
-	move_and_slide()
 
 func move_type2(delta : float) -> void:
+
 	if has_target:
+		if not moving_to_target:
+			spawn_move_pointer(target_position)
+		nav_agent.set_target_position(target_position)
 		var next = nav_agent.get_next_path_position()
-		var dir = (next - global_transform.origin).normalized()
-		velocity = dir * speed
-		rotate_model(dir, delta)
-		move_and_slide()
+		var direction = (next - global_transform.origin).normalized()
+		velocity = direction * speed
+		rotate_model(direction, delta)
+		moving_to_target = true
 	else:
 		player_animation_state = AnimationState.IDLE
 	
 	if nav_agent.is_navigation_finished():
 		has_target = false
+		moving_to_target = false
 		velocity = Vector3.ZERO
 		player_animation_state = AnimationState.IDLE
-
+	
 func rotate_model(direction: Vector3, delta: float) -> void:
 	var target_basis = Basis.looking_at(direction)
 	playermodel.basis = playermodel.basis.slerp(target_basis, ROTATION_SPEED * delta)
@@ -186,6 +221,46 @@ func _on_dialogue_end(_dialogue) -> void:
 func _reset_movement_state() -> void:
 	target_position = global_position
 	moving_to_target = false
+
+## ================= Comienzo debug CFG ================= #
+## Property directly below #@Debug will be monitored
+##@Debug
+#var property_1:int = 300
+#
+## function too.
+## Note that _process is called every frame.
+##@Debug
+#func get_str():
+	#return "abc"
+##@Debug'alias_name'
+#var property_2:String = ""
+##@Debug(category_name)
+#var property_3:Vector2 = Vector2.ZERO
+##@Debug(cate1/nested_category2)
+#var property_4:Vector3 = Vector3.ZERO
+##---
+## specify properties by property name
+##@Debug[position]
+##---
+## another node's properyy by property name.
+## However, it can only be monitored and cannot be edited.
+##@Debug[./ChildNode:position]
+## Internally, get_node() is used up to the : character, 
+## so % can also be used.
+##@Debug[%ChildNode:position]
+##---
+## You can assign colors for better readability using {}.
+##@Debug{#RED}
+#var property_5:StringName = &""
+##@Debug{#f0f0f0}
+#var property_6:bool = false
+##---
+## Multiple settings
+##@Debug(cate)'alias'{#RED}
+#var property_7:int = 123
+##@Debug{#f0f0f0}
+#var property_8:bool = false
+## ================= Fin debug CFG ================= #
 
 #extends CharacterBody3D
 #

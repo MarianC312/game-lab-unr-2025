@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdn7dnqwgsly6"]
+[gd_scene load_steps=8 format=3 uid="uid://cdn7dnqwgsly6"]
 
 [ext_resource type="Script" uid="uid://bobju6w7cvhgs" path="res://Scripts/Scene/Prototype02/Prototype02.gd" id="1_ql8qw"]
 [ext_resource type="Texture2D" uid="uid://1s4tbjg4rokb" path="res://Textures/kenney_prototype_textures/dark/texture_07.png" id="2_egvnt"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ql8qw"]
+vertices = PackedVector3Array(-30.848005, 0.98480654, -30.107403, -30.848005, 0.98480654, 24.892597, 31.401995, 0.98480654, 24.892597, 31.401995, 0.98480654, -30.107403)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1e3gs"]
 albedo_color = Color(0.7154305, 0.6614255, 0.49204367, 1)
@@ -24,8 +28,16 @@ metadata/_edit_group_ = true
 
 [node name="Mundo" type="Node3D" parent="."]
 
-[node name="Piso" type="CSGBox3D" parent="Mundo"]
+[node name="CharSpawn" type="Node3D" parent="Mundo" groups=["CharSpawn"]]
+transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 0, 1, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Mundo"]
+navigation_mesh = SubResource("NavigationMesh_ql8qw")
+navigation_layers = 7
+
+[node name="Piso" type="CSGBox3D" parent="Mundo/NavigationRegion3D"]
 transform = Transform3D(0.6325111, 0, 0, 0, 1, 0, 0, 0, 0.56116724, 0.2775482, 0.58480656, -2.549042)
+layers = 5
 use_collision = true
 collision_layer = 4
 collision_mask = 4
@@ -36,9 +48,6 @@ material = SubResource("StandardMaterial3D_1e3gs")
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 
 [node name="Arboles" type="Node3D" parent="Mundo/Objetos"]
-
-[node name="CharSpawn" type="Node3D" parent="Mundo" groups=["CharSpawn"]]
-transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 0, 1.25, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Mundo"]
 environment = SubResource("Environment_ubh04")
