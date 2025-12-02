@@ -76,7 +76,6 @@ func _process(_delta: float) -> void:
 	# print("MODEL FORWARD:", playermodel.global_transform.basis.z)
 	pass
 
-
 func _physics_process(delta: float) -> void:
 	if GameManager._is_game_paused():
 		animation_player.stop(true)

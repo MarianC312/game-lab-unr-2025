@@ -25,6 +25,10 @@ SceneManagerMap01="*res://Scripts/Autoloads/SceneManagerMap01.gd"
 BgMusic="*res://Scenes/Prototype/BGMusic.tscn"
 BgMusicSC="res://Scripts/Autoloads/BGMusic.gd"
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
 [dialogic]
 
 directories/dch_directory={}
