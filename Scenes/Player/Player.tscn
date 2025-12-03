@@ -8044,7 +8044,7 @@ max_distance = 50.0
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.4
 target_desired_distance = 0.3
-path_height_offset = 0.3
+path_height_offset = 0.55
 path_max_distance = 5.01
 simplify_path = true
 keep_y_velocity = false

@@ -21,12 +21,14 @@ enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 
 var player_animation_state : AnimationState = AnimationState.IDLE
 var target_positions : Array = []
-var target_position: Vector3 = Vector3.ZERO
+var target_position : Vector3 = Vector3.ZERO
+var target_rotation : Vector3 = Vector3.ZERO
 var moving_to_target : bool = false
 var target
 var has_target : bool = false
 var should_run : bool = false
 
+const PATH_POSITION_CHAIN : bool = false
 const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
 
 var is_dialogue_active : bool = false
@@ -42,7 +44,8 @@ func _input(event: InputEvent) -> void:
 		GameManager._toggle_pause()
 	
 	if event.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
-		_clear_movement() # comentar si queremos que acumule paths
+		if not PATH_POSITION_CHAIN:
+			_clear_movement()
 		var camera = get_viewport().get_camera_3d()
 		var from = camera.project_ray_origin(get_viewport().get_mouse_position())
 		var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
@@ -57,11 +60,14 @@ func _input(event: InputEvent) -> void:
 		
 		if result and result.has("position"):
 			var new_position = Vector3(result.position.x, 0, result.position.z)
-			if target_positions.count(new_position) > 1:
-				should_run = true
+			if PATH_POSITION_CHAIN:
+				if target_positions.count(new_position) > 1:
+					should_run = true
+				else:
+					should_run = false
+				target_positions.append(new_position)
 			else:
-				should_run = false
-			target_positions.append(Vector3(result.position.x, 0, result.position.z)) 
+				target_position = new_position
 			nav_agent.set_target_position(target_position)
 			has_target = true
 			
@@ -72,16 +78,13 @@ func _input(event: InputEvent) -> void:
 		_clear_movement()
 
 func _clear_movement() -> void:
-	print(target_positions)
 	target_positions.clear()
-	print(target_positions)
 	has_target = false
 	moving_to_target = false
-	velocity = Vector3.ZERO
 	target_position = global_position
 	# nav_agent.set_velocity_forced(Vector3.ZERO)
-	nav_agent.set_target_position(global_position)
-	nav_agent.get_next_path_position()
+	# nav_agent.set_target_position(global_position)
+	# nav_agent.get_next_path_position()
 
 func _process(_delta: float) -> void:
 	# print("MODEL FORWARD:", playermodel.global_transform.basis.z)
@@ -169,7 +172,7 @@ func spawn_move_pointer(new_position : Vector3) -> void:
 	pointer_instance.position.y = 0.5
 
 func face_interactable(facing_position : Vector3, delta) -> void:
-	var direction = (target_position - facing_position).normalized()
+	var direction = (facing_position - global_position).normalized()
 	print("Direction to face: ", direction)
 	rotate_model(direction, delta)
 
@@ -204,7 +207,7 @@ func move_type2(delta : float) -> void:
 			spawn_move_pointer(target_position)
 		nav_agent.set_target_position(target_position)
 		var next_path_position = nav_agent.get_next_path_position()
-		var direction = global_position.direction_to(next_path_position)
+		var direction = (next_path_position - global_position).normalized() # global_position.direction_to(next_path_position)
 		velocity = direction * speed
 		rotate_model(direction, delta)
 		moving_to_target = true
@@ -218,6 +221,7 @@ func move_type2(delta : float) -> void:
 		player_animation_state = AnimationState.IDLE
 	
 func rotate_model(direction: Vector3, delta: float) -> void:
+	print("Rotate to: ", direction)
 	var target_basis = Basis.looking_at(direction)
 	playermodel.basis = playermodel.basis.slerp(target_basis, ROTATION_SPEED * delta)
 

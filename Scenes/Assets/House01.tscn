@@ -4,7 +4,7 @@
 albedo_color = Color(0.31061712, 0.31061712, 0.3106171, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1uum"]
-size = Vector3(15, 0.3, 12)
+size = Vector3(15, 0.32, 12)
 
 [node name="House" type="Node3D"]
 
