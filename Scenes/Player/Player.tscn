@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c2k3xdanb5thv" path="res://Scripts/Player/Player.gd" id="1_a3d8c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
-radius = 0.1899414
-height = 1.7794113
+radius = 0.15
+height = 1.8
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_nqocc"]
 
@@ -8042,8 +8042,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20715368, 0)
 max_distance = 50.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.1
-target_desired_distance = 0.1
+path_desired_distance = 0.4
+target_desired_distance = 0.3
+path_height_offset = 0.3
 path_max_distance = 5.01
 simplify_path = true
+keep_y_velocity = false
 debug_enabled = true

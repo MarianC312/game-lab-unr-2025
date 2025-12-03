@@ -25,6 +25,7 @@ var target_position: Vector3 = Vector3.ZERO
 var moving_to_target : bool = false
 var target
 var has_target : bool = false
+var should_run : bool = false
 
 const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
 
@@ -41,6 +42,7 @@ func _input(event: InputEvent) -> void:
 		GameManager._toggle_pause()
 	
 	if event.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
+		_clear_movement() # comentar si queremos que acumule paths
 		var camera = get_viewport().get_camera_3d()
 		var from = camera.project_ray_origin(get_viewport().get_mouse_position())
 		var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
@@ -54,6 +56,11 @@ func _input(event: InputEvent) -> void:
 		var result = space_state.intersect_ray(query)
 		
 		if result and result.has("position"):
+			var new_position = Vector3(result.position.x, 0, result.position.z)
+			if target_positions.count(new_position) > 1:
+				should_run = true
+			else:
+				should_run = false
 			target_positions.append(Vector3(result.position.x, 0, result.position.z)) 
 			nav_agent.set_target_position(target_position)
 			has_target = true
@@ -65,15 +72,20 @@ func _input(event: InputEvent) -> void:
 		_clear_movement()
 
 func _clear_movement() -> void:
+	print(target_positions)
 	target_positions.clear()
+	print(target_positions)
 	has_target = false
 	moving_to_target = false
 	velocity = Vector3.ZERO
-	nav_agent.target_position = global_position
-	nav_agent.set_velocity_forced(Vector3.ZERO)
+	target_position = global_position
+	# nav_agent.set_velocity_forced(Vector3.ZERO)
+	nav_agent.set_target_position(global_position)
+	nav_agent.get_next_path_position()
 
 func _process(_delta: float) -> void:
 	# print("MODEL FORWARD:", playermodel.global_transform.basis.z)
+	# print("Player is grunded: ", is_on_floor())
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -112,6 +124,7 @@ func _physics_process(delta: float) -> void:
 		
 		if not is_on_floor():
 			velocity.y += get_gravity().y * delta
+			nav_agent.set_velocity_forced(velocity)
 		else:
 			velocity.y = 0
 		
@@ -119,7 +132,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = jump_velocity
 		
 		# Seteo de velocidades si corre o camina
-		if Input.is_action_pressed("sprint"):
+		if should_run:
 			speed = SPRINT_SPEED
 		else:
 			speed = WALK_SPEED
@@ -131,7 +144,6 @@ func _physics_process(delta: float) -> void:
 				player_animation_state = AnimationState.WALKING
 		else:
 			player_animation_state = AnimationState.IDLE
-			
 		
 		# move_type1(delta)
 		move_type2(delta)
@@ -157,9 +169,9 @@ func spawn_move_pointer(new_position : Vector3) -> void:
 	pointer_instance.position.y = 0.5
 
 func face_interactable(facing_position : Vector3, delta) -> void:
-	var direction = (facing_position - global_position).project(Vector3(1,0,1)).normalized()
+	var direction = (target_position - facing_position).normalized()
+	print("Direction to face: ", direction)
 	rotate_model(direction, delta)
-
 
 func move_type1(delta: float) -> void:
 	if has_target:
@@ -187,13 +199,12 @@ func move_type1(delta: float) -> void:
 		#player_animation_state = AnimationState.JUMPING
 
 func move_type2(delta : float) -> void:
-
 	if has_target:
 		if not moving_to_target:
 			spawn_move_pointer(target_position)
 		nav_agent.set_target_position(target_position)
-		var next = nav_agent.get_next_path_position()
-		var direction = (next - global_transform.origin).normalized()
+		var next_path_position = nav_agent.get_next_path_position()
+		var direction = global_position.direction_to(next_path_position)
 		velocity = direction * speed
 		rotate_model(direction, delta)
 		moving_to_target = true

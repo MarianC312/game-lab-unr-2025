@@ -15,7 +15,7 @@ shader_parameter/glow_color = Color(1, 0.6, 0.2, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_gexds"]
 material = SubResource("ShaderMaterial_rdcde")
-text = "↓"
+text = "⬇"
 font_size = 28
 
 [sub_resource type="Animation" id="Animation_a5rst"]

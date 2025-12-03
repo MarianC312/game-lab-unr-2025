@@ -4,5 +4,5 @@ extends Node3D
 
 func _ready() -> void:
 	animation_player.play("tween_up_down")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(.975).timeout
 	queue_free()

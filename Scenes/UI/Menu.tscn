@@ -67,6 +67,7 @@ theme_override_font_sizes/font_size = 28
 text = "menu_btn_play"
 
 [node name="Playground" type="Button" parent="CanvasLayer2/Principal/VBoxContainer"]
+visible = false
 material = SubResource("CanvasItemMaterial_ytr4m")
 layout_mode = 2
 theme = SubResource("Theme_l48gv")
@@ -89,10 +90,10 @@ text = "menu_btn_exit"
 
 [node name="Label" type="Label" parent="CanvasLayer2/Principal"]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 117.0
-offset_right = 382.0
-offset_bottom = 193.0
+offset_left = 99.0
+offset_top = 102.0
+offset_right = 417.0
+offset_bottom = 178.0
 theme_override_colors/font_color = Color(0.46645814, 0.37998256, 0.09655588, 1)
 theme_override_colors/font_shadow_color = Color(0.7921569, 0.5882353, 0.13725491, 0.59607846)
 theme_override_colors/font_outline_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
