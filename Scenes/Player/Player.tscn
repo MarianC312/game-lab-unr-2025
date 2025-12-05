@@ -8013,6 +8013,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_2olts")
 }
 
+[node name="SpotLight3D" type="SpotLight3D" parent="playermodel"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.5, 0)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
 follow_viewport_enabled = true
@@ -8042,10 +8045,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20715368, 0)
 max_distance = 50.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.4
+path_desired_distance = 0.12
 target_desired_distance = 0.3
-path_height_offset = 0.55
+path_height_offset = 0.3
 path_max_distance = 5.01
-simplify_path = true
 keep_y_velocity = false
 debug_enabled = true

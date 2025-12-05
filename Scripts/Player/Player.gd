@@ -51,7 +51,7 @@ func _input(event: InputEvent) -> void:
 		var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
 
 		var space_state = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(from, to, 1 << 2)
+		var query = PhysicsRayQueryParameters3D.create(from, to, 1 << 2) # << 2
 		query.collide_with_areas = false
 		query.collide_with_bodies = true
 		# query.collision_mask = 1 << 2
@@ -70,7 +70,7 @@ func _input(event: InputEvent) -> void:
 				target_position = new_position
 			nav_agent.set_target_position(target_position)
 			has_target = true
-			
+			print("Target position: ", target_position)
 		else:
 			print("No hit")
 			
@@ -82,9 +82,9 @@ func _clear_movement() -> void:
 	has_target = false
 	moving_to_target = false
 	target_position = global_position
-	# nav_agent.set_velocity_forced(Vector3.ZERO)
-	# nav_agent.set_target_position(global_position)
-	# nav_agent.get_next_path_position()
+	nav_agent.set_velocity_forced(Vector3.ZERO)
+	nav_agent.set_target_position(global_position)
+	nav_agent.get_next_path_position()
 
 func _process(_delta: float) -> void:
 	# print("MODEL FORWARD:", playermodel.global_transform.basis.z)
@@ -173,7 +173,7 @@ func spawn_move_pointer(new_position : Vector3) -> void:
 
 func face_interactable(facing_position : Vector3, delta) -> void:
 	var direction = (facing_position - global_position).normalized()
-	print("Direction to face: ", direction)
+	# print("Direction to face: ", direction)
 	rotate_model(direction, delta)
 
 func move_type1(delta: float) -> void:
@@ -221,9 +221,10 @@ func move_type2(delta : float) -> void:
 		player_animation_state = AnimationState.IDLE
 	
 func rotate_model(direction: Vector3, delta: float) -> void:
-	print("Rotate to: ", direction)
-	var target_basis = Basis.looking_at(direction)
-	playermodel.basis = playermodel.basis.slerp(target_basis, ROTATION_SPEED * delta)
+	# print("Rotate to: ", direction)
+	if direction != Vector3.ZERO:
+		var target_basis = Basis.looking_at(direction)
+		playermodel.basis = playermodel.basis.slerp(target_basis, ROTATION_SPEED * delta)
 
 func _on_dialogue_start(_dialogue) -> void:
 	is_dialogue_active = true

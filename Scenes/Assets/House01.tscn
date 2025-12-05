@@ -4,7 +4,7 @@
 albedo_color = Color(0.31061712, 0.31061712, 0.3106171, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1uum"]
-size = Vector3(15, 0.32, 12)
+size = Vector3(15, 0.7, 12)
 
 [node name="House" type="Node3D"]
 
@@ -109,4 +109,5 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20603271, 0)
 shape = SubResource("BoxShape3D_l1uum")
