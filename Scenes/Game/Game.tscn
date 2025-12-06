@@ -17,5 +17,6 @@ layer = 10
 visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_xbxml")]
+transform = Transform3D(0.84, 0, 0, 0, 0.84, 0, 0, 0, 0.84, 0, 0, 0)
 
 [node name="Map" type="Node3D" parent="."]

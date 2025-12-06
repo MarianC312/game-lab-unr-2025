@@ -1,22 +1,38 @@
-extends Area3D
+extends StaticBody3D
 
 @export var object_name : String = ""
 @export var dialogue : DialogueResource = preload("res://Dialogues/Default/Default.dialogue")
 @export var object_mesh : MeshInstance3D
 
 var is_dialogue_active : bool = false
-var highlight_material : StandardMaterial3D = preload("res://Materials/Interactable_glow.tres")
-
+var highlight_shader : Shader = preload("res://Shaders/glow_effect.gdshader")
+var highlight_mesh: MeshInstance3D
+var highlight_material: ShaderMaterial
+var glow : bool = false
 var load_next_scene_after_dialogue : bool = false
 
 func _ready() -> void:
 	get_tree().get_first_node_in_group("Player")
+	object_mesh = get_parent()
+	highlight_material = ShaderMaterial.new()
+	highlight_material.render_priority = 120
+	highlight_material.shader = highlight_shader
+	highlight_mesh = MeshInstance3D.new()
+	highlight_mesh.set_as_top_level(true)
+	highlight_mesh.global_transform = object_mesh.global_transform
+	highlight_mesh.mesh = object_mesh.mesh
+	highlight_mesh.material_override = highlight_material
+	highlight_mesh.visible = false
+	add_child(highlight_mesh)
 
-func glow(status : bool) -> void:
-	if status:
-		object_mesh.material_overlay = highlight_material
+func _process(_delta: float) -> void:
+	if glow:
+		highlight_mesh.visible = true
 	else:
-		object_mesh.material_overlay = null
+		highlight_mesh.visible = false
+
+func _glow(status : bool) -> void:
+	glow = status
 
 func interact() -> void:
 	print("Interacted with: ", object_name)

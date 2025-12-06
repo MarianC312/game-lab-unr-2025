@@ -9,6 +9,7 @@
 background_mode = 1
 ambient_light_source = 3
 ambient_light_color = Color(0.89059, 0.89059, 0.8905901, 1)
+glow_enabled = true
 
 [sub_resource type="Compositor" id="Compositor_ill4j"]
 

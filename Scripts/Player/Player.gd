@@ -27,14 +27,18 @@ var moving_to_target : bool = false
 var target
 var has_target : bool = false
 var should_run : bool = false
+var interactable_item_list : Array
 
 const PATH_POSITION_CHAIN : bool = false
 const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
 
 var is_dialogue_active : bool = false
+var can_glow_interactables : bool = true
+var already_called_clear_interactable_glow : bool = false
 
 func _ready() -> void:
 	# nav_agent.set_target_position(global_transform.origin)
+	# print("Agent map: ", NavigationServer3D.agent_get_map(nav_agent.get_rid()))
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	DialogueManager.dialogue_started.connect(_on_dialogue_start)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
@@ -76,19 +80,42 @@ func _input(event: InputEvent) -> void:
 			
 	if event.is_action_pressed("right_click"):
 		_clear_movement()
+		# rotación cámara
+		if can_glow_interactables:
+			can_glow_interactables = false
+			interactable_item_list = get_tree().get_nodes_in_group("Interactable")
+			if interactable_item_list.size() > 0:
+				for item in interactable_item_list:
+					if item.has_method("_glow"):
+						item.call("_glow", true)
+
+func _clear_interactable_glow() -> void:
+	print("Called clear interactable.")
+	await get_tree().create_timer(1.5).timeout
+	if interactable_item_list.size() > 0:
+		for item in interactable_item_list:
+			if item.has_method("_glow"):
+				item.call("_glow", false)
+		interactable_item_list.clear()
+	already_called_clear_interactable_glow = false
+	can_glow_interactables = true
 
 func _clear_movement() -> void:
-	target_positions.clear()
-	has_target = false
-	moving_to_target = false
-	target_position = global_position
-	nav_agent.set_velocity_forced(Vector3.ZERO)
-	nav_agent.set_target_position(global_position)
-	nav_agent.get_next_path_position()
+	if has_target or moving_to_target:
+		target_positions.clear()
+		has_target = false
+		moving_to_target = false
+		target_position = global_position
+		nav_agent.set_velocity_forced(Vector3.ZERO)
+		nav_agent.set_target_position(global_position)
+		nav_agent.get_next_path_position()
 
 func _process(_delta: float) -> void:
 	# print("MODEL FORWARD:", playermodel.global_transform.basis.z)
 	# print("Player is grunded: ", is_on_floor())
+	if not already_called_clear_interactable_glow and not can_glow_interactables:
+		already_called_clear_interactable_glow = true
+		_clear_interactable_glow()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -114,16 +141,14 @@ func _physics_process(delta: float) -> void:
 			target = see_cast.get_collider(0)
 			if target and target.has_method("interact"):
 				text_interact.show()
-				face_interactable(target.position, delta)
-				if target.has_method("glow"):
-					target.call("glow", true)
+				# face_interactable(target.position, delta)
+				if target.has_method("_glow"):
+					target.call("_glow", true)
 				if Input.is_action_just_pressed("interact") and not is_dialogue_active:
 					target.call("interact")
 					text_interact.hide()
 		else:
 			text_interact.hide()
-			if target and target.has_method("glow"):
-				target.call("glow", false)
 		
 		if not is_on_floor():
 			velocity.y += get_gravity().y * delta
@@ -205,7 +230,7 @@ func move_type2(delta : float) -> void:
 	if has_target:
 		if not moving_to_target:
 			spawn_move_pointer(target_position)
-		nav_agent.set_target_position(target_position)
+			nav_agent.set_target_position(target_position)
 		var next_path_position = nav_agent.get_next_path_position()
 		var direction = (next_path_position - global_position).normalized() # global_position.direction_to(next_path_position)
 		velocity = direction * speed
