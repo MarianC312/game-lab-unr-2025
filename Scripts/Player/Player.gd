@@ -12,6 +12,7 @@ const CAMERA_ROTATION_SPEED := 0.005
 @onready var text_interact : Label = $CanvasLayer/BoxContainer/TextInteract
 @onready var see_cast : ShapeCast3D = $playermodel/Prototype/SeeCast02
 @onready var camera_pivot : Node3D = $camera_pivot
+@onready var camera_3d: Camera3D = $camera_pivot/SpringArm3D/Camera3D
 @onready var playermodel : Node3D = $playermodel
 @onready var animation_player : AnimationPlayer = $playermodel/Prototype/Player/AnimationPlayer
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
@@ -142,7 +143,7 @@ func _physics_process(delta: float) -> void:
 			if target and target.has_method("interact"):
 				text_interact.show()
 				# face_interactable(target.position, delta)
-				if target.has_method("_glow"):
+				if target.has_method("_glow") and not target.is_glowing():
 					target.call("_glow", true)
 				if Input.is_action_just_pressed("interact") and not is_dialogue_active:
 					target.call("interact")
@@ -195,6 +196,9 @@ func spawn_move_pointer(new_position : Vector3) -> void:
 	map.add_child(pointer_instance)
 	pointer_instance.global_position = new_position
 	pointer_instance.position.y = 0.5
+
+func get_camera_3d() -> Camera3D:
+	return camera_3d
 
 func face_interactable(facing_position : Vector3, delta) -> void:
 	var direction = (facing_position - global_position).normalized()

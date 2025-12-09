@@ -33,6 +33,11 @@ func _process(_delta: float) -> void:
 
 func _glow(status : bool) -> void:
 	glow = status
+	await get_tree().create_timer(1.5).timeout
+	glow = false
+
+func is_glowing() -> bool:
+	return glow
 
 func interact() -> void:
 	print("Interacted with: ", object_name)

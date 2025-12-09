@@ -6,6 +6,7 @@ extends Control
 
 func _ready() -> void:
 	audio_stream_player.play()
+	options_menu.hide()
 	SceneTransitions.fade_in()
 
 func _on_jugar_pressed() -> void:
