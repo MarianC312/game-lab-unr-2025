@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ddo7ljepwa5vt"]
+
+[ext_resource type="Texture2D" uid="uid://b43c4bq12uqia" path="res://Textures/House01/Props/brown_planks_09_diff_2k.jpg" id="1_1e34w"]
+[ext_resource type="Texture2D" uid="uid://dpe1rce0r8qjc" path="res://Textures/House01/Props/brown_planks_09_disp_2k.png" id="2_0qfjm"]
+
+[resource]
+albedo_texture = ExtResource("1_1e34w")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_0qfjm")

@@ -7568,6 +7568,7 @@ shape = SubResource("SeparationRayShape3D_nqocc")
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="camera_pivot/SpringArm3D"]
+fov = 90.0
 
 [node name="playermodel" type="Node3D" parent="."]
 
