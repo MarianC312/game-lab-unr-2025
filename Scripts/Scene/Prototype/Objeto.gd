@@ -5,7 +5,7 @@ extends StaticBody3D
 @export var object_mesh : MeshInstance3D
 
 var is_dialogue_active : bool = false
-var highlight_shader : Shader = preload("res://Shaders/glow_effect.gdshader")
+var highlight_shader : Shader = preload("res://Shaders/glow_effect01.gdshader")
 var highlight_mesh: MeshInstance3D
 var highlight_material: ShaderMaterial
 var glow : bool = false

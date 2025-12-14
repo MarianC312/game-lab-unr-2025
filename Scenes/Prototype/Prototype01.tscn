@@ -12,6 +12,10 @@ ambient_light_color = Color(0.7877593, 0.78775924, 0.7877589, 1)
 ambient_light_sky_contribution = 0.15
 ambient_light_energy = 0.02
 glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.8509804, 0.8117647, 0.68235296, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_anisotropy = 0.8
 
 [sub_resource type="Compositor" id="Compositor_ill4j"]
 
@@ -50,6 +54,7 @@ transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 0.351, 0.1, -
 [node name="house02" parent="Mundo" instance=ExtResource("3_22wq2")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Mundo"]
+process_mode = 4
 environment = SubResource("Environment_ubh04")
 compositor = SubResource("Compositor_ill4j")
 

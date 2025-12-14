@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=4 uid="uid://dkp53ary6lvah"]
+[gd_scene load_steps=42 format=4 uid="uid://dkp53ary6lvah"]
 
 [ext_resource type="Script" uid="uid://c2k3xdanb5thv" path="res://Scripts/Player/Player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://bickw7f30y52t" path="res://Textures/Player/PaisanaSkin.png" id="2_h54ih"]
 [ext_resource type="Texture2D" uid="uid://c3hxdvblu7l64" path="res://Textures/Player/PaisanaRopa.png" id="3_ude3g"]
+[ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="4_ude3g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.15
@@ -264,6 +265,7 @@ bind/32/bone = -1
 bind/32/pose = Transform3D(-0.99394166, -0.048046842, 0.09865706, 0.1002294, -0.030913502, 0.9944758, -0.0447316, 0.99836665, 0.03554192, -0.14686659, -0.12840633, 1.0158982)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmcll"]
+depth_draw_mode = 1
 albedo_texture = ExtResource("2_h54ih")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cwqx"]
@@ -395,6 +397,7 @@ bind/32/bone = -1
 bind/32/pose = Transform3D(-0.99394166, -0.048046842, 0.09865706, 0.1002294, -0.030913502, 0.9944758, -0.0447316, 0.99836665, 0.03554192, -0.13410047, -0.118506216, 0.75541764)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wape"]
+depth_draw_mode = 1
 albedo_texture = ExtResource("3_ude3g")
 
 [sub_resource type="Animation" id="Animation_5gmw2"]
@@ -7550,6 +7553,14 @@ _data = {
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ude3g"]
 noise = SubResource("FastNoiseLite_h54ih")
 
+[sub_resource type="InputEventKey" id="InputEventKey_ude3g"]
+device = -1
+keycode = 69
+unicode = 101
+
+[sub_resource type="Shortcut" id="Shortcut_jmcll"]
+events = [SubResource("InputEventKey_ude3g")]
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 process_mode = 3
 collision_mask = 7
@@ -7892,36 +7903,76 @@ light_projector = SubResource("NoiseTexture2D_ude3g")
 layer = 5
 follow_viewport_enabled = true
 
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]
-anchors_preset = 15
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 295.0
-offset_right = -1.0
-offset_bottom = -313.0
+offset_top = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -17.5
+offset_bottom = 5.5000267
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 vertical = true
 
-[node name="TextInteract" type="Label" parent="CanvasLayer/BoxContainer"]
+[node name="TextInteract" type="Label" parent="CanvasLayer/UI/BoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_ude3g")
 text = "(E) Interactuar"
 horizontal_alignment = 1
 vertical_alignment = 1
-uppercase = true
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -83.0
+offset_right = -26.0
+offset_bottom = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="InteractButton" type="Button" parent="CanvasLayer/UI/HFlowContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_ude3g")
+shortcut = SubResource("Shortcut_jmcll")
+text = "[ E ]"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20715368, 0)
 max_distance = 50.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.12
-target_desired_distance = 0.3
-path_height_offset = 0.3
+path_desired_distance = 0.2
+target_desired_distance = 0.1
+path_height_offset = 0.2
 path_max_distance = 5.01
 avoidance_enabled = true
 use_3d_avoidance = true
 avoidance_layers = 29
 avoidance_mask = 29
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="CanvasLayer/UI/HFlowContainer/InteractButton" to="." method="_on_interact_button_pressed"]

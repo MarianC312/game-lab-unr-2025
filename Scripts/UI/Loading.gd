@@ -1,6 +1,6 @@
 extends Control
 
-@onready var textLoading : RichTextLabel = $TextLoading
+@onready var textLoading : Label = $TextLoading
 @onready var progress_bar : ProgressBar = $MarginContainer/ProgressBar
 
 var progress : Array

@@ -3,13 +3,14 @@ extends CharacterBody3D
 # Seteo de variables generales
 @export_category("Player Movement")
 @export var speed := 2.0
-@export var WALK_SPEED := 2.0
-@export var SPRINT_SPEED := 3.5
+@export var WALK_SPEED := 1.75
+@export var SPRINT_SPEED := 2.5
 @export var jump_velocity := 4.5
 const ROTATION_SPEED := 10.0
 const CAMERA_ROTATION_SPEED := 0.005
+const DOUBLE_CLICK_THRESHOLD := 0.25
 
-@onready var text_interact : Label = $CanvasLayer/BoxContainer/TextInteract
+@onready var text_interact : Label = $CanvasLayer/UI/BoxContainer/TextInteract
 @onready var see_cast : ShapeCast3D = $playermodel/Prototype/SeeCast02
 @onready var camera_pivot : Node3D = $camera_pivot
 @onready var camera_3d: Camera3D = $camera_pivot/SpringArm3D/Camera3D
@@ -17,6 +18,8 @@ const CAMERA_ROTATION_SPEED := 0.005
 @onready var animation_player : AnimationPlayer = $playermodel/Prototype/Player/AnimationPlayer
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var map = get_parent().get_node("Map")
+@onready var timer: Timer = $Timer
+@onready var interact_button: Button = $CanvasLayer/UI/HFlowContainer/InteractButton
 
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 
@@ -29,6 +32,7 @@ var target
 var has_target : bool = false
 var should_run : bool = false
 var interactable_item_list : Array
+var last_click_time := 0.0
 
 const PATH_POSITION_CHAIN : bool = false
 const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
@@ -48,13 +52,17 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
 		GameManager._toggle_pause()
 	
+	if event.is_action_pressed("interact") and not is_dialogue_active:
+		start_interaction()
+	
 	if event.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
+		if get_viewport().gui_get_hovered_control() != null:
+			return
 		if not PATH_POSITION_CHAIN:
 			_clear_movement()
 		var camera = get_viewport().get_camera_3d()
 		var from = camera.project_ray_origin(get_viewport().get_mouse_position())
 		var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
-
 		var space_state = get_world_3d().direct_space_state
 		var query = PhysicsRayQueryParameters3D.create(from, to, 1 << 2) # << 2
 		query.collide_with_areas = false
@@ -62,14 +70,17 @@ func _input(event: InputEvent) -> void:
 		# query.collision_mask = 1 << 2
 		
 		var result = space_state.intersect_ray(query)
+		var current_click_time = Time.get_ticks_msec() / 1000.0
+		if current_click_time - last_click_time <= DOUBLE_CLICK_THRESHOLD:
+			should_run = true
+			timer.stop()
+		else:
+			timer.start(DOUBLE_CLICK_THRESHOLD)
+		last_click_time = current_click_time
 		
 		if result and result.has("position"):
 			var new_position = Vector3(result.position.x, 0, result.position.z)
 			if PATH_POSITION_CHAIN:
-				if target_positions.count(new_position) > 1:
-					should_run = true
-				else:
-					should_run = false
 				target_positions.append(new_position)
 			else:
 				target_position = new_position
@@ -78,7 +89,7 @@ func _input(event: InputEvent) -> void:
 			print("Target position: ", target_position)
 		else:
 			print("No hit")
-			
+	
 	if event.is_action_pressed("right_click"):
 		_clear_movement()
 		# rotación cámara
@@ -142,14 +153,13 @@ func _physics_process(delta: float) -> void:
 			target = see_cast.get_collider(0)
 			if target and target.has_method("interact"):
 				text_interact.show()
+				interact_button.show()
 				# face_interactable(target.position, delta)
 				if target.has_method("_glow") and not target.is_glowing():
 					target.call("_glow", true)
-				if Input.is_action_just_pressed("interact") and not is_dialogue_active:
-					target.call("interact")
-					text_interact.hide()
 		else:
 			text_interact.hide()
+			interact_button.hide()
 		
 		if not is_on_floor():
 			velocity.y += get_gravity().y * delta
@@ -190,6 +200,12 @@ func _physics_process(delta: float) -> void:
 			animation_player.play("Talk2")
 		AnimationState.IDLE:
 			animation_player.play("IdleStandard")
+
+func start_interaction() -> void:
+	await get_tree().create_timer(0.4).timeout
+	target.call("interact")
+	text_interact.hide()
+	interact_button.hide()
 
 func spawn_move_pointer(new_position : Vector3) -> void:
 	var pointer_instance = CURSOR_POINTER.instantiate()
@@ -246,6 +262,7 @@ func move_type2(delta : float) -> void:
 	if nav_agent.is_navigation_finished():
 		has_target = false
 		moving_to_target = false
+		should_run = false
 		velocity = Vector3.ZERO
 		player_animation_state = AnimationState.IDLE
 	
@@ -376,3 +393,7 @@ func _reset_movement_state() -> void:
 #func rotate_model(direction: Vector3, delta : float) -> void:
 	##rotate the model to match the springarm
 	#playermodel.basis = lerp(playermodel.basis, Basis.looking_at(direction), 10.0 * delta)
+
+
+func _on_interact_button_pressed() -> void:
+	start_interaction()

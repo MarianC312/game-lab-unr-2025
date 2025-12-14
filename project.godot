@@ -77,7 +77,6 @@ runtime/balloon_path="res://Scenes/UI//balloon.tscn"
 
 [display]
 
-window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

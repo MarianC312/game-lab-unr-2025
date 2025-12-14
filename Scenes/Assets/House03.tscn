@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=4 uid="uid://c3x04g8eidvhh"]
+[gd_scene load_steps=187 format=4 uid="uid://c3x04g8eidvhh"]
 
 [ext_resource type="Script" uid="uid://c62cv5vdp4an2" path="res://Scripts/Scene/Prototype/House01.gd" id="1_nvmff"]
 [ext_resource type="NavigationMesh" uid="uid://xcfc7osiqqy7" path="res://NavigationMap/NavigationRegion.tres" id="2_siqqd"]
@@ -27,12 +27,18 @@
 [ext_resource type="Material" uid="uid://ddo7ljepwa5vt" path="res://Materials/House01_MaderaRustica.tres" id="12_2pcax"]
 [ext_resource type="Texture2D" uid="uid://cp77pip73nk6r" path="res://Textures/House01/Props/bark_willow_02_diff_2k.jpg" id="12_5f8ho"]
 [ext_resource type="Texture2D" uid="uid://ckulhhqk1oscy" path="res://Textures/House01/Props/bark_willow_02_disp_2k.png" id="13_ojbm8"]
+[ext_resource type="Texture2D" uid="uid://hpiu0yaqht65" path="res://Textures/House01/Props/wood_planks_dirt_diff_4k.jpg" id="13_pn21f"]
 [ext_resource type="Script" uid="uid://ywl7m0qshqv" path="res://Scripts/Scene/Prototype/Objeto.gd" id="14_3nyy7"]
+[ext_resource type="Texture2D" uid="uid://k5w6ts55n4t6" path="res://Textures/House01/Props/wood_planks_dirt_disp_4k.png" id="14_lht6p"]
 [ext_resource type="Resource" uid="uid://nqrdgpcrtf8t" path="res://Dialogues/Scene/Prototype01/Puerta01.dialogue" id="15_dj4sa"]
 [ext_resource type="Resource" uid="uid://coab6gpht1jxd" path="res://Dialogues/Scene/Prototype01/Puerta04.dialogue" id="17_rqxgg"]
+[ext_resource type="Shader" uid="uid://dqc7tmohss0th" path="res://Shaders/god_rays.gdshader" id="33_lht6p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lht6p"]
+size = Vector3(3.7669067, 1.4520264, 4.5804443)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nvmff"]
-size = Vector3(3.6900635, 3.2143555, 4.4521484)
+size = Vector3(1.3482361, 3.606079, 10.674438)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ricub"]
 resource_name = "Material.010"
@@ -898,6 +904,11 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hfse6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wo2ne"]
+albedo_texture = ExtResource("13_pn21f")
+heightmap_enabled = true
+heightmap_texture = ExtResource("14_lht6p")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5f8ho"]
 points = PackedVector3Array(-0.8222461, -0.6295569, -3.7447264, -4.7244163, -2.9834762, -3.5457501, -0.8222461, 0.046548128, -3.7447264, 1.0358863, -0.6295569, -3.7447264, -4.7244163, -2.9834762, 3.541086, -4.7244163, 0.16578364, -3.5457501, 4.724404, -2.9834762, -3.5457501, -4.7244163, 0.46518278, -3.5065255, -4.7244163, 1.0829802, -3.4252234, 1.0358863, 0.046548128, -3.7447264, -4.7244163, 0.16578364, 3.541086, 4.724404, -2.9834762, 3.541086, 4.723479, 0.16578364, -3.5457501, 4.724404, 0.46518278, -3.5065255, -4.7244163, 1.937283, -3.0714877, 4.724404, 1.0829802, -3.4252234, -4.7244163, 1.0829802, 3.4198458, 4.723479, 0.16578364, 3.541086, 4.724404, 0.42063332, 3.5068533, -4.7244163, 2.6710405, -2.508078, 4.724404, 1.937283, -3.0714877, -4.7244163, 1.937283, 3.0661104, 4.724404, 1.0829802, 3.4198458, -4.7244163, 3.2344613, -1.7742194, 4.724404, 2.6710405, -2.508078, -4.7244163, 2.6710405, 2.5027006, 4.724404, 1.937283, 3.0661104, -4.7244163, 3.5882368, -0.9198339, 4.724404, 3.2344613, -1.7742194, -4.7244163, 3.2344613, 1.768842, 4.724404, 2.6710405, 2.5027006, -4.7244163, 3.7094378, -0.0026886463, 4.724404, 3.5882368, -0.9198339, -4.7244163, 3.5882368, 0.9144566, 4.724404, 3.2344613, 1.768842, 4.724404, 3.7094378, -0.0026886463, 4.724404, 3.5882368, 0.9144566)
@@ -2039,30 +2050,58 @@ albedo_color = Color(0.017732391, 0.017732391, 0.01773239, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n7by7"]
 points = PackedVector3Array(4.5275, 0, 5.3525, -4.5275, 0, 5.3525, 4.5275, 0, -5.3525, -4.5275, 0, -5.3525)
 
+[sub_resource type="Environment" id="Environment_pn21f"]
+background_mode = 1
+ambient_light_source = 3
+ambient_light_color = Color(0.7877593, 0.78775924, 0.7877589, 1)
+ambient_light_sky_contribution = 0.15
+ambient_light_energy = 0.02
+glow_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.8509804, 0.8117647, 0.68235296, 1)
+volumetric_fog_gi_inject = 1.04
+volumetric_fog_anisotropy = 0.8
+
+[sub_resource type="Compositor" id="Compositor_lht6p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lht6p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v525p"]
+render_priority = 0
+shader = ExtResource("33_lht6p")
+shader_parameter/color = Color(1, 0.95, 0.8, 1)
+shader_parameter/density = 0.0450000021375
+shader_parameter/noise_scale = 1.0
+shader_parameter/speed = -1.25
+shader_parameter/fade_height = 1.5
+
 [node name="house02" type="Node3D"]
 script = ExtResource("1_nvmff")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004424691, 0.0042734146, -0.0035963655)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, -0.451, -0.004)
 navigation_mesh = ExtResource("2_siqqd")
 navigation_layers = 4294967295
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D" groups=["navigation_mesh_source_group"]]
-height = 1.8
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44052744, 0)
+height = 3.0
 vertices = PackedVector3Array(0.882136, 0, -2.9063134, 0.80793583, 0, -1.174974, 2.149724, 0, -1.174974, 2.149724, 0, -2.708446, 1.6674222, 0, -3.128914)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 use_3d_avoidance = true
 
 [node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="NavigationRegion3D" groups=["navigation_mesh_source_group"]]
-height = 1.8
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44052744, 0)
+height = 3.0
 vertices = PackedVector3Array(-4.595253, 0, 2.7286973, -2.936346, 0, 2.737787, -2.913621, 0, 4.578492, -4.5725284, 0, 4.583037)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 use_3d_avoidance = true
 
 [node name="NavigationObstacle3D3" type="NavigationObstacle3D" parent="NavigationRegion3D" groups=["navigation_mesh_source_group"]]
-height = 1.8
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45387673, 0)
+height = 3.0
 vertices = PackedVector3Array(-0.98015547, 0, -6.0049014, -0.97106564, 0, -5.100456, 1.9922417, 0, -5.0868216, 1.996787, 0, -6.0139914)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
@@ -2072,13 +2111,25 @@ use_3d_avoidance = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7989624, 0, 2.4634986)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16925025, 1.1071777, -0.040527344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15591407, 0.7257775, -0.0680542)
+shape = SubResource("BoxShape3D_lht6p")
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4604208, 0, 2.4634986)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.340164, 1.2437744, -3.1516724)
 shape = SubResource("BoxShape3D_nvmff")
 
 [node name="Camera pivot" type="Node3D" parent="."]
 
-[node name="FixedCamera" type="Camera3D" parent="Camera pivot"]
-transform = Transform3D(-0.74895614, 0.40524882, -0.5242501, 0, 0.79117805, 0.6115859, 0.6626196, 0.45805103, -0.59255767, -5.4688497, 2.7696867, 0.17419815)
+[node name="FixedCamera01" type="Camera3D" parent="Camera pivot"]
+transform = Transform3D(-0.73726815, 0.4061582, -0.5398807, 0, 0.7991127, 0.60118127, 0.67560023, 0.4432318, -0.5891603, -5.302033, 2.565259, 0.2821436)
+fov = 85.0
+
+[node name="FixedCamera02" type="Camera3D" parent="Camera pivot"]
+transform = Transform3D(-0.80901337, -0.2983317, 0.5064538, 0, 0.86162347, 0.507548, -0.5877902, 0.4106131, -0.6970649, 3.1849961, 2.2626984, -5.764142)
+fov = 85.0
 
 [node name="paredes" type="Node3D" parent="."]
 
@@ -2224,7 +2275,7 @@ mesh = SubResource("ArrayMesh_jw53y")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("8_pkrds")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="PuertasYVentanas/Puerta_003"]
+[node name="StaticBody3D" type="StaticBody3D" parent="PuertasYVentanas/Puerta_003" groups=["navigation_mesh_source_group"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuertasYVentanas/Puerta_003/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_v8adl")
@@ -2313,11 +2364,13 @@ skeleton = NodePath("")
 transform = Transform3D(-0.023110373, 0, -0.010539007, 0, 0.025399998, 0, 0.010539007, 0, -0.023110373, -5.132536, 1.0751598, 0.49511978)
 mesh = SubResource("ArrayMesh_53suw")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo2ne")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Props/Cajoncito" groups=["Interactable"]]
 collision_layer = 12
 collision_mask = 12
 script = ExtResource("14_3nyy7")
+object_name = "Cajoncito"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Cajoncito/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_5f8ho")
@@ -2553,8 +2606,8 @@ surface_material_override/0 = ExtResource("7_g5esw")
 shape = SubResource("ConcavePolygonShape3D_of0uw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.97263, 0.23235905, 0, -0.23235905, 0.97263, 0, 3.3984742, 8.283686)
-light_color = Color(0.50659925, 0.63356364, 0.71846163, 1)
+transform = Transform3D(1, 0, 0, 0, 0.9372455, 0.3486702, 0, -0.3486702, 0.9372455, 0, 3.3984742, 8.283686)
+light_color = Color(0.8509804, 0.8117647, 0.68235296, 1)
 light_energy = 0.593
 shadow_enabled = true
 
@@ -2568,5 +2621,91 @@ surface_material_override/0 = SubResource("StandardMaterial3D_v525p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Techo/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_n7by7")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pn21f")
+compositor = SubResource("Compositor_lht6p")
+
+[node name="Shading" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, -0.451, -0.004)
+
+[node name="VolumetricFog" type="Node3D" parent="Shading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.041158915)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.79083437, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, 0.714, 1.668125, 4.285)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.79083437, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, 1.5771961, 1.668125, 4.285)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.79083437, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, 0.714, 1.668125, 3.417)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.79083437, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, 1.5771961, 1.668125, 3.417)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.79083437, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, 0.714, 1.668125, 2.583)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.79083437, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, 1.5771961, 1.668125, 2.583)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.90745777, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, -4.135, 1.561, 3.976)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.90745777, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, -3.129806, 1.561, 3.976)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.90745777, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, -4.135, 1.9024261, 4.066)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.90745777, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, -3.129806, 1.9024261, 4.066)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.90745777, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, -4.135, 2.276479, 4.131)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Shading/VolumetricFog"]
+transform = Transform3D(0.90745777, 0, 0, 0, 0.23802446, 3.074227, 0, -0.088520505, 8.266348, -3.129806, 2.276479, 4.131)
+mesh = SubResource("BoxMesh_lht6p")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_v525p")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered" binds= [1]]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_body_exited"]

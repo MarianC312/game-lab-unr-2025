@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlf3yhsierjcw"]
+[gd_scene load_steps=7 format=3 uid="uid://dlf3yhsierjcw"]
 
 [ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="1_835t4"]
 [ext_resource type="Script" uid="uid://bl5sxur3350v1" path="res://Scripts/UI/Loading.gd" id="1_jft1o"]
+[ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="3_rirtg"]
+
+[sub_resource type="Gradient" id="Gradient_rirtg"]
+offsets = PackedFloat32Array(0.082539685, 1)
+colors = PackedColorArray(0.6431373, 0.69411767, 0.5568628, 1, 0.37254903, 0.41960785, 0.2901961, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s6sq0"]
+gradient = SubResource("Gradient_rirtg")
+fill = 1
+fill_from = Vector2(0.5, 0.4)
+fill_to = Vector2(1, 0.875)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kenh8"]
+texture = SubResource("GradientTexture2D_s6sq0")
 
 [node name="Loading" type="Control"]
 layout_mode = 3
@@ -12,14 +26,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jft1o")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.11858138, 0.11858138, 0.11858138, 1)
+theme_override_styles/panel = SubResource("StyleBoxTexture_kenh8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,26 +50,33 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_rirtg")
 theme_override_fonts/font = ExtResource("1_835t4")
 theme_override_font_sizes/font_size = 24
 min_value = 22.99
 value = 45.59
 
-[node name="TextLoading" type="RichTextLabel" parent="."]
+[node name="TextLoading" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -375.0
+anchors_preset = -1
+anchor_left = 0.9852431
+anchor_top = 0.9768519
+anchor_right = 0.9852431
+anchor_bottom = 0.9768519
+offset_left = -515.0
 offset_top = -76.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_fonts/normal_font = ExtResource("1_835t4")
-theme_override_font_sizes/normal_font_size = 48
+theme = ExtResource("3_rirtg")
+theme_override_fonts/font = ExtResource("1_835t4")
+theme_override_font_sizes/font_size = 48
 text = "loading_bar_text"
+horizontal_alignment = 2
+vertical_alignment = 1
 text_direction = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="MarginContainer/ProgressBar" to="." method="_on_progress_bar_value_changed"]
