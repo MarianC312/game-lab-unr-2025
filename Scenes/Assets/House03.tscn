@@ -31,6 +31,8 @@
 [ext_resource type="Script" uid="uid://ywl7m0qshqv" path="res://Scripts/Scene/Prototype/Objeto.gd" id="14_3nyy7"]
 [ext_resource type="Texture2D" uid="uid://k5w6ts55n4t6" path="res://Textures/House01/Props/wood_planks_dirt_disp_4k.png" id="14_lht6p"]
 [ext_resource type="Resource" uid="uid://nqrdgpcrtf8t" path="res://Dialogues/Scene/Prototype01/Puerta01.dialogue" id="15_dj4sa"]
+[ext_resource type="PackedScene" uid="uid://dqe453qna45qh" path="res://Scenes/Minigames/Cerradura01.tscn" id="15_v525p"]
+[ext_resource type="Resource" uid="uid://8rjjhx0up7gc" path="res://Dialogues/Scene/Prototype01/Cajoncito.dialogue" id="15_wo2ne"]
 [ext_resource type="Resource" uid="uid://coab6gpht1jxd" path="res://Dialogues/Scene/Prototype01/Puerta04.dialogue" id="17_rqxgg"]
 [ext_resource type="Shader" uid="uid://dqc7tmohss0th" path="res://Shaders/god_rays.gdshader" id="33_lht6p"]
 
@@ -2050,20 +2052,6 @@ albedo_color = Color(0.017732391, 0.017732391, 0.01773239, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n7by7"]
 points = PackedVector3Array(4.5275, 0, 5.3525, -4.5275, 0, 5.3525, 4.5275, 0, -5.3525, -4.5275, 0, -5.3525)
 
-[sub_resource type="Environment" id="Environment_pn21f"]
-background_mode = 1
-ambient_light_source = 3
-ambient_light_color = Color(0.7877593, 0.78775924, 0.7877589, 1)
-ambient_light_sky_contribution = 0.15
-ambient_light_energy = 0.02
-glow_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_albedo = Color(0.8509804, 0.8117647, 0.68235296, 1)
-volumetric_fog_gi_inject = 1.04
-volumetric_fog_anisotropy = 0.8
-
-[sub_resource type="Compositor" id="Compositor_lht6p"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_lht6p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v525p"]
@@ -2367,10 +2355,14 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_wo2ne")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Props/Cajoncito" groups=["Interactable"]]
-collision_layer = 12
-collision_mask = 12
+collision_layer = 13
+collision_mask = 13
 script = ExtResource("14_3nyy7")
 object_name = "Cajoncito"
+dialogue = ExtResource("15_wo2ne")
+has_minigame = true
+minigame = ExtResource("15_v525p")
+locked = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Cajoncito/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_5f8ho")
@@ -2621,10 +2613,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_v525p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Techo/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_n7by7")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_pn21f")
-compositor = SubResource("Compositor_lht6p")
-
 [node name="Shading" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, -0.451, -0.004)
 
@@ -2703,9 +2691,7 @@ mesh = SubResource("BoxMesh_lht6p")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_v525p")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
-[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered" binds= [1]]
-[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]
-[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered" binds= [1]]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited" binds= [1]]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_body_entered" binds= [2]]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_body_exited" binds= [2]]

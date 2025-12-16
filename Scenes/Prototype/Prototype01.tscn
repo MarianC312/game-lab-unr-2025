@@ -12,7 +12,6 @@ ambient_light_color = Color(0.7877593, 0.78775924, 0.7877589, 1)
 ambient_light_sky_contribution = 0.15
 ambient_light_energy = 0.02
 glow_enabled = true
-volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.8509804, 0.8117647, 0.68235296, 1)
 volumetric_fog_emission_energy = 0.0
 volumetric_fog_anisotropy = 0.8
@@ -45,6 +44,9 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("2_ly18k")
 theme_override_font_sizes/font_size = 20
 auto_height = true
+
+[node name="MinigameLayer" type="CanvasLayer" parent="UI" groups=["minigame_layer"]]
+layer = 20
 
 [node name="Mundo" type="Node3D" parent="."]
 

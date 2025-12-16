@@ -3,6 +3,9 @@ extends StaticBody3D
 @export var object_name : String = ""
 @export var dialogue : DialogueResource = preload("res://Dialogues/Default/Default.dialogue")
 @export var object_mesh : MeshInstance3D
+@export var has_minigame := false
+@export var minigame : Resource
+@export var locked := false
 
 var is_dialogue_active : bool = false
 var highlight_shader : Shader = preload("res://Shaders/glow_effect01.gdshader")
@@ -10,6 +13,7 @@ var highlight_mesh: MeshInstance3D
 var highlight_material: ShaderMaterial
 var glow : bool = false
 var load_next_scene_after_dialogue : bool = false
+var minigame_instance
 
 func _ready() -> void:
 	get_tree().get_first_node_in_group("Player")
@@ -43,8 +47,22 @@ func interact() -> void:
 	print("Interacted with: ", object_name)
 	DialogueManager.show_dialogue_balloon(dialogue, "start")
 
+func is_locked() -> bool:
+	return locked
+
+func unlock() -> void:
+	locked = false
+	SceneManagerMap01._register_interaction(object_name)
+	interact()
+
+func get_minigame() -> Resource:
+	return minigame
+
 func _on_dialogue_start(_dialogue) -> void:
 	is_dialogue_active = true
+
+func get_object_name() -> String:
+	return object_name
 
 func _on_dialogue_end(_dialogue) -> void:
 	await get_tree().create_timer(0.2).timeout

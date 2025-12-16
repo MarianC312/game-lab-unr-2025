@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var item_list: ItemList = $UI/CanvasLayer15/ItemList
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var house: Node3D = $Mundo/house02
 
 signal map_ready
 
@@ -11,6 +12,8 @@ func _ready() -> void:
 	audio_stream_player.play()
 	SceneManagerMap01.registered_interaction.connect(_on_registered_interaction)
 	process_mode = Node.PROCESS_MODE_INHERIT
+	for interactable in get_tree().get_nodes_in_group("Interactable"):
+		SceneManagerMap01.set_interactable(interactable)
 	emit_signal("map_ready")
 	print("Mapa listo!")
 
@@ -31,7 +34,7 @@ func _update_item_list() -> void:
 func _on_registered_interaction(interactable_name : String) -> void:
 	if SceneManagerMap01._get_show_all_interacts():
 		item_list.clear()
-		for interactable in SceneManagerMap01._get_interactables():
+		for interactable in SceneManagerMap01._get_interactables_names():
 			item_list.add_item(interactable)
 	else:
 		item_list.add_item(interactable_name)

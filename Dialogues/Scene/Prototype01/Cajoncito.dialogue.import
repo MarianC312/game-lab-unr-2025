@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://8rjjhx0up7gc"
+path="res://.godot/imported/Cajoncito.dialogue-702d2c9080e018741119771b20a06289.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Prototype01/Cajoncito.dialogue"
+dest_files=["res://.godot/imported/Cajoncito.dialogue-702d2c9080e018741119771b20a06289.tres"]
+
+[params]
+
+defaults=true

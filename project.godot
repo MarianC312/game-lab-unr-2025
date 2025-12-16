@@ -23,6 +23,7 @@ SceneTransitions="*res://Scenes/UI/SceneTransitions.tscn"
 SceneManagerMap01="*res://Scripts/Autoloads/SceneManagerMap01.gd"
 BgMusic="*res://Scenes/Prototype/BGMusic.tscn"
 BgMusicSC="res://Scripts/Autoloads/BGMusic.gd"
+MinigameManager="*res://Scripts/Minigame/MinigameManager.gd"
 
 [debug_draw_3d]
 
@@ -107,6 +108,7 @@ Interactable=""
 CharSpawn=""
 Player=""
 navigation_mesh_source_group=""
+minigame_layer=""
 
 [input]
 
@@ -205,7 +207,7 @@ right_click={
 [internationalization]
 
 locale/translations=PackedStringArray("res://Translations/Translation.en.translation", "res://Translations/Translation.es.translation")
-locale/translations_pot_files=PackedStringArray("res://Dialogues/testdiag.dialogue", "res://Dialogues/Default/Default.dialogue", "res://Dialogues/Scene/Prototype01/Cuaderno.dialogue", "res://Dialogues/Scene/Prototype01/Cuadro.dialogue", "res://Dialogues/Scene/Prototype01/Mate.dialogue", "res://Dialogues/Scene/Prototype01/NPC2.dialogue", "res://Dialogues/Scene/Prototype01/Puerta01.dialogue", "res://Dialogues/Scene/Prototype01/Puerta04.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/testdiag.dialogue", "res://Dialogues/Default/Default.dialogue", "res://Dialogues/Scene/Prototype01/Cuaderno.dialogue", "res://Dialogues/Scene/Prototype01/Cuadro.dialogue", "res://Dialogues/Scene/Prototype01/Mate.dialogue", "res://Dialogues/Scene/Prototype01/NPC2.dialogue", "res://Dialogues/Scene/Prototype01/Puerta01.dialogue", "res://Dialogues/Scene/Prototype01/Puerta04.dialogue", "res://Dialogues/Scene/Prototype01/Cajoncito.dialogue")
 
 [layer_names]
 
