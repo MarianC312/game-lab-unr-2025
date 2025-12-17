@@ -34,6 +34,8 @@ func _register_interaction(interactable_name : String) -> void:
 	if not show_all_interacts and interactable_name == "Puerta04":
 		_set_show_all_interacts(true)
 	registered_interaction.emit(interactable_name)
+	if interactables[interactable_name].object.despawn_on_interaction():
+		interactables[interactable_name].object.despawn_object()
 
 func _already_interacted(interactable_name : String) -> bool:
 	if interactables.has(interactable_name):

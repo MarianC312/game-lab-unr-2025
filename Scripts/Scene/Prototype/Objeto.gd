@@ -6,6 +6,7 @@ extends StaticBody3D
 @export var has_minigame := false
 @export var minigame : Resource
 @export var locked := false
+@export var despawn := false
 
 var is_dialogue_active : bool = false
 var highlight_shader : Shader = preload("res://Shaders/glow_effect01.gdshader")
@@ -34,6 +35,12 @@ func _process(_delta: float) -> void:
 		highlight_mesh.visible = true
 	else:
 		highlight_mesh.visible = false
+
+func despawn_on_interaction() -> bool:
+	return despawn
+
+func despawn_object() -> void:
+	get_parent().queue_free()
 
 func _glow(status : bool) -> void:
 	glow = status

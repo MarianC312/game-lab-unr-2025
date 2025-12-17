@@ -7917,6 +7917,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -7928,6 +7929,7 @@ offset_top = -17.5
 offset_bottom = 5.5000267
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 vertical = true
 
@@ -7951,6 +7953,7 @@ offset_right = -26.0
 offset_bottom = -23.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 alignment = 2
 
 [node name="InteractButton" type="Button" parent="CanvasLayer/UI/HFlowContainer"]
@@ -7965,9 +7968,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20715368, 0)
 max_distance = 50.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.2
+path_desired_distance = 0.3
 target_desired_distance = 0.1
-path_height_offset = 0.18
+path_height_offset = 0.19
 path_max_distance = 5.01
 avoidance_enabled = true
 use_3d_avoidance = true

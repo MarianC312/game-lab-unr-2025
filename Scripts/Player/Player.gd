@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var WALK_SPEED := 1.75
 @export var SPRINT_SPEED := 2.5
 @export var jump_velocity := 4.5
+
 const ROTATION_SPEED := 10.0
 const CAMERA_ROTATION_SPEED := 0.005
 const DOUBLE_CLICK_THRESHOLD := 0.25
@@ -26,7 +27,7 @@ enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 var player_animation_state : AnimationState = AnimationState.IDLE
 var target_positions : Array = []
 var target_position : Vector3 = Vector3.ZERO
-var target_rotation : Vector3 = Vector3.ZERO
+# var target_rotation : Vector3 = Vector3.ZERO
 var moving_to_target : bool = false
 var target
 var has_target : bool = false
@@ -56,7 +57,9 @@ func _input(event: InputEvent) -> void:
 		start_interaction()
 	
 	if event.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
-		if get_viewport().gui_get_hovered_control() != null:
+		var ui_clicked = get_viewport().gui_get_hovered_control()
+		print(ui_clicked)
+		if ui_clicked != null and ui_clicked.visible:
 			return
 		if not PATH_POSITION_CHAIN:
 			_clear_movement()
@@ -154,12 +157,12 @@ func _physics_process(delta: float) -> void:
 			if target and target.has_method("interact"):
 				text_interact.show()
 				interact_button.show()
-				# face_interactable(target.position, delta)
 				if target.has_method("_glow") and not target.is_glowing():
 					target.call("_glow", true)
 		else:
 			text_interact.hide()
 			interact_button.hide()
+			target = null
 		
 		if not is_on_floor():
 			velocity.y += get_gravity().y * delta
@@ -202,10 +205,11 @@ func _physics_process(delta: float) -> void:
 			animation_player.play("IdleStandard")
 
 func start_interaction() -> void:
-	await get_tree().create_timer(0.4).timeout
-	target.call("interact")
-	text_interact.hide()
-	interact_button.hide()
+	if target != null:
+		await get_tree().create_timer(0.4).timeout
+		target.call("interact")
+		text_interact.hide()
+		interact_button.hide()
 
 func spawn_move_pointer(new_position : Vector3) -> void:
 	var pointer_instance = CURSOR_POINTER.instantiate()
@@ -216,10 +220,17 @@ func spawn_move_pointer(new_position : Vector3) -> void:
 func get_camera_3d() -> Camera3D:
 	return camera_3d
 
-func face_interactable(facing_position : Vector3, delta) -> void:
-	var direction = (facing_position - global_position).normalized()
-	# print("Direction to face: ", direction)
-	rotate_model(direction, delta)
+# Deprecada, muy tosca la rotación
+#func face_interactable(target_pos: Vector3, delta: float) -> void:
+	#var pos = target_pos
+	#pos.y = global_position.y  # solo rotar en Y
+#
+	#var dir = pos - global_position
+	#if dir.length() < 0.01:
+		#return
+#
+	#var target_y = atan2(dir.x, dir.z)
+	#playermodel.rotation.y = lerp_angle(rotation.y, target_y, delta * 8.0)
 
 func move_type1(delta: float) -> void:
 	if has_target:
@@ -260,6 +271,13 @@ func move_type2(delta : float) -> void:
 		player_animation_state = AnimationState.IDLE
 	
 	if nav_agent.is_navigation_finished():
+		var direction
+		if target != null:
+			direction = (target.global_position - global_position).normalized()
+		else:
+			direction = (target_position - global_position).normalized()
+		direction.y = 0
+		rotate_model(direction, delta)
 		has_target = false
 		moving_to_target = false
 		should_run = false
