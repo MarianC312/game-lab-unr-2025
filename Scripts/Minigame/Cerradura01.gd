@@ -42,4 +42,14 @@ func try_unlock():
 		# queue_free()
 	else:
 		# vibración, sonido, feedback
+		shake_pick()
 		print("falló")
+
+func shake_pick(intensity := 5.0, duration := 0.1) -> void:
+	var tween := create_tween()
+	var original_pos: Vector2 = pivot.position
+	
+	var step := tween.tween_property(pivot, "position", original_pos + Vector2(randf_range(-intensity, intensity), 0), duration / 2)
+	step.set_trans(Tween.TRANS_SINE)
+
+	tween.tween_property(pivot, "position", original_pos, duration / 2)

@@ -21,7 +21,7 @@ const DOUBLE_CLICK_THRESHOLD := 0.25
 @onready var map = get_parent().get_node("Map")
 @onready var timer: Timer = $Timer
 @onready var interact_button: Button = $CanvasLayer/UI/HFlowContainer/InteractButton
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_footsteps: AudioStreamPlayer = $AudioFootsteps
 @onready var timer_footsteps: Timer = $TimerFootsteps
 
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
@@ -43,6 +43,7 @@ const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
 var is_dialogue_active : bool = false
 var can_glow_interactables : bool = true
 var already_called_clear_interactable_glow : bool = false
+var started_audio_footsteps : bool = false
 
 func _ready() -> void:
 	# nav_agent.set_target_position(global_transform.origin)
@@ -199,12 +200,16 @@ func _physics_process(delta: float) -> void:
 		AnimationState.WALKING:
 			if velocity.length() > 0.01:
 				animation_player.play("Walk")
+				start_footsteps()
 		AnimationState.RUNNING:
 			if velocity.length() > 0.01:
 				animation_player.play("Run2")
+				start_footsteps()
 		AnimationState.TALKING:
+			stop_footsteps()
 			animation_player.play("Talk2")
 		AnimationState.IDLE:
+			stop_footsteps()
 			animation_player.play("IdleStandard")
 
 func start_interaction() -> void:
@@ -304,117 +309,30 @@ func _reset_movement_state() -> void:
 	target_position = global_position
 	moving_to_target = false
 
-## ================= Comienzo debug CFG ================= #
-## Property directly below #@Debug will be monitored
-##@Debug
-#var property_1:int = 300
-#
-## function too.
-## Note that _process is called every frame.
-##@Debug
-#func get_str():
-	#return "abc"
-##@Debug'alias_name'
-#var property_2:String = ""
-##@Debug(category_name)
-#var property_3:Vector2 = Vector2.ZERO
-##@Debug(cate1/nested_category2)
-#var property_4:Vector3 = Vector3.ZERO
-##---
-## specify properties by property name
-##@Debug[position]
-##---
-## another node's properyy by property name.
-## However, it can only be monitored and cannot be edited.
-##@Debug[./ChildNode:position]
-## Internally, get_node() is used up to the : character, 
-## so % can also be used.
-##@Debug[%ChildNode:position]
-##---
-## You can assign colors for better readability using {}.
-##@Debug{#RED}
-#var property_5:StringName = &""
-##@Debug{#f0f0f0}
-#var property_6:bool = false
-##---
-## Multiple settings
-##@Debug(cate)'alias'{#RED}
-#var property_7:int = 123
-##@Debug{#f0f0f0}
-#var property_8:bool = false
-## ================= Fin debug CFG ================= #
-
-#extends CharacterBody3D
-#
-#@export_category("Player Movement")
-#@export var speed := 3
-#@export var WALK_SPEED := speed
-#@export var SPRINT_SPEED := speed * 1.5
-#@export var jump_velocity := 4.5
-#const ROTATION_SPEED := 4.0
-#
-##slowly rotate the charcter to point in the direction of the camera_pivot
-#@onready var camera_pivot : Node3D = $camera_pivot
-#@onready var playermodel : Node3D = $playermodel
-#
-#enum animation_state {IDLE,RUNNING,JUMPING}
-#var player_animation_state : animation_state = animation_state.IDLE
-#@onready var animation_player : AnimationPlayer = $"playermodel/character-male-e2/AnimationPlayer"
-#
-#func _physics_process(delta: float) -> void:
-	## Add the gravity.
-	#if not is_on_floor():
-		#velocity += get_gravity() * delta
-#
-	## Handle jump.
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-		#velocity.y = jump_velocity
-		##player_animation_state = animation_state.JUMPING
-		#
-		#
-	## Handle Sprint #
-	#if Input.is_action_pressed("sprint"):
-		#speed = SPRINT_SPEED
-	#else:
-		#speed = WALK_SPEED
-#
-	## Get the input direction and handle the movement/deceleration.
-	## As good practice, you should replace UI actions with custom gameplay actions.
-#
-	#var input_dir := Input.get_vector("leftward", "rightward", "forward", "backward")
-	#var direction = (camera_pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	#if Input.is_action_just_pressed("left_click"):
-		#direction = (camera_pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	#
-	#if direction:
-		#velocity.x = direction.x * speed
-		#velocity.z = direction.z * speed
-		##now rotate the model
-		#rotate_model(Vector3(direction.x, 0, direction.z), delta)
-		#player_animation_state = animation_state.RUNNING
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, speed)
-		#velocity.z = move_toward(velocity.z, 0, speed)
-		#player_animation_state = animation_state.IDLE
-	#
-	#if not is_on_floor():
-		#player_animation_state = animation_state.JUMPING
-	#
-	#move_and_slide()
-	##tell the playeranimationcontroller about the animation state
-	#match player_animation_state:
-		#animation_state.IDLE:
-			#animation_player.play("idle")
-		#animation_state.RUNNING:
-			#animation_player.play("sprint")
-		#animation_state.JUMPING:
-			#animation_player.play("jump")
-#
-	#
-#func rotate_model(direction: Vector3, delta : float) -> void:
-	##rotate the model to match the springarm
-	#playermodel.basis = lerp(playermodel.basis, Basis.looking_at(direction), 10.0 * delta)
-
-
 func _on_interact_button_pressed() -> void:
 	start_interaction()
+
+func start_footsteps():
+	if player_animation_state == AnimationState.WALKING:
+		timer_footsteps.wait_time = 0.6
+		audio_footsteps.pitch_scale = randf_range(0.95, 1.05)
+	elif player_animation_state == AnimationState.RUNNING:
+		timer_footsteps.wait_time = 0.45
+		audio_footsteps.pitch_scale = randf_range(0.99, 1.01)
+	if not started_audio_footsteps:
+		started_audio_footsteps = true
+		timer_footsteps.start()
+		audio_footsteps.play()
+
+func stop_footsteps():
+	started_audio_footsteps = false
+	timer_footsteps.stop()
+	audio_footsteps.stop()
+
+func play_sound_footsteps() -> void:
+	if audio_footsteps.playing:
+		audio_footsteps.stop()
+	audio_footsteps.play()
+
+func _on_timer_footsteps_timeout() -> void:
+	play_sound_footsteps()
