@@ -62,3 +62,4 @@ compositor = SubResource("Compositor_ill4j")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_kg7t3")
+bus = &"Ambience"

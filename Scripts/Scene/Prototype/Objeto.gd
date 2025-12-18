@@ -43,9 +43,10 @@ func despawn_object() -> void:
 	get_parent().queue_free()
 
 func _glow(status : bool) -> void:
-	glow = status
-	await get_tree().create_timer(1.5).timeout
-	glow = false
+	if SceneManagerMap01._already_interacted(object_name) == false:
+		glow = status
+		await get_tree().create_timer(1.5).timeout
+		glow = false
 
 func is_glowing() -> bool:
 	return glow

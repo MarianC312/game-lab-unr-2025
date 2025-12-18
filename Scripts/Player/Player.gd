@@ -21,6 +21,8 @@ const DOUBLE_CLICK_THRESHOLD := 0.25
 @onready var map = get_parent().get_node("Map")
 @onready var timer: Timer = $Timer
 @onready var interact_button: Button = $CanvasLayer/UI/HFlowContainer/InteractButton
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var timer_footsteps: Timer = $TimerFootsteps
 
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 
@@ -54,6 +56,7 @@ func _input(event: InputEvent) -> void:
 		GameManager._toggle_pause()
 	
 	if event.is_action_pressed("interact") and not is_dialogue_active:
+		_clear_movement()
 		start_interaction()
 	
 	if event.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")

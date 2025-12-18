@@ -1,9 +1,19 @@
-[gd_scene load_steps=42 format=4 uid="uid://dkp53ary6lvah"]
+[gd_scene load_steps=53 format=4 uid="uid://dkp53ary6lvah"]
 
 [ext_resource type="Script" uid="uid://c2k3xdanb5thv" path="res://Scripts/Player/Player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://bickw7f30y52t" path="res://Textures/Player/PaisanaSkin.png" id="2_h54ih"]
 [ext_resource type="Texture2D" uid="uid://c3hxdvblu7l64" path="res://Textures/Player/PaisanaRopa.png" id="3_ude3g"]
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="4_ude3g"]
+[ext_resource type="AudioStream" uid="uid://drqk4gic1fp33" path="res://Sounds/Player/SFX/StepsWood/Footsteps_Wood_Walk_01.wav" id="5_0u84n"]
+[ext_resource type="AudioStream" uid="uid://dqc6r0nyrmes3" path="res://Sounds/Player/SFX/StepsWood/Footsteps_Wood_Walk_02.wav" id="6_esmjy"]
+[ext_resource type="AudioStream" uid="uid://chkvo3hshwicp" path="res://Sounds/Player/SFX/StepsWood/Footsteps_Wood_Walk_03.wav" id="7_6tu5v"]
+[ext_resource type="AudioStream" uid="uid://bv4hww5qgbf0q" path="res://Sounds/Player/SFX/StepsWood/Footsteps_Wood_Walk_04.wav" id="8_spxdj"]
+[ext_resource type="AudioStream" uid="uid://01njtmlq0gio" path="res://Sounds/Player/SFX/StepsWood/Footsteps_Wood_Walk_05.wav" id="9_0objx"]
+[ext_resource type="AudioStream" uid="uid://dyetfbrhbp18c" path="res://Sounds/Player/SFX/StepsWood/Footsteps_Wood_Walk_06.wav" id="10_w71ue"]
+[ext_resource type="AudioStream" uid="uid://dep1bqygu0j4" path="res://Sounds/Player/SFX/StepsWood/Footsteps_Wood_Walk_07.wav" id="11_1e6p3"]
+[ext_resource type="AudioStream" uid="uid://mpj5yqy713pb" path="res://Sounds/Player/SFX/StepsWood/Footsteps_Wood_Walk_08.wav" id="12_yb677"]
+[ext_resource type="AudioStream" uid="uid://cda0lt8cxukgd" path="res://Sounds/Player/SFX/StepsWood/Footsteps_Wood_Walk_09.wav" id="13_8cj01"]
+[ext_resource type="AudioStream" uid="uid://0mk62llfxkht" path="res://Sounds/Player/SFX/StepsWood/Footsteps_Wood_Walk_10.wav" id="14_i2g7t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.15
@@ -7563,6 +7573,19 @@ unicode = 101
 [sub_resource type="Shortcut" id="Shortcut_jmcll"]
 events = [SubResource("InputEventKey_ude3g")]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ude3g"]
+streams_count = 10
+stream_0/stream = ExtResource("5_0u84n")
+stream_1/stream = ExtResource("6_esmjy")
+stream_2/stream = ExtResource("7_6tu5v")
+stream_3/stream = ExtResource("8_spxdj")
+stream_4/stream = ExtResource("9_0objx")
+stream_5/stream = ExtResource("10_w71ue")
+stream_6/stream = ExtResource("11_1e6p3")
+stream_7/stream = ExtResource("12_yb677")
+stream_8/stream = ExtResource("13_8cj01")
+stream_9/stream = ExtResource("14_i2g7t")
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 process_mode = 3
 collision_mask = 7
@@ -7963,10 +7986,6 @@ theme = ExtResource("4_ude3g")
 shortcut = SubResource("Shortcut_jmcll")
 text = "[ E ]"
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20715368, 0)
-max_distance = 50.0
-
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.3
 target_desired_distance = 0.1
@@ -7980,5 +7999,12 @@ debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="TimerFootsteps" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ude3g")
+bus = &"Player"
 
 [connection signal="pressed" from="CanvasLayer/UI/HFlowContainer/InteractButton" to="." method="_on_interact_button_pressed"]

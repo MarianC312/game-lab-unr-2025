@@ -120,6 +120,7 @@ visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_t06ot")
+bus = &"Music"
 
 [connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Playground" to="." method="_on_playground_pressed"]

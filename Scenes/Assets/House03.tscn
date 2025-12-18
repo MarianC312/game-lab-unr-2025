@@ -2465,7 +2465,7 @@ despawn = true
 shape = SubResource("ConvexPolygonShape3D_rqxgg")
 
 [node name="Mate" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.030597402, 0, 0.045007166, 0, 0.05442284, 0, -0.045007166, 0, -0.030597402, 1.2922301, 0.8023914, -1.4111147)
+transform = Transform3D(-0.030597402, 0, 0.045007166, 0, 0.05442284, 0, -0.045007166, 0, -0.030597402, 1.2922301, 0.8023914, -1.2658792)
 mesh = SubResource("ArrayMesh_64k5n")
 skeleton = NodePath("")
 surface_material_override/2 = SubResource("StandardMaterial3D_3nyy7")
@@ -2494,7 +2494,7 @@ collision_mask = 4
 shape = SubResource("ConcavePolygonShape3D_i1a6l")
 
 [node name="Pava" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.11853494, 0, 0.15228909, 0, 0.19298318, 0, -0.15228909, 0, -0.11853494, 1.543243, 0.8306147, -1.5294828)
+transform = Transform3D(-0.11853494, 0, 0.15228909, 0, 0.19298318, 0, -0.15228909, 0, -0.11853494, 1.4585679, 0.8306147, -1.4549725)
 mesh = SubResource("ArrayMesh_ptylq")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_eghuq")
