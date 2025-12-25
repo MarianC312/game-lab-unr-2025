@@ -7967,6 +7967,7 @@ alignment = 1
 vertical = true
 
 [node name="TextInteract" type="Label" parent="CanvasLayer/UI/BoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("4_ude3g")
 text = "(E) Interactuar"
@@ -7990,6 +7991,7 @@ mouse_filter = 2
 alignment = 2
 
 [node name="InteractButton" type="Button" parent="CanvasLayer/UI/HFlowContainer"]
+visible = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme = ExtResource("4_ude3g")

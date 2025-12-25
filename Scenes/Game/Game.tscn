@@ -12,6 +12,7 @@ script = ExtResource("1_gwu2e")
 layer = 50
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("3_xbxml")]
+visible = false
 
 [node name="Loading" parent="UI" instance=ExtResource("3_ln2h6")]
 visible = false
