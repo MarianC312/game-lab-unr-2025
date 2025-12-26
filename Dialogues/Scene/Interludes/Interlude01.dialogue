@@ -1,0 +1,5 @@
+~ start
+Interludio:
+	El boliche era el lugar de encuentro de los hacheros, y con frecuencia había peleas. A las mujeres que trabajaban allí se las trataba muy mal, muchas veces obligadas por la gendarmería privada de La Forestal.
+do GameManager.load_new_map("")
+=> END

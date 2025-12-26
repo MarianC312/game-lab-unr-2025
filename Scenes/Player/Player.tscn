@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://dkp53ary6lvah"]
+[gd_scene load_steps=56 format=4 uid="uid://dkp53ary6lvah"]
 
 [ext_resource type="Script" uid="uid://c2k3xdanb5thv" path="res://Scripts/Player/Player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://bickw7f30y52t" path="res://Textures/Player/PaisanaSkin.png" id="2_h54ih"]
@@ -7576,6 +7576,18 @@ unicode = 101
 [sub_resource type="Shortcut" id="Shortcut_jmcll"]
 events = [SubResource("InputEventKey_ude3g")]
 
+[sub_resource type="InputEventKey" id="InputEventKey_0u84n"]
+device = -1
+keycode = 80
+unicode = 112
+
+[sub_resource type="InputEventKey" id="InputEventKey_esmjy"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_esmjy"]
+events = [SubResource("InputEventKey_0u84n"), SubResource("InputEventKey_esmjy")]
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ude3g"]
 streams_count = 10
 stream_0/stream = ExtResource("5_0u84n")
@@ -7935,38 +7947,34 @@ light_color = Color(0.84671056, 0.6645983, 0.30685422, 1)
 light_energy = 0.593
 light_projector = SubResource("NoiseTexture2D_ude3g")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer5" type="CanvasLayer" parent="."]
 layer = 5
 follow_viewport_enabled = true
 
-[node name="UI" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="CanvasLayer5"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer5/UI"]
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -59.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_horizontal = 3
-size_flags_vertical = 8
-mouse_filter = 2
-
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -17.5
-offset_bottom = 5.5000267
-grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 vertical = true
 
-[node name="TextInteract" type="Label" parent="CanvasLayer/UI/BoxContainer"]
+[node name="TextInteract" type="Label" parent="CanvasLayer5/UI/BoxContainer"]
 visible = false
 layout_mode = 2
 theme = ExtResource("4_ude3g")
@@ -7974,29 +7982,55 @@ text = "(E) Interactuar"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HFlowContainer" type="HFlowContainer" parent="CanvasLayer/UI"]
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasLayer5/UI"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -86.0
-offset_top = -83.0
-offset_right = -26.0
-offset_bottom = -23.0
-grow_horizontal = 0
+offset_left = 60.0
+offset_top = -87.0
+offset_right = -60.0
+offset_bottom = -27.0
+grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
+theme_override_constants/h_separation = 10
 alignment = 2
 
-[node name="InteractButton" type="Button" parent="CanvasLayer/UI/HFlowContainer"]
+[node name="InteractButton" type="Button" parent="CanvasLayer5/UI/HFlowContainer"]
 visible = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme = ExtResource("4_ude3g")
 shortcut = SubResource("Shortcut_jmcll")
 text = "[ E ]"
+
+[node name="JournalButton" type="Button" parent="CanvasLayer5/UI/HFlowContainer"]
+visible = false
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_ude3g")
+text = "[ J ]"
+
+[node name="HFlowContainer2" type="HFlowContainer" parent="CanvasLayer5/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.052083332
+anchor_top = 0.044753086
+anchor_right = 0.9479167
+anchor_bottom = 0.044753086
+offset_top = 1.0
+offset_bottom = 61.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="Button" parent="CanvasLayer5/UI/HFlowContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_ude3g")
+shortcut = SubResource("Shortcut_esmjy")
+text = "[P]"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.3
@@ -8018,5 +8052,7 @@ wait_time = 0.3
 stream = SubResource("AudioStreamRandomizer_ude3g")
 bus = &"Player"
 
-[connection signal="pressed" from="CanvasLayer/UI/HFlowContainer/InteractButton" to="." method="_on_interact_button_pressed"]
+[connection signal="pressed" from="CanvasLayer5/UI/HFlowContainer/InteractButton" to="." method="_on_interact_button_pressed"]
+[connection signal="pressed" from="CanvasLayer5/UI/HFlowContainer/JournalButton" to="." method="_on_journal_button_pressed"]
+[connection signal="pressed" from="CanvasLayer5/UI/HFlowContainer2/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="timeout" from="TimerFootsteps" to="." method="_on_timer_footsteps_timeout"]

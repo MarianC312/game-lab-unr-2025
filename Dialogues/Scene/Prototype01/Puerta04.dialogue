@@ -1,7 +1,8 @@
 ~ start
 if not SceneManagerMap01._already_interacted("Puerta04"):
 	do SceneManagerMap01._register_interaction("Puerta04")
-Voy a ir al boliche a ver si saben algo de papá.
+{{ GameManager.get_player_name() }}:
+	Voy a ir al boliche a ver si saben algo de papá.
 - Ir al boliche => ir_al_boliche
 - Seguir investigando
 => END
@@ -10,5 +11,6 @@ Voy a ir al boliche a ver si saben algo de papá.
 if GameManager._map01_completed_tasks():
 	do GameManager.load_new_map("res://Scenes/Prototype/Prototype02.tscn")
 else:
-	Necesito algunas cosas antes de salir
+	{{ GameManager.get_player_name() }}:
+		Necesito algunas cosas antes de salir
 => END!

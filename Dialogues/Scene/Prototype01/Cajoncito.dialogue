@@ -1,10 +1,12 @@
 ~ start
 if SceneManagerMap01.interactable_is_locked("Cajoncito"):
-	Está cerrado... Quizás podría intentar abrirlo
+	{{ GameManager.get_player_name() }}:
+		Está cerrado... Quizás podría intentar abrirlo
 	- Abrir => desbloquear_objeto
 	- Dejar como está
 else:
-	Bien! Pude abrir esta cerradura...
+	{{ GameManager.get_player_name() }}:
+		Bien! Pude abrir esta cerradura...
 => END
 
 ~ desbloquear_objeto

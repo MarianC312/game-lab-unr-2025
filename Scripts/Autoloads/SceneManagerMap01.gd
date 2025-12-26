@@ -1,6 +1,7 @@
 extends Node
 
 @export var interactables : Dictionary = {}
+const JOURNAL_NAME := "Cuaderno"
 
 signal registered_interaction
 
@@ -51,3 +52,6 @@ func _interacted_with_all() -> bool:
 			resp = false
 			continue
 	return resp
+
+func already_interacted_with_journal() -> bool:
+	return _already_interacted(JOURNAL_NAME)

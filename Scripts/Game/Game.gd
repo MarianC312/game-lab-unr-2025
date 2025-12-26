@@ -5,6 +5,7 @@ extends Node
 @onready var map : Node3D = $Map
 @onready var player : CharacterBody3D = $Player
 @onready var loading : Control = $UI/Loading
+@onready var journal: Control = $UI/Journal
 
 var first_load : bool = true
 var current_map: Node = null
@@ -18,6 +19,7 @@ func _process(_delta: float) -> void:
 func _ready() -> void:
 	GameManager.toggle_pause.connect(_on_toggle_pause)
 	GameManager.toggle_loading.connect(_on_toggle_loading)
+	GameManager.toggle_journal.connect(_on_toggle_journal)
 	loading.scene_loaded.connect(_on_scene_loaded)
 	pause_menu.visible = false
 	loading.visible = true
@@ -29,7 +31,7 @@ func _input(_event: InputEvent) -> void:
 	pass
 
 func _on_toggle_pause() -> void:
-	print("Toggled pause: ", GameManager._is_game_paused())
+	# print("Toggled pause: ", GameManager._is_game_paused())
 	if GameManager._is_game_paused() and not GameManager._is_game_loading():
 		current_map.process_mode = Node.PROCESS_MODE_DISABLED
 		pause_menu.visible = true
@@ -38,7 +40,7 @@ func _on_toggle_pause() -> void:
 		pause_menu.visible = false
 
 func _on_toggle_loading() -> void:
-	print("Toggled loading: ", GameManager._get_current_state())
+	# print("Toggled loading: ", GameManager._get_current_state())
 	if GameManager._is_game_loading() and not GameManager._is_game_paused():
 		if not first_load:
 			SceneTransitions.fade_out()
@@ -61,11 +63,16 @@ func load_map(packed_scene) -> void:
 	map.add_child(new_map)
 	current_map = new_map # Corregir que el nuevo mapa cargado pase a ser hijo del nodo Map
 	GameManager._switch_scene_loaded()
+	if GameManager.should_load_dialogue_at_start():
+		if current_map.has_method("start_dialogue"):
+			current_map.start_dialogue()
 	_on_map_ready()
 
 func _on_map_ready() -> void:
-	var spawn = get_tree().get_first_node_in_group("CharSpawn")
-	player.global_position = spawn.global_position
+	if GameManager.current_scene.playable:
+		var spawn = get_tree().get_first_node_in_group("CharSpawn")
+		player.global_position = spawn.global_position
+		player.start_first_dialogue() # hacer q solo se ejecute en el primer mapa
 	player._clear_movement()
 	loading.visible = false
 	SceneTransitions.fade_in()
@@ -74,5 +81,10 @@ func _on_map_ready() -> void:
 	GameManager._toggle_playing()
 
 func _on_scene_loaded(new_scene) -> void:
-	print("entered!")
 	load_map(new_scene)
+
+func _on_toggle_journal() -> void:
+	if journal.visible:
+		journal.hide()
+	else:
+		journal.show()

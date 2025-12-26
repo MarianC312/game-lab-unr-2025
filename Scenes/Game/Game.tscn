@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwl0t0lg0urkc"]
+[gd_scene load_steps=6 format=3 uid="uid://dwl0t0lg0urkc"]
 
 [ext_resource type="Script" uid="uid://nxf4xejdqb4e" path="res://Scripts/Game/Game.gd" id="1_gwu2e"]
 [ext_resource type="PackedScene" uid="uid://dkp53ary6lvah" path="res://Scenes/Player/Player.tscn" id="2_xbxml"]
+[ext_resource type="PackedScene" uid="uid://dkdyp60vkqbij" path="res://Scenes/UI/Journal.tscn" id="2_y3kpf"]
 [ext_resource type="PackedScene" uid="uid://dlf3yhsierjcw" path="res://Scenes/UI/Loading.tscn" id="3_ln2h6"]
 [ext_resource type="PackedScene" uid="uid://4ulbnprvg5dc" path="res://Scenes/UI/PauseMenu.tscn" id="3_xbxml"]
 
@@ -10,6 +11,9 @@ script = ExtResource("1_gwu2e")
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 50
+
+[node name="Journal" parent="UI" instance=ExtResource("2_y3kpf")]
+visible = false
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("3_xbxml")]
 visible = false

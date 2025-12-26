@@ -1,0 +1,5 @@
+~ start
+{{ GameManager.get_player_name() }}:
+	¡Uaaaah!... [wave](Boteza)[/wave]
+	Qué raro que mamá no me despertó para tomar mates con ella...
+=> END

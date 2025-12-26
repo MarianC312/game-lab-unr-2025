@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkdyp60vkqbij"]
+
+[ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="1_uxyxf"]
+[ext_resource type="Script" uid="uid://bqwnhnamdwyrd" path="res://Scripts/UI/Journal.gd" id="1_vo2py"]
+
+[node name="Journal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vo2py")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.013020833
+anchor_top = 0.9768519
+anchor_right = 0.013020833
+anchor_bottom = 0.9768519
+offset_top = -64.0
+offset_right = 231.0
+grow_vertical = 0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Volver" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_uxyxf")
+theme_override_font_sizes/font_size = 32
+text = "menu_btn_back"
+
+[connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]

@@ -11,7 +11,8 @@ const ROTATION_SPEED := 10.0
 const CAMERA_ROTATION_SPEED := 0.005
 const DOUBLE_CLICK_THRESHOLD := 0.25
 
-@onready var text_interact : Label = $CanvasLayer/UI/BoxContainer/TextInteract
+@export var first_dialogue : DialogueResource = preload("res://Dialogues/Scene/Prototype01/PlayerFirstDialogue.dialogue")
+@onready var text_interact : Label = $CanvasLayer5/UI/BoxContainer/TextInteract
 @onready var see_cast : ShapeCast3D = $playermodel/Prototype/SeeCast02
 @onready var camera_pivot : Node3D = $camera_pivot
 @onready var camera_3d: Camera3D = $camera_pivot/SpringArm3D/Camera3D
@@ -20,9 +21,10 @@ const DOUBLE_CLICK_THRESHOLD := 0.25
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var map = get_parent().get_node("Map")
 @onready var timer: Timer = $Timer
-@onready var interact_button: Button = $CanvasLayer/UI/HFlowContainer/InteractButton
+@onready var interact_button: Button = $CanvasLayer5/UI/HFlowContainer/InteractButton
 @onready var audio_footsteps: AudioStreamPlayer = $AudioFootsteps
 @onready var timer_footsteps: Timer = $TimerFootsteps
+@onready var journal_button: Button = $CanvasLayer5/UI/HFlowContainer/JournalButton
 
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 
@@ -40,7 +42,10 @@ var last_click_time := 0.0
 const PATH_POSITION_CHAIN : bool = false
 const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
 
+var is_first_dialogue_done : bool = false
 var is_dialogue_active : bool = false
+var is_journal_active : bool = false
+var is_pause_active : bool = false
 var can_glow_interactables : bool = true
 var already_called_clear_interactable_glow : bool = false
 var started_audio_footsteps : bool = false
@@ -53,8 +58,11 @@ func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("escape"):
-		GameManager._toggle_pause()
+	if event.is_action_pressed("pause"):
+		_toogle_pause()
+	
+	if event.is_action_pressed("journal"):
+		_toogle_journal()
 	
 	if event.is_action_pressed("interact") and not is_dialogue_active:
 		_clear_movement()
@@ -135,6 +143,9 @@ func _process(_delta: float) -> void:
 	if not already_called_clear_interactable_glow and not can_glow_interactables:
 		already_called_clear_interactable_glow = true
 		_clear_interactable_glow()
+	
+	if not journal_button.visible and GameManager.has_journal():
+		journal_button.show()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -310,7 +321,8 @@ func _reset_movement_state() -> void:
 	moving_to_target = false
 
 func _on_interact_button_pressed() -> void:
-	start_interaction()
+	if not is_dialogue_active:
+		start_interaction()
 
 func start_footsteps():
 	if player_animation_state == AnimationState.WALKING:
@@ -336,3 +348,31 @@ func play_sound_footsteps() -> void:
 
 func _on_timer_footsteps_timeout() -> void:
 	play_sound_footsteps()
+
+
+func _on_journal_button_pressed() -> void:
+	GameManager._toggle_journal()
+
+
+func _on_pause_button_pressed() -> void:
+	_toogle_pause()
+
+func _toogle_journal() -> void:
+	if not is_journal_active:
+		is_journal_active = true
+		await get_tree().create_timer(0.4).timeout
+		is_journal_active = false
+		GameManager._toggle_journal()
+
+func _toogle_pause() -> void:
+	if not is_pause_active:
+		is_pause_active = true
+		await get_tree().create_timer(0.4).timeout
+		is_pause_active = false
+		GameManager._toggle_pause()
+
+func start_first_dialogue() -> void:
+	if not is_first_dialogue_done:
+		is_first_dialogue_done = true
+		await get_tree().create_timer(0.75).timeout
+		DialogueManager.show_dialogue_balloon(first_dialogue, "start")
