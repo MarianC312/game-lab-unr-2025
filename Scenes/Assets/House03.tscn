@@ -2692,6 +2692,15 @@ mesh = SubResource("BoxMesh_lht6p")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_v525p")
 
+[node name="Lights" type="Node3D" parent="Shading"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Shading/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8980505, 1.7179586, -0.76072186)
+light_color = Color(0.78477573, 0.5876256, 0.3466371, 1)
+light_energy = 0.12
+light_specular = 0.0
+omni_range = 30.0
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered" binds= [1]]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited" binds= [1]]
 [connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_body_entered" binds= [2]]

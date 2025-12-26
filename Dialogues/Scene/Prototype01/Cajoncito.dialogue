@@ -7,6 +7,7 @@ if SceneManagerMap01.interactable_is_locked("Cajoncito"):
 else:
 	{{ GameManager.get_player_name() }}:
 		Bien! Pude abrir esta cerradura...
+		Me voy a llevar unas monedas, tal vez me sean útiles.
 => END
 
 ~ desbloquear_objeto

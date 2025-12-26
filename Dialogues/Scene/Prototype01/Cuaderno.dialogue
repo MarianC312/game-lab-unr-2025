@@ -4,7 +4,6 @@ if SceneManagerMap01._already_interacted("Cuaderno"):
 		El mismo cuaderno de antes...
 else:
 	{{ GameManager.get_player_name() }}:
-		Un cuaderno...
-		Tiene una lista de tareas, y algo borrado junto al nombre de Manuel.
+		El cuaderno de papá... hay algo borrado junto al nombre de Manuel, es el almacenero que atiende el boliche... Lo voy a usar para anotar.
 	do SceneManagerMap01._register_interaction("Cuaderno")
 => END
