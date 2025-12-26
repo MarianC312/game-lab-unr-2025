@@ -6,6 +6,14 @@ extends CharacterBody3D
 @export var WALK_SPEED := 1.75
 @export var SPRINT_SPEED := 2.5
 @export var jump_velocity := 4.5
+@export var max_neck_yaw := deg_to_rad(30)
+@export var max_head_yaw := deg_to_rad(10)
+@export var look_speed := 2.0
+@export var spine_turn_threshold := deg_to_rad(5)
+@export var spine_turn_speed := 2.0
+@export var max_spine_yaw := deg_to_rad(5)
+@export var yaw_transfer_speed := 6.0
+
 
 const ROTATION_SPEED := 10.0
 const CAMERA_ROTATION_SPEED := 0.005
@@ -25,6 +33,7 @@ const DOUBLE_CLICK_THRESHOLD := 0.25
 @onready var audio_footsteps: AudioStreamPlayer = $AudioFootsteps
 @onready var timer_footsteps: Timer = $TimerFootsteps
 @onready var journal_button: Button = $CanvasLayer5/UI/HFlowContainer/JournalButton
+@onready var skeleton: Skeleton3D = $playermodel/Prototype/Player/Armature/Skeleton3D
 
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 
@@ -38,6 +47,14 @@ var has_target : bool = false
 var should_run : bool = false
 var interactable_item_list : Array
 var last_click_time := 0.0
+var neck_bone := -1
+var head_bone := -1
+var spine_bone_1 := -1
+var spine_bone_2 := -1
+var spine_bone_3 := -1
+var current_look_yaw := 0.0
+var spine_yaw := 0.0
+var look_enabled := true
 
 const PATH_POSITION_CHAIN : bool = false
 const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
@@ -56,6 +73,11 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	DialogueManager.dialogue_started.connect(_on_dialogue_start)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
+	neck_bone = skeleton.find_bone("mixamorig_Neck")
+	head_bone = skeleton.find_bone("mixamorig_Head")
+	spine_bone_1 = skeleton.find_bone("mixamorig_Spine")
+	spine_bone_2 = skeleton.find_bone("mixamorig_Spine1")
+	spine_bone_3 = skeleton.find_bone("mixamorig_Spine2")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -116,6 +138,46 @@ func _input(event: InputEvent) -> void:
 					if item.has_method("_glow"):
 						item.call("_glow", true)
 
+func get_mouse_dir() -> Vector3:
+	var cam := get_viewport().get_camera_3d()
+	if cam == null:
+		return Vector3.ZERO
+	
+	var mouse_pos = get_viewport().get_mouse_position()
+	
+	var origin = cam.project_ray_origin(mouse_pos)
+	var dir = cam.project_ray_normal(mouse_pos)
+	
+	var plane = Plane(
+		-cam.global_transform.basis.z,
+		global_position
+	)
+
+	var hit = plane.intersects_ray(origin, dir)
+	if hit == null:
+		return Vector3.ZERO
+	
+	return (hit - global_position).normalized()
+
+func apply_bone_yaw(bone_idx: int, yaw: float):
+	if bone_idx == -1:
+		return
+	
+	var pose := skeleton.get_bone_global_pose(bone_idx)
+	
+	var pos := pose.origin
+	var rot := Basis(Vector3.UP, yaw)
+	pose.basis = rot * pose.basis
+	pose.origin = pos
+	
+	skeleton.set_bone_global_pose_override(
+		bone_idx,
+		pose,
+		1.0,
+		true
+	)
+
+
 func _clear_interactable_glow() -> void:
 	print("Called clear interactable.")
 	await get_tree().create_timer(1.5).timeout
@@ -137,7 +199,9 @@ func _clear_movement() -> void:
 		nav_agent.set_target_position(global_position)
 		nav_agent.get_next_path_position()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	update_look(delta)
+	update_spine(delta)
 	# print("MODEL FORWARD:", playermodel.global_transform.basis.z)
 	# print("Player is grunded: ", is_on_floor())
 	if not already_called_clear_interactable_glow and not can_glow_interactables:
@@ -165,7 +229,11 @@ func _physics_process(delta: float) -> void:
 	
 	if is_dialogue_active:
 		player_animation_state = AnimationState.TALKING
+		if look_enabled:
+			disable_look()
 	else:
+		if not look_enabled:
+			enable_look()
 		# print("Collision count: ", see_cast.get_collision_count())
 		if see_cast.is_colliding() and see_cast.get_collision_count() > 0:
 			target = see_cast.get_collider(0)
@@ -222,6 +290,78 @@ func _physics_process(delta: float) -> void:
 		AnimationState.IDLE:
 			stop_footsteps()
 			animation_player.play("IdleStandard")
+
+func update_look(delta : float) -> void:
+	if look_enabled:
+		skeleton.clear_bones_global_pose_override()
+		
+		var dir = get_mouse_dir()
+		# print(dir)
+		if dir == Vector3.ZERO:
+			return
+		
+		var local_dir = playermodel.global_transform.basis.inverse() * dir * -1
+		#if local_dir.z < 0.0:
+			#current_look_yaw = lerp_angle(
+				#current_look_yaw,
+				#0.0,
+				#look_speed * 0.25 * delta
+			#)
+			#return
+		var delta_yaw = atan2(local_dir.x, local_dir.z)
+		# print(delta_yaw)
+		current_look_yaw = clamp(
+			lerp_angle(
+				current_look_yaw,
+				delta_yaw,
+				look_speed * delta
+			),
+			deg_to_rad(-40),
+			deg_to_rad(40)
+		)
+		
+		var neck_yaw = clamp(current_look_yaw * 0.7, deg_to_rad(-25), deg_to_rad(25))
+		var head_yaw = clamp(current_look_yaw * 0.3, deg_to_rad(-15), deg_to_rad(15))
+		
+		apply_bone_yaw(neck_bone, neck_yaw)
+		apply_bone_yaw(head_bone, head_yaw)
+
+func update_spine(delta):
+	if look_enabled:
+		var abs_yaw = abs(current_look_yaw)
+
+		if abs_yaw <= spine_turn_threshold:
+			reset_spine(delta, spine_bone_1)
+			reset_spine(delta, spine_bone_2)
+			reset_spine(delta, spine_bone_3)
+			return
+		
+		var spine_target = clamp(
+			current_look_yaw * 0.4,
+			-max_spine_yaw,
+			max_spine_yaw
+		)
+		
+		spine_yaw = lerp_angle(
+			spine_yaw,
+			spine_target,
+			spine_turn_speed * delta
+		)
+		
+		apply_bone_yaw(spine_bone_1, spine_yaw)
+		apply_bone_yaw(spine_bone_2, spine_yaw)
+		apply_bone_yaw(spine_bone_3, spine_yaw)
+
+		# Compensar cabeza (clave)
+		current_look_yaw = lerp_angle(
+			current_look_yaw,
+			current_look_yaw - spine_yaw,
+			yaw_transfer_speed * delta
+		)
+
+func reset_spine(delta, spine_bone):
+	spine_yaw = lerp_angle(spine_yaw, 0.0, spine_turn_speed * delta)
+	apply_bone_yaw(spine_bone, spine_yaw)
 
 func start_interaction() -> void:
 	if target != null:
@@ -376,3 +516,12 @@ func start_first_dialogue() -> void:
 		is_first_dialogue_done = true
 		await get_tree().create_timer(0.75).timeout
 		DialogueManager.show_dialogue_balloon(first_dialogue, "start")
+
+func disable_look():
+	look_enabled = false
+	current_look_yaw = 0.0
+	skeleton.clear_bones_global_pose_override()
+
+func enable_look():
+	current_look_yaw = 0.0
+	look_enabled = true

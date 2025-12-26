@@ -25,6 +25,9 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("left_click") and is_locked and pivot.is_visible_in_tree():
 		try_unlock()
+	
+	if event.is_action_pressed("right_click"):
+		quit_minigame()
 
 func _process(_delta: float) -> void:
 	# print(pick_position)
@@ -53,3 +56,9 @@ func shake_pick(intensity := 5.0, duration := 0.1) -> void:
 	step.set_trans(Tween.TRANS_SINE)
 
 	tween.tween_property(pivot, "position", original_pos, duration / 2)
+
+func quit_minigame() -> void:
+		animation_player.play_backwards("slide_panels")
+		await animation_player.animation_finished
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		queue_free()
