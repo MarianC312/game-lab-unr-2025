@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://b1wy1287lbdbm"]
+
+[ext_resource type="Texture2D" uid="uid://b3fq0fv8n3r8q" path="res://Textures/House01/Pared/damaged_plaster_diff_2k.jpg" id="1_cgyfd"]
+[ext_resource type="Texture2D" uid="uid://bb3wniagy3pnc" path="res://Textures/House01/Pared/damaged_plaster_disp_2k.png" id="2_gkqdr"]
+[ext_resource type="Texture2D" uid="uid://cvqp88pp3jj0j" path="res://Textures/House01/Pared/damaged_plaster_rough_2k.exr" id="3_wi5wx"]
+
+[sub_resource type="Gradient" id="Gradient_wo2ne"]
+colors = PackedColorArray(0.29647407, 0.25386813, 0.0897549, 1, 0.59424126, 0.57041895, 0.35332176, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v8adl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hbiv5"]
+noise = SubResource("FastNoiseLite_v8adl")
+color_ramp = SubResource("Gradient_wo2ne")
+
+[resource]
+albedo_texture = ExtResource("1_cgyfd")
+roughness_texture = ExtResource("3_wi5wx")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_hbiv5")
+heightmap_enabled = true
+heightmap_deep_parallax = true
+heightmap_min_layers = 16
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("2_gkqdr")

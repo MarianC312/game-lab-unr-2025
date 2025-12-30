@@ -444,6 +444,8 @@ func move_type2(delta : float) -> void:
 		player_animation_state = AnimationState.IDLE
 	
 func rotate_model(direction: Vector3, delta: float) -> void:
+	if abs(direction.dot(Vector3.UP)) > 0.98:
+		return
 	# print("Rotate to: ", direction)
 	if direction != Vector3.ZERO:
 		var target_basis = Basis.looking_at(direction)
