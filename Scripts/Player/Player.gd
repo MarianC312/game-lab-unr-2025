@@ -435,7 +435,7 @@ func move_type2(delta : float) -> void:
 			direction = (target.global_position - global_position).normalized()
 		else:
 			direction = (target_position - global_position).normalized()
-		direction.y = 0
+		direction.y = 0.0
 		rotate_model(direction, delta)
 		has_target = false
 		moving_to_target = false
@@ -448,7 +448,7 @@ func rotate_model(direction: Vector3, delta: float) -> void:
 		return
 	# print("Rotate to: ", direction)
 	if direction != Vector3.ZERO:
-		var target_basis = Basis.looking_at(direction)
+		var target_basis = Basis.looking_at(direction, Vector3.UP)
 		playermodel.basis = playermodel.basis.slerp(target_basis, ROTATION_SPEED * delta)
 
 func _on_dialogue_start(_dialogue) -> void:
