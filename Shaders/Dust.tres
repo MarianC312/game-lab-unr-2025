@@ -1,0 +1,38 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://2lpfwu5kiwqf"]
+
+[ext_resource type="Texture2D" uid="uid://lkhnmtosoc4g" path="res://Textures/Particles/dirt_02.png" id="1_clorp"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_gmon5"]
+texture = ExtResource("1_clorp")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_clorp"]
+texture = ExtResource("1_clorp")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_14ybn"]
+texture = ExtResource("1_clorp")
+
+[resource]
+code = "shader_type fog;
+uniform sampler2D tex_fog_2;
+
+
+
+void fog() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_fog_2, vec2(0.0));
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+mode = 4
+nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_14ybn")
+nodes/vertex/2/position = Vector2(20, 120)
+nodes/start/2/node = SubResource("VisualShaderNodeTexture_clorp")
+nodes/start/2/position = Vector2(60, 200)
+nodes/fog/2/node = SubResource("VisualShaderNodeTexture_gmon5")
+nodes/fog/2/position = Vector2(160, 160)
+nodes/fog/connections = PackedInt32Array(2, 0, 0, 1)

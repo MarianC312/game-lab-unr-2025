@@ -1,6 +1,6 @@
 ~ start
-if not SceneManagerMap01._already_interacted("Puerta01"):
-	do SceneManagerMap01._register_interaction("Puerta01")
+if not SceneManagerMap01._already_interacted("4. Puerta Dormitorio"):
+	do SceneManagerMap01._register_interaction("4. Puerta Dormitorio")
 {{ GameManager.get_player_name() }}:
 	Mis hermanos aun duermen, no los voy a molestar...
 => END

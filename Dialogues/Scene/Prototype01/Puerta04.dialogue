@@ -1,6 +1,6 @@
 ~ start
-if not SceneManagerMap01._already_interacted("Puerta04"):
-	do SceneManagerMap01._register_interaction("Puerta04")
+if not SceneManagerMap01._already_interacted("6. Ir al boliche"):
+	do SceneManagerMap01._register_interaction("6. Ir al boliche")
 {{ GameManager.get_player_name() }}:
 	Voy a ir al boliche, sé que no es un buen lugar para las mujeres pero necesito ir a ver si Manuel sabe algo de papá.
 - Ir al boliche => ir_al_boliche

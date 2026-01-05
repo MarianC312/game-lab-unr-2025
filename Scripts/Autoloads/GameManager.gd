@@ -6,13 +6,13 @@ var next_scene : Dictionary
 var current_state : game_states = game_states.LOADING
 var current_locale_id : int
 var game_scene_flow := {
-	"Testing":
-		{
-			"res": "res://Scenes/Prototype/Prototype02.tscn",
-			"status": false,
-			"loadDialogue": false,
-			"playable": true
-		},
+	#"Testing":
+		#{
+			#"res": "res://Scenes/Prototype/Prototype02.tscn",
+			#"status": false,
+			#"loadDialogue": false,
+			#"playable": true
+		#},
 	"Prologue":
 		{
 			"res": "res://Scenes/Prologue.tscn",
@@ -102,9 +102,6 @@ func _toggle_pause(emit := true) -> void:
 
 func load_new_map(_new_map_path : String) -> void:
 	for scene in game_scene_flow.keys():
-		print(scene)
-		print(game_scene_flow[scene])
-		print(game_scene_flow[scene].status)
 		if not game_scene_flow[scene].status:
 			print("Start loading new map: ", game_scene_flow[scene].res)
 			_set_new_scene_path(game_scene_flow[scene])
@@ -177,3 +174,9 @@ func _toggle_journal() -> void:
 
 func get_player_name() -> String:
 	return PLAYER_NAME
+
+func get_game_flow_names() -> Array:
+	return game_scene_flow.keys()
+
+func get_scene_state(scene_name : String) -> bool:
+	return game_scene_flow[scene_name].status

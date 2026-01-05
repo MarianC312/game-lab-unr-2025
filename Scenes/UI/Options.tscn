@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4yck0xdtbl3n"]
+[gd_scene load_steps=10 format=3 uid="uid://c4yck0xdtbl3n"]
 
 [ext_resource type="Script" uid="uid://clu6hdbsoyrd5" path="res://Scripts/UI/Options.gd" id="1_h8s0t"]
 [ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="2_eothy"]
@@ -16,6 +16,259 @@ fill_to = Vector2(1, 0.875)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_120pb"]
 texture = SubResource("GradientTexture2D_eothy")
+
+[sub_resource type="Animation" id="Animation_eothy"]
+resource_name = "slide_in_out"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(2.0000005, 2),
+"update": 0,
+"values": [Vector2(88, 160), Vector2(88, 230)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(88, 224), Vector2(88, 294)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(88, 288), Vector2(88, 358)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 569)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextLoading:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(620, 557)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HBoxContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HBoxContainer2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HBoxContainer3:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VBoxContainer:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.45, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextLoading:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.45, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bgrb0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(88, 230)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(88, 294)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(88, 358)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 569)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextLoading:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(620, 557)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HBoxContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HBoxContainer2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HBoxContainer3:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VBoxContainer:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextLoading:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_120pb"]
+_data = {
+&"RESET": SubResource("Animation_bgrb0"),
+&"slide_in_out": SubResource("Animation_eothy")
+}
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -55,49 +308,48 @@ vertical_alignment = 1
 text_direction = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.675
-anchor_bottom = 1.0
-offset_left = 88.0
-offset_right = -278.60004
-grow_vertical = 2
-size_flags_horizontal = 0
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+layout_mode = 0
+offset_left = 88.0
+offset_top = 230.0
+offset_right = 739.0
+offset_bottom = 290.00043
 theme_override_constants/separation = 40
 
-[node name="Musica" type="Label" parent="VBoxContainer2/HBoxContainer"]
+[node name="Musica" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_eothy")
 theme_override_font_sizes/font_size = 28
 text = "menu_options_text_music"
 
-[node name="MusicaSlider" type="HSlider" parent="VBoxContainer2/HBoxContainer"]
+[node name="MusicaSlider" type="HSlider" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_eothy")
 value = 100.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+layout_mode = 0
+offset_left = 88.0
+offset_top = 294.0
+offset_right = 739.0
+offset_bottom = 354.00583
 theme_override_constants/separation = 40
 
-[node name="Sonido" type="Label" parent="VBoxContainer2/HBoxContainer2"]
+[node name="Sonido" type="Label" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_eothy")
 theme_override_font_sizes/font_size = 28
 text = "menu_options_text_sound"
 
-[node name="SonidoSlider" type="HSlider" parent="VBoxContainer2/HBoxContainer2"]
+[node name="SonidoSlider" type="HSlider" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_vertical = 4
@@ -105,19 +357,23 @@ theme = ExtResource("3_eothy")
 step = 5.0
 value = 100.0
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+layout_mode = 0
+offset_left = 88.0
+offset_top = 358.0
+offset_right = 739.0
+offset_bottom = 418.0
 theme_override_constants/separation = 40
 
-[node name="Lenguaje" type="Label" parent="VBoxContainer2/HBoxContainer3"]
+[node name="Lenguaje" type="Label" parent="HBoxContainer3"]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_eothy")
 theme_override_font_sizes/font_size = 28
 text = "menu_options_text_lang"
 
-[node name="LenguajeOptionButton" type="OptionButton" parent="VBoxContainer2/HBoxContainer3"]
+[node name="LenguajeOptionButton" type="OptionButton" parent="HBoxContainer3"]
 custom_minimum_size = Vector2(225, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -150,5 +406,10 @@ theme = ExtResource("3_eothy")
 theme_override_font_sizes/font_size = 32
 text = "menu_btn_back"
 
-[connection signal="item_selected" from="VBoxContainer2/HBoxContainer3/LenguajeOptionButton" to="." method="_on_option_button_item_selected"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_120pb")
+}
+
+[connection signal="item_selected" from="HBoxContainer3/LenguajeOptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]

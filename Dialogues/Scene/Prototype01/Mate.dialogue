@@ -1,6 +1,6 @@
 ~ start
-if not SceneManagerMap01._already_interacted("Mate"):
-	do SceneManagerMap01._register_interaction("Mate")
+if not SceneManagerMap01._already_interacted("3. Mate"):
+	do SceneManagerMap01._register_interaction("3. Mate")
 {{ GameManager.get_player_name() }}:
 	El mate ya está frío, mamá debe haber salido temprano. Ayer Doña Rosa se sentía mal, seguro se fue a verla otra vez.
 => END

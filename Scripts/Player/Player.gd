@@ -18,6 +18,8 @@ extends CharacterBody3D
 const ROTATION_SPEED := 10.0
 const CAMERA_ROTATION_SPEED := 0.005
 const DOUBLE_CLICK_THRESHOLD := 0.25
+const PATH_POSITION_CHAIN : bool = false
+const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
 
 @export var first_dialogue : DialogueResource = preload("res://Dialogues/Scene/Prototype01/PlayerFirstDialogue.dialogue")
 @onready var text_interact : Label = $CanvasLayer5/UI/BoxContainer/TextInteract
@@ -34,6 +36,7 @@ const DOUBLE_CLICK_THRESHOLD := 0.25
 @onready var timer_footsteps: Timer = $TimerFootsteps
 @onready var journal_button: Button = $CanvasLayer5/UI/HFlowContainer/JournalButton
 @onready var skeleton: Skeleton3D = $playermodel/Prototype/Player/Armature/Skeleton3D
+@onready var gpu_particles_3d: GPUParticles3D = $playermodel/GPUParticles3D
 
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 
@@ -55,10 +58,6 @@ var spine_bone_3 := -1
 var current_look_yaw := 0.0
 var spine_yaw := 0.0
 var look_enabled := true
-
-const PATH_POSITION_CHAIN : bool = false
-const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
-
 var is_first_dialogue_done : bool = false
 var is_dialogue_active : bool = false
 var is_journal_active : bool = false
@@ -66,6 +65,9 @@ var is_pause_active : bool = false
 var can_glow_interactables : bool = true
 var already_called_clear_interactable_glow : bool = false
 var started_audio_footsteps : bool = false
+var highlight_tween: Tween
+
+
 
 func _ready() -> void:
 	# nav_agent.set_target_position(global_transform.origin)
@@ -73,6 +75,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	DialogueManager.dialogue_started.connect(_on_dialogue_start)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
+	SceneManagerMap01.registered_interaction.connect(_on_registered_interaction)
 	neck_bone = skeleton.find_bone("mixamorig_Neck")
 	head_bone = skeleton.find_bone("mixamorig_Head")
 	spine_bone_1 = skeleton.find_bone("mixamorig_Spine")
@@ -80,15 +83,15 @@ func _ready() -> void:
 	spine_bone_3 = skeleton.find_bone("mixamorig_Spine2")
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		_toogle_pause()
+	#if event.is_action_pressed("pause"):
+		#_toogle_pause()
 	
-	if event.is_action_pressed("journal"):
-		_toogle_journal()
+	#if event.is_action_pressed("journal"):
+		#_toogle_journal()
 	
-	if event.is_action_pressed("interact") and not is_dialogue_active:
-		_clear_movement()
-		start_interaction()
+	#if event.is_action_pressed("interact") and not is_dialogue_active:
+		#_clear_movement()
+		#start_interaction()
 	
 	if event.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
 		var ui_clicked = get_viewport().gui_get_hovered_control()
@@ -487,12 +490,14 @@ func play_sound_footsteps() -> void:
 	if audio_footsteps.playing:
 		audio_footsteps.stop()
 	audio_footsteps.play()
+	_emit_step_particle()
 
 func _on_timer_footsteps_timeout() -> void:
 	play_sound_footsteps()
 
 
 func _on_journal_button_pressed() -> void:
+	stop_highlight(journal_button)
 	GameManager._toggle_journal()
 
 
@@ -500,6 +505,7 @@ func _on_pause_button_pressed() -> void:
 	_toogle_pause()
 
 func _toogle_journal() -> void:
+	stop_highlight(journal_button)
 	if not is_journal_active:
 		is_journal_active = true
 		await get_tree().create_timer(0.4).timeout
@@ -527,3 +533,33 @@ func disable_look():
 func enable_look():
 	current_look_yaw = 0.0
 	look_enabled = true
+
+func _emit_step_particle() -> void:
+	gpu_particles_3d.restart()
+
+func _on_registered_interaction(_interactable) -> void:
+	highlight_button(journal_button)
+
+func highlight_button(button: Button):
+	if highlight_tween and highlight_tween.is_running():
+		highlight_tween.kill()
+	
+	button.scale = Vector2.ONE
+	
+	highlight_tween = button.create_tween()
+	highlight_tween.set_loops()
+	
+	highlight_tween.tween_property(button, "scale", Vector2(1.05, 1.05), 0.4)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)
+	
+	highlight_tween.tween_property(button, "scale", Vector2.ONE, 0.4)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)
+
+func stop_highlight(button: Button):
+	if highlight_tween:
+		highlight_tween.kill()
+		highlight_tween = null
+		print("anduvo!")
+	button.scale = Vector2.ONE

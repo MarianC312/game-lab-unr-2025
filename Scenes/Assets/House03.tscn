@@ -2239,7 +2239,7 @@ surface_material_override/0 = ExtResource("7_8027o")
 collision_layer = 13
 collision_mask = 13
 script = ExtResource("14_3nyy7")
-object_name = "Puerta04"
+object_name = "6. Ir al boliche"
 dialogue = ExtResource("17_rqxgg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuertasYVentanas/Puerta/StaticBody3D"]
@@ -2255,7 +2255,7 @@ surface_material_override/0 = ExtResource("8_pkrds")
 collision_layer = 13
 collision_mask = 13
 script = ExtResource("14_3nyy7")
-object_name = "Puerta01"
+object_name = "4. Puerta Dormitorio"
 dialogue = ExtResource("15_dj4sa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuertasYVentanas/Puerta_001/StaticBody3D"]
@@ -2373,7 +2373,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wo2ne")
 collision_layer = 13
 collision_mask = 13
 script = ExtResource("14_3nyy7")
-object_name = "Cajoncito"
+object_name = "5. Cajoncito"
 dialogue = ExtResource("15_wo2ne")
 has_minigame = true
 minigame = ExtResource("15_v525p")
@@ -2456,7 +2456,7 @@ skeleton = NodePath("")
 collision_layer = 12
 collision_mask = 12
 script = ExtResource("14_3nyy7")
-object_name = "Cuadro"
+object_name = "2. Cuadro"
 dialogue = ExtResource("7_of0uw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cuadros/StaticBody3D"]
@@ -2472,7 +2472,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_brkck")
 collision_layer = 12
 collision_mask = 12
 script = ExtResource("14_3nyy7")
-object_name = "Cuaderno"
+object_name = "1. Cuaderno"
 dialogue = ExtResource("9_wtluu")
 despawn = true
 
@@ -2489,7 +2489,7 @@ surface_material_override/2 = SubResource("StandardMaterial3D_3nyy7")
 collision_layer = 12
 collision_mask = 12
 script = ExtResource("14_3nyy7")
-object_name = "Mate"
+object_name = "3. Mate"
 dialogue = ExtResource("9_dj4sa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mate/StaticBody3D"]

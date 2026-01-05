@@ -43,7 +43,7 @@ _data = {
 script = ExtResource("1_vjeyb")
 
 [node name="CanvasLayer50" type="CanvasLayer" parent="."]
-layer = 50
+layer = 100
 
 [node name="BGColor" type="ColorRect" parent="CanvasLayer50"]
 anchors_preset = 15

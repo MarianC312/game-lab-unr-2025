@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkdyp60vkqbij"]
+[gd_scene load_steps=7 format=3 uid="uid://dkdyp60vkqbij"]
 
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="1_uxyxf"]
 [ext_resource type="Script" uid="uid://bqwnhnamdwyrd" path="res://Scripts/UI/Journal.gd" id="1_vo2py"]
+[ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="3_ky5dj"]
+[ext_resource type="Texture2D" uid="uid://conir2kpi1bi4" path="res://Textures/House01/JournalOpened.png" id="4_oc0lf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vo2py"]
+bg_color = Color(0.09019608, 0.101960786, 0.06666667, 0.9019608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ky5dj"]
+bg_color = Color(0.66141313, 0.69497335, 0.6075199, 1)
 
 [node name="Journal" type="Control"]
 layout_mode = 3
@@ -11,6 +19,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vo2py")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vo2py")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(220, 0)
@@ -31,5 +48,201 @@ layout_mode = 2
 theme = ExtResource("1_uxyxf")
 theme_override_font_sizes/font_size = 32
 text = "menu_btn_back"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.016
+anchor_top = 0.066
+anchor_right = 0.293
+anchor_bottom = 0.86800003
+offset_left = -0.4320011
+offset_top = 0.23200226
+offset_right = -38.53601
+offset_bottom = 3.5360107
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.136, 1)
+theme = ExtResource("1_uxyxf")
+theme_override_constants/separation = -12
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="TituloLabel" type="Label" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ky5dj")
+theme_override_font_sizes/font_size = 32
+text = "journal_title"
+uppercase = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(250, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ky5dj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_uxyxf")
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Map01VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Mapa01Label" type="Label" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "journal_map_01"
+uppercase = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer"]
+custom_minimum_size = Vector2(250, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ky5dj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="M01ItemVBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+
+[node name="Map02VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Mapa02Label" type="Label" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map02VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "journal_map_02"
+uppercase = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map02VBoxContainer2"]
+custom_minimum_size = Vector2(250, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ky5dj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map02VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map02VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="M02ItemVBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map02VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+
+[node name="Map03VBoxContainer3" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Mapa03Label" type="Label" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map03VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "journal_map_03"
+uppercase = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map03VBoxContainer3"]
+custom_minimum_size = Vector2(250, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ky5dj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map03VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map03VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="M03ItemVBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map03VBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+
+[node name="Map04VBoxContainer4" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Mapa04Label" type="Label" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map04VBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "journal_map_04"
+uppercase = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map04VBoxContainer4"]
+custom_minimum_size = Vector2(250, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ky5dj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map04VBoxContainer4"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map04VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+
+[node name="M04ItemVBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map04VBoxContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="JournalOpened" type="Sprite2D" parent="BoxContainer"]
+position = Vector2(-351, -278.00003)
+scale = Vector2(1.0606511, 1.060651)
+texture = ExtResource("4_oc0lf")
 
 [connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]

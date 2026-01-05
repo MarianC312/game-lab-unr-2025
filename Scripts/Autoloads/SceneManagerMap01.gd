@@ -1,7 +1,7 @@
 extends Node
 
 @export var interactables : Dictionary = {}
-const JOURNAL_NAME := "Cuaderno"
+const JOURNAL_NAME := "1. Cuaderno"
 
 signal registered_interaction
 
@@ -22,7 +22,9 @@ func interactable_start_minigame(interactable : String) -> void:
 	MinigameManager.start_minigame(interactables[interactable].object.get_minigame(), interactables[interactable].object)
 
 func _get_interactables_names() -> Array:
-	return interactables.keys()
+	var keys := interactables.keys() 
+	keys.sort()
+	return keys
 
 func _get_show_all_interacts() -> bool:
 	return show_all_interacts
@@ -32,7 +34,7 @@ func _set_show_all_interacts(state : bool) -> void:
 
 func _register_interaction(interactable_name : String) -> void:
 	interactables[interactable_name].interacted = true
-	if not show_all_interacts and interactable_name == "Puerta04":
+	if not show_all_interacts and interactable_name == "6. Ir al boliche":
 		_set_show_all_interacts(true)
 	registered_interaction.emit(interactable_name)
 	if interactables[interactable_name].object.despawn_on_interaction():
