@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=26 format=3 uid="uid://c6ss7muty7ypp"]
 
-[ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="1_0fk2u"]
+[ext_resource type="FontFile" uid="uid://1x8rlnjnn1yw" path="res://Base/Fonts/OldNewspaperTypes.ttf" id="1_ra7kk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7n22"]
 content_margin_left = 4.0
@@ -175,7 +175,7 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
-Button/fonts/font = ExtResource("1_0fk2u")
+Button/fonts/font = ExtResource("1_ra7kk")
 Button/styles/disabled = SubResource("StyleBoxFlat_y7n22")
 Button/styles/focus = SubResource("StyleBoxEmpty_bx682")
 Button/styles/hover = SubResource("StyleBoxFlat_0fk2u")
@@ -188,7 +188,7 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_cbvrv")
 HSlider/styles/slider = SubResource("StyleBoxFlat_cmbsk")
 Label/colors/font_color = Color(0.8627451, 0.88235295, 0.827451, 1)
 Label/colors/font_outline_color = Color(0.12941177, 0.14509805, 0.101960786, 1)
-Label/fonts/font = ExtResource("1_0fk2u")
+Label/fonts/font = ExtResource("1_ra7kk")
 Label/styles/focus = SubResource("StyleBoxEmpty_ra7kk")
 MenuButton/styles/normal = SubResource("StyleBoxFlat_hgtth")
 OptionButton/styles/disabled = SubResource("StyleBoxEmpty_d3bq4")

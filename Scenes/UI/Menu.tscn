@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://pbkn4u2sgrgk" path="res://Scripts/UI/Menu.gd" id="1_5cock"]
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="2_6487p"]
 [ext_resource type="PackedScene" uid="uid://c4yck0xdtbl3n" path="res://Scenes/UI/Options.tscn" id="2_s6sq0"]
-[ext_resource type="FontFile" uid="uid://dv32lphorn5gv" path="res://Base/Fonts/LoveLight-Regular.ttf" id="4_5cock"]
+[ext_resource type="FontFile" uid="uid://bg207g1s4ugpx" path="res://Base/Fonts/Vintageone-q6Yx.ttf" id="3_t06ot"]
 [ext_resource type="AudioStream" uid="uid://f75v0xbjvssa" path="res://Sounds/Music/menu_bg_music.wav" id="5_t06ot"]
 
 [sub_resource type="Gradient" id="Gradient_t06ot"]
@@ -108,7 +108,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.21568628, 0.24313726, 0.16862746, 1)
 theme_override_colors/font_shadow_color = Color(0.654902, 0.4862745, 0.101960786, 0.6745098)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_5cock")
+theme_override_fonts/font = ExtResource("3_t06ot")
 theme_override_font_sizes/font_size = 110
 text = "Ecos del Monte"
 horizontal_alignment = 1

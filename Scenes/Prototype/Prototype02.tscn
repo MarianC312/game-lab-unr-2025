@@ -18,7 +18,7 @@ volumetric_fog_anisotropy = 0.8
 
 [sub_resource type="Compositor" id="Compositor_ill4j"]
 
-[node name="Prototype01" type="Node3D"]
+[node name="Prototype02" type="Node3D"]
 script = ExtResource("1_ww1bx")
 metadata/_edit_group_ = true
 

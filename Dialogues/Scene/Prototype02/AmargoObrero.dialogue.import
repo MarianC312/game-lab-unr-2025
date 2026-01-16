@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cri3n3uhc6xtn"
+path="res://.godot/imported/AmargoObrero.dialogue-ca7d153fb89c07b7ef5ffa6baa533e2e.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Prototype02/AmargoObrero.dialogue"
+dest_files=["res://.godot/imported/AmargoObrero.dialogue-ca7d153fb89c07b7ef5ffa6baa533e2e.tres"]
+
+[params]
+
+defaults=true

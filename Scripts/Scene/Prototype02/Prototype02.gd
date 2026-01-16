@@ -6,6 +6,9 @@ extends Node3D
 
 signal map_ready
 
+var player
+var bartender
+
 func _ready() -> void:
 	# ver o revisar si necesitamos fadein en el sonido
 	# print("Region map: ", NavigationServer3D.region_get_map($NavigationRegion3D.get_rid()))

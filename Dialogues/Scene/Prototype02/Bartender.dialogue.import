@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cgiw2wytdovi1"
+path="res://.godot/imported/Bartender.dialogue-754371ea9ff0bbb34c6e6fdae4a196f3.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Prototype02/Bartender.dialogue"
+dest_files=["res://.godot/imported/Bartender.dialogue-754371ea9ff0bbb34c6e6fdae4a196f3.tres"]
+
+[params]
+
+defaults=true

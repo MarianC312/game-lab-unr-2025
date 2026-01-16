@@ -1,0 +1,6 @@
+~ start
+if not SceneManagerMap01._already_interacted("6. Amargo Obrero"):
+	do SceneManagerMap01._register_interaction("6. Amargo Obrero")
+{{ GameManager.get_player_name() }}:
+	El Amargo Obrero nació en la ciudad de Rosario, creado por los inmigrantes italianos Pedro Calatroni y Antonio Tacconi. Es un aperitivo amargo y fuerte pensado para los trabajadores, a diferencia de las bebidas azucaradas de la élite (gin tonic, whisky escoses), inspirándose en los "amari" italianos. Utiliza una mezcla de unas 45 hierbas autóctonas argentinas, combinadas con alcohol, agua y azúcar. Su nombre y etiqueta (remite a puño y hoz) aluden al movimiento obrero y anarquista, consolidándose como "la bebida del pueblo".
+=> END

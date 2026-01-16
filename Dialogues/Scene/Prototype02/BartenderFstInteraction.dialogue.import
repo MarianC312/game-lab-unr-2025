@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://txtrecltmsbk"
+path="res://.godot/imported/BartenderFstInteraction.dialogue-089d9439c46d0ec0886e44463dfb9055.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Prototype02/BartenderFstInteraction.dialogue"
+dest_files=["res://.godot/imported/BartenderFstInteraction.dialogue-089d9439c46d0ec0886e44463dfb9055.tres"]
+
+[params]
+
+defaults=true

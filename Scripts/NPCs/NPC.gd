@@ -2,7 +2,8 @@ extends CharacterBody3D
 
 @export var npc_name : String = ""
 @export var dialogue : DialogueResource = preload("res://Dialogues/Default/Default.dialogue")
-@onready var animation_player : AnimationPlayer = $npcmodel/Prototype/NPC/Armature/AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer2
+@onready var animation_player2: AnimationPlayer = $AnimationPlayer
 
 var is_dialogue_active : bool = false
 
@@ -27,7 +28,6 @@ func _physics_process(_delta: float) -> void:
 
 func interact() -> void:
 	print("Interacted with: ", npc_name)
-	
 	DialogueManager.show_dialogue_balloon(dialogue, "start", [npc_name])
 
 func _on_dialogue_start(_dialogue) -> void:

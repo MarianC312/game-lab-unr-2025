@@ -1,0 +1,14 @@
+~ start
+Manuel:
+	Tal vez la necesites, tu padre me dijo que vendrías
+- Aceptar => aceptar_caja
+- Rechazar => rechazar_caja
+=> END
+
+~ aceptar_caja
+
+=> END!
+
+~ rechazar_caja
+
+=> END!
