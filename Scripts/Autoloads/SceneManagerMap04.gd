@@ -9,14 +9,11 @@ var show_all_interacts : bool = false
 
 func set_interactable(interactable) -> void:
 	var interactable_name = interactable.get_object_name() if interactable.has_method("get_object_name") else interactable.get_npc_name()
-	#print(interactable)
-	#print(interactable_name)
 	if interactables.find_key(interactable_name) == null:
 		interactables.set(interactable_name, {
 			"object": interactable,
 			"interacted": false
 		})
-		#print(interactables)
 
 func interactable_is_locked(interactable : String) -> bool:
 	if interactables[interactable].object.has_method("is_locked"):
@@ -57,12 +54,8 @@ func _already_interacted(interactable_name : String) -> bool:
 		return false
 
 func _interacted_with_all() -> bool:
-	var count := 0
-	for interactable in interactables:
-		print(interactable, ": ", interactables[interactable])
-		if not interactables[interactable].interacted:
-			count += 1
-	return count >= 1 and interactables["8. Manuel"].interacted
+	# Acomodar que va a decidir si completa el mapa
+	return true
 
 func already_interacted_with_journal() -> bool:
 	return _already_interacted(JOURNAL_NAME)

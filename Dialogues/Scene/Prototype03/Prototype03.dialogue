@@ -1,0 +1,69 @@
+~ start
+Bandolero:
+	Alto ahí muchacha. ¿A dónde vas tan apurada?
+{{ GameManager.get_player_name() }}:
+	Solo soy la hija de un hachero, estoy buscando a mi padre. Tengo que llegar a La Forestal, me dijeron que puede estar ahí, pero nada seguro.
+Bandolero:
+	Sabes que estos caminos no son seguros para andar sola. Hay muchos guachos como este.
+- Preguntar al bandolero => pregunta
+- Pedir seguir => seguir
+=> END
+
+~ pregunta
+{{ GameManager.get_player_name() }}:
+	¿Quién es? o era...
+Bandolero:
+	Estos saqueadores de nuestras tierras se llevan nuestra riqueza a costa del sacrificio del pueblo, un traidor y eso no lo puedo permitir. Toma, para tu viaje...
+	[wave]Recibes algunas monedas[/wave]
+=> aceptar_monedas
+
+~ seguir
+{{ GameManager.get_player_name() }}:
+	Quiero encontrar a mi viejo, no quiero problemas.
+Bandolero:
+	Solo hay problemas en estos caminos. Toma, para tu viaje... [wave]Te ofrece algunas monedas[/wave]
+- Aceptar => aceptar_monedas
+- Rechazar => rechazar_monedas
+=> END!
+
+~ aceptar_monedas
+{{ GameManager.get_player_name() }}:
+	Gracias, mi familia las necesita.
+Bandolero:
+	Buena suerte con tu búsqueda. Sé valiente y que no corrompan tu alma. Te pareces a Martina Chapanay, una rebelde de corazón. Ten para que te guíe.
+	[wave]Recibes una pulsera tejida con la bandera wiphala[/wave]
+Bandera Whipala:
+	La Wiphala es un emblema cuadrangular de colores del arcoíris, símbolo de los pueblos originarios representando su cosmovisión de armonía, igualdad y reciprocidad. Simboliza la resistencia, unidad y cultura ancestral.
+Bandera Whipala:
+	Su diseño de 7x7 cuadros, con colores diagonales que representan la Tierra, la sociedad, la energía, el cosmos y la comunidad, es un estandarte de identidad y un emblema de la diversidad cultural en Sudamérica.
+Bandolero:
+	Hay que mantener la espalda erguida frente a los poderosos. El camino más corto es por las vías. Y si necesitas ayuda pedile a Manuel un mate cosido.
+	[wave]se sonríe[/wave]
+{{ GameManager.get_player_name() }}:
+	[wave]El bandolero se aleja por el camino en su caballo[/wave]
+do GameManager.load_new_map("")
+=> END!
+
+~ rechazar_monedas
+{{ GameManager.get_player_name() }}:
+	No las necesito en este momento, tal vez se las puedas dar a alguien más.
+Bandolero:
+	Tienes un alma pura muchacha, le hace falta más gente como vos a esta tierra. Te pareces a Martina Chapanay, una rebelde de corazón. Ten para que te guíe.
+	[wave]Recibes una pulsera tejida con la bandera wiphala[/wave]
+Bandera Whipala:
+	La Wiphala es un emblema cuadrangular de colores del arcoíris, símbolo de los pueblos originarios representando su cosmovisión de armonía, igualdad y reciprocidad. Simboliza la resistencia, unidad y cultura ancestral.
+Bandera Whipala:
+	Su diseño de 7x7 cuadros, con colores diagonales que representan la Tierra, la sociedad, la energía, el cosmos y la comunidad, es un estandarte de identidad y un emblema de la diversidad cultural en Sudamérica.
+Bandolero:
+	Sabes... Podríamos ser socios en este latifundio.
+{{ GameManager.get_player_name() }}:
+	Se lo agradezco Don, por ahora solo quiero encontrar a mi viejo.
+Bandolero:
+	Sigue así, rebelde por estas tierras salvajes. No dejes que el alambrado te engañe... El camino más corto es por las vías. Y si cambias de opinión pedile a Manuel un mate cosido
+	[wave]se sonríe[/wave]
+{{ GameManager.get_player_name() }}:
+	[wave]El bandolero se aleja por el camino en su caballo[/wave]
+{{ GameManager.get_player_name() }}:
+	Ese gaucho me hizo acordar a Juan Moreira de los folletines que leen mamá y papá. Debo continuar mi camino. Siguiendo las vías voy a llegar a La Forestal.
+do GameManager.load_new_map("")
+=> END!

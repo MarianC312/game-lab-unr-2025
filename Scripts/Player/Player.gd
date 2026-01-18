@@ -240,6 +240,7 @@ func _physics_process(delta: float) -> void:
 		# print("Collision count: ", see_cast.get_collision_count())
 		if see_cast.is_colliding() and see_cast.get_collision_count() > 0:
 			target = see_cast.get_collider(0)
+			# print(target)
 			if target and target.has_method("interact"):
 				text_interact.show()
 				interact_button.show()

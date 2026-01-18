@@ -25,7 +25,7 @@ func _ready() -> void:
 	loading.visible = true
 	SceneTransitions.fade_in()
 	await SceneTransitions.fade_complete
-	GameManager.load_new_map("res://Scenes/Prototype/Prototype01.tscn")
+	GameManager.load_new_map("")
 
 func _input(_event: InputEvent) -> void:
 	pass
@@ -63,16 +63,14 @@ func load_map(packed_scene) -> void:
 	map.add_child(new_map)
 	current_map = new_map # Corregir que el nuevo mapa cargado pase a ser hijo del nodo Map
 	GameManager._switch_scene_loaded()
-	if GameManager.should_load_dialogue_at_start():
-		if current_map.has_method("start_dialogue"):
-			current_map.start_dialogue()
 	_on_map_ready()
 
 func _on_map_ready() -> void:
 	if GameManager.current_scene.playable:
 		var spawn = get_tree().get_first_node_in_group("CharSpawn")
-		player.global_position = spawn.global_position
-		player.start_first_dialogue() # hacer q solo se ejecute en el primer mapa
+		if spawn != null:
+			player.global_position = spawn.global_position
+			player.start_first_dialogue() # hacer q solo se ejecute en el primer mapa
 	player._clear_movement()
 	loading.visible = false
 	SceneTransitions.fade_in()

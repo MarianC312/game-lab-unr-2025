@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://wtvx0n06pqk2"
+path="res://.godot/imported/Prototype03.dialogue-65fc80d13e03199011515281398b3c03.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Prototype03/Prototype03.dialogue"
+dest_files=["res://.godot/imported/Prototype03.dialogue-65fc80d13e03199011515281398b3c03.tres"]
+
+[params]
+
+defaults=true

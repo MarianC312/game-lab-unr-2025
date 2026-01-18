@@ -1,9 +1,9 @@
 ~ start
 Prólogo:
-	"En 1872 la provincia de Santa Fe toma un empréstito de capitales anglo-españoles que no logrará saldar. Un tercio de la deuda sería pagada con bonos del tesoro provincial mientras que el resto, sería pagado con tierras públicas (2.100.000 hectáreas) vendidas a extranjeros en Inglaterra y otras partes de Europa. Bosques centenarios del norte santafesino pasaban a manos del capital inglés"
+	EN 1872 LA PROVINCIA DE SANTA FE TOMA UN EMPRÉSTITO DE CAPITALES ANGLO-ESPAÑOLES QUE NO LOGRARÁ SALDAR. UN TERCIO DE LA DEUDA SERÍA PAGADA CON BONOS DEL TESORO PROVINCIAL MIENTRAS QUE EL RESTO, SERÍA PAGADO CON TIERRAS PúBLICAS (2.100.000 HECTÁREAS) VENDIDAS A EXTRANJEROS EN INGLATERRA Y OTRAS PARTES DE EUROPA. BOSQUES CENTENARIOS DEL NORTE SANTAFESINO PASABAN A MANOS DEL CAPITAL INGLÉS.
 Prólogo:
-	"En 1906 se constituyó con capitales ingleses, franceses y alemanes la Forestal Land, Timber and Railways Company Limited «La Forestal», con domicilio en Londres"
+	EN 1906 SE CONSTITUYÓ CON CAPITALES INGLESES, FRANCESES Y ALEMANES LA FORESTAL LAND, TIMBER AND RAILWAYS COMPANY LIMITED «LA FORESTAL», CON DOMICILIO EN LONDRES.
 Prólogo:
-	"Bosques inmensos donde se asentarían capitales para realizar fortuna astronómica salida de tierra argentina y amansada gracias al brutal trabajo de los obrajeros (hacheros, cargadores, peones _y sus familias_) introducidos como hordas miserables en el seno de los quebrachales" Gori, 1984.
+	"BOSQUES INMENSOS DONDE SE ASENTARÍAN CAPITALES PARA REALIZAR FORTUNA ASTRONóMICA SALIDA DE TIERRA ARGENTINA Y AMANSADA GRACIAS AL BRUTAL TRABAJO DE LOS OBRAJEROS (HACHEROS, CARGADORES, PEONES Y SUS FAMILIAS) INTRODUCIDOS COMO HORDAS MISERABLES EN EL SENO DE LOS QUEBRACHALES" GORI, 1984.
 do GameManager.load_new_map("")
 => END

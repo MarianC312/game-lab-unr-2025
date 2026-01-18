@@ -7,18 +7,17 @@ extends Node3D
 signal map_ready
 
 var player
-var bartender
 
 func _ready() -> void:
 	# ver o revisar si necesitamos fadein en el sonido
 	# print("Region map: ", NavigationServer3D.region_get_map($NavigationRegion3D.get_rid()))
 	audio_stream_player.play()
-	SceneManagerMap02.registered_interaction.connect(_on_registered_interaction)
+	SceneManagerMap04.registered_interaction.connect(_on_registered_interaction)
 	process_mode = Node.PROCESS_MODE_INHERIT
 	for interactable in get_tree().get_nodes_in_group("Interactable"):
-		SceneManagerMap02.set_interactable(interactable)
+		SceneManagerMap04.set_interactable(interactable)
 	emit_signal("map_ready")
-	SceneManagerMap02._get_interactables_names()
+	SceneManagerMap04._get_interactables_names()
 	print("Mapa listo!")
 
 func _process(_delta: float) -> void:
@@ -29,16 +28,16 @@ func _process(_delta: float) -> void:
 func _update_item_list() -> void:
 	for i in range(item_list.item_count):
 		var interactable = item_list.get_item_text(i)
-		if SceneManagerMap02._already_interacted(interactable):
+		if SceneManagerMap04._already_interacted(interactable):
 			item_list.set_item_disabled(i, true)
 		else:
 			item_list.set_item_disabled(i, false)
 
 
 func _on_registered_interaction(interactable_name : String) -> void:
-	if SceneManagerMap02._get_show_all_interacts():
+	if SceneManagerMap04._get_show_all_interacts():
 		item_list.clear()
-		for interactable in SceneManagerMap02._get_interactables_names():
+		for interactable in SceneManagerMap04._get_interactables_names():
 			item_list.add_item(interactable)
 	else:
 		item_list.add_item(interactable_name)

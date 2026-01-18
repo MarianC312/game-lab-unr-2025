@@ -6,13 +6,6 @@ var next_scene : Dictionary
 var current_state : game_states = game_states.LOADING
 var current_locale_id : int
 var game_scene_flow := {
-	"Testing":
-		{
-			"res": "res://Scenes/Prototype/Prototype02.tscn",
-			"status": false,
-			"loadDialogue": false,
-			"playable": true
-		},
 	"Prologue":
 		{
 			"res": "res://Scenes/Prologue.tscn",
@@ -127,7 +120,7 @@ func _is_game_paused() -> bool:
 	return (paused and current_state == game_states.PAUSED)
 
 func _get_new_scene_path() -> String:
-	print(next_scene.res)
+	# print(next_scene.res)
 	return next_scene.res
 
 func _get_current_state() -> game_states:
@@ -151,6 +144,9 @@ func _is_game_loading() -> bool:
 
 func _map01_completed_tasks() -> bool:
 	return SceneManagerMap01._interacted_with_all()
+	
+func _map02_completed_tasks() -> bool:
+	return SceneManagerMap02._interacted_with_all()
 
 func _switch_language(lang : String) -> void:
 	TranslationServer.set_locale(lang)

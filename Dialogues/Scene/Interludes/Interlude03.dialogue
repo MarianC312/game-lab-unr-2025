@@ -1,0 +1,9 @@
+~ start
+Interludio:
+	LA FORESTAL CONTABA CON 400 KM DE VÍAS PROPIAS QUE LLEGABAN HASTA CHACO, NEGABAN QUE FUERAN PARA BENEFICIO PRIVADO. SIN EMBARGO, LOS COMERCIANTES DE SANTA FE Y ROSARIO NO PODÍAN USARLAS. ESTO ERA POSIBLE PORQUE LAS TIERRAS POR DONDE PASABA ERAN PARTE DEL LATIFUNDIO PRIVADO. UN ESTADO DENTRO DEL ESTADO PROVINCIAL.
+Interludio:
+	LAS ALTAS TASAS DE DESEMPLEO LLEVÓ A LOS OBREROS A LEVANTARSE EN UNA LUCHA POR CONDICIONES DIGNAS. ESTOS PROVOCÓ EL ENFRENTAMIENTO CON LA GENDARMERÍA VOLANTE Y LA POLICÍA PRIVADA NO UNIFORMADA Y ARMADA.
+Interludio:
+	(Siguiendo las vías comienza a ver personas sobre la misma. Eran los hacheros acomodando los quebrachos talados para bloquear la salida del tren. A los pocos metros comienza a escuchar tiros provenientes de La Forestal, era la seguridad privada de la fábrica que arremetía contra la protesta)
+do GameManager.load_new_map("")
+=> END

@@ -30,6 +30,8 @@ SceneManagerMap01="*res://Scripts/Autoloads/SceneManagerMap01.gd"
 BgMusic="*res://Scenes/Prototype/BGMusic.tscn"
 BgMusicSC="res://Scripts/Autoloads/BGMusic.gd"
 MinigameManager="*res://Scripts/Minigame/MinigameManager.gd"
+SceneManagerMap02="*res://Scripts/Autoloads/SceneManagerMap02.gd"
+SceneManagerMap04="*res://Scripts/Autoloads/SceneManagerMap04.gd"
 
 [debug_draw_3d]
 
@@ -219,7 +221,7 @@ journal={
 [internationalization]
 
 locale/translations=PackedStringArray("res://Translations/Translation.en.translation", "res://Translations/Translation.es.translation")
-locale/translations_pot_files=PackedStringArray("res://Dialogues/testdiag.dialogue", "res://Dialogues/Default/Default.dialogue", "res://Dialogues/Scene/Prototype01/Cuaderno.dialogue", "res://Dialogues/Scene/Prototype01/Cuadro.dialogue", "res://Dialogues/Scene/Prototype01/Mate.dialogue", "res://Dialogues/Scene/Prototype01/NPC2.dialogue", "res://Dialogues/Scene/Prototype01/Puerta01.dialogue", "res://Dialogues/Scene/Prototype01/Puerta04.dialogue", "res://Dialogues/Scene/Prototype01/Cajoncito.dialogue", "res://Dialogues/Scene/Prototype01/PlayerFirstDialogue.dialogue", "res://Dialogues/Scene/Prologue.dialogue", "res://Dialogues/Scene/Interludes/Interlude01.dialogue", "res://Dialogues/Scene/Prototype02/AmargoObrero.dialogue", "res://Dialogues/Scene/Prototype02/BartenderFstInteraction.dialogue", "res://Dialogues/Scene/Prototype02/Bartender.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/testdiag.dialogue", "res://Dialogues/Default/Default.dialogue", "res://Dialogues/Scene/Prototype01/Cuaderno.dialogue", "res://Dialogues/Scene/Prototype01/Cuadro.dialogue", "res://Dialogues/Scene/Prototype01/Mate.dialogue", "res://Dialogues/Scene/Prototype01/NPC2.dialogue", "res://Dialogues/Scene/Prototype01/Puerta01.dialogue", "res://Dialogues/Scene/Prototype01/Puerta04.dialogue", "res://Dialogues/Scene/Prototype01/Cajoncito.dialogue", "res://Dialogues/Scene/Prototype01/PlayerFirstDialogue.dialogue", "res://Dialogues/Scene/Prologue.dialogue", "res://Dialogues/Scene/Interludes/Interlude01.dialogue", "res://Dialogues/Scene/Prototype02/AmargoObrero.dialogue", "res://Dialogues/Scene/Prototype02/BartenderFstInteraction.dialogue", "res://Dialogues/Scene/Prototype02/Bartender.dialogue", "res://Dialogues/Scene/Interludes/Interlude02.dialogue", "res://Dialogues/Scene/Interludes/Interlude03.dialogue", "res://Dialogues/Scene/Prototype03/Prototype03.dialogue")
 
 [layer_names]
 

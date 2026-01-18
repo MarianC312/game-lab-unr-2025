@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b0e0h0gt4cdad"
+path="res://.godot/imported/Interlude03.dialogue-f47b3369857d2bc037095bbad4a006b3.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Interludes/Interlude03.dialogue"
+dest_files=["res://.godot/imported/Interlude03.dialogue-f47b3369857d2bc037095bbad4a006b3.tres"]
+
+[params]
+
+defaults=true

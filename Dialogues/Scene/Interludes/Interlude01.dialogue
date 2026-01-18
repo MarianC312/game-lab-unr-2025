@@ -1,5 +1,5 @@
 ~ start
 Interludio:
-	El boliche era el lugar de encuentro de los hacheros, y con frecuencia había peleas. A las mujeres que trabajaban allí se las trataba muy mal, muchas veces obligadas por la gendarmería privada de La Forestal.
+	EL BOLICHE ERA EL LUGAR DE ENCUENTRO DE LOS HACHEROS, Y CON FRECUENCIA HABÍA PELEAS. LAS MUJERES PODÍAN ENCONTRAR UN LUGAR DE TRABAJO COMO BOLICHERAS, PERO TAMBIÉN EN BAILES Y COMO TRABAJADORAS SEXUALES.
 do GameManager.load_new_map("")
 => END

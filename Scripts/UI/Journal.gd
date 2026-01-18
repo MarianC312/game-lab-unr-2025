@@ -1,6 +1,7 @@
 extends Control
 
 @onready var m_01_item_v_box_container: VBoxContainer = $VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer/HBoxContainer/M01ItemVBoxContainer
+@onready var m_02_item_v_box_container: VBoxContainer = $VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map02VBoxContainer2/HBoxContainer/M02ItemVBoxContainer
 @onready var mapa_01_label: Label = $VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer/Mapa01Label
 @onready var mapa_02_label: Label = $VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map02VBoxContainer2/Mapa02Label
 @onready var mapa_03_label: Label = $VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map03VBoxContainer3/Mapa03Label
@@ -11,7 +12,7 @@ const MENU_STYLE_01 = preload("res://Materials/MenuStyle01.tres")
 func _ready() -> void:
 	GameManager.toggle_journal.connect(_on_toggle_journal)
 	_refresh_interactables()
-	
+
 
 func _on_toggle_journal() -> void:
 	for label in m_01_item_v_box_container.get_children():
@@ -27,6 +28,16 @@ func _refresh_interactables() -> void:
 		label.flat = true
 		label.add_theme_font_size_override("font_size", 24)
 		m_01_item_v_box_container.add_child(label)
+	
+	for interactable in SceneManagerMap02._get_interactables_names():
+		var label := Button.new()
+		label.theme = MENU_STYLE_01
+		label.theme_type_variation = "FlatButton"
+		label.text = interactable if SceneManagerMap02._already_interacted(interactable) else "???"
+		label.flat = true
+		label.add_theme_font_size_override("font_size", 24)
+		m_02_item_v_box_container.add_child(label)
+	
 	for scene in GameManager.get_game_flow_names():
 		match scene:
 			"Map01":

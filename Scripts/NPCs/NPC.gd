@@ -28,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 
 func interact() -> void:
 	print("Interacted with: ", npc_name)
-	DialogueManager.show_dialogue_balloon(dialogue, "start", [npc_name])
+	DialogueManager.show_dialogue_balloon(dialogue)
 
 func _on_dialogue_start(_dialogue) -> void:
 	play_animation_state = AnimationState.TALKING
@@ -38,3 +38,6 @@ func _on_dialogue_end(_dialogue) -> void:
 	play_animation_state = AnimationState.IDLE
 	await get_tree().create_timer(0.2).timeout
 	is_dialogue_active = false
+
+func get_npc_name() -> String:
+	return npc_name

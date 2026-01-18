@@ -1,9 +1,9 @@
 extends Control
 
-@export var dialogue : DialogueResource
+@export var dialogue : DialogueResource = preload("res://Dialogues/Default/Default.dialogue")
 
 func _ready() -> void:
-	pass
+	start_dialogue()
 
 func start_dialogue() -> void:
 	await get_tree().create_timer(0.75).timeout
