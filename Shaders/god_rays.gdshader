@@ -1,11 +1,11 @@
 shader_type spatial;
 render_mode unshaded, cull_disabled, depth_draw_never;
 
-uniform vec4 color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
-uniform float density : hint_range(0.0, 1.0) = 0.045;
+uniform vec4 color : source_color = vec4(1.0, 0.35, 0.18, .015);
+uniform float density : hint_range(0.0, 1.0) = 0.25;
 uniform float noise_scale = 1.0;
-uniform float speed = -1.25;
-uniform float fade_height = 1.5;
+uniform float speed = 3.25;
+uniform float fade_height = 2.5;
 
 varying vec3 world_pos;
 
@@ -16,7 +16,7 @@ void vertex() {
 void fragment() {
     float n = fract(
         sin(dot(world_pos.xz * noise_scale + TIME * speed,
-        vec2(12.9898,78.233))) * 43758.5453
+        vec2(122.9898,78.233))) * 0.5453
     );
 
     float height_fade = clamp(

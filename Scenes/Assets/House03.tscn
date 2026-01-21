@@ -1,4 +1,4 @@
-[gd_scene load_steps=191 format=4 uid="uid://c3x04g8eidvhh"]
+[gd_scene load_steps=195 format=4 uid="uid://c3x04g8eidvhh"]
 
 [ext_resource type="Script" uid="uid://c62cv5vdp4an2" path="res://Scripts/Scene/Prototype/House01.gd" id="1_nvmff"]
 [ext_resource type="NavigationMesh" uid="uid://xcfc7osiqqy7" path="res://NavigationMap/NavigationRegion.tres" id="2_siqqd"]
@@ -89,8 +89,10 @@ shadow_mesh = SubResource("ArrayMesh_lyk0k")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ifc0"]
 albedo_texture = ExtResource("3_hbiv5")
+metallic_specular = 0.0
 roughness_texture = ExtResource("6_iawy3")
 normal_enabled = true
+normal_scale = 1.26
 normal_texture = ExtResource("5_l16lj")
 heightmap_enabled = true
 heightmap_deep_parallax = true
@@ -2061,8 +2063,33 @@ data = PackedVector3Array(-0.1548, 0.34019998, -0.0923, -0.161, 0.34019998, -0.0
 [sub_resource type="PlaneMesh" id="PlaneMesh_760ia"]
 size = Vector2(9.055, 10.705)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v525p"]
-albedo_color = Color(0.017732391, 0.017732391, 0.01773239, 1)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l16lj"]
+load_path = "res://.godot/imported/damaged_plaster_diff_2k.jpg-ca1a0bcf214287e4cbc219e16fade0a9.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iawy3"]
+load_path = "res://.godot/imported/damaged_plaster_disp_2k.png-808dcbd3b142fa73b6b9d7c8d2fddf57.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3e05a"]
+load_path = "res://.godot/imported/damaged_plaster_nor_gl_2k.png-d6c17a88720cea85be8e49aae83113a2.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_035yp"]
+load_path = "res://.godot/imported/damaged_plaster_rough_2k.png-dc6cff18312c58ed5ee65539d4472d6d.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xtcb"]
+albedo_texture = SubResource("CompressedTexture2D_l16lj")
+metallic_specular = 0.0
+roughness_texture = SubResource("CompressedTexture2D_035yp")
+normal_enabled = true
+normal_scale = 1.26
+normal_texture = SubResource("CompressedTexture2D_3e05a")
+heightmap_enabled = true
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = SubResource("CompressedTexture2D_iawy3")
+uv1_scale = Vector3(10, 10, 10)
+uv1_offset = Vector3(0, 1.155, 0)
+uv1_triplanar_sharpness = 0.39229214
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n7by7"]
 points = PackedVector3Array(4.5275, 0, 5.3525, -4.5275, 0, 5.3525, 4.5275, 0, -5.3525, -4.5275, 0, -5.3525)
@@ -2072,8 +2099,8 @@ points = PackedVector3Array(4.5275, 0, 5.3525, -4.5275, 0, 5.3525, 4.5275, 0, -5
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v525p"]
 render_priority = 0
 shader = ExtResource("33_lht6p")
-shader_parameter/color = Color(1, 0.95, 0.8, 1)
-shader_parameter/density = 0.0450000021375
+shader_parameter/color = Color(0.8286739, 0.49124444, 0.16444588, 1)
+shader_parameter/density = 0.0050000002375
 shader_parameter/noise_scale = 1.0
 shader_parameter/speed = -1.25
 shader_parameter/fade_height = 1.5
@@ -2146,6 +2173,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8ifc0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="paredes/Casa/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bipro")
+debug_fill = false
 
 [node name="Aberturas" type="Node3D" parent="."]
 
@@ -2615,18 +2643,30 @@ shape = SubResource("ConcavePolygonShape3D_of0uw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9372455, 0.3486702, 0, -0.3486702, 0.9372455, 0, 3.3984742, 8.283686)
-light_color = Color(0.8509804, 0.8117647, 0.68235296, 1)
+light_color = Color(0.647629, 0.4850793, 0.38684317, 1)
 light_energy = 0.593
 shadow_enabled = true
 
 [node name="Techo" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.016816, 2.9940472, -0.7202461)
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1.030783, -1.0168072, 2.9960074, -0.7202544)
+gi_mode = 0
 mesh = SubResource("PlaneMesh_760ia")
-surface_material_override/0 = SubResource("StandardMaterial3D_v525p")
+surface_material_override/0 = SubResource("StandardMaterial3D_7xtcb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Techo"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Techo/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_n7by7")
+
+[node name="Techo2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.030783, -1.0168072, 2.9960074, -0.7202544)
+gi_mode = 0
+mesh = SubResource("PlaneMesh_760ia")
+surface_material_override/0 = SubResource("StandardMaterial3D_7xtcb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Techo2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Techo2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_n7by7")
 
 [node name="Shading" type="Node3D" parent="."]
@@ -2746,9 +2786,10 @@ surface_material_override/0 = SubResource("ShaderMaterial_v525p")
 [node name="Lights" type="Node3D" parent="Shading"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Shading/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8980505, 3.128464, -0.76072186)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8980505, 1.8476603, 0.48225254)
+visible = false
 light_color = Color(0.78477573, 0.5876256, 0.3466371, 1)
-light_energy = 0.65
+light_energy = 0.125
 light_specular = 0.0
 omni_range = 30.0
 

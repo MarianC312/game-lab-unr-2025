@@ -283,6 +283,8 @@ bind/32/pose = Transform3D(-0.99394166, -0.048046842, 0.09865706, 0.1002294, -0.
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmcll"]
 depth_draw_mode = 1
 albedo_texture = ExtResource("2_h54ih")
+metallic_specular = 0.0
+heightmap_scale = -0.345
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cwqx"]
 resource_name = "ramiroropa.001"
