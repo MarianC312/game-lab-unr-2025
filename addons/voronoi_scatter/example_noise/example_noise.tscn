@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bofidekps6dqb"]
+
+[ext_resource type="Material" uid="uid://cmtxbdd37d2vu" path="res://addons/voronoi_scatter/example_noise/voronoi_material.tres" id="1_jl4d0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_noarx"]
+sky_material = SubResource("ProceduralSkyMaterial_a202f")
+
+[sub_resource type="Environment" id="Environment_a0tk4"]
+background_mode = 2
+sky = SubResource("Sky_noarx")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_noarx"]
+size = Vector2(20, 20)
+orientation = 1
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a0tk4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.894723, -0.442039, -0.0638149, -0.306421, 0.503608, 0.807766, -0.324926, 0.742281, -0.586039, 1.27554, 0.915472, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_jl4d0")
+mesh = SubResource("QuadMesh_noarx")
+surface_material_override/0 = ExtResource("1_jl4d0")

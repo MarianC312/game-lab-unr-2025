@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cifkgfhho45vn"]
+[gd_scene load_steps=11 format=3 uid="uid://cifkgfhho45vn"]
 
 [ext_resource type="Script" uid="uid://cs1q5ah2qoce1" path="res://Scripts/Scene/Prototype04/Prototype04.gd" id="1_8ei1d"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_0t8de"]
+[ext_resource type="PackedScene" uid="uid://fbg1kvyrik1h" path="res://Scenes/Assets/Forestal.tscn" id="3_qte2i"]
 [ext_resource type="AudioStream" uid="uid://baj1di0ulg6ta" path="res://Sounds/Music/scene_02_ambience.wav" id="4_uvvlf"]
 
 [sub_resource type="Gradient" id="Gradient_8ei1d"]
@@ -17,18 +18,49 @@ fill_to = Vector2(1, 0.875)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qte2i"]
 texture = SubResource("GradientTexture2D_eothy")
 
-[sub_resource type="Environment" id="Environment_ubh04"]
-background_mode = 1
-ambient_light_source = 3
-ambient_light_color = Color(0.7877593, 0.78775924, 0.7877589, 1)
-ambient_light_sky_contribution = 0.15
-ambient_light_energy = 0.02
-glow_enabled = true
-volumetric_fog_albedo = Color(0.8509804, 0.8117647, 0.68235296, 1)
-volumetric_fog_emission_energy = 0.0
-volumetric_fog_anisotropy = 0.8
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qte2i"]
+sky_top_color = Color(0.73379046, 0.47166312, 0.41231588, 1)
+sky_horizon_color = Color(0.47874886, 0.364143, 0.36190268, 1)
+sky_curve = 0.0630673
+sky_cover_modulate = Color(0.259758, 0.1313965, 0.043209918, 1)
+ground_bottom_color = Color(0.073592864, 0.057619892, 0.039633933, 1)
+ground_horizon_color = Color(0.10833601, 0.16150412, 0.13981932, 1)
 
-[sub_resource type="Compositor" id="Compositor_ill4j"]
+[sub_resource type="Sky" id="Sky_rhd61"]
+sky_material = SubResource("ProceduralSkyMaterial_qte2i")
+
+[sub_resource type="Environment" id="Environment_0t8de"]
+background_mode = 2
+background_energy_multiplier = 0.35
+sky = SubResource("Sky_rhd61")
+ambient_light_source = 3
+ambient_light_color = Color(0.7446811, 0.423832, 0.3664396, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 1.5
+tonemap_white = 1.5
+ssr_fade_in = 0.063067295
+ssr_fade_out = 3.732131
+ssao_enabled = true
+ssao_radius = 2.61
+ssao_intensity = 2.37
+ssao_power = 3.1057944
+ssil_enabled = true
+ssil_intensity = 3.11
+ssil_sharpness = 0.41
+sdfgi_use_occlusion = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.38039216, 0.34117648, 0.3254902, 1)
+fog_light_energy = 0.9
+fog_density = 0.6445
+fog_aerial_perspective = 0.385
+fog_depth_curve = 1.7411021
+fog_depth_begin = -74.5
+fog_depth_end = 125.5
+adjustment_brightness = 0.9
+adjustment_contrast = 1.25
+adjustment_saturation = 1.06
 
 [node name="Prototype04" type="Node3D"]
 script = ExtResource("1_8ei1d")
@@ -59,6 +91,7 @@ theme_override_font_sizes/font_size = 20
 auto_height = true
 
 [node name="Panel" type="Panel" parent="UI/CanvasLayer15"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -69,6 +102,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_qte2i")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/CanvasLayer15"]
+visible = false
 custom_minimum_size = Vector2(450, 200)
 anchors_preset = 8
 anchor_left = 0.5
@@ -98,12 +132,12 @@ layer = 20
 [node name="Mundo" type="Node3D" parent="."]
 
 [node name="CharSpawn" type="Node3D" parent="Mundo" groups=["CharSpawn"]]
-transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 0, 0, 0)
+transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 3.9580517, 0.21213531, 28.395706)
+
+[node name="Forestal" parent="Mundo" instance=ExtResource("3_qte2i")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Mundo"]
-process_mode = 4
-environment = SubResource("Environment_ubh04")
-compositor = SubResource("Compositor_ill4j")
+environment = SubResource("Environment_0t8de")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uvvlf")

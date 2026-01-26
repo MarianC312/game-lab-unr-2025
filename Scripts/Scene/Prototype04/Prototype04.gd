@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var item_list: ItemList = $UI/CanvasLayer15/ItemList
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var bar: Node3D = $Mundo/Bar01
+@onready var forestal: Node3D = $Mundo/Forestal
 
 signal map_ready
 
@@ -14,6 +14,7 @@ func _ready() -> void:
 	audio_stream_player.play()
 	SceneManagerMap04.registered_interaction.connect(_on_registered_interaction)
 	process_mode = Node.PROCESS_MODE_INHERIT
+	player = get_tree().get_nodes_in_group("Player")
 	for interactable in get_tree().get_nodes_in_group("Interactable"):
 		SceneManagerMap04.set_interactable(interactable)
 	emit_signal("map_ready")
