@@ -1,35 +1,96 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxne4s8vmn82w"]
+[gd_scene load_steps=10 format=3 uid="uid://dpe2j1lsgbiio"]
 
-[ext_resource type="Script" uid="uid://bylvpgq3sxlym" path="res://Scripts/Scene/PrologueInterlude.gd" id="1_hyw6v"]
-[ext_resource type="Resource" uid="uid://wtvx0n06pqk2" path="res://Dialogues/Scene/Prototype03/Prototype03.dialogue" id="2_p3ljt"]
+[ext_resource type="Script" uid="uid://cs1q5ah2qoce1" path="res://Scripts/Scene/Prototype04/Prototype04.gd" id="1_e2yjq"]
+[ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_kegir"]
+[ext_resource type="AudioStream" uid="uid://baj1di0ulg6ta" path="res://Sounds/Music/scene_02_ambience.wav" id="4_8w3ek"]
 
-[sub_resource type="Gradient" id="Gradient_nlywn"]
+[sub_resource type="Gradient" id="Gradient_8ei1d"]
 offsets = PackedFloat32Array(0.082539685, 1)
 colors = PackedColorArray(0.6431373, 0.69411767, 0.5568628, 1, 0.37254903, 0.41960785, 0.2901961, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_eothy"]
-gradient = SubResource("Gradient_nlywn")
+gradient = SubResource("Gradient_8ei1d")
 fill = 1
 fill_from = Vector2(0.5, 0.4)
 fill_to = Vector2(1, 0.875)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_munh3"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qte2i"]
 texture = SubResource("GradientTexture2D_eothy")
 
-[node name="Prototype03" type="Control"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qte2i"]
+sky_top_color = Color(0.73379046, 0.47166312, 0.41231588, 1)
+sky_horizon_color = Color(0.47874886, 0.364143, 0.36190268, 1)
+sky_curve = 0.0630673
+sky_cover_modulate = Color(0.259758, 0.1313965, 0.043209918, 1)
+ground_bottom_color = Color(0.073592864, 0.057619892, 0.039633933, 1)
+ground_horizon_color = Color(0.10833601, 0.16150412, 0.13981932, 1)
+
+[sub_resource type="Sky" id="Sky_rhd61"]
+sky_material = SubResource("ProceduralSkyMaterial_qte2i")
+
+[sub_resource type="Environment" id="Environment_0t8de"]
+background_mode = 2
+background_energy_multiplier = 0.35
+sky = SubResource("Sky_rhd61")
+ambient_light_source = 3
+ambient_light_color = Color(0.7446811, 0.423832, 0.3664396, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 1.5
+tonemap_white = 1.5
+ssr_fade_in = 0.063067295
+ssr_fade_out = 3.732131
+ssao_enabled = true
+ssao_radius = 2.61
+ssao_intensity = 2.37
+ssao_power = 3.1057944
+ssil_enabled = true
+ssil_intensity = 3.11
+ssil_sharpness = 0.41
+sdfgi_use_occlusion = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.38039216, 0.34117648, 0.3254902, 1)
+fog_light_energy = 0.9
+fog_density = 0.6445
+fog_aerial_perspective = 0.385
+fog_depth_curve = 1.7411021
+fog_depth_begin = -74.5
+fog_depth_end = 125.5
+adjustment_brightness = 0.9
+adjustment_contrast = 1.25
+adjustment_saturation = 1.06
+
+[node name="Prototype04" type="Node3D"]
+script = ExtResource("1_e2yjq")
+metadata/_edit_group_ = true
+
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_hyw6v")
-dialogue = ExtResource("2_p3ljt")
+grow_horizontal = 0
 
-[node name="CanvasLayer20" type="CanvasLayer" parent="."]
-layer = 20
+[node name="CanvasLayer15" type="CanvasLayer" parent="UI"]
+layer = 15
 
-[node name="Panel" type="Panel" parent="CanvasLayer20"]
+[node name="ItemList" type="ItemList" parent="UI/CanvasLayer15"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -368.0
+offset_top = 72.0
+offset_right = -67.0
+offset_bottom = 112.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_kegir")
+theme_override_font_sizes/font_size = 20
+auto_height = true
+
+[node name="Panel" type="Panel" parent="UI/CanvasLayer15"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -37,10 +98,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_munh3")
+theme_override_styles/panel = SubResource("StyleBoxTexture_qte2i")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer20"]
-custom_minimum_size = Vector2(320, 150)
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/CanvasLayer15"]
+visible = false
+custom_minimum_size = Vector2(450, 200)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -56,6 +118,31 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/default_color = Color(0.24104297, 0.27486265, 0.18141973, 1)
 theme_override_font_sizes/normal_font_size = 26
-text = "Efecto parallax piola acá
-(en desarrollo)"
+text = "Escenario final en desarrollo...
+¡Gracias por probar el juego!
+
+Equipo 5: Ecos del Monte
+UNR GameLab 2025/2026"
 horizontal_alignment = 1
+
+[node name="MinigameLayer" type="CanvasLayer" parent="UI" groups=["minigame_layer"]]
+layer = 20
+
+[node name="Mundo" type="Node3D" parent="."]
+
+[node name="CharSpawn" type="Node3D" parent="Mundo" groups=["CharSpawn"]]
+transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 3.9580517, 0.21213531, 28.395706)
+
+[node name="Mapin" type="Node3D" parent="Mundo"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Mundo/Mapin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0341797, 0.39788818, 0.06236267)
+use_collision = true
+size = Vector3(100, 0.2, 100)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Mundo"]
+environment = SubResource("Environment_0t8de")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8w3ek")
+bus = &"Ambience"
