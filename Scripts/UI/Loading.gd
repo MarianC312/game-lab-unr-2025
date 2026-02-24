@@ -32,6 +32,7 @@ func _on_progress_bar_value_changed(value: float) -> void:
 	else:
 		print("Value: ", value)
 		print("scene_load_status: ", scene_load_status)
+		print("ResourceLoader.THREAD_LOAD_LOADED: ", ResourceLoader.THREAD_LOAD_LOADED)
 
 func _reset_progress_bar_value() -> void:
 		progress_bar.value = 0

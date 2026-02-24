@@ -7,7 +7,7 @@ extends Node
 @onready var loading : Control = $UI/Loading
 @onready var journal: Control = $UI/Journal
 
-var first_load : bool = true
+var first_load : bool = true # true
 var current_map: Node = null
 
 func _init() -> void:
@@ -70,7 +70,10 @@ func _on_map_ready() -> void:
 		var spawn = get_tree().get_first_node_in_group("CharSpawn")
 		if spawn != null:
 			player.global_position = spawn.global_position
+			print("Actualizando posición del player...")
 			player.start_first_dialogue() # hacer q solo se ejecute en el primer mapa
+		else:
+			print("Spawn no encontrado: ", spawn)
 	player._clear_movement()
 	loading.visible = false
 	SceneTransitions.fade_in()
@@ -79,6 +82,7 @@ func _on_map_ready() -> void:
 	GameManager._toggle_playing()
 
 func _on_scene_loaded(new_scene) -> void:
+	print("Escena cargada correctamente...")
 	load_map(new_scene)
 
 func _on_toggle_journal() -> void:

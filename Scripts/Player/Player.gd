@@ -22,6 +22,7 @@ const PATH_POSITION_CHAIN : bool = false
 const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
 
 @export var first_dialogue : DialogueResource = preload("res://Dialogues/Scene/Prototype01/PlayerFirstDialogue.dialogue")
+@export var prototype03_dialogue : DialogueResource = preload("res://Dialogues/Scene/Prototype03/Prototype03.dialogue")
 @onready var text_interact : Label = $CanvasLayer5/UI/BoxContainer/TextInteract
 @onready var see_cast : ShapeCast3D = $playermodel/Prototype/SeeCast02
 @onready var camera_pivot : Node3D = $camera_pivot
@@ -58,7 +59,7 @@ var spine_bone_3 := -1
 var current_look_yaw := 0.0
 var spine_yaw := 0.0
 var look_enabled := true
-var is_first_dialogue_done : bool = false
+var is_first_dialogue_done : bool = false # false
 var is_dialogue_active : bool = false
 var is_journal_active : bool = false
 var is_pause_active : bool = false
@@ -66,8 +67,6 @@ var can_glow_interactables : bool = true
 var already_called_clear_interactable_glow : bool = false
 var started_audio_footsteps : bool = false
 var highlight_tween: Tween
-
-
 
 func _ready() -> void:
 	# nav_agent.set_target_position(global_transform.origin)
@@ -564,3 +563,22 @@ func stop_highlight(button: Button):
 		highlight_tween = null
 		print("anduvo!")
 	button.scale = Vector2.ONE
+
+func set_target_position(new_position : Vector3) -> void:
+	if PATH_POSITION_CHAIN:
+		target_positions.append(new_position)
+	else:
+		target_position = new_position
+	nav_agent.set_target_position(target_position)
+	has_target = true
+	moving_to_target = false
+	print("Target position: ", target_position)
+
+func trigger_dialogue(diag : int, wait_time : float) -> void:
+	match diag:
+		3:
+			await get_tree().create_timer(wait_time).timeout
+			if has_target or moving_to_target:
+				trigger_dialogue(3, 0.1)
+			else:
+				DialogueManager.show_dialogue_balloon(prototype03_dialogue, "start")

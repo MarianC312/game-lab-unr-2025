@@ -20,7 +20,7 @@ func _ready():
 	multimesh.instance_count = count
 
 	for i in count:
-		var transform = Transform3D()
+		transform = Transform3D()
 
 		# Posición aleatoria dentro del área
 		var x_pos = randf_range(-area_width/2, area_width/2)
@@ -35,8 +35,8 @@ func _ready():
 		# transform.basis = Basis(Vector3.UP, randf() * TAU)
 
 		# Escala aleatoria
-		var scale = randf_range(min_scale, max_scale)
-		transform.basis = transform.basis.scaled(Vector3.ONE * scale)
+		var _scale = randf_range(min_scale, max_scale)
+		transform.basis = transform.basis.scaled(Vector3.ONE * _scale)
 
 		# Aplicamos la transform
 		multimesh.set_instance_transform(i, transform)

@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export var npc_name : String = ""
 @export var dialogue : DialogueResource = preload("res://Dialogues/Default/Default.dialogue")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer2
-@onready var animation_player2: AnimationPlayer = $AnimationPlayer
+# @onready var animation_player2: AnimationPlayer = $AnimationPlayer
 
 var is_dialogue_active : bool = false
 
@@ -31,11 +31,11 @@ func interact() -> void:
 	DialogueManager.show_dialogue_balloon(dialogue)
 
 func _on_dialogue_start(_dialogue) -> void:
-	play_animation_state = AnimationState.TALKING
+	# play_animation_state = AnimationState.TALKING
 	is_dialogue_active = true
 
 func _on_dialogue_end(_dialogue) -> void:
-	play_animation_state = AnimationState.IDLE
+	# play_animation_state = AnimationState.IDLE
 	await get_tree().create_timer(0.2).timeout
 	is_dialogue_active = false
 

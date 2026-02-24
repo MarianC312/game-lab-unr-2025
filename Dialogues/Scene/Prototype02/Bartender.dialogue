@@ -82,6 +82,6 @@ Manuel:
 ~ salida
 {{ GameManager.get_player_name() }}:
 	[wave]Comienza una pelea, mejor salgo de acá...[/wave]
-if GameManager._map02_completed_tasks():
+if true # GameManager._map02_completed_tasks() corregir esto:
 	do GameManager.load_new_map("")
 => END!

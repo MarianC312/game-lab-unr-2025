@@ -3,6 +3,7 @@ extends Node3D
 @onready var item_list: ItemList = $UI/CanvasLayer15/ItemList
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var forestal: Node3D = $Mundo/Forestal
+@onready var camera_3d: Camera3D = $Camera3D
 
 signal map_ready
 
@@ -12,6 +13,7 @@ func _ready() -> void:
 	# ver o revisar si necesitamos fadein en el sonido
 	# print("Region map: ", NavigationServer3D.region_get_map($NavigationRegion3D.get_rid()))
 	audio_stream_player.play()
+	camera_3d.make_current()
 	SceneManagerMap04.registered_interaction.connect(_on_registered_interaction)
 	process_mode = Node.PROCESS_MODE_INHERIT
 	player = get_tree().get_nodes_in_group("Player")

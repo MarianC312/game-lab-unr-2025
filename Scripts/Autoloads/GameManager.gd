@@ -6,16 +6,16 @@ var next_scene : Dictionary
 var current_state : game_states = game_states.LOADING
 var current_locale_id : int
 var game_scene_flow := {
-	"Debug":
-		{
-			"res": "res://Scenes/Prototype/Prototype03.tscn",
-			"status": false,
-			"loadDialogue": true,
-			"playable": false
-		},
+	#"Debug":
+		#{
+			#"res": "res://Scenes/Prototype/Prototype03.tscn",
+			#"status": false,
+			#"loadDialogue": false,
+			#"playable": true
+		#},
 	"Prologue":
 		{
-			"res": "res://Scenes/Prototype/Prototype04.tscn",
+			"res": "res://Scenes/Prologue.tscn",
 			"status": false,
 			"loadDialogue": true,
 			"playable": false
@@ -67,7 +67,7 @@ var game_scene_flow := {
 			"res": "res://Scenes/Prototype/Prototype04.tscn",
 			"status": false,
 			"loadDialogue": false,
-			"playable": true
+			"playable": true # true
 		}
 }
 

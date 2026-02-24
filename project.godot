@@ -32,6 +32,7 @@ BgMusicSC="res://Scripts/Autoloads/BGMusic.gd"
 MinigameManager="*res://Scripts/Minigame/MinigameManager.gd"
 SceneManagerMap02="*res://Scripts/Autoloads/SceneManagerMap02.gd"
 SceneManagerMap04="*res://Scripts/Autoloads/SceneManagerMap04.gd"
+SceneManagerMap03="*res://Scripts/Autoloads/SceneManagerMap03.gd"
 
 [debug_draw_3d]
 
