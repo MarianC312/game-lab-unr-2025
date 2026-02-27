@@ -93,41 +93,7 @@ func _input(event: InputEvent) -> void:
 		#start_interaction()
 	
 	if event.is_action_pressed("left_click"): # Input.is_action_pressed("left_click")
-		var ui_clicked = get_viewport().gui_get_hovered_control()
-		print(ui_clicked)
-		if ui_clicked != null and ui_clicked.visible:
-			return
-		if not PATH_POSITION_CHAIN:
-			_clear_movement()
-		var camera = get_viewport().get_camera_3d()
-		var from = camera.project_ray_origin(get_viewport().get_mouse_position())
-		var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
-		var space_state = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(from, to, 1 << 2) # << 2
-		query.collide_with_areas = false
-		query.collide_with_bodies = true
-		# query.collision_mask = 1 << 2
-		
-		var result = space_state.intersect_ray(query)
-		var current_click_time = Time.get_ticks_msec() / 1000.0
-		if current_click_time - last_click_time <= DOUBLE_CLICK_THRESHOLD:
-			should_run = true
-			timer.stop()
-		else:
-			timer.start(DOUBLE_CLICK_THRESHOLD)
-		last_click_time = current_click_time
-		
-		if result and result.has("position"):
-			var new_position = Vector3(result.position.x, 0, result.position.z)
-			if PATH_POSITION_CHAIN:
-				target_positions.append(new_position)
-			else:
-				target_position = new_position
-			nav_agent.set_target_position(target_position)
-			has_target = true
-			print("Target position: ", target_position)
-		else:
-			print("No hit")
+		_handle_click()
 	
 	if event.is_action_pressed("right_click"):
 		_clear_movement()
@@ -139,6 +105,43 @@ func _input(event: InputEvent) -> void:
 				for item in interactable_item_list:
 					if item.has_method("_glow"):
 						item.call("_glow", true)
+
+func _handle_click() -> void:
+	var ui_clicked = get_viewport().gui_get_hovered_control()
+	# print(ui_clicked)
+	if ui_clicked != null and ui_clicked.visible:
+		return
+	if not PATH_POSITION_CHAIN:
+		_clear_movement()
+	var camera = get_viewport().get_camera_3d()
+	var from = camera.project_ray_origin(get_viewport().get_mouse_position())
+	var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(from, to, 1 << 2) # << 2
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	# query.collision_mask = 1 << 2
+	
+	var result = space_state.intersect_ray(query)
+	var current_click_time = Time.get_ticks_msec() / 1000.0
+	if current_click_time - last_click_time <= DOUBLE_CLICK_THRESHOLD:
+		should_run = true
+		timer.stop()
+	else:
+		timer.start(DOUBLE_CLICK_THRESHOLD)
+	last_click_time = current_click_time
+	
+	if result and result.has("position"):
+		var new_position = Vector3(result.position.x, 0, result.position.z)
+		if PATH_POSITION_CHAIN:
+			target_positions.append(new_position)
+		else:
+			target_position = new_position
+		nav_agent.set_target_position(target_position)
+		has_target = true
+		# print("Target position: ", target_position)
+	else:
+		print("No hit")
 
 func get_mouse_dir() -> Vector3:
 	var cam := get_viewport().get_camera_3d()
@@ -203,6 +206,8 @@ func _clear_movement() -> void:
 func _process(delta: float) -> void:
 	update_look(delta)
 	update_spine(delta)
+	#if Input.is_action_pressed("left_click"):
+		#_handle_click()
 	# print("MODEL FORWARD:", playermodel.global_transform.basis.z)
 	# print("Player is grunded: ", is_on_floor())
 	if not already_called_clear_interactable_glow and not can_glow_interactables:
@@ -278,8 +283,7 @@ func _physics_process(delta: float) -> void:
 		
 		# move_type1(delta)
 		move_type2(delta)
-		
-	move_and_slide()
+		move_and_slide()
 		
 	match player_animation_state:
 		AnimationState.WALKING:
@@ -370,11 +374,12 @@ func reset_spine(delta, spine_bone):
 	apply_bone_yaw(spine_bone, spine_yaw)
 
 func start_interaction() -> void:
+	await get_tree().create_timer(.15).timeout
 	if target != null:
-		await get_tree().create_timer(0.4).timeout
 		target.call("interact")
 		text_interact.hide()
 		interact_button.hide()
+		_clear_movement()
 
 func spawn_move_pointer(new_position : Vector3) -> void:
 	var pointer_instance = CURSOR_POINTER.instantiate()
@@ -588,6 +593,6 @@ func trigger_dialogue(diag : int, wait_time : float) -> void:
 		3:
 			await get_tree().create_timer(wait_time).timeout
 			if has_target or moving_to_target:
-				trigger_dialogue(3, 0.1)
+				trigger_dialogue(3, 0.5)
 			else:
 				DialogueManager.show_dialogue_balloon(prototype03_dialogue, "start")

@@ -5,6 +5,8 @@ extends Control
 @onready var sonido_slider: HSlider = $HBoxContainer2/SonidoSlider
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var already_faded := false
+
 
 func _ready() -> void:
 	hide()
@@ -20,7 +22,9 @@ func _on_volver_pressed() -> void:
 	hide()
 
 func _on_fade_complete() -> void:
-	animation_player.play("slide_in_out")
+	if not already_faded:
+		animation_player.play("slide_in_out")
+		already_faded = true
 
 func _on_option_button_item_selected(index: int) -> void:
 	match index:

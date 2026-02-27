@@ -419,6 +419,7 @@ text = "menu_btn_back"
 libraries = {
 &"": SubResource("AnimationLibrary_120pb")
 }
+playback_auto_capture = false
 
 [connection signal="item_selected" from="HBoxContainer3/LenguajeOptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
