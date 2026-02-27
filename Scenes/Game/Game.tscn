@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwl0t0lg0urkc"]
+[gd_scene load_steps=7 format=3 uid="uid://dwl0t0lg0urkc"]
 
 [ext_resource type="Script" uid="uid://nxf4xejdqb4e" path="res://Scripts/Game/Game.gd" id="1_gwu2e"]
 [ext_resource type="PackedScene" uid="uid://dkp53ary6lvah" path="res://Scenes/Player/Player.tscn" id="2_xbxml"]
 [ext_resource type="PackedScene" uid="uid://dkdyp60vkqbij" path="res://Scenes/UI/Journal.tscn" id="2_y3kpf"]
 [ext_resource type="PackedScene" uid="uid://dlf3yhsierjcw" path="res://Scenes/UI/Loading.tscn" id="3_ln2h6"]
 [ext_resource type="PackedScene" uid="uid://4ulbnprvg5dc" path="res://Scenes/UI/PauseMenu.tscn" id="3_xbxml"]
+[ext_resource type="PackedScene" uid="uid://bqagf7wha1au0" path="res://Scenes/UI/ControlsMenu.tscn" id="4_3k6gv"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_gwu2e")
@@ -16,6 +17,9 @@ layer = 50
 visible = false
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("3_xbxml")]
+visible = false
+
+[node name="ControlsMenu" parent="UI" instance=ExtResource("4_3k6gv")]
 visible = false
 
 [node name="Loading" parent="UI" instance=ExtResource("3_ln2h6")]

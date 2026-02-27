@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c4yck0xdtbl3n" path="res://Scenes/UI/Options.tscn" id="2_s6sq0"]
 [ext_resource type="Texture2D" uid="uid://dsqtmdotsoc5v" path="res://Textures/Screenshots/foto_casa_02.png" id="2_v3kjt"]
 [ext_resource type="FontFile" uid="uid://bbum0t01os8q3" path="res://Base/Fonts/Thicker Destroy.ttf" id="4_3hayu"]
-[ext_resource type="AudioStream" uid="uid://f75v0xbjvssa" path="res://Sounds/Music/menu_bg_music.wav" id="5_t06ot"]
+[ext_resource type="AudioStream" uid="uid://dok26fu1dgfxq" path="res://Sounds/Music/menu_bg_music_02.wav" id="6_s6sq0"]
 
 [sub_resource type="Gradient" id="Gradient_t06ot"]
 offsets = PackedFloat32Array(0.082539685, 1)
@@ -116,7 +116,7 @@ offset_top = -77.0
 offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.23921569, 0.039215688, 0.039215688, 1)
+theme_override_colors/font_color = Color(0.3878257, 0.086835004, 0.08683028, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
 theme_override_colors/font_outline_color = Color(0.75819653, 0.75819, 0.75819147, 0.44313726)
 theme_override_constants/line_spacing = 3
@@ -136,7 +136,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_t06ot")
+stream = ExtResource("6_s6sq0")
 bus = &"Music"
 
 [connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]

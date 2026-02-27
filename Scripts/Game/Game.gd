@@ -6,6 +6,7 @@ extends Node
 @onready var player : CharacterBody3D = $Player
 @onready var loading : Control = $UI/Loading
 @onready var journal: Control = $UI/Journal
+@onready var controls_menu: Control = $UI/ControlsMenu
 
 var first_load : bool = true # true
 var current_map: Node = null
@@ -20,6 +21,7 @@ func _ready() -> void:
 	GameManager.toggle_pause.connect(_on_toggle_pause)
 	GameManager.toggle_loading.connect(_on_toggle_loading)
 	GameManager.toggle_journal.connect(_on_toggle_journal)
+	GameManager.toggle_controls.connect(_on_toggle_controls)
 	loading.scene_loaded.connect(_on_scene_loaded)
 	pause_menu.visible = false
 	loading.visible = true
@@ -90,3 +92,9 @@ func _on_toggle_journal() -> void:
 		journal.hide()
 	else:
 		journal.show()
+		
+func _on_toggle_controls() -> void:
+	if controls_menu.visible:
+		controls_menu.hide()
+	else:
+		controls_menu.show()

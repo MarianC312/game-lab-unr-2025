@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func _on_volver_pressed() -> void:
-	GameManager._toggle_pause()
+	GameManager._toggle_controls()
 
 
 func _on_salir_pressed() -> void:

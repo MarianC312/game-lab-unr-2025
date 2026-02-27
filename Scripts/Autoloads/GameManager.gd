@@ -79,6 +79,7 @@ enum game_states {START, LOADING, PLAYING, PAUSED}
 signal toggle_pause
 signal toggle_loading
 signal toggle_journal
+signal toggle_controls
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -183,3 +184,7 @@ func get_game_flow_names() -> Array:
 
 func get_scene_state(scene_name : String) -> bool:
 	return game_scene_flow[scene_name].status
+
+func _toggle_controls(emit := true) -> void:
+	if emit:
+		toggle_controls.emit()

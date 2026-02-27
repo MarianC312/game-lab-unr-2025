@@ -596,3 +596,11 @@ func trigger_dialogue(diag : int, wait_time : float) -> void:
 				trigger_dialogue(3, 0.5)
 			else:
 				DialogueManager.show_dialogue_balloon(prototype03_dialogue, "start")
+
+
+func _on_controls_button_pressed() -> void:
+	if not is_pause_active:
+		is_pause_active = true
+		await get_tree().create_timer(0.4).timeout
+		is_pause_active = false
+		GameManager._toggle_controls()

@@ -1,0 +1,194 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqagf7wha1au0"]
+
+[ext_resource type="Script" uid="uid://1e4ygn1doepy" path="res://Scripts/UI/PauseMenu.gd" id="1_x4b4u"]
+[ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="2_at3t3"]
+[ext_resource type="Texture2D" uid="uid://bx1dsekiq5351" path="res://Textures/UI/puntero.png" id="3_at3t3"]
+[ext_resource type="PackedScene" uid="uid://c4yck0xdtbl3n" path="res://Scenes/UI/Options.tscn" id="3_x057d"]
+
+[sub_resource type="Gradient" id="Gradient_238ko"]
+offsets = PackedFloat32Array(0.082539685, 1)
+colors = PackedColorArray(0.6392157, 0.34117648, 0.12156863, 0.5019608, 0.34509805, 0.17254902, 0.043137256, 0.5019608)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ktw36"]
+gradient = SubResource("Gradient_238ko")
+fill = 1
+fill_from = Vector2(0.5, 0.4)
+fill_to = Vector2(1, 0.875)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2bpff"]
+texture = SubResource("GradientTexture2D_ktw36")
+
+[node name="ControlsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x4b4u")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_2bpff")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 280.5
+offset_bottom = -280.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(750, 35)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
+text = "Caminar: click izquierdo en el piso"
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(750, 35)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
+text = "Correr: doble click izquierdo"
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(750, 35)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
+text = "Pistas: Click derecho"
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(750, 35)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
+text = "Saltar diálogo: click izquierdo"
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(750, 35)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
+text = "Tecla P: Menú de pausa"
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(750, 35)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
+text = "Tecla C: Menú de controles"
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(750, 35)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
+text = "Tecla J: Abrir cuaderno de anotaciones"
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer8"]
+custom_minimum_size = Vector2(750, 35)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
+text = "Tecla E: Interactuar"
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
+[node name="Volver" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/font_size = 32
+text = "menu_btn_back"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("3_x057d")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
