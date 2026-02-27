@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://kei4fk24oicn"]
+[gd_scene load_steps=10 format=3 uid="uid://kei4fk24oicn"]
 
 [ext_resource type="Script" uid="uid://pbkn4u2sgrgk" path="res://Scripts/UI/Menu.gd" id="1_5cock"]
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="2_6487p"]
 [ext_resource type="PackedScene" uid="uid://c4yck0xdtbl3n" path="res://Scenes/UI/Options.tscn" id="2_s6sq0"]
-[ext_resource type="FontFile" uid="uid://bg207g1s4ugpx" path="res://Base/Fonts/Vintageone-q6Yx.ttf" id="3_t06ot"]
+[ext_resource type="Texture2D" uid="uid://dsqtmdotsoc5v" path="res://Textures/Screenshots/foto_casa_02.png" id="2_v3kjt"]
+[ext_resource type="FontFile" uid="uid://bbum0t01os8q3" path="res://Base/Fonts/Thicker Destroy.ttf" id="4_3hayu"]
 [ext_resource type="AudioStream" uid="uid://f75v0xbjvssa" path="res://Sounds/Music/menu_bg_music.wav" id="5_t06ot"]
 
 [sub_resource type="Gradient" id="Gradient_t06ot"]
@@ -40,6 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer2/Principal"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,6 +49,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6487p")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/Principal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v3kjt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/Principal"]
 layout_mode = 1
@@ -105,10 +116,16 @@ offset_top = -77.0
 offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.21568628, 0.24313726, 0.16862746, 1)
-theme_override_colors/font_shadow_color = Color(0.654902, 0.4862745, 0.101960786, 0.6745098)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_t06ot")
+theme_override_colors/font_color = Color(0.23921569, 0.039215688, 0.039215688, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_colors/font_outline_color = Color(0.75819653, 0.75819, 0.75819147, 0.44313726)
+theme_override_constants/line_spacing = 3
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("4_3hayu")
 theme_override_font_sizes/font_size = 110
 text = "Ecos del Monte"
 horizontal_alignment = 1

@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 	# print("Stream line: ", audio_stream_player.get_playback_position())
 	if player_sent_w01 == false:
 		player.set_target_position(waypoint_01.global_position)
-		player.trigger_dialogue(3, 5.4)
+		# player.trigger_dialogue(3, 5.4)
 		player.should_run = true
 		player_sent_w01 = true
 

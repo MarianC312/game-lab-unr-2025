@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlf3yhsierjcw"]
+[gd_scene load_steps=8 format=3 uid="uid://dlf3yhsierjcw"]
 
 [ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="1_835t4"]
 [ext_resource type="Script" uid="uid://bl5sxur3350v1" path="res://Scripts/UI/Loading.gd" id="1_jft1o"]
+[ext_resource type="Texture2D" uid="uid://1pfkkl0yycbx" path="res://Textures/Screenshots/foto_cruce_01.png" id="2_kenh8"]
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="3_rirtg"]
 
 [sub_resource type="Gradient" id="Gradient_rirtg"]
@@ -27,6 +28,7 @@ grow_vertical = 2
 script = ExtResource("1_jft1o")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,6 +36,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_kenh8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kenh8")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -71,7 +83,6 @@ offset_top = -76.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("3_rirtg")
-theme_override_fonts/font = ExtResource("1_835t4")
 theme_override_font_sizes/font_size = 48
 text = "loading_bar_text"
 horizontal_alignment = 2

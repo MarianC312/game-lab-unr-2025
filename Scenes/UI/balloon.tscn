@@ -65,12 +65,12 @@ MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sluf"]
-bg_color = Color(0.42745098, 0.47843137, 0.3372549, 0.8235294)
+bg_color = Color(0.6392157, 0.34117648, 0.12156863, 0.8235294)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.19215687, 0.21568628, 0.15686275, 0.8235294)
+border_color = Color(0.2509804, 0.15294118, 0.078431375, 0.8235294)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -119,6 +119,7 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme = ExtResource("2_4sluf")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -128,6 +129,7 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_4sluf")
 text = "Dialogue..."
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]

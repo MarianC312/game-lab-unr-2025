@@ -179,7 +179,6 @@ func apply_bone_yaw(bone_idx: int, yaw: float):
 		true
 	)
 
-
 func _clear_interactable_glow() -> void:
 	print("Called clear interactable.")
 	await get_tree().create_timer(1.5).timeout
@@ -212,6 +211,7 @@ func _process(delta: float) -> void:
 	
 	if not journal_button.visible and GameManager.has_journal():
 		journal_button.show()
+		highlight_button(journal_button)
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -241,11 +241,14 @@ func _physics_process(delta: float) -> void:
 			target = see_cast.get_collider(0)
 			# print(target)
 			if target and target.has_method("interact"):
-				text_interact.show()
-				interact_button.show()
+				if not text_interact.visible or not interact_button.visible:
+					text_interact.show()
+					interact_button.show()
+					highlight_button(interact_button)
 				if target.has_method("_glow") and not target.is_glowing():
 					target.call("_glow", true)
 		else:
+			# stop_highlight(interact_button)
 			text_interact.hide()
 			interact_button.hide()
 			target = null
@@ -541,27 +544,33 @@ func _on_registered_interaction(_interactable) -> void:
 	highlight_button(journal_button)
 
 func highlight_button(button: Button):
-	if highlight_tween and highlight_tween.is_running():
-		highlight_tween.kill()
+	var existing_tween = button.get_meta("highlight_tween")
+	if existing_tween and existing_tween.is_running():
+		existing_tween.kill()
 	
 	button.scale = Vector2.ONE
 	
-	highlight_tween = button.create_tween()
-	highlight_tween.set_loops()
+	var tween = button.create_tween()
+	tween.set_loops()
 	
-	highlight_tween.tween_property(button, "scale", Vector2(1.05, 1.05), 0.4)\
+	tween.tween_property(button, "scale", Vector2(1.05, 1.05), 0.4)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_IN_OUT)
 	
-	highlight_tween.tween_property(button, "scale", Vector2.ONE, 0.4)\
+	tween.tween_property(button, "scale", Vector2.ONE, 0.4)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_IN_OUT)
+	
+	button.set_meta("highlight_tween", tween)
 
 func stop_highlight(button: Button):
-	if highlight_tween:
-		highlight_tween.kill()
-		highlight_tween = null
+	var tween = button.get_meta("highlight_tween")
+	
+	if tween and tween.is_running():
+		tween.kill()
+		button.set_meta("highlight_tween", null)
 		print("anduvo!")
+	
 	button.scale = Vector2.ONE
 
 func set_target_position(new_position : Vector3) -> void:

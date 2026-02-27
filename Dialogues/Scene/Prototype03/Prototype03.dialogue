@@ -31,11 +31,9 @@ Bandolero:
 	Gracias, mi familia las necesita.
 Bandolero:
 	Buena suerte con tu búsqueda. Sé valiente y que no corrompan tu alma. Te pareces a Martina Chapanay, una rebelde de corazón. Ten para que te guíe.
-	[wave]Recibes una pulsera tejida con la bandera wiphala[/wave]
-Bandera Whipala:
-	La Wiphala es un emblema cuadrangular de colores del arcoíris, símbolo de los pueblos originarios representando su cosmovisión de armonía, igualdad y reciprocidad. Simboliza la resistencia, unidad y cultura ancestral.
-Bandera Whipala:
-	Su diseño de 7x7 cuadros, con colores diagonales que representan la Tierra, la sociedad, la energía, el cosmos y la comunidad, es un estandarte de identidad y un emblema de la diversidad cultural en Sudamérica.
+	[wave]Recibes un brazalete huarpe.[/wave]
+BRAZALETE HUARPE:
+	Martina Chapanay era descendiente de un cacique huarpe, se identificaban con el agua, el sol y la luna, animales del entorno y diseños geométricos. Su identidad se basaba en la comunidad, el linaje y la relación espiritual con la tierra. Los pueblos originarios no contaban con una bandera única en ese momento.
 Bandolero:
 	Hay que mantener la espalda erguida frente a los poderosos. El camino más corto es por las vías. Y si necesitas ayuda pedile a Manuel un mate cosido.
 	[wave]se sonríe[/wave]
@@ -49,11 +47,9 @@ do GameManager.load_new_map("")
 	No las necesito en este momento, tal vez se las puedas dar a alguien más.
 Bandolero:
 	Tienes un alma pura muchacha, le hace falta más gente como vos a esta tierra. Te pareces a Martina Chapanay, una rebelde de corazón. Ten para que te guíe.
-	[wave]Recibes una pulsera tejida con la bandera wiphala[/wave]
-Bandera Whipala:
-	La Wiphala es un emblema cuadrangular de colores del arcoíris, símbolo de los pueblos originarios representando su cosmovisión de armonía, igualdad y reciprocidad. Simboliza la resistencia, unidad y cultura ancestral.
-Bandera Whipala:
-	Su diseño de 7x7 cuadros, con colores diagonales que representan la Tierra, la sociedad, la energía, el cosmos y la comunidad, es un estandarte de identidad y un emblema de la diversidad cultural en Sudamérica.
+	[wave]Recibes un brazalete huarpe.[/wave]
+BRAZALETE HUARPE:
+	Martina Chapanay era descendiente de un cacique huarpe, se identificaban con el agua, el sol y la luna, animales del entorno y diseños geométricos. Su identidad se basaba en la comunidad, el linaje y la relación espiritual con la tierra. Los pueblos originarios no contaban con una bandera única en ese momento.
 Bandolero:
 	Sabes... Podríamos ser socios en este latifundio.
 {{ GameManager.get_player_name() }}:

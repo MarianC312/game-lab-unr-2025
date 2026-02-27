@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4yck0xdtbl3n"]
+[gd_scene load_steps=10 format=3 uid="uid://c4yck0xdtbl3n"]
 
 [ext_resource type="Script" uid="uid://clu6hdbsoyrd5" path="res://Scripts/UI/Options.gd" id="1_h8s0t"]
+[ext_resource type="Texture2D" uid="uid://bwer71q5od2cl" path="res://Textures/Screenshots/foto_bar_03.png" id="2_eothy"]
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="3_eothy"]
 
 [sub_resource type="Gradient" id="Gradient_bgrb0"]
@@ -279,6 +280,7 @@ grow_vertical = 2
 script = ExtResource("1_h8s0t")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -286,6 +288,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_120pb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eothy")
 
 [node name="TextLoading" type="Label" parent="."]
 layout_mode = 1
@@ -313,7 +324,7 @@ layout_mode = 0
 offset_left = 88.0
 offset_top = 230.0
 offset_right = 739.0
-offset_bottom = 290.00043
+offset_bottom = 290.0005
 theme_override_constants/separation = 40
 
 [node name="Musica" type="Label" parent="HBoxContainer"]

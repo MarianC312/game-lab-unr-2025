@@ -8,7 +8,7 @@ var current_locale_id : int
 var game_scene_flow := {
 	#"Debug":
 		#{
-			#"res": "res://Scenes/Prototype/Prototype03.tscn",
+			#"res": "res://Scenes/Prototype/Prototype02.tscn",
 			#"status": false,
 			#"loadDialogue": false,
 			#"playable": true
