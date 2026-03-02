@@ -1,13 +1,13 @@
 extends Control
-
 @onready var options_menu: Control = $OptionsMenu
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 func _on_volver_pressed() -> void:
-	GameManager._toggle_controls()
+	GameManager._toggle_pause()
 
 
 func _on_salir_pressed() -> void:

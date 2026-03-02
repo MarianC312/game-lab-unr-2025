@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://dkp53ary6lvah"]
+[gd_scene load_steps=74 format=4 uid="uid://dkp53ary6lvah"]
 
 [ext_resource type="Script" uid="uid://c2k3xdanb5thv" path="res://Scripts/Player/Player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://bickw7f30y52t" path="res://Textures/Player/PaisanaSkin.png" id="2_h54ih"]
@@ -7653,6 +7653,18 @@ unicode = 106
 [sub_resource type="Shortcut" id="Shortcut_w71ue"]
 events = [SubResource("InputEventKey_0objx")]
 
+[sub_resource type="InputEventKey" id="InputEventKey_1e6p3"]
+device = -1
+keycode = 80
+unicode = 112
+
+[sub_resource type="InputEventKey" id="InputEventKey_yb677"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_yb677"]
+events = [SubResource("InputEventKey_1e6p3"), SubResource("InputEventKey_yb677")]
+
 [sub_resource type="InputEventKey" id="InputEventKey_w71ue"]
 device = -1
 keycode = 67
@@ -8124,7 +8136,7 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme = ExtResource("4_ude3g")
-shortcut = SubResource("Shortcut_esmjy")
+shortcut = SubResource("Shortcut_yb677")
 text = "[P]"
 
 [node name="ControlsButton" type="Button" parent="CanvasLayer5/UI/HFlowContainer2"]
