@@ -8065,6 +8065,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
+[node name="TextInteract" type="Label" parent="CanvasLayer5/UI"]
+visible = false
+layout_mode = 0
+offset_top = 648.0
+offset_right = 117.0
+offset_bottom = 669.0
+theme = ExtResource("4_ude3g")
+text = "(E) Interactuar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer5/UI"]
 layout_mode = 1
 anchors_preset = 12
@@ -8076,14 +8087,6 @@ grow_vertical = 0
 mouse_filter = 2
 alignment = 1
 vertical = true
-
-[node name="TextInteract" type="Label" parent="CanvasLayer5/UI/BoxContainer"]
-visible = false
-layout_mode = 2
-theme = ExtResource("4_ude3g")
-text = "(E) Interactuar"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="HFlowContainer" type="HFlowContainer" parent="CanvasLayer5/UI"]
 layout_mode = 1
@@ -8102,7 +8105,6 @@ theme_override_constants/h_separation = 10
 alignment = 2
 
 [node name="InteractButton" type="Button" parent="CanvasLayer5/UI/HFlowContainer"]
-visible = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme = ExtResource("4_ude3g")
@@ -8167,8 +8169,16 @@ stream = SubResource("AudioStreamRandomizer_ude3g")
 volume_db = -10.0
 bus = &"Player"
 
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="CanvasLayer5/UI/HFlowContainer/InteractButton" to="." method="_on_hover"]
 [connection signal="pressed" from="CanvasLayer5/UI/HFlowContainer/InteractButton" to="." method="_on_interact_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer5/UI/HFlowContainer/JournalButton" to="." method="_on_hover"]
 [connection signal="pressed" from="CanvasLayer5/UI/HFlowContainer/JournalButton" to="." method="_on_journal_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer5/UI/HFlowContainer2/PauseButton" to="." method="_on_hover"]
 [connection signal="pressed" from="CanvasLayer5/UI/HFlowContainer2/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer5/UI/HFlowContainer2/ControlsButton" to="." method="_on_hover"]
 [connection signal="pressed" from="CanvasLayer5/UI/HFlowContainer2/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="timeout" from="TimerFootsteps" to="." method="_on_timer_footsteps_timeout"]

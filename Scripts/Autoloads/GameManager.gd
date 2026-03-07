@@ -12,62 +12,71 @@ var game_scene_flow := {
 			#"status": false,
 			#"loadDialogue": false,
 			#"playable": true
+			#"name": "TestScene"
 		#},
 	"Prologue":
 		{
 			"res": "res://Scenes/Prologue.tscn",
 			"status": false,
 			"loadDialogue": true,
-			"playable": false
+			"playable": false,
+			"name": "Prologo"
 		},
 	"Map01":
 		{
 			"res": "res://Scenes/Prototype/Prototype01.tscn",
 			"status": false,
 			"loadDialogue": false,
-			"playable": true
+			"playable": true,
+			"name": "Mapa01"
 		},
 	"Interlude01":
 		{
 			"res": "res://Scenes/Interludes/Interlude01.tscn",
 			"status": false,
 			"loadDialogue": true,
-			"playable": false
+			"playable": false,
+			"name": "Interludio01"
 		},
 	"Map02":
 		{
 			"res": "res://Scenes/Prototype/Prototype02.tscn",
 			"status": false,
 			"loadDialogue": false,
-			"playable": true
+			"playable": true,
+			"name": "Mapa02"
 		},
 	"Interlude02":
 		{
 			"res": "res://Scenes/Interludes/Interlude02.tscn",
 			"status": false,
 			"loadDialogue": true,
-			"playable": false
+			"playable": false,
+			"name": "Interludio02"
 		},
 	"Map03":
 		{
 			"res": "res://Scenes/Prototype/Prototype03.tscn",
 			"status": false,
 			"loadDialogue": false,
-			"playable": true
+			"playable": true,
+			"name": "Mapa03"
 		},
 	"Interlude03":
 		{
 			"res": "res://Scenes/Interludes/Interlude03.tscn",
 			"status": false,
 			"loadDialogue": true,
-			"playable": false
+			"playable": false,
+			"name": "Interludio03"
 		},
 	"Map04":
 		{
 			"res": "res://Scenes/Prototype/Prototype04.tscn",
 			"status": false,
 			"loadDialogue": false,
-			"playable": true # true
+			"playable": true, # true
+			"name": "Mapa04"
 		}
 }
 
@@ -80,6 +89,8 @@ signal toggle_pause
 signal toggle_loading
 signal toggle_journal
 signal toggle_controls
+signal restart_game
+signal toggle_playing
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -105,6 +116,7 @@ func load_new_map(_new_map_path : String) -> void:
 	for scene in game_scene_flow.keys():
 		if not game_scene_flow[scene].status:
 			print("Start loading new map: ", game_scene_flow[scene].res)
+			current_scene = game_scene_flow[scene]
 			_set_new_scene_path(game_scene_flow[scene])
 			_toggle_loading()
 			#print("Before: ")
@@ -121,6 +133,7 @@ func _toggle_loading() -> void:
 	
 func _toggle_playing() -> void:
 	current_state = game_states.PLAYING
+	toggle_playing.emit()
 	print("Toggled playing ok!")
 
 func _is_game_paused() -> bool:
@@ -152,9 +165,26 @@ func _is_game_loading() -> bool:
 
 func _map01_completed_tasks() -> bool:
 	return SceneManagerMap01._interacted_with_all()
-	
+
 func _map02_completed_tasks() -> bool:
 	return SceneManagerMap02._interacted_with_all()
+
+func _map03_completed_tasks() -> bool:
+	return SceneManagerMap03._interacted_with_all()
+
+func _map04_completed_tasks() -> bool:
+	return SceneManagerMap04._interacted_with_all()
+
+func _restart_game() -> void:
+	paused = false
+	current_scene = {}
+	next_scene = game_scene_flow.Prologue
+	current_state = game_states.LOADING
+	current_locale_id = 0
+	for key_scene in game_scene_flow.keys():
+		game_scene_flow[key_scene].status = false
+	restart_game.emit()
+	get_tree().change_scene_to_file("res://Scenes/UI/Menu.tscn")
 
 func _switch_language(lang : String) -> void:
 	TranslationServer.set_locale(lang)
@@ -184,6 +214,9 @@ func get_game_flow_names() -> Array:
 
 func get_scene_state(scene_name : String) -> bool:
 	return game_scene_flow[scene_name].status
+
+func get_current_scene_name() -> String:
+	return current_scene.name
 
 func _toggle_controls(emit := true) -> void:
 	if emit:

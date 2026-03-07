@@ -1,4 +1,5 @@
 extends Control
+@onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var pivot: Node2D = $BoxContainer/Pivot
@@ -12,7 +13,14 @@ var is_locked := true
 var unlock_spot := randf_range(0.2, 0.8)
 var pick_position := 0.5
 
+const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
+const DESTRABAR_CERRADURA_2 = preload("res://Sounds/SFX/Cofre/Destrabar cerradura 2.wav")
+const DESTRABAR_CERRADURA = preload("res://Sounds/SFX/Cofre/Destrabar cerradura.wav")
+const COFRE_ABRIR = preload("res://Sounds/SFX/Cofre/Cofre Abrir.wav")
+const COFRE_CERRAR = preload("res://Sounds/SFX/Cofre/Cofre cerrar.wav")
+
 func _ready() -> void:
+	_play_sfx(COFRE_ABRIR)
 	animation_player.play("slide_panels")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	await animation_player.animation_finished
@@ -36,15 +44,18 @@ func _process(_delta: float) -> void:
 
 func try_unlock():
 	if abs(pick_position - unlock_spot) < 0.05:
+		_play_sfx(DESTRABAR_CERRADURA_2)
 		is_locked = false
 		animation_player.play("unlock")
 		await animation_player.animation_finished
+		_play_sfx(DESTRABAR_CERRADURA)
 		emit_signal("completed", true)
 		print("desbloqueado!")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		# queue_free()
 	else:
 		# vibración, sonido, feedback
+		_play_sfx(DESTRABAR_CERRADURA_2)
 		shake_pick()
 		print("falló")
 
@@ -58,7 +69,16 @@ func shake_pick(intensity := 5.0, duration := 0.1) -> void:
 	tween.tween_property(pivot, "position", original_pos, duration / 2)
 
 func quit_minigame() -> void:
-		animation_player.play_backwards("slide_panels")
-		await animation_player.animation_finished
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		queue_free()
+	_play_sfx(COFRE_CERRAR)
+	animation_player.play_backwards("slide_panels")
+	await animation_player.animation_finished
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	queue_free()
+
+func _play_sfx(sfx : Resource) -> void:
+	sfx_stream_player.stream = sfx
+	sfx_stream_player.play()
+
+func _on_hover() -> void:
+	sfx_stream_player.stream = HOVER
+	sfx_stream_player.play()

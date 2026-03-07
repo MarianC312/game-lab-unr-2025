@@ -192,3 +192,6 @@ position = Vector2(0, 32)
 position = Vector2(-135, -1)
 rotation = 2.0071287
 texture = ExtResource("3_mbviv")
+
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

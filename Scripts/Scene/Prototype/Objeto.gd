@@ -7,6 +7,9 @@ extends StaticBody3D
 @export var minigame : Resource
 @export var locked := false
 @export var despawn := false
+@export var required := true
+@export var photo := preload("res://Textures/Journal_item_photo_placeholder.png")
+@export var text_content := ""
 
 var is_dialogue_active : bool = false
 var highlight_shader : Shader = preload("res://Shaders/glow_effect01.gdshader")

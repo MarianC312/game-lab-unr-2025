@@ -14,16 +14,18 @@ extends CharacterBody3D
 @export var max_spine_yaw := deg_to_rad(5)
 @export var yaw_transfer_speed := 6.0
 
-
 const ROTATION_SPEED := 10.0
 const CAMERA_ROTATION_SPEED := 0.005
 const DOUBLE_CLICK_THRESHOLD := 0.25
 const PATH_POSITION_CHAIN : bool = false
 const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
+const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
+const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.wav")
+const SELECCIONAR_OPCIONES = preload("res://Sounds/SFX/UI/Seleccionar y hover/Seleccionar opciones.wav")
 
 @export var first_dialogue : DialogueResource = preload("res://Dialogues/Scene/Prototype01/PlayerFirstDialogue.dialogue")
 @export var prototype03_dialogue : DialogueResource = preload("res://Dialogues/Scene/Prototype03/Prototype03.dialogue")
-@onready var text_interact : Label = $CanvasLayer5/UI/BoxContainer/TextInteract
+@onready var text_interact : Label = $CanvasLayer5/UI/TextInteract
 @onready var see_cast : ShapeCast3D = $playermodel/Prototype/SeeCast02
 @onready var camera_pivot : Node3D = $camera_pivot
 @onready var camera_3d: Camera3D = $camera_pivot/SpringArm3D/Camera3D
@@ -38,6 +40,11 @@ const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
 @onready var journal_button: Button = $CanvasLayer5/UI/HFlowContainer/JournalButton
 @onready var skeleton: Skeleton3D = $playermodel/Prototype/Player/Armature/Skeleton3D
 @onready var gpu_particles_3d: GPUParticles3D = $playermodel/GPUParticles3D
+@onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
+const COFRE_ABRIR = preload("res://Sounds/SFX/Cofre/Cofre Abrir.wav")
+const COFRE_CERRAR = preload("res://Sounds/SFX/Cofre/Cofre cerrar.wav")
+const DESTRABAR_CERRADURA_2 = preload("res://Sounds/SFX/Cofre/Destrabar cerradura 2.wav")
+const DESTRABAR_CERRADURA = preload("res://Sounds/SFX/Cofre/Destrabar cerradura.wav")
 
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 
@@ -232,7 +239,6 @@ func _physics_process(delta: float) -> void:
 			print("Setting target: ", target_position)
 			print("Remain targets: ", target_positions)
 			has_target = true
-			
 	
 	if is_dialogue_active:
 		player_animation_state = AnimationState.TALKING
@@ -247,6 +253,8 @@ func _physics_process(delta: float) -> void:
 			# print(target)
 			if target and target.has_method("interact"):
 				if not text_interact.visible or not interact_button.visible:
+					var tgpos = target.global_position
+					text_interact.position = camera_3d.unproject_position(tgpos)
 					text_interact.show()
 					interact_button.show()
 					highlight_button(interact_button)
@@ -474,6 +482,7 @@ func _reset_movement_state() -> void:
 	moving_to_target = false
 
 func _on_interact_button_pressed() -> void:
+	_play_sfx(CONTINUAR_HACHAZO_2)
 	if not is_dialogue_active:
 		start_interaction()
 
@@ -505,11 +514,13 @@ func _on_timer_footsteps_timeout() -> void:
 
 
 func _on_journal_button_pressed() -> void:
+	_play_sfx(CONTINUAR_HACHAZO_2)
 	stop_highlight(journal_button)
 	GameManager._toggle_journal()
 
 
 func _on_pause_button_pressed() -> void:
+	_play_sfx(SELECCIONAR_OPCIONES)
 	_toogle_pause()
 
 func _toogle_journal() -> void:
@@ -599,8 +610,17 @@ func trigger_dialogue(diag : int, wait_time : float) -> void:
 
 
 func _on_controls_button_pressed() -> void:
+	_play_sfx(CONTINUAR_HACHAZO_2)
 	if not is_pause_active:
 		is_pause_active = true
 		await get_tree().create_timer(0.4).timeout
 		is_pause_active = false
 		GameManager._toggle_controls()
+
+func _play_sfx(sfx : Resource) -> void:
+	sfx_stream_player.stream = sfx
+	sfx_stream_player.play()
+
+func _on_hover() -> void:
+	sfx_stream_player.stream = HOVER
+	sfx_stream_player.play()

@@ -421,5 +421,10 @@ libraries = {
 }
 playback_auto_capture = false
 
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
 [connection signal="item_selected" from="HBoxContainer3/LenguajeOptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="mouse_entered" from="HBoxContainer3/LenguajeOptionButton" to="." method="_on_hover"]
+[connection signal="mouse_entered" from="VBoxContainer/Volver" to="." method="_on_hover"]
 [connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]

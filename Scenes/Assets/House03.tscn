@@ -2343,6 +2343,7 @@ dialogue = ExtResource("15_wo2ne")
 has_minigame = true
 minigame = ExtResource("15_v525p")
 locked = true
+required = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Cajoncito/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_5f8ho")

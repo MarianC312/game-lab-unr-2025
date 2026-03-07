@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wf8hex13dccg"
+path="res://.godot/imported/Continuar hachazo 1.wav-cacd144ba4925c6f95ec2988dfbda312.sample"
+
+[deps]
+
+source_file="res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 1.wav"
+dest_files=["res://.godot/imported/Continuar hachazo 1.wav-cacd144ba4925c6f95ec2988dfbda312.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

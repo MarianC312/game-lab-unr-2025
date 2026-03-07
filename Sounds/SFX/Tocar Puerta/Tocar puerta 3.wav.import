@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://hjyvf14re0yl"
+path="res://.godot/imported/Tocar puerta 3.wav-b0eb8c8980fccdc840e14a2d9d7cbb8f.sample"
+
+[deps]
+
+source_file="res://Sounds/SFX/Tocar Puerta/Tocar puerta 3.wav"
+dest_files=["res://.godot/imported/Tocar puerta 3.wav-b0eb8c8980fccdc840e14a2d9d7cbb8f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -7,6 +7,9 @@ signal registered_interaction
 
 var show_all_interacts : bool = false
 
+func _ready() -> void:
+	GameManager.restart_game.connect(_on_restart_game)
+
 func set_interactable(interactable) -> void:
 	var interactable_name = interactable.get_object_name() if interactable.has_method("get_object_name") else interactable.get_npc_name()
 	#print(interactable)
@@ -66,3 +69,7 @@ func _interacted_with_all() -> bool:
 
 func already_interacted_with_journal() -> bool:
 	return _already_interacted(JOURNAL_NAME)
+
+func _on_restart_game() -> void:
+	interactables = {}
+	show_all_interacts = false

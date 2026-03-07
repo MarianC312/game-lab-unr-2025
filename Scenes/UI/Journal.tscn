@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkdyp60vkqbij"]
+[gd_scene load_steps=9 format=3 uid="uid://dkdyp60vkqbij"]
 
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="1_uxyxf"]
 [ext_resource type="Script" uid="uid://bqwnhnamdwyrd" path="res://Scripts/UI/Journal.gd" id="1_vo2py"]
 [ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="3_ky5dj"]
 [ext_resource type="Texture2D" uid="uid://conir2kpi1bi4" path="res://Textures/House01/JournalOpened.png" id="4_oc0lf"]
+[ext_resource type="Texture2D" uid="uid://bxgx7hf4cqvml" path="res://Textures/Journal_item_photo_placeholder.png" id="5_bngh4"]
+[ext_resource type="FontFile" uid="uid://dhonm2wr4lerf" path="res://Base/Fonts/Nunito/Nunito-VariableFont_wght.ttf" id="6_xgk57"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vo2py"]
 bg_color = Color(0.09019608, 0.101960786, 0.06666667, 0.9019608)
@@ -112,36 +114,38 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Map01VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Map01VBoxContainer1" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="Mapa01Label" type="Label" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer"]
+[node name="Mapa01Label" type="Label" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer1"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 26
 text = "journal_map_01"
 uppercase = true
 
-[node name="Panel" type="Panel" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer1"]
 custom_minimum_size = Vector2(250, 5)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ky5dj")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer1"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer1/HBoxContainer"]
 layout_mode = 2
 
-[node name="M01ItemVBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer/HBoxContainer"]
+[node name="M01ItemVBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer1/HBoxContainer"]
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 
 [node name="Map02VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -171,6 +175,7 @@ custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 
 [node name="Map03VBoxContainer3" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -200,6 +205,7 @@ custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 
 [node name="Map04VBoxContainer4" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -245,4 +251,49 @@ position = Vector2(-351, -278.00003)
 scale = Vector2(1.0606511, 1.060651)
 texture = ExtResource("4_oc0lf")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer/JournalOpened"]
+anchors_preset = -1
+anchor_left = 0.036000002
+anchor_top = 0.057000004
+anchor_right = 0.96400005
+anchor_bottom = 0.94400007
+offset_left = -308.39832
+offset_top = -242.91847
+offset_right = -368.40634
+offset_bottom = -274.01666
+theme_override_constants/separation = 69
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer/JournalOpened/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+
+[node name="TextureRect" type="TextureRect" parent="BoxContainer/JournalOpened/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("5_bngh4")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BoxContainer/JournalOpened/HBoxContainer"]
+custom_minimum_size = Vector2(276, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer/JournalOpened/HBoxContainer/HBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_uxyxf")
+theme_override_colors/default_color = Color(0.17641908, 0.17641911, 0.17641902, 1)
+theme_override_constants/line_separation = 4
+theme_override_fonts/normal_font = ExtResource("6_xgk57")
+text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""
+
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="VBoxContainer/Volver" to="." method="_on_hover"]
 [connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]

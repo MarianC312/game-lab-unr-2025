@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgj2vcmhgq5bw"
+path="res://.godot/imported/Footsteps_Wood_Run_06.wav-171488c2105576c586262fa273bf92b3.sample"
+
+[deps]
+
+source_file="res://Sounds/SFX/Pasos madera/Correr/Footsteps_Wood_Run_06.wav"
+dest_files=["res://.godot/imported/Footsteps_Wood_Run_06.wav-171488c2105576c586262fa273bf92b3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

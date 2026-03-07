@@ -70,6 +70,14 @@ theme = ExtResource("2_2bpff")
 theme_override_font_sizes/font_size = 32
 text = "menu_btn_options"
 
+[node name="Restart" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(245, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_2bpff")
+theme_override_font_sizes/font_size = 32
+text = "menu_btn_restart"
+
 [node name="Salir" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(245, 75)
 layout_mode = 2
@@ -82,6 +90,10 @@ text = "menu_btn_exit"
 visible = false
 layout_mode = 1
 
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
 [connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
 [connection signal="pressed" from="VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

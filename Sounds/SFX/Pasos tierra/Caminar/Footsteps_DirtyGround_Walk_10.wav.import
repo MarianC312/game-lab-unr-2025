@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://lfasp66ubb7g"
+path="res://.godot/imported/Footsteps_DirtyGround_Walk_10.wav-2e453fb70dc1704fa47e09413cc26bc6.sample"
+
+[deps]
+
+source_file="res://Sounds/SFX/Pasos tierra/Caminar/Footsteps_DirtyGround_Walk_10.wav"
+dest_files=["res://.godot/imported/Footsteps_DirtyGround_Walk_10.wav-2e453fb70dc1704fa47e09413cc26bc6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

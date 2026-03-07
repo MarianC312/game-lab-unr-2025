@@ -1,8 +1,15 @@
 extends Control
 
+@onready var panel: Panel = $CanvasLayer2/Principal/Panel
 @onready var principal: Control = $CanvasLayer2/Principal
 @onready var options_menu: Control = $CanvasLayer2/OptionsMenu
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
+const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
+const SELECCIONAR_OPCIONES = preload("res://Sounds/SFX/UI/Seleccionar y hover/Seleccionar opciones.wav")
+const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.wav")
+const CONTINUAR_HACHAZO_MAS_CAIDA_ARBOL_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo mas caida arbol 2.wav")
+
 
 func _ready() -> void:
 	audio_stream_player.play()
@@ -11,9 +18,12 @@ func _ready() -> void:
 
 func _on_jugar_pressed() -> void:
 	# pasar volume_db a -50 para mutear sonido luego pausar
-	smooth_fade()
+	_play_sfx(CONTINUAR_HACHAZO_MAS_CAIDA_ARBOL_2)
 	SceneTransitions.fade_out()
 	await SceneTransitions.fade_complete
+	panel.show()
+	await sfx_stream_player.finished
+	smooth_fade()
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/Game/Game.tscn")
 
 func smooth_fade():
@@ -26,6 +36,7 @@ func _on_playground_pressed() -> void:
 	pass
 
 func _on_opciones_pressed() -> void:
+	_play_sfx(SELECCIONAR_OPCIONES)
 	SceneTransitions.fade_out()
 	await SceneTransitions.fade_complete
 	if options_menu.visible:
@@ -40,6 +51,15 @@ func _on_opciones_pressed() -> void:
 
 
 func _on_salir_pressed() -> void:
+	_play_sfx(CONTINUAR_HACHAZO_2)
 	SceneTransitions.fade_out()
 	await SceneTransitions.fade_complete
 	get_tree().quit()
+
+func _play_sfx(sfx : Resource) -> void:
+	sfx_stream_player.stream = sfx
+	sfx_stream_player.play()
+
+func _on_hover() -> void:
+	sfx_stream_player.stream = HOVER
+	sfx_stream_player.play()

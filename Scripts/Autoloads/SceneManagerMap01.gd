@@ -7,12 +7,16 @@ signal registered_interaction
 
 var show_all_interacts : bool = false
 
+func _ready() -> void:
+	GameManager.restart_game.connect(_on_restart_game)
+
 func set_interactable(interactable) -> void:
 	var interactable_name = interactable.get_object_name()
 	if interactables.find_key(interactable_name) == null:
 		interactables.set(interactable_name, {
 			"object": interactable,
-			"interacted": false
+			"interacted": false,
+			"required": interactable.required
 		})
 
 func interactable_is_locked(interactable : String) -> bool:
@@ -50,10 +54,14 @@ func _interacted_with_all() -> bool:
 	var resp = true
 	for interactable in interactables:
 		print(interactable, ": ", interactables[interactable])
-		if not interactables[interactable].interacted:
+		if interactables[interactable].required && not interactables[interactable].interacted:
 			resp = false
 			continue
 	return resp
 
 func already_interacted_with_journal() -> bool:
 	return _already_interacted(JOURNAL_NAME)
+
+func _on_restart_game() -> void:
+	interactables = {}
+	show_all_interacts = false
