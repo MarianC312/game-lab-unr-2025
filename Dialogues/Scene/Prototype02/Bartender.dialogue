@@ -72,6 +72,8 @@ if SceneManagerMap02._already_interacted("9. Revolver"):
 ~ mas
 {{ GameManager.get_player_name() }}:
 	¿Sabe algo más? Pregunto porque sé que no solo los hacheros pasan por aquí.
+if not SceneManagerMap02._already_interacted("10. F.O.R.A."):
+	do SceneManagerMap02._register_interaction("10. F.O.R.A.")
 Manuel:
 	La curiosidad te puede meter en cosas peligrosas, pero si es lo que quieres...
 	[wave]Susurra[/wave]

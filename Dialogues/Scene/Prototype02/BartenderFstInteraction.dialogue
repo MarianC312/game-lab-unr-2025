@@ -1,5 +1,5 @@
 ~ start
-Manuel:
+Manuel (bartender):
 	Hmm... Veo que tu viejo no volvió...
 {{ GameManager.get_player_name() }}:
 	Eh? mmm...

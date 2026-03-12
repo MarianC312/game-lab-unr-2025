@@ -2206,6 +2206,7 @@ collision_mask = 13
 script = ExtResource("14_3nyy7")
 object_name = "6. Ir al boliche"
 dialogue = ExtResource("17_rqxgg")
+text_content = "BOLICHES: ERAN LUGARES DE ENCUENTRO DE LOS HACHEROS, Y CON FRECUENCIA HABÍA PELEAS. LAS MUJERES PODÍAN ENCONTRAR UN LUGAR DE TRABAJO COMO BOLICHERAS, PERO TAMBIÉN EN BAILES Y COMO TRABAJADORAS SEXUALES."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuertasYVentanas/Puerta/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_lht6p")
@@ -2222,6 +2223,7 @@ collision_mask = 13
 script = ExtResource("14_3nyy7")
 object_name = "4. Puerta Dormitorio"
 dialogue = ExtResource("15_dj4sa")
+text_content = "Mis hermanos aun duermen, no los voy a molestar..."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuertasYVentanas/Puerta_001/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_v525p")
@@ -2344,6 +2346,7 @@ has_minigame = true
 minigame = ExtResource("15_v525p")
 locked = true
 required = false
+text_content = "Bien! Pude abrir esta cerradura... Me voy a llevar unas monedas, tal vez me sean útiles."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Cajoncito/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_5f8ho")
@@ -2427,6 +2430,7 @@ collision_mask = 12
 script = ExtResource("14_3nyy7")
 object_name = "2. Cuadro"
 dialogue = ExtResource("7_of0uw")
+text_content = "El viejo hace unos días que no vuelve, me empiezo preocupar. Últimamente lo veía muy cansado, aunque siempre me diga que está bien."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Cuadros/Cuadros/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_iawy3")
@@ -2444,6 +2448,7 @@ script = ExtResource("14_3nyy7")
 object_name = "1. Cuaderno"
 dialogue = ExtResource("9_wtluu")
 despawn = true
+text_content = "El cuaderno de papá... hay algo borrado junto al nombre de Manuel, es el almacenero que atiende el boliche... Lo voy a usar para anotar."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Libro/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_rqxgg")
@@ -2460,6 +2465,7 @@ collision_mask = 12
 script = ExtResource("14_3nyy7")
 object_name = "3. Mate"
 dialogue = ExtResource("9_dj4sa")
+text_content = "El mate ya está frío, mamá debe haber salido temprano. Ayer Doña Rosa se sentía mal, seguro se fue a verla otra vez."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mate/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_of0uw")

@@ -560,7 +560,9 @@ func _on_registered_interaction(_interactable) -> void:
 	highlight_button(journal_button)
 
 func highlight_button(button: Button):
-	var existing_tween = button.get_meta("highlight_tween")
+	var existing_tween = null
+	if button.has_meta("highlight_tween"):
+		existing_tween = button.get_meta("highlight_tween")
 	if existing_tween and existing_tween.is_running():
 		existing_tween.kill()
 	
@@ -580,7 +582,9 @@ func highlight_button(button: Button):
 	button.set_meta("highlight_tween", tween)
 
 func stop_highlight(button: Button):
-	var tween = button.get_meta("highlight_tween")
+	var tween = null
+	if button.has_meta("highlight_tween"):
+		tween = button.get_meta("highlight_tween")
 	
 	if tween and tween.is_running():
 		tween.kill()

@@ -11,12 +11,18 @@ func _ready() -> void:
 	GameManager.restart_game.connect(_on_restart_game)
 
 func set_interactable(interactable) -> void:
-	var interactable_name = interactable.get_object_name()
+	var interactable_name = interactable.get_object_name() if interactable.has_method("get_object_name") else interactable.get_npc_name()
 	if interactables.find_key(interactable_name) == null:
 		interactables.set(interactable_name, {
 			"object": interactable,
 			"interacted": false,
-			"required": interactable.required
+			"required": interactable.required,
+			"content": {
+				"object_name": interactable_name,
+				"map": interactable.map,
+				"photo": interactable.photo,
+				"text_content": interactable.text_content
+			}
 		})
 
 func interactable_is_locked(interactable : String) -> bool:
@@ -24,6 +30,10 @@ func interactable_is_locked(interactable : String) -> bool:
 
 func interactable_start_minigame(interactable : String) -> void:
 	MinigameManager.start_minigame(interactables[interactable].object.get_minigame(), interactables[interactable].object)
+
+func get_interactables() -> Array:
+	var objects = interactables.values().map(func(item): return item["content"])
+	return objects
 
 func _get_interactables_names() -> Array:
 	var keys := interactables.keys() 

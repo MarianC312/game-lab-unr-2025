@@ -1,4 +1,5 @@
 extends Control
+
 @onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
 const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
 const ABRIR_LIBRETA = preload("res://Sounds/SFX/Libreta/Paginas/Abrir libreta.wav")
@@ -17,66 +18,85 @@ const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Contin
 @onready var map_02v_box_container_2: VBoxContainer = $VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map02VBoxContainer2
 @onready var map_03v_box_container_3: VBoxContainer = $VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map03VBoxContainer3
 @onready var map_04v_box_container_4: VBoxContainer = $VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map04VBoxContainer4
+@onready var photo_container: TextureRect = $BoxContainer/JournalOpened/HBoxContainer/HBoxContainer/TextureRect
+@onready var text_content_label: RichTextLabel = $BoxContainer/JournalOpened/HBoxContainer/HBoxContainer2/RichTextLabel
+
+var contenido : Dictionary = {
+	"Mapa01": {},
+	"Mapa02": {},
+	"Mapa03": {},
+	"Mapa04": {}
+}
+
+var current_photo : Resource
+var current_text := "
+- Llevar a diario el cintillo celeste 
+- F.O.R.A: prendas rojas, pañuelos, cintas
+- Manuel: dejarle la caja
+"
 
 const MENU_STYLE_01 = preload("res://Materials/MenuStyle01.tres")
 
 func _ready() -> void:
 	GameManager.toggle_journal.connect(_on_toggle_journal)
+	text_content_label.text = current_text
 	# _refresh_interactables()
 
 func _on_toggle_journal() -> void:
 	if visible:
 		_play_sfx(CERRAR_LIBRETA_)
 	else:
-		_play_sfx(ABRIR_LIBRETA) 
-	for label in m_01_item_v_box_container.get_children():
-		label.queue_free()
-	_refresh_interactables()
+		_play_sfx(ABRIR_LIBRETA)
+		for label in m_01_item_v_box_container.get_children():
+			label.queue_free()
+		for label in m_02_item_v_box_container.get_children():
+			label.queue_free()
+		for label in m_03_item_v_box_container.get_children():
+			label.queue_free()
+		for label in m_04_item_v_box_container.get_children():
+			label.queue_free()
+		_refresh_interactables()
 
 func _refresh_interactables() -> void:
-	for interactable in SceneManagerMap01._get_interactables_names():
-		var label := Button.new()
-		label.theme = MENU_STYLE_01
-		label.theme_type_variation = "FlatButton"
-		label.text = interactable if SceneManagerMap01._already_interacted(interactable) else "???"
-		label.flat = true
-		label.add_theme_font_size_override("font_size", 24)
-		label.mouse_entered.connect(_on_hover)
-		label.pressed.connect(_play_sfx.bind(CONTINUAR_HACHAZO_2))
-		m_01_item_v_box_container.add_child(label)
+	var interactables = (
+		SceneManagerMap01.get_interactables() +
+		SceneManagerMap02.get_interactables() +
+		SceneManagerMap03.get_interactables() +
+		SceneManagerMap04.get_interactables()
+	)
+	interactables.sort_custom(func(a, b): return a.object_name < b.object_name)
 	
-	for interactable in SceneManagerMap02._get_interactables_names():
-		var label := Button.new()
-		label.theme = MENU_STYLE_01
-		label.theme_type_variation = "FlatButton"
-		label.text = interactable if SceneManagerMap02._already_interacted(interactable) else "???"
-		label.flat = true
-		label.add_theme_font_size_override("font_size", 24)
-		label.mouse_entered.connect(_on_hover)
-		label.pressed.connect(_play_sfx.bind(CONTINUAR_HACHAZO_2))
-		m_02_item_v_box_container.add_child(label)
-		
-	for interactable in SceneManagerMap03._get_interactables_names():
-		var label := Button.new()
-		label.theme = MENU_STYLE_01
-		label.theme_type_variation = "FlatButton"
-		label.text = interactable if SceneManagerMap03._already_interacted(interactable) else "???"
-		label.flat = true
-		label.add_theme_font_size_override("font_size", 24)
-		label.mouse_entered.connect(_on_hover)
-		label.pressed.connect(_play_sfx.bind(CONTINUAR_HACHAZO_2))
-		m_03_item_v_box_container.add_child(label)
-		
-	for interactable in SceneManagerMap04._get_interactables_names():
-		var label := Button.new()
-		label.theme = MENU_STYLE_01
-		label.theme_type_variation = "FlatButton"
-		label.text = interactable if SceneManagerMap04._already_interacted(interactable) else "???"
-		label.flat = true
-		label.add_theme_font_size_override("font_size", 24)
-		label.mouse_entered.connect(_on_hover)
-		label.pressed.connect(_play_sfx.bind(CONTINUAR_HACHAZO_2))
-		m_04_item_v_box_container.add_child(label)
+	for interactable in interactables:
+		contenido[interactable.map].set(
+			interactable.object_name,
+			{
+				"photo": interactable.photo,
+				"text_content": interactable.text_content,
+				"display": SceneManagerMap01._already_interacted(interactable.object_name) or SceneManagerMap02._already_interacted(interactable.object_name) or SceneManagerMap03._already_interacted(interactable.object_name) or SceneManagerMap04._already_interacted(interactable.object_name)
+			}
+		)
+	print(contenido)
+	# Considerar que esto se puede mover al gameflow para no ser repetitivo y comentar
+	# el queue_free del toggle, si bien no es pesado se evitan operaciones innecesarias.
+	# Por falta de tiempo está así pero quizás se podría conectar una señal en la creción
+	# de los botones para detectar cuando se interactúa con el objeto con el que está conectado
+	# a fin de mostrar el nombre y activar sus funciones en lugar de ???
+	for map in contenido.keys():
+		for ikey in contenido[map].keys():
+			#var interaction : bool
+			#match map:
+				#"Mapa01":
+					#interaction = SceneManagerMap01._already_interacted(ikey)
+				#"Mapa02":
+					#interaction = SceneManagerMap02._already_interacted(ikey)
+				#"Mapa03":
+					#interaction = SceneManagerMap03._already_interacted(ikey)
+				#"Mapa04":
+					#interaction = SceneManagerMap04._already_interacted(ikey)
+			_create_button(ikey, map, contenido[map][ikey].photo, contenido[map][ikey].text_content, contenido[map][ikey].display)
+	# buscar error donde a partir del 2do mapa la box del mapa 1 desaparece
+	if map_01v_box_container_1.visible:
+		map_01v_box_container_1.show()
 	
 	for scene in GameManager.get_game_flow_names():
 		match scene:
@@ -96,7 +116,29 @@ func _refresh_interactables() -> void:
 				mapa_04_label.text = "journal_map_04" if GameManager.get_scene_state(scene) else "???"
 				if GameManager.get_current_scene_name() == "Mapa03" && not map_04v_box_container_4.visible:
 					map_04v_box_container_4.show()
-			
+
+func _create_button(label_text : String, map : String, photo : Resource, text_content : String, interacted : bool = false) -> void:
+	var label := Button.new()
+	label.theme = MENU_STYLE_01
+	label.theme_type_variation = "FlatButton"
+	label.text = label_text if interacted else "???"
+	label.flat = true
+	label.add_theme_font_size_override("font_size", 24)
+	label.mouse_entered.connect(_on_hover)
+	label.pressed.connect(
+		func():
+			_play_sfx(CONTINUAR_HACHAZO_2)
+			_update_content(photo, text_content, interacted)
+	)
+	match map:
+		"Mapa01":
+			m_01_item_v_box_container.add_child(label)
+		"Mapa02":
+			m_02_item_v_box_container.add_child(label)
+		"Mapa03":
+			m_03_item_v_box_container.add_child(label)
+		"Mapa04":
+			m_04_item_v_box_container.add_child(label)
 
 func _on_volver_pressed() -> void:
 	_play_sfx(CONTINUAR_HACHAZO_2)
@@ -109,3 +151,13 @@ func _play_sfx(sfx : Resource) -> void:
 func _on_hover() -> void:
 	sfx_stream_player.stream = HOVER
 	sfx_stream_player.play()
+
+func _update_content(photo: Resource, text_content: String, interacted := false) -> void:
+	if interacted:
+		print(photo)
+		print(text_content)
+		photo_container.texture = photo
+		text_content_label.text = text_content
+	else:
+		print("Debes desbloquear este contenido antes de poder verlo.")
+		text_content_label.text = "Debes desbloquear este contenido antes de poder verlo."

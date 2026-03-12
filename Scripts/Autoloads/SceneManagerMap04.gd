@@ -15,8 +15,15 @@ func set_interactable(interactable) -> void:
 	if interactables.find_key(interactable_name) == null:
 		interactables.set(interactable_name, {
 			"object": interactable,
-			"interacted": false
-		})
+			"interacted": false,
+			"required": interactable.required,
+			"content": {
+				"object_name": interactable_name,
+				"map": interactable.map,
+				"photo": interactable.photo,
+				"text_content": interactable.text_content
+			}
+		}) 
 
 func interactable_is_locked(interactable : String) -> bool:
 	if interactables[interactable].object.has_method("is_locked"):
@@ -27,6 +34,10 @@ func interactable_is_locked(interactable : String) -> bool:
 func interactable_start_minigame(interactable : String) -> void:
 	if interactables[interactable].object.has_method("get_minigame"):
 		MinigameManager.start_minigame(interactables[interactable].object.get_minigame(), interactables[interactable].object)
+
+func get_interactables() -> Array:
+	var objects = interactables.values().map(func(item): return item["content"])
+	return objects
 
 func _get_interactables_names() -> Array:
 	var keys := interactables.keys() 

@@ -8,8 +8,10 @@ extends StaticBody3D
 @export var locked := false
 @export var despawn := false
 @export var required := true
+@export var map := "Mapa01"
 @export var photo := preload("res://Textures/Journal_item_photo_placeholder.png")
-@export var text_content := ""
+@export var text_content := "Lorem ipsum..."
+@export var should_highlight := true
 
 var is_dialogue_active : bool = false
 var highlight_shader : Shader = preload("res://Shaders/glow_effect01.gdshader")
@@ -43,10 +45,12 @@ func despawn_on_interaction() -> bool:
 	return despawn
 
 func despawn_object() -> void:
-	get_parent().queue_free()
+	get_parent().visible = false
+	get_parent().process_mode = Node.PROCESS_MODE_DISABLED
+	# get_parent().queue_free()
 
 func _glow(status : bool) -> void:
-	if SceneManagerMap01._already_interacted(object_name) == false:
+	if should_highlight and not SceneManagerMap01._already_interacted(object_name) or not SceneManagerMap02._already_interacted(object_name) or not SceneManagerMap03._already_interacted(object_name) or not SceneManagerMap04._already_interacted(object_name):
 		glow = status
 		await get_tree().create_timer(1.5).timeout
 		glow = false

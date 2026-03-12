@@ -2,6 +2,10 @@ extends CharacterBody3D
 
 @export var npc_name : String = ""
 @export var dialogue : DialogueResource = preload("res://Dialogues/Default/Default.dialogue")
+@export var map := "Mapa01"
+@export var photo := preload("res://Textures/Journal_item_photo_placeholder.png")
+@export var text_content := "Lorem ipsum..."
+@export var required := true
 @onready var animation_player: AnimationPlayer = $AnimationPlayer2
 # @onready var animation_player2: AnimationPlayer = $AnimationPlayer
 
