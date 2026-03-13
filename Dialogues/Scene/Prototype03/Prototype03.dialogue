@@ -20,8 +20,8 @@ Bandolero:
 ~ seguir
 {{ GameManager.get_player_name() }}:
 	Quiero encontrar a mi viejo, no quiero problemas.
-if not SceneManagerMap02._already_interacted("11. Moneda"):
-	do SceneManagerMap02._register_interaction("11. Moneda")
+if not SceneManagerMap03._already_interacted("11. Moneda"):
+	do SceneManagerMap03._register_interaction("11. Moneda")
 Bandolero:
 	Solo hay problemas en estos caminos. Toma, para tu viaje... [wave]Te ofrece algunas monedas[/wave]
 - Aceptar => aceptar_monedas
@@ -34,8 +34,8 @@ Bandolero:
 Bandolero:
 	Buena suerte con tu búsqueda. Sé valiente y que no corrompan tu alma. Te pareces a Martina Chapanay, una rebelde de corazón. Ten para que te guíe.
 	[wave]Recibes un brazalete huarpe.[/wave]
-if not SceneManagerMap02._already_interacted("12. Brazalete HUARPE"):
-	do SceneManagerMap02._register_interaction("12. Brazalete HUARPE")
+if not SceneManagerMap03._already_interacted("12. Brazalete HUARPE"):
+	do SceneManagerMap03._register_interaction("12. Brazalete HUARPE")
 Bandolero:
 	Hay que mantener la espalda erguida frente a los poderosos. El camino más corto es por las vías. Y si necesitas ayuda pedile a Manuel un mate cosido.
 	[wave]se sonríe[/wave]
@@ -50,8 +50,8 @@ do GameManager.load_new_map("")
 Bandolero:
 	Tienes un alma pura muchacha, le hace falta más gente como vos a esta tierra. Te pareces a Martina Chapanay, una rebelde de corazón. Ten para que te guíe.
 	[wave]Recibes un brazalete huarpe.[/wave]
-if not SceneManagerMap02._already_interacted("12. Brazalete HUARPE"):
-	do SceneManagerMap02._register_interaction("12. Brazalete HUARPE")
+if not SceneManagerMap03._already_interacted("12. Brazalete HUARPE"):
+	do SceneManagerMap03._register_interaction("12. Brazalete HUARPE")
 Bandolero:
 	Sabes... Podríamos ser socios en este latifundio.
 {{ GameManager.get_player_name() }}:

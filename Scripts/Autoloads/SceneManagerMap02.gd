@@ -68,12 +68,13 @@ func _already_interacted(interactable_name : String) -> bool:
 		return false
 
 func _interacted_with_all() -> bool:
-	var count := 0
+	var resp = true
 	for interactable in interactables:
 		print(interactable, ": ", interactables[interactable])
-		if not interactables[interactable].interacted:
-			count += 1
-	return count >= 1 and interactables["8. Manuel"].interacted
+		if interactables[interactable].required && not interactables[interactable].interacted:
+			resp = false
+			continue
+	return resp
 
 func already_interacted_with_journal() -> bool:
 	return _already_interacted(JOURNAL_NAME)

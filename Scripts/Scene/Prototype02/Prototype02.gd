@@ -3,6 +3,9 @@ extends Node3D
 @onready var item_list: ItemList = $UI/CanvasLayer15/ItemList
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var bar: Node3D = $Mundo/Bar01
+@onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
+
+const ESCRIBIR_4 = preload("res://Sounds/SFX/Escribir Libreta (Notas)/Escribir 4.wav")
 
 signal map_ready
 
@@ -36,6 +39,7 @@ func _update_item_list() -> void:
 
 
 func _on_registered_interaction(interactable_name : String) -> void:
+	_play_sfx(ESCRIBIR_4)
 	if SceneManagerMap02._get_show_all_interacts():
 		item_list.clear()
 		for interactable in SceneManagerMap02._get_interactables_names():
@@ -43,3 +47,7 @@ func _on_registered_interaction(interactable_name : String) -> void:
 	else:
 		item_list.add_item(interactable_name)
 	_update_item_list()
+
+func _play_sfx(sfx : Resource) -> void:
+	sfx_stream_player.stream = sfx
+	sfx_stream_player.play()

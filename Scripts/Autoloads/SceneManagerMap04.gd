@@ -68,8 +68,13 @@ func _already_interacted(interactable_name : String) -> bool:
 		return false
 
 func _interacted_with_all() -> bool:
-	# Acomodar que va a decidir si completa el mapa
-	return true
+	var resp = true
+	for interactable in interactables:
+		print(interactable, ": ", interactables[interactable])
+		if interactables[interactable].required && not interactables[interactable].interacted:
+			resp = false
+			continue
+	return resp
 
 func already_interacted_with_journal() -> bool:
 	return _already_interacted(JOURNAL_NAME)

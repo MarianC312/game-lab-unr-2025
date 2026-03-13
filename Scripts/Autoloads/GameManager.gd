@@ -8,10 +8,10 @@ var current_locale_id : int
 var game_scene_flow := {
 	#"Debug":
 		#{
-			#"res": "res://Scenes/Prototype/Prototype04.tscn",
+			#"res": "res://Scenes/Prototype/Prototype03.tscn",
 			#"status": false,
 			#"loadDialogue": false,
-			#"playable": true
+			#"playable": true,
 			#"name": "TestScene"
 		#},
 	"Prologue":

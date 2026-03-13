@@ -64,7 +64,11 @@ func _refresh_interactables() -> void:
 		SceneManagerMap03.get_interactables() +
 		SceneManagerMap04.get_interactables()
 	)
-	interactables.sort_custom(func(a, b): return a.object_name < b.object_name)
+	interactables.sort_custom(func(a, b): 
+		var num_a = a.object_name.split(".")[0].strip_edges().to_int()
+		var num_b = b.object_name.split(".")[0].strip_edges().to_int()
+		return num_a < num_b
+	)
 	
 	for interactable in interactables:
 		contenido[interactable.map].set(
@@ -95,26 +99,26 @@ func _refresh_interactables() -> void:
 					#interaction = SceneManagerMap04._already_interacted(ikey)
 			_create_button(ikey, map, contenido[map][ikey].photo, contenido[map][ikey].text_content, contenido[map][ikey].display)
 	# buscar error donde a partir del 2do mapa la box del mapa 1 desaparece
-	if map_01v_box_container_1.visible:
-		map_01v_box_container_1.show()
+	#if not map_01v_box_container_1.visible and GameManager.get_scene_state("Map01"):
+		#map_01v_box_container_1.show()
 	
 	for scene in GameManager.get_game_flow_names():
 		match scene:
 			"Map01":
 				mapa_01_label.text = "journal_map_01" if GameManager.get_scene_state(scene) else "???"
-				if GameManager.get_current_scene_name() == "Mapa01" && not map_01v_box_container_1.visible:
+				if GameManager.get_scene_state(scene) && not map_01v_box_container_1.visible:
 					map_01v_box_container_1.show()
 			"Map02":
 				mapa_02_label.text = "journal_map_02" if GameManager.get_scene_state(scene) else "???"
-				if GameManager.get_current_scene_name() == "Mapa02" && not map_02v_box_container_2.visible:
+				if GameManager.get_scene_state(scene) && not map_02v_box_container_2.visible:
 					map_02v_box_container_2.show()
 			"Map03":
 				mapa_03_label.text = "journal_map_03" if GameManager.get_scene_state(scene) else "???"
-				if GameManager.get_current_scene_name() == "Mapa03" && not map_03v_box_container_3.visible:
+				if GameManager.get_scene_state(scene) && not map_03v_box_container_3.visible:
 					map_03v_box_container_3.show()
 			"Map04":
 				mapa_04_label.text = "journal_map_04" if GameManager.get_scene_state(scene) else "???"
-				if GameManager.get_current_scene_name() == "Mapa03" && not map_04v_box_container_4.visible:
+				if GameManager.get_scene_state(scene) && not map_04v_box_container_4.visible:
 					map_04v_box_container_4.show()
 
 func _create_button(label_text : String, map : String, photo : Resource, text_content : String, interacted : bool = false) -> void:

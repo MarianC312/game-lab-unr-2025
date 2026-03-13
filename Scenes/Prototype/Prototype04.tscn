@@ -145,3 +145,7 @@ bus = &"Ambience"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.93880635, -0.017412988, 0.34400496, 0, 0.99872136, 0.0505537, -0.34444538, -0.047460135, 0.937606, 6.1234875, 0.5754409, 30.907928)
+
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = &"SFX"

@@ -36,7 +36,7 @@ func _ready() -> void:
 	add_child(highlight_mesh)
 
 func _process(_delta: float) -> void:
-	if glow:
+	if should_highlight and glow:
 		highlight_mesh.visible = true
 	else:
 		highlight_mesh.visible = false

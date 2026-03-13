@@ -70,7 +70,7 @@ func _interacted_with_all() -> bool:
 	return resp
 
 func already_interacted_with_journal() -> bool:
-	return _already_interacted(JOURNAL_NAME)
+	return _already_interacted(JOURNAL_NAME) # default: _already_interacted(JOURNAL_NAME)
 
 func _on_restart_game() -> void:
 	interactables = {}
