@@ -514,7 +514,7 @@ func _on_timer_footsteps_timeout() -> void:
 
 
 func _on_journal_button_pressed() -> void:
-	_play_sfx(CONTINUAR_HACHAZO_2)
+	# _play_sfx(CONTINUAR_HACHAZO_2)
 	stop_highlight(journal_button)
 	GameManager._toggle_journal()
 

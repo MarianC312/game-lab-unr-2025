@@ -7,7 +7,9 @@
 
 [resource]
 albedo_texture = ExtResource("1_7ruk6")
+metallic_specular = 0.0
 roughness_texture = ExtResource("3_uc7k6")
+roughness_texture_channel = 4
 normal_enabled = true
 normal_texture = ExtResource("3_rjlc0")
 heightmap_enabled = true

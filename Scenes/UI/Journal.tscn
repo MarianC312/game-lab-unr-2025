@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://bqwnhnamdwyrd" path="res://Scripts/UI/Journal.gd" id="1_vo2py"]
 [ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="3_ky5dj"]
 [ext_resource type="Texture2D" uid="uid://conir2kpi1bi4" path="res://Textures/House01/JournalOpened.png" id="4_oc0lf"]
-[ext_resource type="Texture2D" uid="uid://bxgx7hf4cqvml" path="res://Textures/Journal_item_photo_placeholder.png" id="5_bngh4"]
-[ext_resource type="FontFile" uid="uid://bpepsn33rcf6o" path="res://Base/Fonts/Biro_Script_reduced.ttf" id="6_xgk57"]
+[ext_resource type="Texture2D" uid="uid://cv80hgud3t41l" path="res://Textures/Screenshots/juan moreira.png" id="5_xgk57"]
+[ext_resource type="FontFile" uid="uid://drjf5ofsn3r14" path="res://Base/Fonts/ReenieBeanie-Regular.ttf" id="6_xgk57"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vo2py"]
 bg_color = Color(0.09019608, 0.101960786, 0.06666667, 0.9019608)
@@ -271,7 +271,7 @@ size_flags_vertical = 6
 
 [node name="TextureRect" type="TextureRect" parent="BoxContainer/JournalOpened/HBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_bngh4")
+texture = ExtResource("5_xgk57")
 expand_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="BoxContainer/JournalOpened/HBoxContainer"]
@@ -286,10 +286,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_uxyxf")
 theme_override_colors/default_color = Color(0.17641908, 0.17641911, 0.17641902, 1)
-theme_override_constants/line_separation = -12
-theme_override_constants/paragraph_separation = -16
+theme_override_constants/line_separation = -3
+theme_override_constants/paragraph_separation = -6
 theme_override_fonts/normal_font = ExtResource("6_xgk57")
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 24
 text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""

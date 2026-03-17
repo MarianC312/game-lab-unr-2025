@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cifkgfhho45vn"]
+[gd_scene load_steps=13 format=3 uid="uid://cifkgfhho45vn"]
 
 [ext_resource type="Script" uid="uid://cs1q5ah2qoce1" path="res://Scripts/Scene/Prototype04/Prototype04.gd" id="1_8ei1d"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_0t8de"]
 [ext_resource type="FontFile" uid="uid://dpc4p18b1pqep" path="res://Base/Fonts/SpecialElite-Regular.ttf" id="3_0t8de"]
 [ext_resource type="PackedScene" uid="uid://fbg1kvyrik1h" path="res://Scenes/Assets/Forestal.tscn" id="3_qte2i"]
 [ext_resource type="AudioStream" uid="uid://dok26fu1dgfxq" path="res://Sounds/Music/menu_bg_music_02.wav" id="4_qte2i"]
+[ext_resource type="Texture2D" uid="uid://b3oqoxwbrcl47" path="res://Textures/Screenshots/fondo arreglado.png" id="6_vmvxi"]
 
 [sub_resource type="Gradient" id="Gradient_vmvxi"]
 offsets = PackedFloat32Array(0.082539685, 1)
@@ -92,6 +93,7 @@ theme_override_font_sizes/font_size = 20
 auto_height = true
 
 [node name="Panel" type="Panel" parent="UI/CanvasLayer15"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -149,3 +151,8 @@ transform = Transform3D(0.93880635, -0.017412988, 0.34400496, 0, 0.99872136, 0.0
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
 bus = &"SFX"
+
+[node name="FondoArreglado" type="Sprite2D" parent="."]
+position = Vector2(574.5556, 324.24997)
+scale = Vector2(0.5976851, 0.59768516)
+texture = ExtResource("6_vmvxi")

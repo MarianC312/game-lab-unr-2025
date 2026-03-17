@@ -43,7 +43,6 @@ volumetric_fog_anisotropy = 0.85
 volumetric_fog_length = 400.0
 
 [sub_resource type="VoxelGIData" id="VoxelGIData_22wq2"]
-_data = {}
 
 [node name="Prototype01" type="Node3D"]
 script = ExtResource("1_mayph")
@@ -90,13 +89,13 @@ environment = SubResource("Environment_d5c1p")
 
 [node name="VoxelGI" type="VoxelGI" parent="Mundo/Shading"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0011292, 1.570477, -0.519928)
+visible = false
 size = Vector3(10.805237, 4.36499, 12.637756)
 data = SubResource("VoxelGIData_22wq2")
 
 [node name="Sun" type="DirectionalLight3D" parent="Mundo/Shading"]
 transform = Transform3D(1, 0, 0, 0, 0.966703, 0.2559014, 0, -0.25590137, 0.966703, 0, 3.3330436, 9.254973)
-light_color = Color(0.6465422, 0.37714916, 0.49014735, 1)
-light_indirect_energy = 0.0
+light_color = Color(0.64705884, 0.3764706, 0.49019608, 1)
 light_volumetric_fog_energy = 0.8
 light_bake_mode = 1
 shadow_enabled = true
@@ -107,6 +106,15 @@ light_color = Color(0.8803111, 0.670212, 0.78253955, 1)
 light_energy = 0.08
 directional_shadow_max_distance = 20.0
 sky_mode = 1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Mundo/Shading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5896605, 1.1897688, -4.8647738)
+visible = false
+light_color = Color(0.64705884, 0.3764706, 0.49019608, 1)
+light_size = 3.32
+light_negative = true
+light_specular = 0.3
+light_bake_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_kg7t3")

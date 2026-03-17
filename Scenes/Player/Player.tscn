@@ -8168,7 +8168,6 @@ volume_db = -10.0
 bus = &"Player"
 
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -10.0
 bus = &"SFX"
 
 [connection signal="mouse_entered" from="CanvasLayer5/UI/HFlowContainer/InteractButton" to="." method="_on_hover"]
