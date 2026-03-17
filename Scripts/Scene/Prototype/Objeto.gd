@@ -12,12 +12,12 @@ extends StaticBody3D
 @export var photo := preload("res://Textures/Journal_item_photo_placeholder.png")
 @export var text_content := "Lorem ipsum..."
 @export var should_highlight := true
+@export var glow : bool = false
 
 var is_dialogue_active : bool = false
-var highlight_shader : Shader = preload("res://Shaders/glow_effect01.gdshader")
+var highlight_shader : Shader = preload("res://Shaders/glow_effect05.gdshader") # def: 01
 var highlight_mesh: MeshInstance3D
 var highlight_material: ShaderMaterial
-var glow : bool = false
 var load_next_scene_after_dialogue : bool = false
 var minigame_instance
 
@@ -50,9 +50,9 @@ func despawn_object() -> void:
 	# get_parent().queue_free()
 
 func _glow(status : bool) -> void:
-	if should_highlight and not SceneManagerMap01._already_interacted(object_name) or not SceneManagerMap02._already_interacted(object_name) or not SceneManagerMap03._already_interacted(object_name) or not SceneManagerMap04._already_interacted(object_name):
+	if should_highlight and not (SceneManagerMap01._already_interacted(object_name) or SceneManagerMap02._already_interacted(object_name) or SceneManagerMap03._already_interacted(object_name) or SceneManagerMap04._already_interacted(object_name)):
 		glow = status
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(3.5).timeout
 		glow = false
 
 func is_glowing() -> bool:

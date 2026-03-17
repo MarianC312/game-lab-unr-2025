@@ -191,12 +191,13 @@ func apply_bone_yaw(bone_idx: int, yaw: float):
 
 func _clear_interactable_glow() -> void:
 	print("Called clear interactable.")
-	await get_tree().create_timer(1.5).timeout
-	if interactable_item_list.size() > 0:
-		for item in interactable_item_list:
-			if item.has_method("_glow"):
-				item.call("_glow", false)
-		interactable_item_list.clear()
+	await get_tree().create_timer(3.505).timeout
+	#if interactable_item_list.size() > 0:
+		#for item in interactable_item_list:
+			#if item.has_method("_glow"):
+				#item.call("_glow", false)
+		#interactable_item_list.clear()
+	interactable_item_list.clear()
 	already_called_clear_interactable_glow = false
 	can_glow_interactables = true
 
@@ -567,18 +568,29 @@ func highlight_button(button: Button):
 		existing_tween.kill()
 	
 	button.scale = Vector2.ONE
+	button.modulate = Color.WHITE
 	
 	var tween = button.create_tween()
 	tween.set_loops()
+	tween.set_parallel(true)
 	
-	tween.tween_property(button, "scale", Vector2(1.05, 1.05), 0.4)\
+	# Scale (igual que antes pero un poco más pronunciado)
+	tween.tween_property(button, "scale", Vector2(1.1, 1.1), 0.45)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(button, "scale", Vector2.ONE, 0.45)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)\
+		.set_delay(0.45)
 	
-	tween.tween_property(button, "scale", Vector2.ONE, 0.4)\
+	# Pulso de color cálido sincronizado con el scale
+	tween.tween_property(button, "modulate", Color(1.9, 1.5, 0.5, 1.0), 0.45)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_IN_OUT)
-	
+	tween.tween_property(button, "modulate", Color.WHITE, 0.45)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)\
+		.set_delay(0.45)
 	button.set_meta("highlight_tween", tween)
 
 func stop_highlight(button: Button):
@@ -588,6 +600,8 @@ func stop_highlight(button: Button):
 	
 	if tween and tween.is_running():
 		tween.kill()
+		button.modulate = Color.WHITE
+		button.scale = Vector2.ONE
 		button.set_meta("highlight_tween", null)
 		print("anduvo!")
 	

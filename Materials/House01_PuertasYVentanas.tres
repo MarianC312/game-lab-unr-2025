@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bc14p3wnsfkq0" path="res://Textures/House01/PuertasYVentanas/green_rough_planks_rough_2k.jpg" id="3_uc7k6"]
 
 [resource]
+albedo_color = Color(0.4083292, 0.40832955, 0.40832946, 1)
 albedo_texture = ExtResource("1_7ruk6")
 metallic_specular = 0.0
 roughness_texture = ExtResource("3_uc7k6")

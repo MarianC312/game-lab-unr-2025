@@ -1,38 +1,82 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdn7dnqwgsly6"]
+[gd_scene load_steps=11 format=3 uid="uid://cdn7dnqwgsly6"]
 
 [ext_resource type="Script" uid="uid://bobju6w7cvhgs" path="res://Scripts/Scene/Prototype02/Prototype02.gd" id="1_ww1bx"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_ly18k"]
 [ext_resource type="PackedScene" uid="uid://dek57ksis0red" path="res://Scenes/Assets/Bar01.tscn" id="3_ww1bx"]
 [ext_resource type="AudioStream" uid="uid://baj1di0ulg6ta" path="res://Sounds/Music/scene_02_ambience.wav" id="4_ww1bx"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ww1bx"]
-sky_top_color = Color(0.58073854, 0.7414273, 0.8478996, 1)
-sky_curve = 0.06529134
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ww1bx"]
 
-[sub_resource type="Sky" id="Sky_rhd61"]
-sky_material = SubResource("ProceduralSkyMaterial_ww1bx")
+[sub_resource type="Sky" id="Sky_e1s85"]
+sky_material = SubResource("PhysicalSkyMaterial_ww1bx")
 
-[sub_resource type="Environment" id="Environment_e1s85"]
+[sub_resource type="Environment" id="Environment_183q3"]
 background_mode = 2
-sky = SubResource("Sky_rhd61")
+sky = SubResource("Sky_e1s85")
+sky_rotation = Vector3(0.61086524, 0, 0)
 ambient_light_source = 3
-ambient_light_color = Color(0.5650735, 0.61371326, 0.67763716, 1)
+ambient_light_color = Color(1, 0.7019608, 0.2784314, 1)
 reflected_light_source = 2
 tonemap_mode = 2
+tonemap_exposure = 1.1
 ssr_fade_in = 0.063067295
 ssr_fade_out = 3.732131
 ssao_radius = 2.61
 ssao_intensity = 2.37
 ssao_power = 3.1057944
-ssil_enabled = true
-ssil_intensity = 3.11
-ssil_sharpness = 0.41
+ssil_radius = 0.01
+ssil_intensity = 4.0
+ssil_sharpness = 0.0
 sdfgi_use_occlusion = true
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.1
+fog_enabled = true
 fog_mode = 1
-fog_density = 1.0
+fog_light_color = Color(0.83137256, 0.5294118, 0.2901961, 1)
+fog_sun_scatter = 0.8
+fog_density = 0.4
+fog_depth_curve = 1.3195077
+fog_depth_begin = 15.0
+fog_depth_end = 60.0
+volumetric_fog_density = 0.0095
+volumetric_fog_albedo = Color(0.8235294, 0.42745098, 0.60784316, 1)
+volumetric_fog_emission = Color(0.21528345, 0.14061421, 0.17082494, 1)
+volumetric_fog_emission_energy = 0.75
+volumetric_fog_length = 400.0
+adjustment_enabled = true
+adjustment_brightness = 1.05
+adjustment_saturation = 1.15
 
-[sub_resource type="VoxelGIData" id="VoxelGIData_ww1bx"]
-_data = {}
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ww1bx"]
+lifetime_randomness = 0.75
+emission_shape_offset = Vector3(4.94, -2.31, 3.785)
+emission_shape = 3
+emission_box_extents = Vector3(2.03, 1.37, 2.33)
+angle_min = 57.60001
+angle_max = 303.90002
+direction = Vector3(0, 0, 0)
+spread = 16.935
+initial_velocity_max = 0.14999999
+orbit_velocity_min = -1.022
+orbit_velocity_max = 0.0820001
+gravity = Vector3(0, -0.001, 0)
+scale_min = 0.75
+scale_max = 1.15
+hue_variation_min = -0.3
+hue_variation_max = 0.19999997
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22wq2"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.43205303, 0.3321284, 0.080883585, 0.23529412)
+
+[sub_resource type="SphereMesh" id="SphereMesh_e1s85"]
+material = SubResource("StandardMaterial3D_22wq2")
+radius = 0.006
+height = 0.012
+radial_segments = 4
+rings = 3
 
 [node name="Prototype02" type="Node3D"]
 script = ExtResource("1_ww1bx")
@@ -73,12 +117,50 @@ transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 5.1952615, 0.
 [node name="Bar01" parent="Mundo" instance=ExtResource("3_ww1bx")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Mundo"]
-environment = SubResource("Environment_e1s85")
+environment = SubResource("Environment_183q3")
 
-[node name="VoxelGI" type="VoxelGI" parent="Mundo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45941353, 1.4891477, -1.8587875)
-size = Vector3(15.416477, 5.704529, 18.536148)
-data = SubResource("VoxelGIData_ww1bx")
+[node name="Shading" type="Node3D" parent="Mundo"]
+
+[node name="Sun" type="DirectionalLight3D" parent="Mundo/Shading"]
+transform = Transform3D(1, 0, 0, 0, -0.8910066, 0.45399064, 0, -0.45399064, -0.8910066, 0, 3.3330436, 9.254973)
+light_color = Color(1, 0.7019608, 0.2784314, 1)
+light_volumetric_fog_energy = 0.8
+shadow_enabled = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mundo/Shading"]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0.73172075, 0)
+light_color = Color(0.9797091, 0.55753005, 0.11760705, 1)
+light_energy = 0.065
+light_bake_mode = 1
+directional_shadow_max_distance = 20.0
+sky_mode = 1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Mundo/Shading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5896605, 1.1897688, -4.8647738)
+visible = false
+light_color = Color(0.64705884, 0.3764706, 0.49019608, 1)
+light_size = 3.32
+light_negative = true
+light_specular = 0.3
+light_bake_mode = 1
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Mundo/Shading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5335855, 4.0057306, -4.3813753)
+amount = 750
+lifetime = 15.0
+visibility_aabb = AABB(2.67, -4, -2.245, 5.42, 2.985, 11.365)
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_ww1bx")
+draw_pass_1 = SubResource("SphereMesh_e1s85")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Mundo/Shading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.749438, 4.0057306, -1.2167165)
+amount = 500
+lifetime = 15.0
+visibility_aabb = AABB(2.755, -4, 1.375, 4.49, 2.985, 4.835)
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_ww1bx")
+draw_pass_1 = SubResource("SphereMesh_e1s85")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ww1bx")

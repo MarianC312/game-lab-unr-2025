@@ -3,4 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://b8b0pdpygktk2" path="res://Textures/House01/Silla01/patas.jpg" id="1_rs35a"]
 
 [resource]
+albedo_color = Color(0.8175213, 0.8175213, 0.81752115, 1)
 albedo_texture = ExtResource("1_rs35a")
+metallic_specular = 0.0
