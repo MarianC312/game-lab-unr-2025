@@ -3037,6 +3037,8 @@ mesh = SubResource("PlaneMesh_3e05a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.56137)
 mesh = SubResource("PlaneMesh_3e05a")
 
+[node name="Grass" type="Node3D" parent="Shading"]
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered" binds= [1]]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited" binds= [1]]
 [connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_body_entered" binds= [2]]

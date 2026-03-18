@@ -109,9 +109,11 @@ func _input(event: InputEvent) -> void:
 			can_glow_interactables = false
 			interactable_item_list = get_tree().get_nodes_in_group("Interactable")
 			if interactable_item_list.size() > 0:
-				for item in interactable_item_list:
-					if item.has_method("_glow"):
-						item.call("_glow", true)
+				for interactable in interactable_item_list:
+					if interactable.has_method("_glow"):
+						interactable.call("_glow", true)
+					elif interactable.has_method("_glow"):
+						interactable.call("_glow", true)
 
 func _handle_click() -> void:
 	var ui_clicked = get_viewport().gui_get_hovered_control()
