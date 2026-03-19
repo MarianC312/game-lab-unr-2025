@@ -22,7 +22,7 @@ func _ready() -> void:
 	SceneManagerMap03.registered_interaction.connect(_on_registered_interaction)
 	process_mode = Node.PROCESS_MODE_INHERIT
 	player = get_tree().get_first_node_in_group("Player")
-	if player.global_position != char_spawn.global_position:
+	if player and player.global_position != char_spawn.global_position:
 		player.global_position = char_spawn.global_position
 	for interactable in get_tree().get_nodes_in_group("Interactable"):
 		SceneManagerMap03.set_interactable(interactable)
@@ -33,7 +33,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# print(SceneManagerMap01._get_interactables())
 	# print("Stream line: ", audio_stream_player.get_playback_position())
-	if player_sent_w01 == false:
+	if player and player_sent_w01 == false:
 		player.set_target_position(waypoint_01.global_position)
 		player.trigger_dialogue(3, 5.4)
 		player.should_run = true

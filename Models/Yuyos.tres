@@ -1,0 +1,15 @@
+[gd_resource type="QuadMesh" load_steps=3 format=3 uid="uid://bausuvo1bopp4"]
+
+[ext_resource type="Texture2D" uid="uid://cl1br6mtbtcir" path="res://Textures/Grass/Yuyos_01.png" id="1_61htl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvix0"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0.884367, 0.9887144, 0.955308, 1)
+albedo_texture = ExtResource("1_61htl")
+billboard_mode = 2
+
+[resource]
+material = SubResource("StandardMaterial3D_pvix0")
