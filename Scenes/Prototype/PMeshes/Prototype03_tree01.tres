@@ -1,0 +1,14 @@
+[gd_resource type="QuadMesh" load_steps=3 format=3 uid="uid://c36fhh4bx2nvv"]
+
+[ext_resource type="Texture2D" uid="uid://d08qedokf26o3" path="res://Textures/Quebracho2d01.png" id="1_r7ahv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_he2hf"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_r7ahv")
+
+[resource]
+material = SubResource("StandardMaterial3D_he2hf")
+size = Vector2(21.33, 12)
+orientation = 0

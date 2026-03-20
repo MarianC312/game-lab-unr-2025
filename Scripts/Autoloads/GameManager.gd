@@ -94,7 +94,7 @@ signal toggle_playing
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	next_scene = game_scene_flow.Prologue
+	next_scene = game_scene_flow.Prologue # .Prologue
 
 func _toggle_pause(emit := true) -> void:
 	paused = !paused

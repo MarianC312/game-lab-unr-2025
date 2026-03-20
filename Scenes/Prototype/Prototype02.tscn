@@ -167,6 +167,13 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_ww1bx")
 draw_pass_1 = SubResource("SphereMesh_e1s85")
 
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Mundo/Shading"]
+transform = Transform3D(0.69288605, 0, -0.72104716, 0, 1, 0, 0.72104716, 0, 0.69288605, 2.0583353, 0.5650697, -2.4260206)
+intensity = 0.45
+size = Vector3(9, 8, 12)
+interior = true
+enable_shadows = true
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ww1bx")
 bus = &"Ambience"
