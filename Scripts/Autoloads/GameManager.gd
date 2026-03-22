@@ -5,6 +5,7 @@ var current_scene : Dictionary
 var next_scene : Dictionary
 var current_state : game_states = game_states.LOADING
 var current_locale_id : int
+var show_all_interacts := false # false
 var game_scene_flow := {
 	#"Debug":
 		#{
@@ -94,7 +95,7 @@ signal toggle_playing
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	next_scene = game_scene_flow.Prologue
+	next_scene = game_scene_flow.Prologue # .Prologue
 
 func _toggle_pause(emit := true) -> void:
 	paused = !paused
@@ -221,3 +222,6 @@ func get_current_scene_name() -> String:
 func _toggle_controls(emit := true) -> void:
 	if emit:
 		toggle_controls.emit()
+
+func _show_all_interacts() -> bool:
+	return show_all_interacts

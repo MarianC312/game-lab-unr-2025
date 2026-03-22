@@ -57,15 +57,18 @@ func _on_toggle_loading() -> void:
 		loading.process_mode = Node.PROCESS_MODE_DISABLED
 
 func load_map(packed_scene) -> void:
-	SceneTransitions.fade_out()
-	await SceneTransitions.fade_complete
-	if current_map:
-		current_map.queue_free()
-	var new_map = packed_scene.instantiate()
-	map.add_child(new_map)
-	current_map = new_map # Corregir que el nuevo mapa cargado pase a ser hijo del nodo Map
-	GameManager._switch_scene_loaded()
-	_on_map_ready()
+	if packed_scene:
+		SceneTransitions.fade_out()
+		await SceneTransitions.fade_complete
+		if current_map:
+			current_map.queue_free()
+		var new_map = packed_scene.instantiate()
+		map.add_child(new_map)
+		current_map = new_map # Corregir que el nuevo mapa cargado pase a ser hijo del nodo Map
+		GameManager._switch_scene_loaded()
+		_on_map_ready()
+	else:
+		print("Ocurrió un error al cargar el mapa: ", packed_scene)
 
 func _on_map_ready() -> void:
 	if GameManager.current_scene.playable:
@@ -81,11 +84,13 @@ func _on_map_ready() -> void:
 	SceneTransitions.fade_in()
 	await SceneTransitions.fade_complete
 	loading._reset_progress_bar_value()
+	loading.process_mode = PROCESS_MODE_DISABLED
 	GameManager._toggle_playing()
 
 func _on_scene_loaded(new_scene) -> void:
 	print("Escena cargada correctamente...")
 	load_map(new_scene)
+	
 
 func _on_toggle_journal() -> void:
 	if journal.visible:

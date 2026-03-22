@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkdyp60vkqbij"]
+[gd_scene load_steps=8 format=3 uid="uid://dkdyp60vkqbij"]
 
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="1_uxyxf"]
 [ext_resource type="Script" uid="uid://bqwnhnamdwyrd" path="res://Scripts/UI/Journal.gd" id="1_vo2py"]
 [ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="3_ky5dj"]
 [ext_resource type="Texture2D" uid="uid://conir2kpi1bi4" path="res://Textures/House01/JournalOpened.png" id="4_oc0lf"]
-[ext_resource type="Texture2D" uid="uid://cv80hgud3t41l" path="res://Textures/Screenshots/juan moreira.png" id="5_xgk57"]
 [ext_resource type="FontFile" uid="uid://drjf5ofsn3r14" path="res://Base/Fonts/ReenieBeanie-Regular.ttf" id="6_xgk57"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vo2py"]
@@ -271,7 +270,6 @@ size_flags_vertical = 6
 
 [node name="TextureRect" type="TextureRect" parent="BoxContainer/JournalOpened/HBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_xgk57")
 expand_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="BoxContainer/JournalOpened/HBoxContainer"]
@@ -290,6 +288,7 @@ theme_override_constants/line_separation = -3
 theme_override_constants/paragraph_separation = -6
 theme_override_fonts/normal_font = ExtResource("6_xgk57")
 theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
 text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""

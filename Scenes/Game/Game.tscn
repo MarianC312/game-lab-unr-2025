@@ -11,7 +11,7 @@
 script = ExtResource("1_gwu2e")
 
 [node name="UI" type="CanvasLayer" parent="."]
-layer = 50
+layer = 150
 
 [node name="Journal" parent="UI" instance=ExtResource("2_y3kpf")]
 visible = false

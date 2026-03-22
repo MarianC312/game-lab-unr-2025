@@ -10,12 +10,13 @@ extends StaticBody3D
 @export var required := true
 @export var map := "Mapa01"
 @export var photo := preload("res://Textures/Journal_item_photo_placeholder.png")
-@export var text_content := "Lorem ipsum..."
+@export_multiline var text_content := "Lorem ipsum..."
 @export var should_highlight := true
 @export var glow : bool = false
 
 var is_dialogue_active : bool = false
-var highlight_shader : Shader = preload("res://Shaders/glow_effect05.gdshader") # def: 01
+var highlight_shader : Shader = preload("res://Shaders/glow_effect06.gdshader") # def: 01
+var highlight_outline_shader : Shader = preload("res://Shaders/glow_face_effect01.gdshader") # el nuevo
 var highlight_mesh: MeshInstance3D
 var highlight_material: ShaderMaterial
 var load_next_scene_after_dialogue : bool = false
@@ -24,9 +25,22 @@ var minigame_instance
 func _ready() -> void:
 	get_tree().get_first_node_in_group("Player")
 	object_mesh = get_parent()
+
+	var outline_material = ShaderMaterial.new()
+	outline_material.shader = highlight_outline_shader
+
 	highlight_material = ShaderMaterial.new()
 	highlight_material.render_priority = 120
 	highlight_material.shader = highlight_shader
+	highlight_material.next_pass = outline_material 
+
+	var glow_color = Color(1.0, 0.85, 0.2, 1.0)
+	highlight_material.set_shader_parameter("color", glow_color)
+	outline_material.set_shader_parameter("color", glow_color)
+	outline_material.set_shader_parameter("intensity", 2.8)
+	outline_material.set_shader_parameter("pulse_speed", 1.5)
+	outline_material.set_shader_parameter("outline_width", 0.01)
+
 	highlight_mesh = MeshInstance3D.new()
 	highlight_mesh.set_as_top_level(true)
 	highlight_mesh.global_transform = object_mesh.global_transform

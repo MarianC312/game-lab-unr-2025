@@ -13,6 +13,22 @@ extends CharacterBody3D
 @export var spine_turn_speed := 2.0
 @export var max_spine_yaw := deg_to_rad(5)
 @export var yaw_transfer_speed := 6.0
+@onready var spring_arm: SpringArm3D = $camera_pivot/SpringArm3D
+
+@export_category("Camera Avoidance")
+@export var spring_length: float = 6.0
+@export var camera_rotation_speed: float = 5.0
+var camera_target_index: int = 0
+var camera_is_avoiding: bool = false
+# Variables de camera avoidance - reemplazá las anteriores
+var camera_base_y: float = 0.0
+var camera_current_y: float = 0.0
+var camera_target_y: float = 0.0
+var camera_current_index: int = 0
+var camera_positions: Array[float] = []
+var last_player_position: Vector3 = Vector3.ZERO
+var camera_avoid_cooldown: float = 0.0
+var camera_is_displaced: bool = false  # true = estamos en una posición que no es la original
 
 const ROTATION_SPEED := 10.0
 const CAMERA_ROTATION_SPEED := 0.005
@@ -87,6 +103,19 @@ func _ready() -> void:
 	spine_bone_1 = skeleton.find_bone("mixamorig_Spine")
 	spine_bone_2 = skeleton.find_bone("mixamorig_Spine1")
 	spine_bone_3 = skeleton.find_bone("mixamorig_Spine2")
+	
+	camera_base_y = camera_pivot.rotation_degrees.y
+	camera_current_y = camera_base_y
+	camera_target_y = camera_base_y
+	camera_positions = [
+		camera_base_y,
+		camera_base_y + 90.0,
+		camera_base_y + 180.0,
+		camera_base_y + 270.0,
+	]
+	camera_current_index = 0
+	spring_arm.spring_length = spring_length
+	last_player_position = global_position
 
 func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("pause"):
@@ -227,7 +256,7 @@ func _process(delta: float) -> void:
 	if not journal_button.visible and GameManager.has_journal():
 		journal_button.show()
 		highlight_button(journal_button)
-	pass
+	_update_camera_avoidance(delta)
 
 func _physics_process(delta: float) -> void:
 	if GameManager._is_game_paused():
@@ -546,6 +575,73 @@ func start_first_dialogue() -> void:
 		is_first_dialogue_done = true
 		await get_tree().create_timer(0.75).timeout
 		DialogueManager.show_dialogue_balloon(first_dialogue, "start")
+
+func _update_camera_avoidance(delta: float) -> void:
+	if GameManager._is_game_paused():
+		return
+
+	if camera_avoid_cooldown > 0.0:
+		camera_avoid_cooldown -= delta
+
+	var hit_length = spring_arm.get_hit_length()
+	var is_colliding = hit_length < (spring_length - 0.1)
+	var player_moved = global_position.distance_to(last_player_position) > 0.05
+	last_player_position = global_position
+
+	# Si colisiona y no estamos en cooldown, buscar siguiente posición libre
+	if is_colliding and camera_avoid_cooldown <= 0.0:
+		var next_index = _find_free_position()
+		if next_index != camera_current_index:
+			camera_current_index = next_index
+			camera_target_y = camera_positions[next_index]
+			camera_avoid_cooldown = 1.5
+			camera_is_displaced = (next_index != 0)
+
+	# Si el personaje se mueve y estamos desplazados, volver a la posición original
+	if player_moved and camera_is_displaced:
+		# Solo volver si la posición original no está bloqueada
+		if not _is_position_blocked(0):
+			camera_current_index = 0
+			camera_target_y = camera_positions[0]
+			camera_is_displaced = false
+			camera_avoid_cooldown = 1.5
+
+	# Interpolar suavemente — todo en grados, sin mezclar radianes
+	camera_current_y = lerp(camera_current_y, camera_target_y, camera_rotation_speed * delta)
+
+	# Snap cuando está muy cerca para evitar jitter
+	if abs(camera_current_y - camera_target_y) < 0.1:
+		camera_current_y = camera_target_y
+
+	camera_pivot.rotation_degrees.y = camera_current_y
+
+
+func _find_free_position() -> int:
+	for i in range(1, camera_positions.size()):
+		var test_index = (camera_current_index + i) % camera_positions.size()
+		if not _is_position_blocked(test_index):
+			return test_index
+	return camera_current_index
+
+
+func _is_position_blocked(index: int) -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var test_angle = deg_to_rad(camera_positions[index])
+	var pitch = spring_arm.rotation.x
+
+	var cam_offset = Vector3(
+		cos(pitch) * sin(test_angle) * spring_length,
+		-sin(pitch) * spring_length,
+		cos(pitch) * cos(test_angle) * spring_length
+	)
+
+	var from = global_position + Vector3(0, 1, 0)
+	var to = from + cam_offset
+
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+	return result != null and result.size() > 0
 
 func disable_look():
 	look_enabled = false

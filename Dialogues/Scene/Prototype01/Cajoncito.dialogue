@@ -1,5 +1,5 @@
 ~ start
-if SceneManagerMap01.interactable_is_locked("5. Cajoncito"):
+if SceneManagerMap01.interactable_is_locked("5. Moneda"):
 	{{ GameManager.get_player_name() }}:
 		Está cerrado... Quizás podría intentar abrirlo
 	- Abrir => desbloquear_objeto
@@ -11,5 +11,9 @@ else:
 => END
 
 ~ desbloquear_objeto
-do SceneManagerMap01.interactable_start_minigame("5. Cajoncito")
+do SceneManagerMap01.interactable_start_minigame("5. Moneda")
+=> desbloqueando
+
+~ desbloqueando
+...
 => END!

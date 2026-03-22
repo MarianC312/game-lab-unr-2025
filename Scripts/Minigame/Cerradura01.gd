@@ -1,8 +1,8 @@
 extends Control
 @onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var pivot: Node2D = $BoxContainer/Pivot
+@onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
+@onready var pivot: Node2D = $CanvasLayer/BoxContainer/Pivot
 
 @export var mouse_sens := 0.00075
 @export var max_angle := 180

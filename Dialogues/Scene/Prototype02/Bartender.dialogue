@@ -1,6 +1,6 @@
 ~ start
-if not SceneManagerMap02._already_interacted("8. Manuel"):
-	do SceneManagerMap02._register_interaction("8. Manuel")
+if not SceneManagerMap02._already_interacted("11. Manuel"):
+	do SceneManagerMap02._register_interaction("11. Manuel")
 Manuel:
 	Tal vez la necesites, tu padre me dijo que vendrías. [wave]Saca una caja de atrás del mostrador[/wave]
 - Aceptar => aceptar_caja
@@ -8,8 +8,8 @@ Manuel:
 => END
 
 ~ aceptar_caja
-if not SceneManagerMap02._already_interacted("9. Revolver"):
-	do SceneManagerMap02._register_interaction("9. Revolver")
+if not SceneManagerMap02._already_interacted("8. Revolver"):
+	do SceneManagerMap02._register_interaction("8. Revolver")
 Manuel:
 	Bueno, veo que tenés carácter, me vendría bien una empleada como vos por acá. A veces las cosas se ponen difíciles para las chicas y les vendría bien una mano.
 - Preguntar a Manuel => pregunta
@@ -35,6 +35,8 @@ Manuel:
 ~ pedir
 if not SceneManagerMap02._already_interacted("7. Amargo Obrero"):
 	do SceneManagerMap02._register_interaction("7. Amargo Obrero")
+if not SceneManagerMap02._already_interacted("10. Whisky y Gin"):
+	do SceneManagerMap02._register_interaction("10. Whisky y Gin")
 {{ GameManager.get_player_name() }}:
 	Sirva algo Don... Un amargo...
 Manuel:
@@ -61,10 +63,10 @@ Manuel:
 ~ despedida
 {{ GameManager.get_player_name() }}:
 	Gracias Don, me voy antes que me quede sin luz del sol.
-if not SceneManagerMap02._already_interacted("9. Revolver"):
+if not SceneManagerMap02._already_interacted("8. Revolver"):
 	Manuel:
 		Buena suerte... la vas a necesitar [wave]Se ríe profusamente[/wave]
-if SceneManagerMap02._already_interacted("9. Revolver"):
+if SceneManagerMap02._already_interacted("8. Revolver"):
 	Manuel:
 		Apuntá bien muchacha [wave]Sonríe suspicazmente y te extiende la mano para un saludo[/wave]
 => salida
@@ -72,8 +74,8 @@ if SceneManagerMap02._already_interacted("9. Revolver"):
 ~ mas
 {{ GameManager.get_player_name() }}:
 	¿Sabe algo más? Pregunto porque sé que no solo los hacheros pasan por aquí.
-if not SceneManagerMap02._already_interacted("10. F.O.R.A."):
-	do SceneManagerMap02._register_interaction("10. F.O.R.A.")
+if not SceneManagerMap02._already_interacted("9. F.O.R.A."):
+	do SceneManagerMap02._register_interaction("9. F.O.R.A.")
 Manuel:
 	La curiosidad te puede meter en cosas peligrosas, pero si es lo que quieres...
 	[wave]Susurra[/wave]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://cifkgfhho45vn"]
+[gd_scene load_steps=16 format=3 uid="uid://cifkgfhho45vn"]
 
 [ext_resource type="Script" uid="uid://cs1q5ah2qoce1" path="res://Scripts/Scene/Prototype04/Prototype04.gd" id="1_8ei1d"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_0t8de"]
 [ext_resource type="FontFile" uid="uid://dpc4p18b1pqep" path="res://Base/Fonts/SpecialElite-Regular.ttf" id="3_0t8de"]
 [ext_resource type="PackedScene" uid="uid://fbg1kvyrik1h" path="res://Scenes/Assets/Forestal.tscn" id="3_qte2i"]
 [ext_resource type="AudioStream" uid="uid://dok26fu1dgfxq" path="res://Sounds/Music/menu_bg_music_02.wav" id="4_qte2i"]
-[ext_resource type="Texture2D" uid="uid://b3oqoxwbrcl47" path="res://Textures/Screenshots/fondo arreglado.png" id="6_vmvxi"]
+[ext_resource type="Script" uid="uid://ywl7m0qshqv" path="res://Scripts/Scene/Prototype/Objeto.gd" id="5_k6idn"]
+[ext_resource type="Texture2D" uid="uid://sd5bkhmlaaeq" path="res://Textures/Quebracho.png" id="6_k6idn"]
+[ext_resource type="Texture2D" uid="uid://b2qxk7l1vnvgg" path="res://Textures/hacha.png" id="7_a5eq5"]
 
 [sub_resource type="Gradient" id="Gradient_vmvxi"]
 offsets = PackedFloat32Array(0.082539685, 1)
@@ -19,6 +21,9 @@ fill_to = Vector2(1, 0.875)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uvvlf"]
 texture = SubResource("GradientTexture2D_eothy")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86wte"]
+size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qte2i"]
 sky_top_color = Color(0.73379046, 0.47166312, 0.41231588, 1)
@@ -43,11 +48,9 @@ tonemap_exposure = 1.5
 tonemap_white = 1.5
 ssr_fade_in = 0.063067295
 ssr_fade_out = 3.732131
-ssao_enabled = true
 ssao_radius = 2.61
 ssao_intensity = 2.37
 ssao_power = 3.1057944
-ssil_enabled = true
 ssil_intensity = 3.11
 ssil_sharpness = 0.41
 sdfgi_use_occlusion = true
@@ -93,7 +96,6 @@ theme_override_font_sizes/font_size = 20
 auto_height = true
 
 [node name="Panel" type="Panel" parent="UI/CanvasLayer15"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -137,6 +139,36 @@ transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 3.9580517, 0.
 
 [node name="Forestal" parent="Mundo" instance=ExtResource("3_qte2i")]
 
+[node name="Interactables" type="Node3D" parent="Mundo"]
+
+[node name="Quebracho" type="MeshInstance3D" parent="Mundo/Interactables"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mundo/Interactables/Quebracho" groups=["Interactable"]]
+script = ExtResource("5_k6idn")
+object_name = "14. Quebracho"
+required = false
+map = "Mapa03"
+photo = ExtResource("6_k6idn")
+text_content = "Quebracho es el nombre colonial español, quiebra hacha. En qom es naalá y en wichi es sachaj. Nativo del noroeste argentino y presente en Bolivia, Paraguay y Brasil, crece en bosques densos. Fue explotado por su tanino y madera, dejando los montes vulnerables. Los obreros lo pelaban a mano hasta el centro rojo, el oro rojo."
+should_highlight = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mundo/Interactables/Quebracho/StaticBody3D"]
+shape = SubResource("BoxShape3D_86wte")
+
+[node name="Hacha" type="MeshInstance3D" parent="Mundo/Interactables"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mundo/Interactables/Hacha" groups=["Interactable"]]
+script = ExtResource("5_k6idn")
+object_name = "15. Hacha"
+required = false
+map = "Mapa03"
+photo = ExtResource("7_a5eq5")
+text_content = "El hacha, reforzada y de acero grueso, tenía cabo fuerte por la dureza del quebracho. Dos o tres hacheros tardaban 2 horas en talarlo y hasta día y medio en llegar al corazón rojo. Niños y mujeres abrían camino entre matorrales y telas de arañas; no cobraban salario."
+should_highlight = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mundo/Interactables/Hacha/StaticBody3D"]
+shape = SubResource("BoxShape3D_86wte")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Mundo"]
 environment = SubResource("Environment_0t8de")
 
@@ -151,8 +183,3 @@ transform = Transform3D(0.93880635, -0.017412988, 0.34400496, 0, 0.99872136, 0.0
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
 bus = &"SFX"
-
-[node name="FondoArreglado" type="Sprite2D" parent="."]
-position = Vector2(574.5556, 324.24997)
-scale = Vector2(0.5976851, 0.59768516)
-texture = ExtResource("6_vmvxi")

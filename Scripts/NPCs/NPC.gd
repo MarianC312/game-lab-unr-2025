@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var dialogue : DialogueResource = preload("res://Dialogues/Default/Default.dialogue")
 @export var map := "Mapa01"
 @export var photo := preload("res://Textures/Journal_item_photo_placeholder.png")
-@export var text_content := "Lorem ipsum..."
+@export_multiline var text_content : String = "Lorem ipsum..."
 @export var required := true
 @export var glow: bool = false:
 	set(value):

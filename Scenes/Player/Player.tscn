@@ -7694,6 +7694,7 @@ stream_9/weight = 0.0
 process_mode = 3
 collision_mask = 7
 script = ExtResource("1_a3d8c")
+spring_length = 2.6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8133049, 0)

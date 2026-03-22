@@ -1,4 +1,6 @@
 ~ start
+if not SceneManagerMap03._already_interacted("12. Bandolero"):
+	do SceneManagerMap03._register_interaction("12. Bandolero")
 Bandolero:
 	Alto ahí muchacha. ¿A dónde vas tan apurada?
 {{ GameManager.get_player_name() }}:
@@ -20,8 +22,8 @@ Bandolero:
 ~ seguir
 {{ GameManager.get_player_name() }}:
 	Quiero encontrar a mi viejo, no quiero problemas.
-if not SceneManagerMap03._already_interacted("11. Moneda"):
-	do SceneManagerMap03._register_interaction("11. Moneda")
+if not SceneManagerMap03._already_interacted("5. Moneda"):
+	do SceneManagerMap03._register_interaction("5. Moneda")
 Bandolero:
 	Solo hay problemas en estos caminos. Toma, para tu viaje... [wave]Te ofrece algunas monedas[/wave]
 - Aceptar => aceptar_monedas
@@ -61,6 +63,8 @@ Bandolero:
 	[wave]se sonríe[/wave]
 {{ GameManager.get_player_name() }}:
 	[wave]El bandolero se aleja por el camino en su caballo[/wave]
+if not SceneManagerMap03._already_interacted("13. Juan Moreira"):
+	do SceneManagerMap03._register_interaction("13. Juan Moreira")
 {{ GameManager.get_player_name() }}:
 	Ese gaucho me hizo acordar a Juan Moreira de los folletines que leen mamá y papá. Debo continuar mi camino. Siguiendo las vías voy a llegar a La Forestal.
 do GameManager.load_new_map("")

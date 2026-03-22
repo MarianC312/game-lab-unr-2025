@@ -30,11 +30,9 @@ var contenido : Dictionary = {
 }
 
 var current_photo : Resource
-var current_text := "
-- Llevar a diario el cintillo celeste 
+var current_text := "- [s]Llevar a diario el cintillo celeste[/s] 
 - F.O.R.A: prendas rojas, pañuelos, cintas
-- Manuel: dejarle la caja
-"
+- [s]Manuel: dejarle la caja[/s]"
 
 const MENU_STYLE_01 = preload("res://Materials/MenuStyle01.tres")
 
@@ -77,10 +75,10 @@ func _refresh_interactables() -> void:
 			{
 				"photo": interactable.photo,
 				"text_content": interactable.text_content,
-				"display": SceneManagerMap01._already_interacted(interactable.object_name) or SceneManagerMap02._already_interacted(interactable.object_name) or SceneManagerMap03._already_interacted(interactable.object_name) or SceneManagerMap04._already_interacted(interactable.object_name)
+				"display": GameManager._show_all_interacts() or SceneManagerMap01._already_interacted(interactable.object_name) or SceneManagerMap02._already_interacted(interactable.object_name) or SceneManagerMap03._already_interacted(interactable.object_name) or SceneManagerMap04._already_interacted(interactable.object_name)
 			}
 		)
-	print(contenido)
+	# print(contenido)
 	# Considerar que esto se puede mover al gameflow para no ser repetitivo y comentar
 	# el queue_free del toggle, si bien no es pesado se evitan operaciones innecesarias.
 	# Por falta de tiempo está así pero quizás se podría conectar una señal en la creción
@@ -106,20 +104,20 @@ func _refresh_interactables() -> void:
 	for scene in GameManager.get_game_flow_names():
 		match scene:
 			"Map01":
-				mapa_01_label.text = "journal_map_01" if GameManager.get_scene_state(scene) else "???"
-				if GameManager.get_scene_state(scene) && not map_01v_box_container_1.visible:
+				mapa_01_label.text = "journal_map_01" if (GameManager._show_all_interacts() or GameManager.get_scene_state(scene)) else "???"
+				if GameManager._show_all_interacts() or (GameManager.get_scene_state(scene) && not map_01v_box_container_1.visible):
 					map_01v_box_container_1.show()
 			"Map02":
-				mapa_02_label.text = "journal_map_02" if GameManager.get_scene_state(scene) else "???"
-				if GameManager.get_scene_state(scene) && not map_02v_box_container_2.visible:
+				mapa_02_label.text = "journal_map_02" if (GameManager._show_all_interacts() or GameManager.get_scene_state(scene)) else "???"
+				if GameManager._show_all_interacts() or (GameManager.get_scene_state(scene) && not map_02v_box_container_2.visible):
 					map_02v_box_container_2.show()
 			"Map03":
-				mapa_03_label.text = "journal_map_03" if GameManager.get_scene_state(scene) else "???"
-				if GameManager.get_scene_state(scene) && not map_03v_box_container_3.visible:
+				mapa_03_label.text = "journal_map_03" if (GameManager._show_all_interacts() or GameManager.get_scene_state(scene)) else "???"
+				if GameManager._show_all_interacts() or (GameManager.get_scene_state(scene) && not map_03v_box_container_3.visible):
 					map_03v_box_container_3.show()
 			"Map04":
-				mapa_04_label.text = "journal_map_04" if GameManager.get_scene_state(scene) else "???"
-				if GameManager.get_scene_state(scene) && not map_04v_box_container_4.visible:
+				mapa_04_label.text = "journal_map_04" if (GameManager._show_all_interacts() or GameManager.get_scene_state(scene)) else "???"
+				if GameManager._show_all_interacts() or (GameManager.get_scene_state(scene) && not map_04v_box_container_4.visible):
 					map_04v_box_container_4.show()
 
 func _create_button(label_text : String, map : String, photo : Resource, text_content : String, interacted : bool = false) -> void:

@@ -1,6 +1,7 @@
 extends Node
 
 @export var interactables : Dictionary = {}
+@export var notes : Dictionary = {}
 const JOURNAL_NAME := "1. Cuaderno"
 
 signal registered_interaction

@@ -1,11 +1,13 @@
 extends Node
 
 @export var interactables : Dictionary = {}
+@export var notes : Dictionary = {}
+
 const JOURNAL_NAME := "1. Cuaderno"
 
 signal registered_interaction
 
-var show_all_interacts : bool = false
+var show_all_interacts : bool = true
 
 func _ready() -> void:
 	GameManager.restart_game.connect(_on_restart_game)
