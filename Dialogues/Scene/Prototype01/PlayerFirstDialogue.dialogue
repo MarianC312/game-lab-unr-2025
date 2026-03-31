@@ -3,6 +3,6 @@
 # do GameManager.set_balloon_color(Color(GameManager.get_text_color("player") + "AA"))
 do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 [center][b]{{ GameManager.get_player_name() }}[/b][/center]
-	¡Uaaaah!... [wave](Botezo)[/wave]
+	[wave]¡Uaaaah!...[/wave]
 	Qué raro que mamá no me despertó para tomar mates con ella...
 => END

@@ -90,6 +90,8 @@ var can_glow_interactables : bool = true
 var already_called_clear_interactable_glow : bool = false
 var started_audio_footsteps : bool = false
 var highlight_tween: Tween
+var pending_interactable = null
+var hovered_interactable = null
 
 func _ready() -> void:
 	# nav_agent.set_target_position(global_transform.origin)
@@ -147,7 +149,6 @@ func _input(event: InputEvent) -> void:
 
 func _handle_click() -> void:
 	var ui_clicked = get_viewport().gui_get_hovered_control()
-	# print(ui_clicked)
 	if ui_clicked != null and ui_clicked.visible:
 		return
 	if not PATH_POSITION_CHAIN:
@@ -156,11 +157,47 @@ func _handle_click() -> void:
 	var from = camera.project_ray_origin(get_viewport().get_mouse_position())
 	var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
 	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(from, to, 1 << 2) # << 2
+
+	# --- Primero: chequeamos objetos interactuables (capa 4) ---
+	var query_interact = PhysicsRayQueryParameters3D.create(from, to, 1 << 3)
+	query_interact.collide_with_areas = true
+	query_interact.collide_with_bodies = true
+	var result_interact = space_state.intersect_ray(query_interact)
+
+	# --- Segundo: chequeamos el piso (capa 3) ---
+	var query_floor = PhysicsRayQueryParameters3D.create(from, to, 1 << 2)
+	query_floor.collide_with_areas = false
+	query_floor.collide_with_bodies = true
+	var result_floor = space_state.intersect_ray(query_floor)
+
+	# Solo procesamos el interactuable si está MÁS CERCA que el piso
+	var interactable_is_closest = false
+	if result_interact and result_interact.has("collider"):
+		if result_floor and result_floor.has("position"):
+			var dist_interact = from.distance_to(result_interact.position)
+			var dist_floor = from.distance_to(result_floor.position)
+			interactable_is_closest = dist_interact <= dist_floor
+		else:
+			interactable_is_closest = true
+
+	if interactable_is_closest:
+		var collider = result_interact.collider
+		if collider.has_method("interact"):
+			var distance = global_position.distance_to(collider.global_position)
+			if distance <= 1.0:
+				collider.interact()
+				return
+			else:
+				target_position = Vector3(result_interact.position.x, 0, result_interact.position.z)
+				nav_agent.set_target_position(target_position)
+				has_target = true
+				pending_interactable = collider
+				return
+
+	var query = PhysicsRayQueryParameters3D.create(from, to, 1 << 2)
 	query.collide_with_areas = false
 	query.collide_with_bodies = true
-	# query.collision_mask = 1 << 2
-	
+
 	var result = space_state.intersect_ray(query)
 	var current_click_time = Time.get_ticks_msec() / 1000.0
 	if current_click_time - last_click_time <= DOUBLE_CLICK_THRESHOLD:
@@ -169,16 +206,16 @@ func _handle_click() -> void:
 	else:
 		timer.start(DOUBLE_CLICK_THRESHOLD)
 	last_click_time = current_click_time
-	
+
 	if result and result.has("position"):
 		var new_position = Vector3(result.position.x, 0, result.position.z)
+		pending_interactable = null  # cancelamos intención anterior
 		if PATH_POSITION_CHAIN:
 			target_positions.append(new_position)
 		else:
 			target_position = new_position
 		nav_agent.set_target_position(target_position)
 		has_target = true
-		# print("Target position: ", target_position)
 	else:
 		print("No hit")
 
@@ -246,6 +283,7 @@ func _clear_movement() -> void:
 func _process(delta: float) -> void:
 	update_look(delta)
 	update_spine(delta)
+	_handle_hover()
 	#if Input.is_action_pressed("left_click"):
 		#_handle_click()
 	# print("MODEL FORWARD:", playermodel.global_transform.basis.z)
@@ -494,6 +532,13 @@ func move_type2(delta : float) -> void:
 		should_run = false
 		velocity = Vector3.ZERO
 		player_animation_state = AnimationState.IDLE
+		if global_position and pending_interactable:
+			var distance = global_position.distance_to(pending_interactable.global_position)
+			print(distance)
+			if distance <= 2.0 and pending_interactable.has_method("interact"):
+				target = pending_interactable
+				pending_interactable = null
+				start_interaction()
 	
 func rotate_model(direction: Vector3, delta: float) -> void:
 	if abs(direction.dot(Vector3.UP)) > 0.98:
@@ -749,3 +794,30 @@ func _on_dialogue_line(line) -> void:
 			"Margarita":
 				# set_balloon_color(balloon, Color(0.2, 0.4, 0.8))
 				pass
+
+func _handle_hover() -> void:
+	var camera = get_viewport().get_camera_3d()
+	var from = camera.project_ray_origin(get_viewport().get_mouse_position())
+	var to = from + camera.project_ray_normal(get_viewport().get_mouse_position()) * 1000
+	var space_state = get_world_3d().direct_space_state
+
+	var query = PhysicsRayQueryParameters3D.create(from, to, 1 << 3)
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+	var result = space_state.intersect_ray(query)
+	
+	print(result) # todavía falta corregir
+	
+	var new_hovered = null
+	if result and result.has("collider") and result.has(""):
+		var collider = result.collider
+		if collider.has_method("glow"):
+			new_hovered = collider
+
+	# Si cambió el objeto hoovered
+	if new_hovered != hovered_interactable:
+		if hovered_interactable != null and hovered_interactable.has_method("glow"):
+			hovered_interactable.glow(false)  # apagar el anterior
+		if new_hovered != null:
+			new_hovered.glow(true)  # encender el nuevo
+		hovered_interactable = new_hovered

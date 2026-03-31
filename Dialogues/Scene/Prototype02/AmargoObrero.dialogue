@@ -1,8 +1,9 @@
 ~ start
+do GameManager.set_balloon_color()
 if not SceneManagerMap02._already_interacted("7. Amargo Obrero"):
 	do SceneManagerMap02._register_interaction("7. Amargo Obrero")
 if not SceneManagerMap02._already_interacted("10. Whisky y Gin"):
 	do SceneManagerMap02._register_interaction("10. Whisky y Gin")
-Amargo Obrero:
+[center][b]AMARGO OBRERO[/b][/center]
 	Nació en Rosario, creado por los italianos Pedro Calatroni y Antonio Tacconi. Inspirado en los amari, combina 45 hierbas argentinas con alcohol,agua y azúcar. Su nombre y etiqueta, el puño y la hoz, lo vinculan al movimiento obrero como “la bebida del pueblo”.
 => END

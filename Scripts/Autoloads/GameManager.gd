@@ -83,9 +83,9 @@ var game_scene_flow := {
 
 const PLAYER_NAME := "MARGARITA"
 const PLAYER_TEXT_COLOR := "#C9B8F5" # Margarita: #C9B8F5 ó #FFF8F0 ó #FFB7C5
-const MANUEL_TEXT_COLOR := "#87CEEB"
+const MANUEL_TEXT_COLOR := "#91EFFA"
 const BANDOLERO_TEXT_COLOR := "#B5E8B0"
-const DEFAULT_TEXT_COLOR := "#FFF8F0"
+const DEFAULT_TEXT_COLOR := "#FCEFD8"
 # var load_scene_after_dialogue : bool = false # deprecado
 
 enum game_states {START, LOADING, PLAYING, PAUSED}

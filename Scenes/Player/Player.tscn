@@ -8148,14 +8148,16 @@ shortcut = SubResource("Shortcut_esmjy")
 text = "[C]"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.3
-target_desired_distance = 0.1
+path_desired_distance = 0.45
+target_desired_distance = 0.25
 path_height_offset = 0.16
 path_max_distance = 5.01
 avoidance_enabled = true
+radius = 0.6
 use_3d_avoidance = true
 avoidance_layers = 29
 avoidance_mask = 29
+debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
