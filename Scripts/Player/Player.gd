@@ -82,7 +82,7 @@ var spine_bone_3 := -1
 var current_look_yaw := 0.0
 var spine_yaw := 0.0
 var look_enabled := true
-var is_first_dialogue_done : bool = true # default: false
+var is_first_dialogue_done : bool = false # default: false
 var is_dialogue_active : bool = false
 var is_journal_active : bool = false
 var is_pause_active : bool = false
@@ -97,6 +97,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	DialogueManager.dialogue_started.connect(_on_dialogue_start)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
+	DialogueManager.got_dialogue.connect(_on_dialogue_line)
 	SceneManagerMap01.registered_interaction.connect(_on_registered_interaction)
 	neck_bone = skeleton.find_bone("mixamorig_Neck")
 	head_bone = skeleton.find_bone("mixamorig_Head")
@@ -740,3 +741,11 @@ func _play_sfx(sfx : Resource) -> void:
 func _on_hover() -> void:
 	sfx_stream_player.stream = HOVER
 	sfx_stream_player.play()
+
+func _on_dialogue_line(line) -> void:
+	var balloon = get_tree().get_first_node_in_group("dialogue_balloon")
+	if balloon:
+		match line.text:
+			"Margarita":
+				# set_balloon_color(balloon, Color(0.2, 0.4, 0.8))
+				pass

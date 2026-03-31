@@ -1,6 +1,7 @@
 ~ start
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 if not SceneManagerMap01._already_interacted("2. Cuadro"):
 	do SceneManagerMap01._register_interaction("2. Cuadro")
-{{ GameManager.get_player_name() }}:
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	El viejo hace unos días que no vuelve, me empiezo preocupar. Últimamente lo veía muy cansado, aunque siempre me diga que está bien.
 => END

@@ -1,6 +1,7 @@
 ~ start
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 if not SceneManagerMap01._already_interacted("3. Mate"):
 	do SceneManagerMap01._register_interaction("3. Mate")
-{{ GameManager.get_player_name() }}:
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	El mate ya está frío, mamá debe haber salido temprano. Ayer Doña Rosa se sentía mal, seguro se fue a verla otra vez.
 => END

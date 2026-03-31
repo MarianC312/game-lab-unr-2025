@@ -1,9 +1,10 @@
 ~ start
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 if SceneManagerMap01._already_interacted("1. Cuaderno"):
-	{{ GameManager.get_player_name() }}:
+	[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 		El mismo cuaderno de antes...
 else:
-	{{ GameManager.get_player_name() }}:
+	[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 		El cuaderno de papá... hay algo borrado junto al nombre de Manuel, es el almacenero que atiende el boliche... Lo voy a usar para anotar.
 	do SceneManagerMap01._register_interaction("1. Cuaderno")
 => END

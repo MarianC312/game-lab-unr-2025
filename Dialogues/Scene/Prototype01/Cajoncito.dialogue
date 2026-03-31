@@ -1,11 +1,12 @@
 ~ start
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 if SceneManagerMap01.interactable_is_locked("5. Moneda"):
-	{{ GameManager.get_player_name() }}:
+	[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 		Está cerrado... Quizás podría intentar abrirlo
 	- Abrir => desbloquear_objeto
 	- Dejar como está
 else:
-	{{ GameManager.get_player_name() }}:
+	[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 		Bien! Pude abrir esta cerradura...
 		Me voy a llevar unas monedas, tal vez me sean útiles.
 => END

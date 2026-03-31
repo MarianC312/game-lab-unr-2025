@@ -1,7 +1,8 @@
 ~ start
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 if not SceneManagerMap01._already_interacted("6. Ir al boliche"):
 	do SceneManagerMap01._register_interaction("6. Ir al boliche")
-{{ GameManager.get_player_name() }}:
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	Voy a ir al boliche, sé que no es un buen lugar para las mujeres pero necesito ir a ver si Manuel sabe algo de papá.
 - Ir al boliche => ir_al_boliche
 - Seguir investigando
@@ -11,6 +12,6 @@ if not SceneManagerMap01._already_interacted("6. Ir al boliche"):
 if GameManager._map01_completed_tasks():
 	do GameManager.load_new_map("res://Scenes/Prototype/Prototype02.tscn")
 else:
-	{{ GameManager.get_player_name() }}:
+	[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 		Necesito algunas cosas antes de salir
 => END!

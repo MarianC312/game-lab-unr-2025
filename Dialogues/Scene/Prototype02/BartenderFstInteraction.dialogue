@@ -1,6 +1,8 @@
 ~ start
-Manuel (bartender):
+do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+[center][b]MANUEL[/b][/center]
 	Hmm... Veo que tu viejo no volvió...
-{{ GameManager.get_player_name() }}:
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	Eh? mmm...
 => END

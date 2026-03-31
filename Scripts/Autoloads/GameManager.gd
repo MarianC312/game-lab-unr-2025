@@ -81,7 +81,11 @@ var game_scene_flow := {
 		}
 }
 
-const PLAYER_NAME := "Margarita"
+const PLAYER_NAME := "MARGARITA"
+const PLAYER_TEXT_COLOR := "#C9B8F5" # Margarita: #C9B8F5 ó #FFF8F0 ó #FFB7C5
+const MANUEL_TEXT_COLOR := "#87CEEB"
+const BANDOLERO_TEXT_COLOR := "#B5E8B0"
+const DEFAULT_TEXT_COLOR := "#FFF8F0"
 # var load_scene_after_dialogue : bool = false # deprecado
 
 enum game_states {START, LOADING, PLAYING, PAUSED}
@@ -225,3 +229,32 @@ func _toggle_controls(emit := true) -> void:
 
 func _show_all_interacts() -> bool:
 	return show_all_interacts
+
+func get_text_color(type := "default") -> String:
+	var color := DEFAULT_TEXT_COLOR
+	match type:
+		"player":
+			color = PLAYER_TEXT_COLOR
+		"manuel":
+			color = MANUEL_TEXT_COLOR
+		"bandolero":
+			color = BANDOLERO_TEXT_COLOR
+	return color
+
+func set_balloon_color(color: String) -> void:
+	#var balloon = get_tree().get_first_node_in_group("dialogue_balloon")
+	#if not balloon: return
+
+	# Fondo del panel
+	#var panel = balloon.get_node("Balloon/MarginContainer/PanelContainer")
+	#var stylebox = panel.get_theme_stylebox("panel").duplicate()
+	#stylebox.bg_color = color
+	#panel.add_theme_stylebox_override("panel", stylebox)
+
+	# Color del texto
+	var dialogue_label = get_tree().get_nodes_in_group("dialogue_richtext")
+	print(dialogue_label)
+	print(color)
+	for label in dialogue_label:
+		label.add_theme_color_override("default_color", Color(color))
+	# dialogue_label.add_theme_color_override("font_color", Color(color))
