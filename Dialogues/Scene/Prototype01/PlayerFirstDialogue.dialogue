@@ -3,6 +3,9 @@
 # do GameManager.set_balloon_color(Color(GameManager.get_text_color("player") + "AA"))
 do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 [center][b]{{ GameManager.get_player_name() }}[/b][/center]
-	[wave]¡Uaaaah!...[/wave]
-	Qué raro que mamá no me despertó para tomar mates con ella...
+	# [wait=0.8]¡[wait=0.6]U[wait=0.5]u[font_size=16]a[/font_size][wait=0.4]a[font_size=20]a[/font_size][wait=0.35]a[font_size=24]a[/font_size][wait=0.3]a[font_size=28]a[/font_size][wait=0.25]a[font_size=32]a[/font_size][wait=0.2]h[font_size=36]h[/font_size][wait=0.15]h[font_size=40]h[/font_size][wait=0.1]h[font_size=36]h[/font_size][wait=0.08]![wait=0.06].[wait=0.05].[wait=0.04].[wait=0.03].[wait=0.02].
+	# [wait=0.6]¡[wait=0.5]U[wait=0.4]u[font_size=16]a[/font_size][wait=0.35]a[font_size=22]a[/font_size][wait=0.3]a[font_size=28]a[/font_size][wait=0.25]a[font_size=36]A[/font_size][wait=0.2]A[font_size=42]H[/font_size][wait=0.15]H[font_size=44]H[/font_size][wait=0.12]H[font_size=38]h[/font_size][wait=0.1]h[font_size=30]h[/font_size][wait=0.08]h[font_size=20]h[/font_size][wait=0.06].[wait=0.05].[wait=0.04].[wait=0.03].[wait=0.02].
+	[wait=0.6]¡[wait=0.5][font_size=14]U[/font_size][wait=0.4][font_size=16]u[/font_size][wait=0.35][font_size=18]a[/font_size][wait=0.32][font_size=20]a[/font_size][wait=0.28][font_size=22]a[/font_size][wait=0.25][font_size=25]a[/font_size][wait=0.22][font_size=28]a[/font_size][wait=0.19][font_size=32]A[/font_size][wait=0.16][font_size=36]A[/font_size][wait=0.13][font_size=40]H[/font_size][wait=0.11][font_size=43]H[/font_size][wait=0.09][font_size=44]H[/font_size][wait=0.12][font_size=40]h[/font_size][wait=0.1][font_size=34]h[/font_size][wait=0.08][font_size=26]h[/font_size][wait=0.06][font_size=18].[/font_size][wait=0.05][font_size=15].[/font_size][wait=0.04][font_size=13].[/font_size][wait=0.03][font_size=12].[/font_size][wait=0.02][font_size=11].[/font_size]
+	[i][color={{GameManager.get_text_color("player") + "80"}}]... Qué raro que mamá no me despertó para tomar mates con ella.[/color][/i]
+do GameManager.player_set_first_dialogue_state()
 => END

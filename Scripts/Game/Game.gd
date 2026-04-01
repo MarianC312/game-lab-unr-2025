@@ -89,6 +89,7 @@ func _on_map_ready() -> void:
 
 func _on_scene_loaded(new_scene) -> void:
 	print("Escena cargada correctamente...")
+	loading.process_mode = PROCESS_MODE_DISABLED
 	load_map(new_scene)
 	
 

@@ -258,3 +258,9 @@ func set_balloon_color(color: String) -> void:
 	for label in dialogue_label:
 		label.add_theme_color_override("default_color", Color(color))
 	# dialogue_label.add_theme_color_override("font_color", Color(color))
+
+func player_set_first_dialogue_state() -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	print(player)
+	if player:
+		player.set_first_dialogue_state()

@@ -34,6 +34,7 @@ const ROTATION_SPEED := 10.0
 const CAMERA_ROTATION_SPEED := 0.005
 const DOUBLE_CLICK_THRESHOLD := 0.25
 const PATH_POSITION_CHAIN : bool = false
+const ANIMATION_BLEND_TIME := 0.15
 const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
 const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
 const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.wav")
@@ -62,9 +63,10 @@ const COFRE_CERRAR = preload("res://Sounds/SFX/Cofre/Cofre cerrar.wav")
 const DESTRABAR_CERRADURA_2 = preload("res://Sounds/SFX/Cofre/Destrabar cerradura 2.wav")
 const DESTRABAR_CERRADURA = preload("res://Sounds/SFX/Cofre/Destrabar cerradura.wav")
 
-enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
+enum AnimationState {IDLE, WALKING, RUNNING, TALKING, YAWN}
 
 var player_animation_state : AnimationState = AnimationState.IDLE
+var _previous_animation_state: AnimationState = AnimationState.IDLE
 var target_positions : Array = []
 var target_position : Vector3 = Vector3.ZERO
 # var target_rotation : Vector3 = Vector3.ZERO
@@ -311,8 +313,8 @@ func _physics_process(delta: float) -> void:
 			print("Remain targets: ", target_positions)
 			has_target = true
 	
-	if is_dialogue_active:
-		player_animation_state = AnimationState.TALKING
+	if is_dialogue_active and is_first_dialogue_done:
+		set_animation_state(AnimationState.TALKING)
 		if look_enabled:
 			disable_look()
 	else:
@@ -354,31 +356,71 @@ func _physics_process(delta: float) -> void:
 		
 		if has_target or moving_to_target:
 			if speed > WALK_SPEED:
-				player_animation_state = AnimationState.RUNNING
+				set_animation_state(AnimationState.RUNNING)
 			else:
-				player_animation_state = AnimationState.WALKING
+				set_animation_state(AnimationState.WALKING)
 		else:
-			player_animation_state = AnimationState.IDLE
+			if player_animation_state not in [AnimationState.YAWN, AnimationState.TALKING, AnimationState.IDLE]:
+				animation_player.stop()
+				set_animation_state(AnimationState.IDLE)
 		
 		# move_type1(delta)
 		move_type2(delta)
 		move_and_slide()
-		
+	
 	match player_animation_state:
 		AnimationState.WALKING:
-			if velocity.length() > 0.01:
+			start_footsteps()
+			if not animation_player.is_playing():
 				animation_player.play("Walk")
-				start_footsteps()
+			if velocity.length() <= 0.01:
+				set_animation_state(AnimationState.IDLE)
 		AnimationState.RUNNING:
-			if velocity.length() > 0.01:
+			start_footsteps()
+			if not animation_player.is_playing():
 				animation_player.play("Run2")
-				start_footsteps()
+			if velocity.length() <= 0.01:
+				set_animation_state(AnimationState.IDLE)
 		AnimationState.TALKING:
 			stop_footsteps()
-			animation_player.play("Talk2")
+			if not is_dialogue_active:
+				set_animation_state(AnimationState.IDLE)
+			elif not animation_player.is_playing():
+				var talk_anims = ["Talk1", "Talk2", "Talk3", "Talk4"]
+				animation_player.play(talk_anims.pick_random())
 		AnimationState.IDLE:
 			stop_footsteps()
-			animation_player.play("IdleStandard")
+			if not animation_player.is_playing():
+				var idle_anims = ["IdleStandard", "IdleNeutral"]
+				animation_player.play(idle_anims.pick_random())
+		AnimationState.YAWN:
+			stop_footsteps()
+			if not animation_player.is_playing():
+				set_animation_state(AnimationState.IDLE)
+
+func set_animation_state(new_state: AnimationState) -> void:
+	if new_state == player_animation_state:
+		return  # No hacer nada si el estado no cambió
+	
+	# print(AnimationState)
+	# print("Cambiando estado de animación ", player_animation_state, " por ", new_state)
+	
+	player_animation_state = new_state
+
+	match new_state:
+		AnimationState.WALKING:
+			animation_player.play("Walk", ANIMATION_BLEND_TIME)
+		AnimationState.RUNNING:
+			animation_player.play("Run2", ANIMATION_BLEND_TIME)
+		AnimationState.TALKING:
+			var talk_anims = ["Talk1", "Talk2", "Talk3", "Talk4"]
+			animation_player.play(talk_anims.pick_random(), ANIMATION_BLEND_TIME)
+		AnimationState.IDLE:
+			var idle_anims = ["IdleStandard", "IdleNeutral"]
+			animation_player.play(idle_anims.pick_random(), ANIMATION_BLEND_TIME)
+		AnimationState.YAWN:
+			animation_player.play("Yawn/mixamo_com", ANIMATION_BLEND_TIME)
+			animation_player.seek(2.5)
 
 func update_look(delta : float) -> void:
 	if look_enabled:
@@ -517,7 +559,8 @@ func move_type2(delta : float) -> void:
 		rotate_model(direction, delta)
 		moving_to_target = true
 	else:
-		player_animation_state = AnimationState.IDLE
+		# set_animation_state(AnimationState.IDLE)
+		pass
 	
 	if nav_agent.is_navigation_finished():
 		var direction
@@ -531,7 +574,7 @@ func move_type2(delta : float) -> void:
 		moving_to_target = false
 		should_run = false
 		velocity = Vector3.ZERO
-		player_animation_state = AnimationState.IDLE
+		# set_animation_state(AnimationState.IDLE)
 		if global_position and pending_interactable:
 			var distance = global_position.distance_to(pending_interactable.global_position)
 			print(distance)
@@ -618,7 +661,8 @@ func _toogle_pause() -> void:
 
 func start_first_dialogue() -> void:
 	if not is_first_dialogue_done:
-		is_first_dialogue_done = true
+		set_animation_state(AnimationState.YAWN)
+		# animation_player.play("Yawn/mixamo_com")
 		await get_tree().create_timer(0.75).timeout
 		DialogueManager.show_dialogue_balloon(first_dialogue, "start")
 
@@ -689,12 +733,12 @@ func _is_position_blocked(index: int) -> bool:
 	var result = space_state.intersect_ray(query)
 	return result != null and result.size() > 0
 
-func disable_look():
+func disable_look() -> void:
 	look_enabled = false
 	current_look_yaw = 0.0
 	skeleton.clear_bones_global_pose_override()
 
-func enable_look():
+func enable_look() -> void:
 	current_look_yaw = 0.0
 	look_enabled = true
 
@@ -806,7 +850,7 @@ func _handle_hover() -> void:
 	query.collide_with_bodies = true
 	var result = space_state.intersect_ray(query)
 	
-	print(result) # todavía falta corregir
+	# print(result) # todavía falta corregir
 	
 	var new_hovered = null
 	if result and result.has("collider") and result.has(""):
@@ -821,3 +865,6 @@ func _handle_hover() -> void:
 		if new_hovered != null:
 			new_hovered.glow(true)  # encender el nuevo
 		hovered_interactable = new_hovered
+
+func set_first_dialogue_state() -> void:
+	is_first_dialogue_done = true
