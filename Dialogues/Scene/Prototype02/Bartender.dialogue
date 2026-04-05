@@ -33,7 +33,7 @@ do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
 	Pasó hace unos días, con unos compañeros hacheros. Se los escuchó un tanto alterados, pero acá todos están alterados o borrachos jaja.
 do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 [center][b]{{ GameManager.get_player_name() }}[/b][/center]
-	[i][color={{GameManager.get_text_color("player") + "80"}}]... Necesito que siga contándome, pero esto es un negocio, tengo que pensar en algo para que me cuente.[/color][/i]
+	[i][color={{GameManager.get_text_color("player") + "D5"}}]... Necesito que siga contándome, pero esto es un negocio, tengo que pensar en algo para que me cuente.[/color][/i]
 - Pedir algo => pedir
 - Agradecer => agradecer
 => END!
@@ -78,11 +78,11 @@ do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 if not SceneManagerMap02._already_interacted("8. Revolver"):
 	do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
 	[center][b]MANUEL[/b][/center]
-		Buena suerte... la vas a necesitar [wave]Se ríe profusamente[/wave]
+		Buena suerte... la vas a necesitar. [pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Se ríe profusamente[/color][/i][/pulse]
 if SceneManagerMap02._already_interacted("8. Revolver"):
 	do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
 	[center][b]MANUEL[/b][/center]
-		Apuntá bien muchacha [wave]Sonríe suspicazmente y te extiende la mano para un saludo[/wave]
+		Apuntá bien muchacha. [pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Sonríe suspicazmente y te extiende la mano para un saludo[/color][/i][/pulse]
 => salida
 
 ~ mas
@@ -94,15 +94,24 @@ if not SceneManagerMap02._already_interacted("9. F.O.R.A."):
 do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
 [center][b]MANUEL[/b][/center]
 	La curiosidad te puede meter en cosas peligrosas, pero si es lo que quieres...
-	[wave]Susurra[/wave]
-	Los hacheros se están organizando con militantes anarquistas de la FORA (Federación Obrera Regional Argentina). 
-	Leyeron algo en La Protesta que levantó los ánimos de los trabajadores... Pero mejor no hablar de ciertas cosas.
+	[i][color={{GameManager.get_text_color("manuel") + "D5"}}]Los hacheros se están organizando con militantes anarquistas de la FORA (Federación Obrera Regional Argentina).[/color][/i]
+	[i][color={{GameManager.get_text_color("manuel") + "D5"}}]Leyeron algo en La Protesta que levantó los ánimos de los trabajadores... Pero mejor no hablar de ciertas cosas.[/color][/i]
 => salida
 
 ~ salida
 do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 [center][b]{{ GameManager.get_player_name() }}[/b][/center]
-	[wave]Comienza una pelea, mejor salgo de acá...[/wave]
-if true # GameManager._map02_completed_tasks() corregir esto:
-	do GameManager.load_new_map("")
+	[i][color={{GameManager.get_text_color("player") + "D5"}}]... Comienza una pelea, mejor salgo de acá--[/color][/i]
+- Salir del bar => loadmap
+- Ver cuaderno => loadjournal
+=> END!
+
+~ loadjournal
+do GameManager._toggle_journal()
+- Salir del bar => loadmap
+- Ver cuaderno => loadjournal
+=> END!
+
+~ loadmap
+do GameManager.load_new_map("")
 => END!

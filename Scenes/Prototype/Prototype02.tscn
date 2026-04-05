@@ -48,7 +48,8 @@ fog_sun_scatter = 0.07
 fog_density = 0.125
 fog_sky_affect = 0.5
 fog_depth_curve = 1.5
-fog_depth_end = 60.0
+fog_depth_begin = 8.0
+fog_depth_end = 45.0
 volumetric_fog_density = 0.0095
 volumetric_fog_albedo = Color(0.8235294, 0.42745098, 0.60784316, 1)
 volumetric_fog_emission = Color(0.21528345, 0.14061421, 0.17082494, 1)
@@ -139,9 +140,9 @@ light_volumetric_fog_energy = 0.8
 shadow_enabled = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mundo/Shading"]
-transform = Transform3D(1, 0, 0, 0, -0.819152, 0.5735764, 0, -0.5735764, -0.819152, 0, 0.73172075, 0)
-light_color = Color(0.41839913, 0.21945372, 0.005977406, 1)
-light_energy = 0.58
+transform = Transform3D(1, 0, 0, 0, 0.5735764, 0.819152, 0, -0.819152, 0.5735764, 0, 0.73172075, 0)
+light_color = Color(0.83185816, 0.72858423, 0.64212155, 1)
+light_energy = 0.55
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1

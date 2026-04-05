@@ -339,7 +339,9 @@ custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_eothy")
-value = 100.0
+max_value = 1.0
+step = 0.25
+value = 1.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -363,8 +365,9 @@ custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("3_eothy")
-step = 5.0
-value = 100.0
+max_value = 1.0
+step = 0.25
+value = 1.0
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 50)

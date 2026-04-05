@@ -1539,6 +1539,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q7nws")
+play_first = false
 dialogue = ExtResource("2_q7nws")
 
 [node name="CanvasLayer20" type="CanvasLayer" parent="."]

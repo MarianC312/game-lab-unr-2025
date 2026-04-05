@@ -8160,7 +8160,6 @@ radius = 0.6
 use_3d_avoidance = true
 avoidance_layers = 29
 avoidance_mask = 29
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

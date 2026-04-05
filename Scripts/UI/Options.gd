@@ -17,6 +17,12 @@ func _ready() -> void:
 	lenguaje_option_button.selected = GameManager._get_current_locale_id()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	SceneTransitions.fade_complete.connect(_on_fade_complete)
+	musica_slider.value_changed.connect(_on_musica_slider_changed)
+	sonido_slider.value_changed.connect(_on_sonido_slider_changed)
+
+	musica_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
+	sonido_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+
 
 func _on_volver_pressed() -> void:
 	_play_sfx(CONTINUAR_HACHAZO_2)
@@ -24,6 +30,7 @@ func _on_volver_pressed() -> void:
 	await animation_player.animation_finished
 	SceneTransitions.fade_out()
 	await SceneTransitions.fade_complete
+	already_faded = false
 	hide()
 
 func _on_fade_complete() -> void:
@@ -46,3 +53,11 @@ func _play_sfx(sfx : Resource) -> void:
 func _on_hover() -> void:
 	sfx_stream_player.stream = HOVER
 	sfx_stream_player.play()
+
+func _on_musica_slider_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(value))
+
+func _on_sonido_slider_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(value))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Player"), linear_to_db(value))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(value))

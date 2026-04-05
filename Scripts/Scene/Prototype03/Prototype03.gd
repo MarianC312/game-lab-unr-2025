@@ -2,7 +2,8 @@ extends Node3D
 
 @onready var item_list: ItemList = $UI/CanvasLayer15/ItemList
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var camera_3d: Camera3D = $Camera3D
+@onready var camera01: Camera3D = $Camera3D
+@onready var camera02: Camera3D = $Camera3D2
 @onready var char_spawn: Node3D = $Mundo/CharSpawn
 @onready var waypoint_01: Node3D = $Mundo/Waypoint01
 @onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
@@ -15,7 +16,7 @@ var player
 var player_sent_w01 = false
 
 func _ready() -> void:
-	camera_3d.make_current()
+	camera01.make_current()
 	# ver o revisar si necesitamos fadein en el sonido
 	# print("Region map: ", NavigationServer3D.region_get_map($NavigationRegion3D.get_rid()))
 	audio_stream_player.play()
@@ -38,6 +39,8 @@ func _process(_delta: float) -> void:
 		player.trigger_dialogue(3, 5.4)
 		player.should_run = true
 		player_sent_w01 = true
+		await get_tree().create_timer(5.15).timeout
+		camera02.make_current()
 
 func _update_item_list() -> void:
 	for i in range(item_list.item_count):

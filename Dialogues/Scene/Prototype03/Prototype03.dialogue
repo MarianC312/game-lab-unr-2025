@@ -1,71 +1,90 @@
 ~ start
 if not SceneManagerMap03._already_interacted("12. Bandolero"):
 	do SceneManagerMap03._register_interaction("12. Bandolero")
-Bandolero:
+	do GameManager.bandolero_trigger_animation()
+do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
+[center][b]BANDOLERO[/b][/center]
 	Alto ahí muchacha. ¿A dónde vas tan apurada?
-{{ GameManager.get_player_name() }}:
-	Solo soy la hija de un hachero, estoy buscando a mi padre. Tengo que llegar a La Forestal, me dijeron que puede estar ahí, pero nada seguro.
-Bandolero:
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
+	Solo soy la hija de un hachero, estoy buscando a mi padre. Tengo que llegar a [b]La Forestal[/b], me dijeron que puede estar ahí, pero nada seguro.
+do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
+[center][b]BANDOLERO[/b][/center]
 	Sabes que estos caminos no son seguros para andar sola. Hay muchos guachos como este.
 - Preguntar al bandolero => pregunta
 - Pedir seguir => seguir
 => END
 
 ~ pregunta
-{{ GameManager.get_player_name() }}:
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	¿Quién es? o era...
-Bandolero:
+do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
+[center][b]BANDOLERO[/b][/center]
 	Estos saqueadores de nuestras tierras se llevan nuestra riqueza a costa del sacrificio del pueblo, un traidor y eso no lo puedo permitir. Toma, para tu viaje...
-	[wave]Recibes algunas monedas[/wave]
+	[pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Recibes algunas monedas[/color][/i][/pulse]
 => aceptar_monedas
 
 ~ seguir
-{{ GameManager.get_player_name() }}:
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	Quiero encontrar a mi viejo, no quiero problemas.
 if not SceneManagerMap03._already_interacted("5. Moneda"):
 	do SceneManagerMap03._register_interaction("5. Moneda")
-Bandolero:
-	Solo hay problemas en estos caminos. Toma, para tu viaje... [wave]Te ofrece algunas monedas[/wave]
+do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
+[center][b]BANDOLERO[/b][/center]
+	Solo hay problemas en estos caminos. Toma, para tu viaje... [pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Te ofrece algunas monedas[/color][/i][/pulse]
 - Aceptar => aceptar_monedas
 - Rechazar => rechazar_monedas
 => END!
 
 ~ aceptar_monedas
-{{ GameManager.get_player_name() }}:
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	Gracias, mi familia las necesita.
-Bandolero:
+do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
+[center][b]BANDOLERO[/b][/center]
 	Buena suerte con tu búsqueda. Sé valiente y que no corrompan tu alma. Te pareces a Martina Chapanay, una rebelde de corazón. Ten para que te guíe.
-	[wave]Recibes un brazalete huarpe.[/wave]
-if not SceneManagerMap03._already_interacted("12. Brazalete HUARPE"):
-	do SceneManagerMap03._register_interaction("12. Brazalete HUARPE")
-Bandolero:
-	Hay que mantener la espalda erguida frente a los poderosos. El camino más corto es por las vías. Y si necesitas ayuda pedile a Manuel un mate cosido.
-	[wave]se sonríe[/wave]
-{{ GameManager.get_player_name() }}:
-	[wave]El bandolero se aleja por el camino en su caballo[/wave]
+	[pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Recibes un brazalete huarpe.[/color][/i][/pulse]
+if not SceneManagerMap03._already_interacted("14. Brazalete HUARPE"):
+	do SceneManagerMap03._register_interaction("14. Brazalete HUARPE")
+do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
+[center][b]BANDOLERO[/b][/center]
+	Hay que mantener la espalda erguida frente a los poderosos. [do GameManager.bandolero_trigger_animation()]El camino más corto es por las vías. Y si necesitas ayuda pedile a Manuel un mate cosido.
+	[pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]se sonríe[/color][/i][/pulse]
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
+	[pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]El bandolero se aleja por el camino en su caballo[/color][/i][/pulse]
 do GameManager.load_new_map("")
 => END!
 
 ~ rechazar_monedas
-{{ GameManager.get_player_name() }}:
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	No las necesito en este momento, tal vez se las puedas dar a alguien más.
-Bandolero:
+do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
+[center][b]BANDOLERO[/b][/center]
 	Tienes un alma pura muchacha, le hace falta más gente como vos a esta tierra. Te pareces a Martina Chapanay, una rebelde de corazón. Ten para que te guíe.
-	[wave]Recibes un brazalete huarpe.[/wave]
-if not SceneManagerMap03._already_interacted("12. Brazalete HUARPE"):
-	do SceneManagerMap03._register_interaction("12. Brazalete HUARPE")
-Bandolero:
+	[pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Recibes un brazalete huarpe.[/color][/i][/pulse]
+if not SceneManagerMap03._already_interacted("14. Brazalete HUARPE"):
+	do SceneManagerMap03._register_interaction("14. Brazalete HUARPE")
+do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
+[center][b]BANDOLERO[/b][/center]
 	Sabes... Podríamos ser socios en este latifundio.
-{{ GameManager.get_player_name() }}:
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	Se lo agradezco Don, por ahora solo quiero encontrar a mi viejo.
-Bandolero:
+do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
+[center][b]BANDOLERO[/b][/center]
 	Sigue así, rebelde por estas tierras salvajes. No dejes que el alambrado te engañe... El camino más corto es por las vías. Y si cambias de opinión pedile a Manuel un mate cosido
-	[wave]se sonríe[/wave]
-{{ GameManager.get_player_name() }}:
-	[wave]El bandolero se aleja por el camino en su caballo[/wave]
+	[pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]se sonríe[/color][/i][/pulse]
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
+	[pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]El bandolero se aleja por el camino en su caballo[/color][/i][/pulse]
 if not SceneManagerMap03._already_interacted("13. Juan Moreira"):
 	do SceneManagerMap03._register_interaction("13. Juan Moreira")
-{{ GameManager.get_player_name() }}:
-	Ese gaucho me hizo acordar a Juan Moreira de los folletines que leen mamá y papá. Debo continuar mi camino. Siguiendo las vías voy a llegar a La Forestal.
+do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+[center][b]{{ GameManager.get_player_name() }}[/b][/center]
+	[i][color={{GameManager.get_text_color("player") + "D5"}}]... Ese gaucho me hizo acordar a Juan Moreira de los folletines que leen mamá y papá. Debo continuar mi camino. Siguiendo las vías voy a llegar a La Forestal.[/color][/i]
 do GameManager.load_new_map("")
 => END!

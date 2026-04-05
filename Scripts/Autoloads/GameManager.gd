@@ -7,14 +7,14 @@ var current_state : game_states = game_states.LOADING
 var current_locale_id : int
 var show_all_interacts := false # false
 var game_scene_flow := {
-	#"Debug":
-		#{
-			#"res": "res://Scenes/Prototype/Prototype03.tscn",
-			#"status": false,
-			#"loadDialogue": false,
-			#"playable": true,
-			#"name": "TestScene"
-		#},
+	"Debug":
+		{
+			"res": "res://Scenes/Prototype/Prototype03.tscn",
+			"status": false,
+			"loadDialogue": false,
+			"playable": true,
+			"name": "TestScene"
+		},
 	"Prologue":
 		{
 			"res": "res://Scenes/Prologue.tscn",
@@ -264,3 +264,14 @@ func player_set_first_dialogue_state() -> void:
 	print(player)
 	if player:
 		player.set_first_dialogue_state()
+
+func bandolero_trigger_animation(specific : String = "") -> void:
+	var bandolero = get_tree().get_first_node_in_group("Bandolero")
+	if bandolero:
+		var anims = ["Kneeling/mixamo_com", "Kneeling Pointing/mixamo_com", "Male Crouch Pose/mixamo_com"]
+		var animation_player = bandolero.get_node("AnimationPlayer")
+		if animation_player:
+			print("Tiene animplay")
+			animation_player.play(anims.pick_random() if specific == "" else specific, 0.35)
+		else:
+			print("no encontrado: ", animation_player, bandolero)

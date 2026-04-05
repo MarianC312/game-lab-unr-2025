@@ -7,11 +7,13 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_color = Color(0.884367, 0.9887144, 0.955308, 1)
+albedo_color = Color(1, 1, 1, 0.50980395)
 albedo_texture = ExtResource("1_61htl")
 rim_enabled = true
-clearcoat_enabled = true
+clearcoat = 0.4
+clearcoat_roughness = 0.8
 billboard_mode = 2
+stencil_flags = 2
 
 [resource]
 material = SubResource("StandardMaterial3D_pvix0")

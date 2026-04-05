@@ -667,10 +667,11 @@ func start_first_dialogue() -> void:
 		DialogueManager.show_dialogue_balloon(first_dialogue, "start")
 
 func _update_camera_avoidance(delta: float) -> void:
+	return # faltan fixes
 	if GameManager._is_game_paused():
 		return
 
-	if camera_avoid_cooldown > 0.0:
+	if camera_avoid_cooldown >= 0.0:
 		camera_avoid_cooldown -= delta
 
 	var hit_length = spring_arm.get_hit_length()
