@@ -1546,8 +1546,8 @@ dialogue = ExtResource("2_q7nws")
 layer = 20
 
 [node name="Interlude02Bgimage" type="Sprite2D" parent="CanvasLayer20"]
-position = Vector2(578.444, 317.5049)
-scale = Vector2(0.7210153, 0.7210155)
+position = Vector2(576.00006, 325)
+scale = Vector2(1.135998, 1.1359984)
 texture = ExtResource("3_q7nws")
 
 [node name="Panel" type="Panel" parent="CanvasLayer20"]
