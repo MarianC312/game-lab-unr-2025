@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dsqtmdotsoc5v" path="res://Textures/Screenshots/foto_casa_02.png" id="2_v3kjt"]
 [ext_resource type="PackedScene" uid="uid://cu711dkfvtjjj" path="res://Scenes/Prototype/Prototype01.tscn" id="3_6487p"]
 [ext_resource type="FontFile" uid="uid://bbum0t01os8q3" path="res://Base/Fonts/Thicker Destroy.ttf" id="4_3hayu"]
-[ext_resource type="AudioStream" uid="uid://dok26fu1dgfxq" path="res://Sounds/Music/menu_bg_music_02.wav" id="6_s6sq0"]
+[ext_resource type="AudioStream" uid="uid://blt4vak8m8oi0" path="res://Sounds/Music/menu_bg_music_02.ogg" id="7_6487p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6sq0"]
 bg_color = Color(0.34509805, 0.17254902, 0.043137256, 1)
@@ -130,7 +130,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_s6sq0")
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_s6sq0")
+stream = ExtResource("7_6487p")
 bus = &"Music"
 
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]

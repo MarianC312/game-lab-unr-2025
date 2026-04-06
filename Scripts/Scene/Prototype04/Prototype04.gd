@@ -6,7 +6,7 @@ extends Node3D
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
 
-const ESCRIBIR_4 = preload("res://Sounds/SFX/Escribir Libreta (Notas)/Escribir 4.wav")
+const ESCRIBIR_4 = preload("res://Sounds/SFX/Escribir Libreta (Notas)/Escribir 4.ogg")
 
 signal map_ready
 

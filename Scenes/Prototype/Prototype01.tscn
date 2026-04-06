@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d1n4qkk0rsqtk" path="res://Scripts/Scene/Prototype/Prototype01.gd" id="1_mayph"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_ly18k"]
 [ext_resource type="PackedScene" uid="uid://c3x04g8eidvhh" path="res://Scenes/Assets/House03.tscn" id="3_22wq2"]
-[ext_resource type="AudioStream" uid="uid://dj74edjka37bf" path="res://Sounds/Music/scene_01_ambience.wav" id="13_kg7t3"]
+[ext_resource type="AudioStream" uid="uid://bc1h7yog57ya" path="res://Sounds/Music/scene_01_ambience.ogg" id="13_kg7t3"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_22wq2"]
 

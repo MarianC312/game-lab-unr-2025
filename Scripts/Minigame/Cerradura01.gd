@@ -13,11 +13,11 @@ var is_locked := true
 var unlock_spot := randf_range(0.2, 0.8)
 var pick_position := 0.5
 
-const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
-const DESTRABAR_CERRADURA_2 = preload("res://Sounds/SFX/Cofre/Destrabar cerradura 2.wav")
-const DESTRABAR_CERRADURA = preload("res://Sounds/SFX/Cofre/Destrabar cerradura.wav")
-const COFRE_ABRIR = preload("res://Sounds/SFX/Cofre/Cofre Abrir.wav")
-const COFRE_CERRAR = preload("res://Sounds/SFX/Cofre/Cofre cerrar.wav")
+const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.ogg")
+const DESTRABAR_CERRADURA_2 = preload("res://Sounds/SFX/Cofre/Destrabar cerradura 2.ogg")
+const DESTRABAR_CERRADURA = preload("res://Sounds/SFX/Cofre/Destrabar cerradura.ogg")
+const COFRE_ABRIR = preload("res://Sounds/SFX/Cofre/Cofre Abrir.ogg")
+const COFRE_CERRAR = preload("res://Sounds/SFX/Cofre/Cofre cerrar.ogg")
 
 func _ready() -> void:
 	_play_sfx(COFRE_ABRIR)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bobju6w7cvhgs" path="res://Scripts/Scene/Prototype02/Prototype02.gd" id="1_ww1bx"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_ly18k"]
 [ext_resource type="PackedScene" uid="uid://dek57ksis0red" path="res://Scenes/Assets/Bar01.tscn" id="3_ww1bx"]
-[ext_resource type="AudioStream" uid="uid://baj1di0ulg6ta" path="res://Sounds/Music/scene_02_ambience.wav" id="4_ww1bx"]
+[ext_resource type="AudioStream" uid="uid://cdjl0ye1c0e1v" path="res://Sounds/Music/scene_02_ambience.ogg" id="4_ww1bx"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ww1bx"]
 rayleigh_coefficient = 2.5

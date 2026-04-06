@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ov2ycho6t50d"
+path="res://.godot/imported/Seleccionar opciones.ogg-ae48f33df9bc7923a29eaa06773bf892.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/UI/Seleccionar y hover/Seleccionar opciones.ogg"
+dest_files=["res://.godot/imported/Seleccionar opciones.ogg-ae48f33df9bc7923a29eaa06773bf892.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

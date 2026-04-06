@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bpaweagnk2p1n"
+path="res://.godot/imported/Suspiro 1.ogg-37280fe0e3388c4388a3ca67ede9e50c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Suspiro Foto/Suspiro 1.ogg"
+dest_files=["res://.godot/imported/Suspiro 1.ogg-37280fe0e3388c4388a3ca67ede9e50c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

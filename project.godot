@@ -99,7 +99,6 @@ folder_colors={
 "res://AssetsLibraries/": "orange",
 "res://Dialogues/": "pink",
 "res://Materials/": "gray",
-"res://MeshLibraries/": "blue",
 "res://Models/": "yellow",
 "res://Scenes/": "green",
 "res://Scripts/": "teal",
@@ -121,6 +120,7 @@ minigame_layer=""
 dialogue_balloon=""
 dialogue_richtext=""
 Bandolero=""
+Manuel=""
 
 [input]
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bd01xcoikby14"
+path="res://.godot/imported/308 Single.ogg-bade3a9be794d288492885ee8d016897.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Disparo/308 Single.ogg"
+dest_files=["res://.godot/imported/308 Single.ogg-bade3a9be794d288492885ee8d016897.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

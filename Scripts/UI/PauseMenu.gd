@@ -1,8 +1,8 @@
 extends Control
 @onready var options_menu: Control = $OptionsMenu
 @onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
-const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
-const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.wav")
+const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.ogg")
+const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.ogg")
 
 
 func _ready() -> void:

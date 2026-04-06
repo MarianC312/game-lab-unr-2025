@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dggv8p3fieke3"
+path="res://.godot/imported/Footsteps_Wood_Walk_08.ogg-1bbf636512a09127a915dfa086f5d4b6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Pasos madera/Caminar/Footsteps_Wood_Walk_08.ogg"
+dest_files=["res://.godot/imported/Footsteps_Wood_Walk_08.ogg-1bbf636512a09127a915dfa086f5d4b6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

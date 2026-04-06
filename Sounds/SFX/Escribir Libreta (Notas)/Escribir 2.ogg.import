@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdeylgmdeka0x"
+path="res://.godot/imported/Escribir 2.ogg-661e9ed6703f10cc12810b075e4f82e6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Escribir Libreta (Notas)/Escribir 2.ogg"
+dest_files=["res://.godot/imported/Escribir 2.ogg-661e9ed6703f10cc12810b075e4f82e6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

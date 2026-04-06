@@ -1,3 +1,4 @@
+@tool
 extends EditorScript
 
 func _run():
@@ -5,12 +6,13 @@ func _run():
 	print("Raíz de escena: ", root.name)
 	
 	# Busca el AnimationPlayer en cualquier nivel
-	var anim_player = root.find_child("AnimationPlayer", true, false)
+	var anim_player = root.find_child("AnimationPlayer", true, true)
 	
 	if not anim_player:
 		print("ERROR: No se encontró AnimationPlayer")
 		return
 	
+	print(anim_player)
 	print("AnimationPlayer encontrado: ", anim_player.get_path())
 	
 	for lib_name in anim_player.get_animation_library_list():

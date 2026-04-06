@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmvg3u23v4unl"
+path="res://.godot/imported/Cofre cerrar.ogg-83f8f6bf95844a3a22213d9a7ce394ae.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Cofre/Cofre cerrar.ogg"
+dest_files=["res://.godot/imported/Cofre cerrar.ogg-83f8f6bf95844a3a22213d9a7ce394ae.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

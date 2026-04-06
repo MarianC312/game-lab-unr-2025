@@ -13,9 +13,8 @@ extends CharacterBody3D
 			show_highlight()
 		else:
 			hide_highlight()
-@onready var animation_player: AnimationPlayer = $AnimationPlayer2
-# @onready var animation_player2: AnimationPlayer = $AnimationPlayer
-@onready var skeleton_3d: Skeleton3D = $Armature/Skeleton3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var armature: Skeleton3D = $Armature/Skeleton3D
 
 @export var highlight_shader : Shader = preload("res://Shaders/glow_effect05.gdshader") # def: 01
 var highlight_surfaces: Array = []
@@ -25,23 +24,24 @@ var is_dialogue_active : bool = false
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING}
 var play_animation_state : AnimationState = AnimationState.IDLE
 
+var _locked_armature_position: Vector3
+
 func _ready() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_start)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
-	for child in skeleton_3d.get_children():
+	_locked_armature_position = Vector3(0.0, 0.0, 0.5)
+	for child in armature.get_children():
 		if child is MeshInstance3D:
 			_setup_highlight_surface(child)
 
 func _physics_process(_delta: float) -> void:
-	match play_animation_state:
-		AnimationState.IDLE:
-			animation_player.play("IdleNeutral")
-		AnimationState.WALKING:
-			animation_player.play("Walk")
-		AnimationState.TALKING:
-			animation_player.play("Talk4")
-		AnimationState.RUNNING:
-			animation_player.play("Run2")
+	print(global_position)
+	if animation_player.current_animation == "Bartending/mixamo_com":
+		print(global_position)
+		print(_locked_armature_position)
+		armature.position = _locked_armature_position
+	else:
+		armature.position = Vector3.ZERO
 
 func _setup_highlight_surface(mesh: MeshInstance3D):
 	var mat = ShaderMaterial.new()

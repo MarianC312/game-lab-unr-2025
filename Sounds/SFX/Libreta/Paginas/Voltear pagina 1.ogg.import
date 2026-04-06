@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://biaq1utep5xwe"
+path="res://.godot/imported/Voltear pagina 1.ogg-45eab6b107b83998a315422bff90dfae.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Libreta/Paginas/Voltear pagina 1.ogg"
+dest_files=["res://.godot/imported/Voltear pagina 1.ogg-45eab6b107b83998a315422bff90dfae.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

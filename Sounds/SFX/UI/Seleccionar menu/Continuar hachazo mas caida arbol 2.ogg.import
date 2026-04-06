@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ijjv2rk6tr74"
+path="res://.godot/imported/Continuar hachazo mas caida arbol 2.ogg-25ea9f455e3fb2bea01963ca1087e9cd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo mas caida arbol 2.ogg"
+dest_files=["res://.godot/imported/Continuar hachazo mas caida arbol 2.ogg-25ea9f455e3fb2bea01963ca1087e9cd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

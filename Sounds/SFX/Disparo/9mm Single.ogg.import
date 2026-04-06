@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dvdxfw0iv6jjc"
+path="res://.godot/imported/9mm Single.ogg-7be17b60acf9f712449d3c32dcf85e03.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Disparo/9mm Single.ogg"
+dest_files=["res://.godot/imported/9mm Single.ogg-7be17b60acf9f712449d3c32dcf85e03.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

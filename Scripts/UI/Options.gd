@@ -5,9 +5,9 @@ extends Control
 @onready var sonido_slider: HSlider = $HBoxContainer2/SonidoSlider
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
-const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.wav")
+const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.ogg")
 
-const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
+const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.ogg")
 
 var already_faded := false
 

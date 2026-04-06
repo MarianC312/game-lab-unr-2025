@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bcp4pbpi0x7w"
+path="res://.godot/imported/Continuar hachazo 3.ogg-064558c645ffa403275c0d14604917af.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 3.ogg"
+dest_files=["res://.godot/imported/Continuar hachazo 3.ogg-064558c645ffa403275c0d14604917af.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://v3hrlercu507"
+path="res://.godot/imported/Hover.ogg-e5b0a1dc9abc1d16d60f74f4c4081336.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/UI/Seleccionar y hover/Hover.ogg"
+dest_files=["res://.godot/imported/Hover.ogg-e5b0a1dc9abc1d16d60f74f4c4081336.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

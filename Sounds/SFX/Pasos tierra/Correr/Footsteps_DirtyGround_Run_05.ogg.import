@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c67h0hwv6eip"
+path="res://.godot/imported/Footsteps_DirtyGround_Run_05.ogg-86ff0b9df8f68d2d3c03a834af712404.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Pasos tierra/Correr/Footsteps_DirtyGround_Run_05.ogg"
+dest_files=["res://.godot/imported/Footsteps_DirtyGround_Run_05.ogg-86ff0b9df8f68d2d3c03a834af712404.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

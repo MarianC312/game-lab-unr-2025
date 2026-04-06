@@ -2,6 +2,7 @@
 if not SceneManagerMap02._already_interacted("11. Manuel"):
 	do SceneManagerMap02._register_interaction("11. Manuel")
 do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+do GameManager.manuel_trigger_animation()
 [center][b]MANUEL[/b][/center]
 	Tal vez la necesites, tu padre me dijo que vendrías. [pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Saca una caja de atrás del mostrador[/color][/i][/pulse]
 - Aceptar => aceptar_caja
@@ -12,6 +13,7 @@ do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
 if not SceneManagerMap02._already_interacted("8. Revolver"):
 	do SceneManagerMap02._register_interaction("8. Revolver")
 do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+do GameManager.manuel_trigger_animation()
 [center][b]MANUEL[/b][/center]
 	Bueno, veo que tenés carácter, me vendría bien una empleada como vos por acá. A veces las cosas se ponen difíciles para las chicas y les vendría bien una mano.
 - Preguntar a Manuel => pregunta
@@ -19,6 +21,7 @@ do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
 
 ~ rechazar_caja
 do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+do GameManager.manuel_trigger_animation()
 [center][b]MANUEL[/b][/center]
 	Eres más valiente de lo que pensé nena.
 - Preguntar a Manuel => pregunta
@@ -29,6 +32,7 @@ do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 [center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	Gracias. Por lo que dice parece que habló con mi viejo. ¿Sabe dónde podría estar?
 do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+do GameManager.manuel_trigger_animation()
 [center][b]MANUEL[/b][/center]
 	Pasó hace unos días, con unos compañeros hacheros. Se los escuchó un tanto alterados, pero acá todos están alterados o borrachos jaja.
 do GameManager.set_balloon_color(GameManager.get_text_color("player"))
@@ -47,6 +51,7 @@ do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 [center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	Sirva algo Don... Un amargo...
 do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+do GameManager.manuel_trigger_animation("Bartending/mixamo_com")
 [center][b]MANUEL[/b][/center]
 	[pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Hace una media sonrisa y le sirve un vaso de amargo obrero con soda[/color][/i][/pulse]
 - Agradecer => agradecer
@@ -65,6 +70,7 @@ do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 [center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	¿Sabe sobre qué estuvieron hablando?
 do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+do GameManager.manuel_trigger_animation()
 [center][b]MANUEL[/b][/center]
 	Puede ser... Escucho muchas cosas por acá, sobre todo después de un vino. El tren hace unos días que no pasa, tal vez los hacheros tengan algo que ver.
 - Despedirse => despedida
@@ -77,10 +83,12 @@ do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 	Gracias Don, me voy antes que me quede sin luz del sol.
 if not SceneManagerMap02._already_interacted("8. Revolver"):
 	do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+	do GameManager.manuel_trigger_animation()
 	[center][b]MANUEL[/b][/center]
 		Buena suerte... la vas a necesitar. [pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Se ríe profusamente[/color][/i][/pulse]
 if SceneManagerMap02._already_interacted("8. Revolver"):
 	do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+	do GameManager.manuel_trigger_animation()
 	[center][b]MANUEL[/b][/center]
 		Apuntá bien muchacha. [pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Sonríe suspicazmente y te extiende la mano para un saludo[/color][/i][/pulse]
 => salida
@@ -92,6 +100,7 @@ do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 if not SceneManagerMap02._already_interacted("9. F.O.R.A."):
 	do SceneManagerMap02._register_interaction("9. F.O.R.A.")
 do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+do GameManager.manuel_trigger_animation()
 [center][b]MANUEL[/b][/center]
 	La curiosidad te puede meter en cosas peligrosas, pero si es lo que quieres...
 	[i][color={{GameManager.get_text_color("manuel") + "D5"}}]Los hacheros se están organizando con militantes anarquistas de la FORA (Federación Obrera Regional Argentina).[/color][/i]

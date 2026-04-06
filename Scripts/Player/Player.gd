@@ -36,9 +36,9 @@ const DOUBLE_CLICK_THRESHOLD := 0.25
 const PATH_POSITION_CHAIN : bool = false
 const ANIMATION_BLEND_TIME := 0.15
 const CURSOR_POINTER = preload("res://Scenes/UI/cursor_pointer.tscn")
-const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
-const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.wav")
-const SELECCIONAR_OPCIONES = preload("res://Sounds/SFX/UI/Seleccionar y hover/Seleccionar opciones.wav")
+const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.ogg")
+const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.ogg")
+const SELECCIONAR_OPCIONES = preload("res://Sounds/SFX/UI/Seleccionar y hover/Seleccionar opciones.ogg")
 
 @export var first_dialogue : DialogueResource = preload("res://Dialogues/Scene/Prototype01/PlayerFirstDialogue.dialogue")
 @export var prototype03_dialogue : DialogueResource = preload("res://Dialogues/Scene/Prototype03/Prototype03.dialogue")
@@ -58,10 +58,10 @@ const SELECCIONAR_OPCIONES = preload("res://Sounds/SFX/UI/Seleccionar y hover/Se
 @onready var skeleton: Skeleton3D = $playermodel/Prototype/Player/Armature/Skeleton3D
 @onready var gpu_particles_3d: GPUParticles3D = $playermodel/GPUParticles3D
 @onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
-const COFRE_ABRIR = preload("res://Sounds/SFX/Cofre/Cofre Abrir.wav")
-const COFRE_CERRAR = preload("res://Sounds/SFX/Cofre/Cofre cerrar.wav")
-const DESTRABAR_CERRADURA_2 = preload("res://Sounds/SFX/Cofre/Destrabar cerradura 2.wav")
-const DESTRABAR_CERRADURA = preload("res://Sounds/SFX/Cofre/Destrabar cerradura.wav")
+const COFRE_ABRIR = preload("res://Sounds/SFX/Cofre/Cofre Abrir.ogg")
+const COFRE_CERRAR = preload("res://Sounds/SFX/Cofre/Cofre cerrar.ogg")
+const DESTRABAR_CERRADURA_2 = preload("res://Sounds/SFX/Cofre/Destrabar cerradura 2.ogg")
+const DESTRABAR_CERRADURA = preload("res://Sounds/SFX/Cofre/Destrabar cerradura.ogg")
 
 enum AnimationState {IDLE, WALKING, RUNNING, TALKING, YAWN}
 

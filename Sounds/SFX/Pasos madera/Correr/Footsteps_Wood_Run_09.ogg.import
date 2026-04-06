@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://4bajyftfqk0o"
+path="res://.godot/imported/Footsteps_Wood_Run_09.ogg-f9c1eb7ca32b73689de5a3d373596f4b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Pasos madera/Correr/Footsteps_Wood_Run_09.ogg"
+dest_files=["res://.godot/imported/Footsteps_Wood_Run_09.ogg-f9c1eb7ca32b73689de5a3d373596f4b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

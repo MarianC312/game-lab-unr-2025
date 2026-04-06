@@ -7,14 +7,14 @@ var current_state : game_states = game_states.LOADING
 var current_locale_id : int
 var show_all_interacts := false # false
 var game_scene_flow := {
-	"Debug":
-		{
-			"res": "res://Scenes/Prototype/Prototype03.tscn",
-			"status": false,
-			"loadDialogue": false,
-			"playable": true,
-			"name": "TestScene"
-		},
+	#"Debug":
+		#{
+			#"res": "res://Scenes/Prototype/Prototype04.tscn",
+			#"status": false,
+			#"loadDialogue": false,
+			#"playable": true,
+			#"name": "TestScene"
+		#},
 	"Prologue":
 		{
 			"res": "res://Scenes/Prologue.tscn",
@@ -275,3 +275,12 @@ func bandolero_trigger_animation(specific : String = "") -> void:
 			animation_player.play(anims.pick_random() if specific == "" else specific, 0.35)
 		else:
 			print("no encontrado: ", animation_player, bandolero)
+
+func manuel_trigger_animation(specific : String = "") -> void:
+	var manuel = get_tree().get_first_node_in_group("Manuel")
+	if manuel:
+		var anims = ["Talking01/mixamo_com", "Talking02/mixamo_com", "Telling A Secret/mixamo_com"]
+		var animation_player = manuel.get_node("AnimationPlayer")
+		if animation_player:
+			print("Tiene animplay")
+			animation_player.play(anims.pick_random() if specific == "" else specific, 0.35)

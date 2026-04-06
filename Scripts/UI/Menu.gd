@@ -5,10 +5,10 @@ extends Control
 @onready var options_menu: Control = $CanvasLayer2/OptionsMenu
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
-const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
-const SELECCIONAR_OPCIONES = preload("res://Sounds/SFX/UI/Seleccionar y hover/Seleccionar opciones.wav")
-const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.wav")
-const CONTINUAR_HACHAZO_MAS_CAIDA_ARBOL_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo mas caida arbol 2.wav")
+const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.ogg")
+const SELECCIONAR_OPCIONES = preload("res://Sounds/SFX/UI/Seleccionar y hover/Seleccionar opciones.ogg")
+const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.ogg")
+const CONTINUAR_HACHAZO_MAS_CAIDA_ARBOL_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo mas caida arbol 2.ogg")
 
 
 func _ready() -> void:

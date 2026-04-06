@@ -1,11 +1,11 @@
 extends Control
 
 @onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
-const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.wav")
-const ABRIR_LIBRETA = preload("res://Sounds/SFX/Libreta/Paginas/Abrir libreta.wav")
-const CERRAR_LIBRETA_ = preload("res://Sounds/SFX/Libreta/Paginas/Cerrar Libreta .wav")
-const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.wav")
-const VOLTEAR_PAGINA_1 = preload("uid://b1pdlc1eyo77f")
+const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.ogg")
+const ABRIR_LIBRETA = preload("res://Sounds/SFX/Libreta/Paginas/Abrir libreta.ogg")
+const CERRAR_LIBRETA_ = preload("res://Sounds/SFX/Libreta/Paginas/Cerrar Libreta .ogg")
+const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.ogg")
+const VOLTEAR_PAGINA_1 = preload("res://Sounds/SFX/Libreta/Paginas/Voltear pagina 1.ogg")
 
 @onready var m_01_item_v_box_container: VBoxContainer = $VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map01VBoxContainer1/HBoxContainer/M01ItemVBoxContainer
 @onready var m_02_item_v_box_container: VBoxContainer = $VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Map02VBoxContainer2/HBoxContainer/M02ItemVBoxContainer

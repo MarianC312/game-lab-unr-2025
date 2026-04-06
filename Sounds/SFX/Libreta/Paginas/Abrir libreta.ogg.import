@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bicw0uy1ugsb8"
+path="res://.godot/imported/Abrir libreta.ogg-fbe131df66d8f6760f7e4b5d3002c3ec.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Libreta/Paginas/Abrir libreta.ogg"
+dest_files=["res://.godot/imported/Abrir libreta.ogg-fbe131df66d8f6760f7e4b5d3002c3ec.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

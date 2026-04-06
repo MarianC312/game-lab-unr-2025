@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmps4q1rekvu8"
+path="res://.godot/imported/Tocar puerta 3.ogg-acf72a879dd1806ede50a1f293635cb6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Tocar Puerta/Tocar puerta 3.ogg"
+dest_files=["res://.godot/imported/Tocar puerta 3.ogg-acf72a879dd1806ede50a1f293635cb6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

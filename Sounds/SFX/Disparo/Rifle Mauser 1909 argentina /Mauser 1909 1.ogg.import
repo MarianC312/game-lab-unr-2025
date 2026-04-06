@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dg7tqwdvuqvcw"
+path="res://.godot/imported/Mauser 1909 1.ogg-316ba5a19dd6711036f6f4e5e0ef490d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Disparo/Rifle Mauser 1909 argentina /Mauser 1909 1.ogg"
+dest_files=["res://.godot/imported/Mauser 1909 1.ogg-316ba5a19dd6711036f6f4e5e0ef490d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

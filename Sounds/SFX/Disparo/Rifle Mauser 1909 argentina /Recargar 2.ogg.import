@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://g2la84arvpsx"
+path="res://.godot/imported/Recargar 2.ogg-528da9ec8d30f0671772d069d609c134.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/SFX/Disparo/Rifle Mauser 1909 argentina /Recargar 2.ogg"
+dest_files=["res://.godot/imported/Recargar 2.ogg-528da9ec8d30f0671772d069d609c134.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

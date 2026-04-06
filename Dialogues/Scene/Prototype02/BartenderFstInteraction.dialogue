@@ -1,5 +1,6 @@
 ~ start
 do GameManager.set_balloon_color(GameManager.get_text_color("manuel"))
+do GameManager.manuel_trigger_animation()
 [center][b]MANUEL[/b][/center]
 	Hmm... Veo que tu viejo no volvió...
 do GameManager.set_balloon_color(GameManager.get_text_color("player"))
