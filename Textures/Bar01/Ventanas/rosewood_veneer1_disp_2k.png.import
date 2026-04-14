@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpjxgb6l5hg6f"
 path.s3tc="res://.godot/imported/rosewood_veneer1_disp_2k.png-04425c9a33c78d7ce2070f720af76052.s3tc.ctex"
+path.etc2="res://.godot/imported/rosewood_veneer1_disp_2k.png-04425c9a33c78d7ce2070f720af76052.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Bar01/Ventanas/rosewood_veneer1_disp_2k.png"
-dest_files=["res://.godot/imported/rosewood_veneer1_disp_2k.png-04425c9a33c78d7ce2070f720af76052.s3tc.ctex"]
+dest_files=["res://.godot/imported/rosewood_veneer1_disp_2k.png-04425c9a33c78d7ce2070f720af76052.s3tc.ctex", "res://.godot/imported/rosewood_veneer1_disp_2k.png-04425c9a33c78d7ce2070f720af76052.etc2.ctex"]
 
 [params]
 

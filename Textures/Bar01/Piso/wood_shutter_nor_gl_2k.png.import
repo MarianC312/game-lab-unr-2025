@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwqgfnxf7dmo2"
 path.s3tc="res://.godot/imported/wood_shutter_nor_gl_2k.png-b40e524019d9985579a23e035d5a5cc9.s3tc.ctex"
+path.etc2="res://.godot/imported/wood_shutter_nor_gl_2k.png-b40e524019d9985579a23e035d5a5cc9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Bar01/Piso/wood_shutter_nor_gl_2k.png"
-dest_files=["res://.godot/imported/wood_shutter_nor_gl_2k.png-b40e524019d9985579a23e035d5a5cc9.s3tc.ctex"]
+dest_files=["res://.godot/imported/wood_shutter_nor_gl_2k.png-b40e524019d9985579a23e035d5a5cc9.s3tc.ctex", "res://.godot/imported/wood_shutter_nor_gl_2k.png-b40e524019d9985579a23e035d5a5cc9.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0xmknsl3xy0o"
 path.s3tc="res://.godot/imported/denim_fabric_06_disp_2k.png-110a65fa69429635f332989a47468663.s3tc.ctex"
+path.etc2="res://.godot/imported/denim_fabric_06_disp_2k.png-110a65fa69429635f332989a47468663.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Bar01/Barman/denim_fabric_06_2k.blend/textures/denim_fabric_06_disp_2k.png"
-dest_files=["res://.godot/imported/denim_fabric_06_disp_2k.png-110a65fa69429635f332989a47468663.s3tc.ctex"]
+dest_files=["res://.godot/imported/denim_fabric_06_disp_2k.png-110a65fa69429635f332989a47468663.s3tc.ctex", "res://.godot/imported/denim_fabric_06_disp_2k.png-110a65fa69429635f332989a47468663.etc2.ctex"]
 
 [params]
 

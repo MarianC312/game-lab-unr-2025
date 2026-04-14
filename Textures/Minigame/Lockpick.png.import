@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://qfgqdwmcpx80"
 path.s3tc="res://.godot/imported/Lockpick.png-1624e5c71f18bfd1c3feeb94d07b4785.s3tc.ctex"
+path.etc2="res://.godot/imported/Lockpick.png-1624e5c71f18bfd1c3feeb94d07b4785.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Minigame/Lockpick.png"
-dest_files=["res://.godot/imported/Lockpick.png-1624e5c71f18bfd1c3feeb94d07b4785.s3tc.ctex"]
+dest_files=["res://.godot/imported/Lockpick.png-1624e5c71f18bfd1c3feeb94d07b4785.s3tc.ctex", "res://.godot/imported/Lockpick.png-1624e5c71f18bfd1c3feeb94d07b4785.etc2.ctex"]
 
 [params]
 

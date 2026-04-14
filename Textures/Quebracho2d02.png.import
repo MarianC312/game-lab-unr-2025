@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://wvecib6frnvq"
 path.s3tc="res://.godot/imported/Quebracho2d02.png-e41626a5a0f41f6be6ec058dd1fe832a.s3tc.ctex"
+path.etc2="res://.godot/imported/Quebracho2d02.png-e41626a5a0f41f6be6ec058dd1fe832a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Quebracho2d02.png"
-dest_files=["res://.godot/imported/Quebracho2d02.png-e41626a5a0f41f6be6ec058dd1fe832a.s3tc.ctex"]
+dest_files=["res://.godot/imported/Quebracho2d02.png-e41626a5a0f41f6be6ec058dd1fe832a.s3tc.ctex", "res://.godot/imported/Quebracho2d02.png-e41626a5a0f41f6be6ec058dd1fe832a.etc2.ctex"]
 
 [params]
 

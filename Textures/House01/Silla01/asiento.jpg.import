@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://clp50yieurw4m"
 path.s3tc="res://.godot/imported/asiento.jpg-b94745b671de6f82a14a0f34ab2e4d33.s3tc.ctex"
+path.etc2="res://.godot/imported/asiento.jpg-b94745b671de6f82a14a0f34ab2e4d33.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/House01/Silla01/asiento.jpg"
-dest_files=["res://.godot/imported/asiento.jpg-b94745b671de6f82a14a0f34ab2e4d33.s3tc.ctex"]
+dest_files=["res://.godot/imported/asiento.jpg-b94745b671de6f82a14a0f34ab2e4d33.s3tc.ctex", "res://.godot/imported/asiento.jpg-b94745b671de6f82a14a0f34ab2e4d33.etc2.ctex"]
 
 [params]
 

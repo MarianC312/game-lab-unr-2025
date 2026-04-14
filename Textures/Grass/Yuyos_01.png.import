@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl1br6mtbtcir"
 path.s3tc="res://.godot/imported/Yuyos_01.png-6fa106fb28ff7d12a7842f85c88d77df.s3tc.ctex"
+path.etc2="res://.godot/imported/Yuyos_01.png-6fa106fb28ff7d12a7842f85c88d77df.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Grass/Yuyos_01.png"
-dest_files=["res://.godot/imported/Yuyos_01.png-6fa106fb28ff7d12a7842f85c88d77df.s3tc.ctex"]
+dest_files=["res://.godot/imported/Yuyos_01.png-6fa106fb28ff7d12a7842f85c88d77df.s3tc.ctex", "res://.godot/imported/Yuyos_01.png-6fa106fb28ff7d12a7842f85c88d77df.etc2.ctex"]
 
 [params]
 

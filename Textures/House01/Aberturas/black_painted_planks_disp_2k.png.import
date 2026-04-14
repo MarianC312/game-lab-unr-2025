@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bd5bnntc4weto"
 path.s3tc="res://.godot/imported/black_painted_planks_disp_2k.png-eb301beeefaa2c6f0207a830d2061984.s3tc.ctex"
+path.etc2="res://.godot/imported/black_painted_planks_disp_2k.png-eb301beeefaa2c6f0207a830d2061984.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/House01/Aberturas/black_painted_planks_disp_2k.png"
-dest_files=["res://.godot/imported/black_painted_planks_disp_2k.png-eb301beeefaa2c6f0207a830d2061984.s3tc.ctex"]
+dest_files=["res://.godot/imported/black_painted_planks_disp_2k.png-eb301beeefaa2c6f0207a830d2061984.s3tc.ctex", "res://.godot/imported/black_painted_planks_disp_2k.png-eb301beeefaa2c6f0207a830d2061984.etc2.ctex"]
 
 [params]
 

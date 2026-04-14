@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ceygicti21fiu"
 path.s3tc="res://.godot/imported/wood_peeling_paint_weathered_disp_2k.png-50b0347e7158c72caaf7c027a926618c.s3tc.ctex"
+path.etc2="res://.godot/imported/wood_peeling_paint_weathered_disp_2k.png-50b0347e7158c72caaf7c027a926618c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/House01/PuertasYVentanas/wood_peeling_paint_weathered_disp_2k.png"
-dest_files=["res://.godot/imported/wood_peeling_paint_weathered_disp_2k.png-50b0347e7158c72caaf7c027a926618c.s3tc.ctex"]
+dest_files=["res://.godot/imported/wood_peeling_paint_weathered_disp_2k.png-50b0347e7158c72caaf7c027a926618c.s3tc.ctex", "res://.godot/imported/wood_peeling_paint_weathered_disp_2k.png-50b0347e7158c72caaf7c027a926618c.etc2.ctex"]
 
 [params]
 

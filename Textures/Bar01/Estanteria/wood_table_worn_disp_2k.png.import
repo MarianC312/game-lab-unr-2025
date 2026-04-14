@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://rl3stvbesw55"
 path.s3tc="res://.godot/imported/wood_table_worn_disp_2k.png-664c76fc41cb5443beeaf617660aab4c.s3tc.ctex"
+path.etc2="res://.godot/imported/wood_table_worn_disp_2k.png-664c76fc41cb5443beeaf617660aab4c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Bar01/Estanteria/wood_table_worn_disp_2k.png"
-dest_files=["res://.godot/imported/wood_table_worn_disp_2k.png-664c76fc41cb5443beeaf617660aab4c.s3tc.ctex"]
+dest_files=["res://.godot/imported/wood_table_worn_disp_2k.png-664c76fc41cb5443beeaf617660aab4c.s3tc.ctex", "res://.godot/imported/wood_table_worn_disp_2k.png-664c76fc41cb5443beeaf617660aab4c.etc2.ctex"]
 
 [params]
 

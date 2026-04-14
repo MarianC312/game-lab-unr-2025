@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://x5d3638yqmiq"
 path.s3tc="res://.godot/imported/oak_veneer_01_nor_gl_2k.png-cac7e4cd1b7de283a0cfaa2023ecb0e8.s3tc.ctex"
+path.etc2="res://.godot/imported/oak_veneer_01_nor_gl_2k.png-cac7e4cd1b7de283a0cfaa2023ecb0e8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Bar01/Barra/oak_veneer_01_nor_gl_2k.png"
-dest_files=["res://.godot/imported/oak_veneer_01_nor_gl_2k.png-cac7e4cd1b7de283a0cfaa2023ecb0e8.s3tc.ctex"]
+dest_files=["res://.godot/imported/oak_veneer_01_nor_gl_2k.png-cac7e4cd1b7de283a0cfaa2023ecb0e8.s3tc.ctex", "res://.godot/imported/oak_veneer_01_nor_gl_2k.png-cac7e4cd1b7de283a0cfaa2023ecb0e8.etc2.ctex"]
 
 [params]
 

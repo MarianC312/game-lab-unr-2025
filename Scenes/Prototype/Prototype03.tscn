@@ -3658,9 +3658,10 @@ transform = Transform3D(-0.42261815, 0.078989916, -0.902859, 0, 0.99619466, 0.08
 light_color = Color(0.99795216, 0.6201482, 0.4416033, 1)
 light_energy = 3.0
 light_angular_distance = 0.68
+light_bake_mode = 1
 shadow_enabled = true
-shadow_bias = 0.02
-shadow_blur = 0.0
+shadow_bias = 1.0
+directional_shadow_mode = 0
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 280.0
 directional_shadow_pancake_size = 5.0
@@ -3678,6 +3679,7 @@ shadow_bias = 0.02
 sky_mode = 1
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Mundo/Shading"]
+process_mode = 4
 visible = false
 emitting = false
 amount = 400
@@ -3691,6 +3693,7 @@ draw_pass_1 = SubResource("QuadMesh_86co8")
 [node name="OmniLight3D" type="OmniLight3D" parent="Mundo/Shading"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.652, 1.063, -2.402)
 light_negative = true
+light_bake_mode = 1
 
 [node name="Waypoint01" type="Node3D" parent="Mundo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.731, 0.5, -1.386)
@@ -4145,6 +4148,7 @@ far = 280.0
 
 [node name="Camera3D2" type="Camera3D" parent="."]
 transform = Transform3D(-0.25881904, -0.06737958, 0.9635729, 0, 0.9975641, 0.06975647, -0.9659258, 0.018054303, -0.25818858, 11.973, 1.15, -2.254)
+far = 80.0
 
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0

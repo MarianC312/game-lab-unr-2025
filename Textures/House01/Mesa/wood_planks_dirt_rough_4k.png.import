@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbnrcnwasuug0"
 path.s3tc="res://.godot/imported/wood_planks_dirt_rough_4k.png-59d380d1b0c539bcdedb9a79d83566a5.s3tc.ctex"
+path.etc2="res://.godot/imported/wood_planks_dirt_rough_4k.png-59d380d1b0c539bcdedb9a79d83566a5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/House01/Mesa/wood_planks_dirt_rough_4k.png"
-dest_files=["res://.godot/imported/wood_planks_dirt_rough_4k.png-59d380d1b0c539bcdedb9a79d83566a5.s3tc.ctex"]
+dest_files=["res://.godot/imported/wood_planks_dirt_rough_4k.png-59d380d1b0c539bcdedb9a79d83566a5.s3tc.ctex", "res://.godot/imported/wood_planks_dirt_rough_4k.png-59d380d1b0c539bcdedb9a79d83566a5.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdvpeeculu2u5"
 path.s3tc="res://.godot/imported/dirt_03.png-c67a725dfe27f190fe897b78b92f3ca5.s3tc.ctex"
+path.etc2="res://.godot/imported/dirt_03.png-c67a725dfe27f190fe897b78b92f3ca5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Particles/dirt_03.png"
-dest_files=["res://.godot/imported/dirt_03.png-c67a725dfe27f190fe897b78b92f3ca5.s3tc.ctex"]
+dest_files=["res://.godot/imported/dirt_03.png-c67a725dfe27f190fe897b78b92f3ca5.s3tc.ctex", "res://.godot/imported/dirt_03.png-c67a725dfe27f190fe897b78b92f3ca5.etc2.ctex"]
 
 [params]
 

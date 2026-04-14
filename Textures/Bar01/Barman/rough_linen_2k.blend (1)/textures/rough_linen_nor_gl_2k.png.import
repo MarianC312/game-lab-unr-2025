@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6evnd4k5b2tg"
 path.s3tc="res://.godot/imported/rough_linen_nor_gl_2k.png-b0115d9663c63fd0b5e425c30664d3ce.s3tc.ctex"
+path.etc2="res://.godot/imported/rough_linen_nor_gl_2k.png-b0115d9663c63fd0b5e425c30664d3ce.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Bar01/Barman/rough_linen_2k.blend (1)/textures/rough_linen_nor_gl_2k.png"
-dest_files=["res://.godot/imported/rough_linen_nor_gl_2k.png-b0115d9663c63fd0b5e425c30664d3ce.s3tc.ctex"]
+dest_files=["res://.godot/imported/rough_linen_nor_gl_2k.png-b0115d9663c63fd0b5e425c30664d3ce.s3tc.ctex", "res://.godot/imported/rough_linen_nor_gl_2k.png-b0115d9663c63fd0b5e425c30664d3ce.etc2.ctex"]
 
 [params]
 

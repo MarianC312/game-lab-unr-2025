@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bw6xfh46h141p"
 path.s3tc="res://.godot/imported/brown_planks_03_rough_4k.jpg-1191ac6f6db3680f437650a2a3e1e345.s3tc.ctex"
+path.etc2="res://.godot/imported/brown_planks_03_rough_4k.jpg-1191ac6f6db3680f437650a2a3e1e345.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/House01/Piso/brown_planks_03_rough_4k.jpg"
-dest_files=["res://.godot/imported/brown_planks_03_rough_4k.jpg-1191ac6f6db3680f437650a2a3e1e345.s3tc.ctex"]
+dest_files=["res://.godot/imported/brown_planks_03_rough_4k.jpg-1191ac6f6db3680f437650a2a3e1e345.s3tc.ctex", "res://.godot/imported/brown_planks_03_rough_4k.jpg-1191ac6f6db3680f437650a2a3e1e345.etc2.ctex"]
 
 [params]
 

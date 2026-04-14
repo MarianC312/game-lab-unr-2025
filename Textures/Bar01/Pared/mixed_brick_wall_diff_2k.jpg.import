@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://6xdk738uf47q"
 path.s3tc="res://.godot/imported/mixed_brick_wall_diff_2k.jpg-087275d9dd6c0eb34c3e62f7e0dd5cb6.s3tc.ctex"
+path.etc2="res://.godot/imported/mixed_brick_wall_diff_2k.jpg-087275d9dd6c0eb34c3e62f7e0dd5cb6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Bar01/Pared/mixed_brick_wall_diff_2k.jpg"
-dest_files=["res://.godot/imported/mixed_brick_wall_diff_2k.jpg-087275d9dd6c0eb34c3e62f7e0dd5cb6.s3tc.ctex"]
+dest_files=["res://.godot/imported/mixed_brick_wall_diff_2k.jpg-087275d9dd6c0eb34c3e62f7e0dd5cb6.s3tc.ctex", "res://.godot/imported/mixed_brick_wall_diff_2k.jpg-087275d9dd6c0eb34c3e62f7e0dd5cb6.etc2.ctex"]
 
 [params]
 

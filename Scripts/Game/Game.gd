@@ -18,6 +18,10 @@ func _process(_delta: float) -> void:
 	pass
 
 func _ready() -> void:
+	if OS.get_name() == "Web":
+		get_viewport().scaling_3d_scale = 0.7
+	else:
+		get_viewport().scaling_3d_scale = 1.0
 	GameManager.toggle_pause.connect(_on_toggle_pause)
 	GameManager.toggle_loading.connect(_on_toggle_loading)
 	GameManager.toggle_journal.connect(_on_toggle_journal)

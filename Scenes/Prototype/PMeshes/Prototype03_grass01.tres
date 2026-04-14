@@ -6,7 +6,8 @@ load_path = "res://.godot/imported/Yuyos_01.png-6fa106fb28ff7d12a7842f85c88d77df
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cgrx"]
 transparency = 2
 alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
+alpha_antialiasing_mode = 2
+alpha_antialiasing_edge = 0.3
 cull_mode = 2
 albedo_texture = SubResource("CompressedTexture2D_3l2gf")
 metallic_specular = 0.0

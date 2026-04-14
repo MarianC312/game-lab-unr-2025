@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dirlk18bya7wm"
 path.s3tc="res://.godot/imported/curly_teddy_checkered_disp_2k.png-c3b16038d549ae9408337550c1d9eeee.s3tc.ctex"
+path.etc2="res://.godot/imported/curly_teddy_checkered_disp_2k.png-c3b16038d549ae9408337550c1d9eeee.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/House01/Props/curly_teddy_checkered_disp_2k.png"
-dest_files=["res://.godot/imported/curly_teddy_checkered_disp_2k.png-c3b16038d549ae9408337550c1d9eeee.s3tc.ctex"]
+dest_files=["res://.godot/imported/curly_teddy_checkered_disp_2k.png-c3b16038d549ae9408337550c1d9eeee.s3tc.ctex", "res://.godot/imported/curly_teddy_checkered_disp_2k.png-c3b16038d549ae9408337550c1d9eeee.etc2.ctex"]
 
 [params]
 

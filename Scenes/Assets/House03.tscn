@@ -2854,6 +2854,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.985, 1.541, 4.3)
 light_color = Color(1, 0.7019608, 0.2784314, 1)
 light_energy = 0.19
 light_specular = 0.0
+light_bake_mode = 1
 omni_range = 1.888
 omni_attenuation = 0.4
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dw4wdehwgxoas"
 path.s3tc="res://.godot/imported/wood_table_worn_nor_gl_2k.png-0eb2c82db86bbac4ec49987b86f24ff0.s3tc.ctex"
+path.etc2="res://.godot/imported/wood_table_worn_nor_gl_2k.png-0eb2c82db86bbac4ec49987b86f24ff0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Bar01/Barra/wood_table_worn_nor_gl_2k.png"
-dest_files=["res://.godot/imported/wood_table_worn_nor_gl_2k.png-0eb2c82db86bbac4ec49987b86f24ff0.s3tc.ctex"]
+dest_files=["res://.godot/imported/wood_table_worn_nor_gl_2k.png-0eb2c82db86bbac4ec49987b86f24ff0.s3tc.ctex", "res://.godot/imported/wood_table_worn_nor_gl_2k.png-0eb2c82db86bbac4ec49987b86f24ff0.etc2.ctex"]
 
 [params]
 

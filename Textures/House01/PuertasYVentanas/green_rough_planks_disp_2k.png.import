@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://3sdmlhm44rcn"
 path.s3tc="res://.godot/imported/green_rough_planks_disp_2k.png-07a7ce87bce409af543c664f4695e6fa.s3tc.ctex"
+path.etc2="res://.godot/imported/green_rough_planks_disp_2k.png-07a7ce87bce409af543c664f4695e6fa.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/House01/PuertasYVentanas/green_rough_planks_disp_2k.png"
-dest_files=["res://.godot/imported/green_rough_planks_disp_2k.png-07a7ce87bce409af543c664f4695e6fa.s3tc.ctex"]
+dest_files=["res://.godot/imported/green_rough_planks_disp_2k.png-07a7ce87bce409af543c664f4695e6fa.s3tc.ctex", "res://.godot/imported/green_rough_planks_disp_2k.png-07a7ce87bce409af543c664f4695e6fa.etc2.ctex"]
 
 [params]
 

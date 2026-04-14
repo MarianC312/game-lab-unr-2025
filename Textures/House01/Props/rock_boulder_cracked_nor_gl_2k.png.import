@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpif6vtbf2yic"
 path.s3tc="res://.godot/imported/rock_boulder_cracked_nor_gl_2k.png-8c2ebd627f74bdf97848b5e2c5d578e0.s3tc.ctex"
+path.etc2="res://.godot/imported/rock_boulder_cracked_nor_gl_2k.png-8c2ebd627f74bdf97848b5e2c5d578e0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/House01/Props/rock_boulder_cracked_nor_gl_2k.png"
-dest_files=["res://.godot/imported/rock_boulder_cracked_nor_gl_2k.png-8c2ebd627f74bdf97848b5e2c5d578e0.s3tc.ctex"]
+dest_files=["res://.godot/imported/rock_boulder_cracked_nor_gl_2k.png-8c2ebd627f74bdf97848b5e2c5d578e0.s3tc.ctex", "res://.godot/imported/rock_boulder_cracked_nor_gl_2k.png-8c2ebd627f74bdf97848b5e2c5d578e0.etc2.ctex"]
 
 [params]
 

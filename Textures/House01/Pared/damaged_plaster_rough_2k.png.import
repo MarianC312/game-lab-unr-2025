@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://do2ic48efuuq2"
 path.s3tc="res://.godot/imported/damaged_plaster_rough_2k.png-dc6cff18312c58ed5ee65539d4472d6d.s3tc.ctex"
+path.etc2="res://.godot/imported/damaged_plaster_rough_2k.png-dc6cff18312c58ed5ee65539d4472d6d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/House01/Pared/damaged_plaster_rough_2k.png"
-dest_files=["res://.godot/imported/damaged_plaster_rough_2k.png-dc6cff18312c58ed5ee65539d4472d6d.s3tc.ctex"]
+dest_files=["res://.godot/imported/damaged_plaster_rough_2k.png-dc6cff18312c58ed5ee65539d4472d6d.s3tc.ctex", "res://.godot/imported/damaged_plaster_rough_2k.png-dc6cff18312c58ed5ee65539d4472d6d.etc2.ctex"]
 
 [params]
 

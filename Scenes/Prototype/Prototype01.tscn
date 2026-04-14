@@ -124,6 +124,7 @@ environment = SubResource("Environment_d5c1p")
 transform = Transform3D(1, 0, 0, 0, 0.96592593, 0.25881907, 0, -0.25881907, 0.96592593, 0, 3.3330436, 9.254973)
 light_color = Color(1, 0.7019608, 0.2784314, 1)
 light_volumetric_fog_energy = 0.8
+light_bake_mode = 1
 shadow_enabled = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mundo/Shading"]
@@ -145,6 +146,7 @@ light_bake_mode = 1
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Mundo/Shading"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5335855, 4.0057306, -4.3813753)
+gi_mode = 0
 amount = 750
 lifetime = 15.0
 visibility_aabb = AABB(2.67, -4, -2.245, 5.42, 2.985, 11.365)
@@ -154,6 +156,7 @@ draw_pass_1 = SubResource("SphereMesh_22wq2")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="Mundo/Shading"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.749438, 4.0057306, -1.2167165)
+gi_mode = 0
 amount = 500
 lifetime = 15.0
 visibility_aabb = AABB(2.755, -4, 1.375, 4.49, 2.985, 4.835)

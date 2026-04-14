@@ -7713,7 +7713,7 @@ margin = 0.2
 [node name="Camera3D" type="Camera3D" parent="camera_pivot/SpringArm3D"]
 current = true
 fov = 95.0
-far = 100.0
+far = 20.0
 
 [node name="playermodel" type="Node3D" parent="."]
 

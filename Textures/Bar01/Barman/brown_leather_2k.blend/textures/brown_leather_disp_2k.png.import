@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://e0xib3yhfcu2"
 path.s3tc="res://.godot/imported/brown_leather_disp_2k.png-80a4152a3df6808bacd71e1aadcbe35c.s3tc.ctex"
+path.etc2="res://.godot/imported/brown_leather_disp_2k.png-80a4152a3df6808bacd71e1aadcbe35c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Bar01/Barman/brown_leather_2k.blend/textures/brown_leather_disp_2k.png"
-dest_files=["res://.godot/imported/brown_leather_disp_2k.png-80a4152a3df6808bacd71e1aadcbe35c.s3tc.ctex"]
+dest_files=["res://.godot/imported/brown_leather_disp_2k.png-80a4152a3df6808bacd71e1aadcbe35c.s3tc.ctex", "res://.godot/imported/brown_leather_disp_2k.png-80a4152a3df6808bacd71e1aadcbe35c.etc2.ctex"]
 
 [params]
 
