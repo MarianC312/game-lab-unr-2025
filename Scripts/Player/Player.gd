@@ -502,11 +502,13 @@ func start_interaction() -> void:
 		interact_button.hide()
 		_clear_movement()
 
-func spawn_move_pointer(new_position : Vector3) -> void:
-	var pointer_instance = CURSOR_POINTER.instantiate()
-	map.add_child(pointer_instance)
-	pointer_instance.global_position = new_position
-	pointer_instance.position.y = 0.5
+# Removido porque laguea y anda mal en windows
+func spawn_move_pointer(_new_position : Vector3) -> void:
+	return 
+	#var pointer_instance = CURSOR_POINTER.instantiate()
+	#map.add_child(pointer_instance)
+	#pointer_instance.global_position = new_position
+	#pointer_instance.position.y = 0.5
 
 func get_camera_3d() -> Camera3D:
 	return camera_3d

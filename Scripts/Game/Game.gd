@@ -26,6 +26,11 @@ func _ready() -> void:
 	GameManager.toggle_loading.connect(_on_toggle_loading)
 	GameManager.toggle_journal.connect(_on_toggle_journal)
 	GameManager.toggle_controls.connect(_on_toggle_controls)
+	var opt_menu = pause_menu.find_child("OptionsMenu")
+	if opt_menu:
+		opt_menu.update_quality.connect(_update_quality)
+	else:
+		print("Menú de opciones no encontrado!")
 	loading.scene_loaded.connect(_on_scene_loaded)
 	pause_menu.visible = false
 	loading.visible = true
@@ -65,7 +70,11 @@ func load_map(packed_scene) -> void:
 		SceneTransitions.fade_out()
 		await SceneTransitions.fade_complete
 		if current_map:
+			current_map.set_process(false)
+			current_map.set_physics_process(false)
+			current_map.get_parent().remove_child(current_map)
 			current_map.queue_free()
+			await get_tree().process_frame
 		var new_map = packed_scene.instantiate()
 		map.add_child(new_map)
 		current_map = new_map # Corregir que el nuevo mapa cargado pase a ser hijo del nodo Map
@@ -74,8 +83,17 @@ func load_map(packed_scene) -> void:
 	else:
 		print("Ocurrió un error al cargar el mapa: ", packed_scene)
 
+func _update_quality() -> void:
+	var env = current_map.find_child("WorldEnvironment")
+	if env:
+		OptimizationManager.apply_graphics_quality(env)
+		print("Calidad actualizada!")
+	else:
+		print("No se pudo encontrar el entorno del mundo.")
+
 func _on_map_ready() -> void:
 	if GameManager.current_scene.playable:
+		_update_quality()
 		var spawn = get_tree().get_first_node_in_group("CharSpawn")
 		if spawn != null:
 			player.global_position = spawn.global_position

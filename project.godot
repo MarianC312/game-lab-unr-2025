@@ -123,6 +123,12 @@ dialogue_balloon=""
 dialogue_richtext=""
 Bandolero=""
 Manuel=""
+light=""
+shadow=""
+particle=""
+light_ob=""
+hq_only=""
+multimesh=""
 
 [input]
 

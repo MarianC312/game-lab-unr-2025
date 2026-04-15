@@ -1,0 +1,17 @@
+[gd_resource type="PlaneMesh" load_steps=3 format=3 uid="uid://dbbtm3c4iaepg"]
+
+[ext_resource type="Texture2D" uid="uid://dus7myrbj0g70" path="res://Textures/Quebracho2d04.png" id="1_imih2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynbeb"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_imih2")
+metallic_specular = 0.0
+billboard_mode = 2
+
+[resource]
+material = SubResource("StandardMaterial3D_ynbeb")
+size = Vector2(20, 14)
+center_offset = Vector3(0, 6.85, 0)
+orientation = 2

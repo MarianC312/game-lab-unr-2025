@@ -132,8 +132,9 @@ environment = SubResource("Environment_183q3")
 
 [node name="Shading" type="Node3D" parent="Mundo"]
 
-[node name="Sun" type="DirectionalLight3D" parent="Mundo/Shading"]
+[node name="Sun" type="DirectionalLight3D" parent="Mundo/Shading" groups=["light", "shadow"]]
 transform = Transform3D(-1, 1.2368852e-07, -8.660763e-08, 0, 0.5735764, 0.81915206, 1.509958e-07, 0.81915206, -0.5735764, 0, 6.9685507, 0)
+layers = 0
 light_color = Color(1, 0.9490196, 0.8, 1)
 light_energy = 2.0
 light_volumetric_fog_energy = 0.8
@@ -141,7 +142,7 @@ light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 1.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mundo/Shading"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mundo/Shading" groups=["light", "light_ob"]]
 transform = Transform3D(1, 0, 0, 0, 0.5735764, 0.819152, 0, -0.819152, 0.5735764, 0, 0.73172075, 0)
 light_color = Color(0.83185816, 0.72858423, 0.64212155, 1)
 light_energy = 0.55
@@ -161,7 +162,7 @@ light_negative = true
 light_specular = 0.3
 light_bake_mode = 1
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Mundo/Shading"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Mundo/Shading" groups=["particle"]]
 transform = Transform3D(-0.78369343, 0, 0.6211478, 0, 1, 0, -0.6211478, 0, -0.78369343, 4.223821, 4.0057306, 3.5629272)
 gi_mode = 0
 amount = 1500

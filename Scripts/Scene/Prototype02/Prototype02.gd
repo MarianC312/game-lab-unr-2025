@@ -28,6 +28,7 @@ func _process(_delta: float) -> void:
 	# print(SceneManagerMap01._get_interactables())
 	# print("Stream line: ", audio_stream_player.get_playback_position())
 	pass
+		
 
 func _update_item_list() -> void:
 	for i in range(item_list.item_count):

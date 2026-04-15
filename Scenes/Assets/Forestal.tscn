@@ -374,14 +374,14 @@ shape = SubResource("ConcavePolygonShape3D_wnvbq")
 [node name="Arboleda" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7275815, 0)
 
-[node name="Quebracho" type="MeshInstance3D" parent="Arboleda"]
+[node name="Quebracho" type="MeshInstance3D" parent="Arboleda" groups=["hq_only"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.458251, 1.1584122, -8.927237)
 mesh = ExtResource("1_2lkra")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_7yp71")
 surface_material_override/1 = SubResource("StandardMaterial3D_wkimy")
 
-[node name="Quebracho2" type="MeshInstance3D" parent="Arboleda"]
+[node name="Quebracho2" type="MeshInstance3D" parent="Arboleda" groups=["hq_only"]]
 transform = Transform3D(0.62456137, 0, 0.78097576, 0, 1, 0, -0.78097576, 0, 0.62456137, -7.024107, -0.839833, -25.407255)
 mesh = ExtResource("1_2lkra")
 skeleton = NodePath("../..")

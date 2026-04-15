@@ -24,3 +24,7 @@ menu_btn_restart,Resetear juego,Restart Game
 journal_map_02_item01,,
 journal_map_02_item02,,
 journal_map_02_item03,,
+menu_options_text_quality,Calidad,Quality
+menu_options_text_quality_op1,Alta,High
+menu_options_text_quality_op2,Media,Medium
+menu_options_text_quality_op3,Baja,Low

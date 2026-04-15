@@ -35,10 +35,10 @@ func _ready() -> void:
 			_setup_highlight_surface(child)
 
 func _physics_process(_delta: float) -> void:
-	print(global_position)
+	# print(global_position)
 	if animation_player.current_animation == "Bartending/mixamo_com":
-		print(global_position)
-		print(_locked_armature_position)
+		# print(global_position)
+		# print(_locked_armature_position)
 		armature.position = _locked_armature_position
 	else:
 		armature.position = Vector3.ZERO

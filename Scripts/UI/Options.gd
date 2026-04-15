@@ -10,7 +10,7 @@ const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Contin
 const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.ogg")
 
 var already_faded := false
-
+signal update_quality
 
 func _ready() -> void:
 	hide()
@@ -61,3 +61,9 @@ func _on_sonido_slider_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Player"), linear_to_db(value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(value))
+
+
+func _on_quality_option_button_item_selected(index: OptimizationManager.GraphicsQuality) -> void:
+	print(index)
+	OptimizationManager.set_graphics_quality(index)
+	update_quality.emit()
