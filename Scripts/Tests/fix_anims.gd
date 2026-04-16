@@ -5,7 +5,6 @@ func _run():
 	var root = EditorInterface.get_edited_scene_root()
 	print("Raíz de escena: ", root.name)
 	
-	# Busca el AnimationPlayer en cualquier nivel
 	var anim_player = root.find_child("AnimationPlayer", true, true)
 	
 	if not anim_player:

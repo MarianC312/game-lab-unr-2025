@@ -1,13 +1,7 @@
 @tool
 extends Node3D
 
-## ============================================================
-##  ARBOLEDA - Spawner de MeshInstance3D con meshes aleatorios
-##  Adjuntá este script a un Node3D vacío
-## ============================================================
-
 @export_group("Meshes")
-## Arrastrá acá los 6 archivos .tres de tus QuadMesh
 @export var tree_meshes: Array[Mesh] = []:
 	set(v):
 		tree_meshes = v
@@ -73,7 +67,6 @@ extends Node3D
 		if Engine.is_editor_hint(): _generate()
 
 @export_group("Zona de exclusión")
-## Radio de exclusión (X = eje X del mundo, Y de este Vector2 = eje Z del mundo)
 @export var exclusion_radius: float = 0.0:
 	set(v):
 		exclusion_radius = v
@@ -82,18 +75,6 @@ extends Node3D
 @export var exclusion_offset: Vector2 = Vector2(0.0, 0.0):
 	set(v):
 		exclusion_offset = v
-		if Engine.is_editor_hint(): _generate()
-
-@export_group("Depth Sorting")
-## Ordenar de atrás hacia adelante por Z (cámara fija mirando en X)
-@export var sort_by_z: bool = true:
-	set(v):
-		sort_by_z = v
-		if Engine.is_editor_hint(): _generate()
-
-@export var sort_invert: bool = false:
-	set(v):
-		sort_invert = v
 		if Engine.is_editor_hint(): _generate()
 
 @export_group("Herramientas")
@@ -108,7 +89,6 @@ extends Node3D
 		clear_trees = false
 
 
-# ============================================================
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		_generate()
@@ -127,20 +107,20 @@ func _generate() -> void:
 		push_warning("Arboleda: asigná al menos un Mesh en 'Tree Meshes'.")
 		return
 
-	for child in get_children():
-		if Engine.is_editor_hint():
-			child.free()
-		else:
-			child.queue_free()
+	_clear()
 
 	var rng := RandomNumberGenerator.new()
 	rng.seed = random_seed
 
-	var tree_data: Array = []
+	var transforms_per_mesh: Array = []
+	for i in tree_meshes.size():
+		transforms_per_mesh.append([])
+
+	var placed := 0
 	var attempts := 0
 	var max_attempts := tree_count * 20
 
-	while tree_data.size() < tree_count and attempts < max_attempts:
+	while placed < tree_count and attempts < max_attempts:
 		attempts += 1
 
 		var x := rng.randf_range(-area_size.x * 0.5, area_size.x * 0.5) + area_offset.x
@@ -151,68 +131,51 @@ func _generate() -> void:
 
 		var y := y_offset + rng.randf_range(-y_random_range * 0.5, y_random_range * 0.5)
 
-		var sx: float
-		var sy: float
-		var sz: float
+		var s: Vector3
 		if uniform_scale:
-			sx = rng.randf_range(scale_min, scale_max)
-			sy = sx
-			sz = sx
+			var sv := rng.randf_range(scale_min, scale_max)
+			s = Vector3(sv, sv, sv)
 		else:
-			sx = rng.randf_range(scale_min, scale_max)
-			sy = rng.randf_range(scale_min, scale_max)
-			sz = rng.randf_range(scale_min, scale_max)
+			s = Vector3(
+				rng.randf_range(scale_min, scale_max),
+				rng.randf_range(scale_min, scale_max),
+				rng.randf_range(scale_min, scale_max)
+			)
 
 		var rot_y := 0.0
 		if random_rotation_y:
-			if snap_rotation_90:
-				rot_y = float(rng.randi() % 4) * PI * 0.5
-			else:
-				rot_y = rng.randf_range(0.0, TAU)
-
-		var mesh_index := rng.randi() % tree_meshes.size()
-
-		tree_data.append({
-			"pos": Vector3(x, y, z),
-			"scale": Vector3(sx, sy, sz),
-			"rot_y": rot_y,
-			"mesh_index": mesh_index,
-			"z": z
-		})
-
-	if sort_by_z:
-		if sort_invert:
-			tree_data.sort_custom(func(a, b): return a["z"] < b["z"])
-		else:
-			tree_data.sort_custom(func(a, b): return a["z"] > b["z"])
-
-	for i in tree_data.size():
-		var d = tree_data[i]
-		var mi := MeshInstance3D.new()
-		mi.mesh = tree_meshes[d["mesh_index"]]
-		mi.name = "Tree_%d" % i
+			rot_y = snappedf(rng.randf_range(0.0, TAU), PI * 0.5) if snap_rotation_90 else rng.randf_range(0.0, TAU)
 
 		var t := Transform3D()
-		t = t.scaled(d["scale"])
-		t = t.rotated(Vector3.UP, d["rot_y"])
-		t.origin = d["pos"]
-		mi.transform = t
+		t = t.scaled(s)
+		t = t.rotated(Vector3.UP, rot_y)
+		t.origin = Vector3(x, y, z)
 
-		# Usar el material del mesh y asignar render_priority único por árbol
-		var mesh := tree_meshes[d["mesh_index"]]
-		if mesh.get_surface_count() > 0:
-			var src_mat := mesh.surface_get_material(0)
-			if src_mat != null:
-				var mat := src_mat.duplicate()
-				var p := int(float(i) / float(tree_data.size()) * 127.0)
-				mat.render_priority = p
-				mi.set_surface_override_material(0, mat)
-			else:
-				push_warning("Arboleda: el mesh en slot %d no tiene material. Asignale un material al QuadMesh antes de guardarlo como .tres" % d["mesh_index"])
+		var mesh_index := rng.randi() % tree_meshes.size()
+		transforms_per_mesh[mesh_index].append(t)
+		placed += 1
 
-		add_child(mi)
+	for mesh_index in tree_meshes.size():
+		var ts: Array = transforms_per_mesh[mesh_index]
+		if ts.is_empty():
+			continue
+
+		var mm := MultiMesh.new()
+		mm.transform_format = MultiMesh.TRANSFORM_3D
+		mm.mesh = tree_meshes[mesh_index]
+		mm.instance_count = ts.size()
+
+		for i in ts.size():
+			mm.set_instance_transform(i, ts[i])
+
+		var mmi := MultiMeshInstance3D.new()
+		mmi.multimesh = mm
+		mmi.name = "Trees_Mesh%d" % mesh_index
+		mmi.lod_bias = 0.05
+		add_child(mmi)
+
 		if Engine.is_editor_hint():
-			mi.owner = get_tree().edited_scene_root
+			mmi.owner = get_tree().edited_scene_root
 
-	if tree_data.size() < tree_count and Engine.is_editor_hint():
-		push_warning("Arboleda: solo se colocaron %d/%d árboles." % [tree_data.size(), tree_count])
+	if placed < tree_count and Engine.is_editor_hint():
+		push_warning("Arboleda: solo se colocaron %d/%d árboles." % [placed, tree_count])

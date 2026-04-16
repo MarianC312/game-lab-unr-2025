@@ -172,6 +172,9 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_ww1bx")
 draw_pass_1 = SubResource("SphereMesh_e1s85")
 
+[node name="LightmapGI" type="LightmapGI" parent="Mundo/Shading"]
+texel_scale = 0.35
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ww1bx")
 bus = &"Ambience"

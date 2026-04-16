@@ -318,48 +318,56 @@ navigation_layers = 4294967295
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+lod_bias = 0.01
 mesh = SubResource("ArrayMesh_6glmf")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2lkra")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+lod_bias = 0.01
 mesh = SubResource("ArrayMesh_3na7m")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2lkra")
 
 [node name="Cube_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+lod_bias = 0.01
 mesh = SubResource("ArrayMesh_b4ik4")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2lkra")
 
 [node name="Cube_003" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+lod_bias = 0.01
 mesh = SubResource("ArrayMesh_oh85t")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2lkra")
 
 [node name="Cube_004" type="MeshInstance3D" parent="."]
 transform = Transform3D(1111.565, 0, 0, 0, 6.625443e-05, 1615.6422, 0, -1111.565, 9.629978e-05, -18, 16, -129)
+lod_bias = 0.01
 mesh = SubResource("ArrayMesh_t3rmt")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2lkra")
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.1329648, 0.7625868, 14.211008)
+lod_bias = 0.01
 mesh = SubResource("ArrayMesh_uehwg")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2lkra")
 
 [node name="Cylinder_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -60.00001, 33.59999, -90)
+lod_bias = 0.01
 mesh = SubResource("ArrayMesh_dtoyp")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2lkra")
 
 [node name="Piso" type="MeshInstance3D" parent="."]
 transform = Transform3D(994.88336, 0, 0, 0, -0.00010270932, 549.5138, 0, -861.58813, -6.5507156e-05, 0, 0, 0)
+lod_bias = 0.01
 mesh = SubResource("ArrayMesh_hp8rm")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_wrr71")
@@ -375,7 +383,8 @@ shape = SubResource("ConcavePolygonShape3D_wnvbq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7275815, 0)
 
 [node name="Quebracho" type="MeshInstance3D" parent="Arboleda" groups=["hq_only"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.458251, 1.1584122, -8.927237)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.458, 0.5, -8.927)
+lod_bias = 0.01
 mesh = ExtResource("1_2lkra")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_7yp71")
@@ -383,6 +392,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_wkimy")
 
 [node name="Quebracho2" type="MeshInstance3D" parent="Arboleda" groups=["hq_only"]]
 transform = Transform3D(0.62456137, 0, 0.78097576, 0, 1, 0, -0.78097576, 0, 0.62456137, -7.024107, -0.839833, -25.407255)
+lod_bias = 0.01
 mesh = ExtResource("1_2lkra")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_7yp71")

@@ -769,6 +769,7 @@ transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 8.731445, 0.2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Mundo/Mapin" groups=["navigation_mesh_source_group"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0341797, 0.39788818, 0.06236267)
+lod_bias = 0.01
 use_collision = true
 collision_layer = 4
 collision_mask = 4
@@ -841,15 +842,20 @@ shape = SubResource("BoxShape3D_vu0bf")
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Mundo/Mapin/Yuyero" groups=["multimesh"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 cast_shadow = 0
+lod_bias = 0.001
 multimesh = ExtResource("18_pvix0")
 script = ExtResource("17_pje4i")
-area_size = Vector3(50, 0, 50)
-y_offset = 0.78
+instance_count = 1500
+area_size = Vector3(35, 0, 50)
 min_scale = 0.85
 max_scale = 2.0
+y_offset = 0.78
 random_seed = 140
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Mundo"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
 environment = SubResource("Environment_0t8de")
 script = ExtResource("15_he2hf")
 offset = 0.05
@@ -867,7 +873,7 @@ shadow_enabled = true
 shadow_bias = 1.0
 directional_shadow_mode = 0
 directional_shadow_blend_splits = true
-directional_shadow_max_distance = 280.0
+directional_shadow_max_distance = 70.0
 directional_shadow_pancake_size = 5.0
 
 [node name="Sun2" type="DirectionalLight3D" parent="Mundo/Shading" groups=["light", "light_ob"]]
@@ -1339,8 +1345,9 @@ bus = &"Ambience"
 transform = Transform3D(-4.371139e-08, -0.05233596, 0.9986295, 0, 0.9986295, 0.05233596, -1, 2.2876774e-09, -4.3651482e-08, 26.305, 1.25, 0)
 projection = 2
 fov = 111.83019
-near = 0.64
-far = 50.15
+frustum_offset = Vector2(0, 0.15)
+near = 0.85
+far = 75.0
 
 [node name="Camera3D2" type="Camera3D" parent="."]
 transform = Transform3D(-0.25881904, -0.06737958, 0.9635729, 0, 0.9975641, 0.06975647, -0.9659258, 0.018054303, -0.25818858, 11.973, 1.15, -2.254)

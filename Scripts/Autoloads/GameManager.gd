@@ -7,14 +7,14 @@ var current_state : game_states = game_states.LOADING
 var current_locale_id : int
 var show_all_interacts := false # false
 var game_scene_flow := {
-	#"Debug":
-		#{
-			#"res": "res://Scenes/Prototype/Prototype03.tscn",
-			#"status": false,
-			#"loadDialogue": false,
-			#"playable": true,
-			#"name": "TestScene"
-		#},
+	"Test":
+		{
+			"res": "res://Scenes/Prototype/Prototype03.tscn",
+			"status": false,
+			"loadDialogue": false,
+			"playable": true,
+			"name": "Mapa01"
+		},
 	"Prologue":
 		{
 			"res": "res://Scenes/Prologue.tscn",
