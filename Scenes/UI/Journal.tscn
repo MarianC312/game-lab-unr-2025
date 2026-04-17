@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkdyp60vkqbij"]
+[gd_scene load_steps=7 format=3 uid="uid://dkdyp60vkqbij"]
 
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="1_uxyxf"]
 [ext_resource type="Script" uid="uid://bqwnhnamdwyrd" path="res://Scripts/UI/Journal.gd" id="1_vo2py"]
-[ext_resource type="FontFile" uid="uid://d36papkdhicbf" path="res://Base/Fonts/Rubik80sFade-Regular.ttf" id="3_ky5dj"]
 [ext_resource type="Texture2D" uid="uid://conir2kpi1bi4" path="res://Textures/House01/JournalOpened.png" id="4_oc0lf"]
 [ext_resource type="FontFile" uid="uid://drjf5ofsn3r14" path="res://Base/Fonts/ReenieBeanie-Regular.ttf" id="6_xgk57"]
 
@@ -76,7 +75,6 @@ layout_mode = 2
 [node name="TituloLabel" type="Label" parent="VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_ky5dj")
 theme_override_font_sizes/font_size = 32
 text = "journal_title"
 uppercase = true

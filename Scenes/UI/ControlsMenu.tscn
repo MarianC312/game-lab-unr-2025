@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqagf7wha1au0"]
+[gd_scene load_steps=7 format=3 uid="uid://bqagf7wha1au0"]
 
 [ext_resource type="Script" uid="uid://n33vquwmij0x" path="res://Scripts/UI/ControlsMenu.gd" id="1_x4b4u"]
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="2_at3t3"]
@@ -35,14 +35,6 @@ shadow_color = Color(0, 0, 0, 0.29411766)
 shadow_size = 4
 shadow_offset = Vector2(2, 2)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_at3t3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x057d"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ktw36"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u4f6y"]
-
 [node name="ControlsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -77,13 +69,14 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
@@ -92,6 +85,7 @@ theme_override_constants/line_spacing = -25
 theme_override_font_sizes/font_size = 28
 text = "MOVIMIENTO
 "
+horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
@@ -100,13 +94,15 @@ layout_mode = 2
 theme_override_constants/separation = 75
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 165
+theme_override_constants/separation = 60
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Caminar"
@@ -118,23 +114,26 @@ theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_at3t3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_x057d")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktw36")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u4f6y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
 text = "Click Izq."
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_constants/separation = 150
+theme_override_constants/separation = 60
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Correr"
+horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2"]
 custom_minimum_size = Vector2(35, 35)
@@ -143,29 +142,33 @@ theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_at3t3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_x057d")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktw36")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u4f6y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
 text = "Click Izq. x 2"
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.31764707, 0.32156864, 0.32941177, 1)
 theme_override_constants/line_spacing = -25
+theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 28
 text = "INTERACCIÓN
 "
+horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
@@ -180,42 +183,47 @@ theme_override_constants/separation = 32
 layout_mode = 2
 theme_override_constants/separation = 75
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 4
-theme_override_constants/separation = 150
+theme_override_constants/separation = 129
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer3"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
-text = "Interactuar"
+text = "Saltar diálogo"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer3"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_at3t3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_x057d")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktw36")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u4f6y")
-text = "E"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
+text = "Click Izq."
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_constants/separation = 150
+theme_override_constants/separation = 60
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer2"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Pistas"
+horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer2"]
 custom_minimum_size = Vector2(35, 35)
@@ -224,36 +232,154 @@ theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_at3t3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_x057d")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktw36")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u4f6y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
 text = "Click Der."
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-theme_override_constants/separation = 60
+theme_override_constants/separation = 125
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer3"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
-text = "Saltar diálogo"
+text = "Interactuar"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer3"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer"]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_at3t3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_x057d")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktw36")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u4f6y")
-text = "Click Der."
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
+text = "E"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.31764707, 0.32156864, 0.32941177, 1)
+theme_override_constants/line_spacing = -25
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 28
+text = "MENÚES"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 125
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Pausa"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
+text = "P"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer2"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Controles"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer2"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
+text = "C"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 125
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer3"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Cuaderno"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer3"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
+text = "J"
 
 [node name="Volver" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 75)
