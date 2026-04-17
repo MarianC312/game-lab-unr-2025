@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu711dkfvtjjj"]
+[gd_scene load_steps=12 format=3 uid="uid://cu711dkfvtjjj"]
 
 [ext_resource type="Script" uid="uid://d1n4qkk0rsqtk" path="res://Scripts/Scene/Prototype/Prototype01.gd" id="1_mayph"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_ly18k"]
@@ -47,11 +47,11 @@ adjustment_enabled = true
 adjustment_brightness = 1.05
 adjustment_saturation = 1.15
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_22wq2"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rhd61"]
 lifetime_randomness = 0.75
-emission_shape_offset = Vector3(4.94, -2.31, 3.785)
+emission_shape_offset = Vector3(5.445, -2.31, 3.785)
 emission_shape = 3
-emission_box_extents = Vector3(2.03, 1.37, 2.33)
+emission_box_extents = Vector3(2.54, 1.37, 5.46)
 angle_min = 57.60001
 angle_max = 303.90002
 direction = Vector3(0, 0, 0)
@@ -76,6 +76,24 @@ radius = 0.006
 height = 0.012
 radial_segments = 4
 rings = 3
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_22wq2"]
+lifetime_randomness = 0.75
+emission_shape_offset = Vector3(4.94, -2.31, 3.785)
+emission_shape = 3
+emission_box_extents = Vector3(2.03, 1.37, 2.33)
+angle_min = 57.60001
+angle_max = 303.90002
+direction = Vector3(0, 0, 0)
+spread = 16.935
+initial_velocity_max = 0.14999999
+orbit_velocity_min = -1.022
+orbit_velocity_max = 0.0820001
+gravity = Vector3(0, -0.001, 0)
+scale_min = 0.75
+scale_max = 1.15
+hue_variation_min = -0.3
+hue_variation_max = 0.19999997
 
 [node name="Prototype01" type="Node3D"]
 script = ExtResource("1_mayph")
@@ -146,20 +164,28 @@ light_specular = 0.3
 light_bake_mode = 1
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Mundo/Shading" groups=["particle"]]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5335855, 4.0057306, -4.3813753)
 gi_mode = 0
 amount = 750
 lifetime = 15.0
-visibility_aabb = AABB(2.67, -4, -2.245, 5.42, 2.985, 11.365)
+preprocess = 7.0
+visibility_aabb = AABB(2.67, -4, -2.245, 5.42, 2.985, 11.455)
 transform_align = 1
-process_material = SubResource("ParticleProcessMaterial_22wq2")
+process_material = SubResource("ParticleProcessMaterial_rhd61")
 draw_pass_1 = SubResource("SphereMesh_22wq2")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="Mundo/Shading" groups=["particle"]]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.749438, 4.0057306, -1.2167165)
 gi_mode = 0
 amount = 500
 lifetime = 15.0
+preprocess = 7.0
 visibility_aabb = AABB(2.755, -4, 1.375, 4.49, 2.985, 4.835)
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_22wq2")

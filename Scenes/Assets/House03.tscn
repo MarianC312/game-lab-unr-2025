@@ -470,8 +470,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8bw3v")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v525p"]
-points = PackedVector3Array(0.39407134, 1.1073015, 0.05870793, -0.40180153, -1.1073015, -0.04510159, -0.40180153, -1.1073015, 0.05870793, -0.40180153, 1.1073015, -0.04510159, 0.39407134, -1.1073015, -0.04510159, 0.39407134, -1.1073015, 0.05870793, -0.40180153, 1.1073015, 0.05870793, 0.39407134, 1.1073015, -0.04510159)
+[sub_resource type="BoxShape3D" id="BoxShape3D_32thr"]
+size = Vector3(1.1386719, 2.3683472, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ias8x"]
 _surfaces = [{
@@ -944,8 +944,8 @@ heightmap_texture = ExtResource("14_lht6p")
 albedo_color = Color(0.1728327, 0.17283267, 0.17283267, 1)
 metallic_specular = 0.0
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5f8ho"]
-points = PackedVector3Array(-0.8222461, -0.6295569, -3.7447264, -4.7244163, -2.9834762, -3.5457501, -0.8222461, 0.046548128, -3.7447264, 1.0358863, -0.6295569, -3.7447264, -4.7244163, -2.9834762, 3.541086, -4.7244163, 0.16578364, -3.5457501, 4.724404, -2.9834762, -3.5457501, -4.7244163, 0.46518278, -3.5065255, -4.7244163, 1.0829802, -3.4252234, 1.0358863, 0.046548128, -3.7447264, -4.7244163, 0.16578364, 3.541086, 4.724404, -2.9834762, 3.541086, 4.723479, 0.16578364, -3.5457501, 4.724404, 0.46518278, -3.5065255, -4.7244163, 1.937283, -3.0714877, 4.724404, 1.0829802, -3.4252234, -4.7244163, 1.0829802, 3.4198458, 4.723479, 0.16578364, 3.541086, 4.724404, 0.42063332, 3.5068533, -4.7244163, 2.6710405, -2.508078, 4.724404, 1.937283, -3.0714877, -4.7244163, 1.937283, 3.0661104, 4.724404, 1.0829802, 3.4198458, -4.7244163, 3.2344613, -1.7742194, 4.724404, 2.6710405, -2.508078, -4.7244163, 2.6710405, 2.5027006, 4.724404, 1.937283, 3.0661104, -4.7244163, 3.5882368, -0.9198339, 4.724404, 3.2344613, -1.7742194, -4.7244163, 3.2344613, 1.768842, 4.724404, 2.6710405, 2.5027006, -4.7244163, 3.7094378, -0.0026886463, 4.724404, 3.5882368, -0.9198339, -4.7244163, 3.5882368, 0.9144566, 4.724404, 3.2344613, 1.768842, 4.724404, 3.7094378, -0.0026886463, 4.724404, 3.5882368, 0.9144566)
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4gg2"]
+size = Vector3(20.584534, 19.79361, 17.565674)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2dxt"]
 resource_name = "Material.020"
@@ -1543,8 +1543,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_huwki")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iawy3"]
-points = PackedVector3Array(-0.08373605, -0.0021684708, -0.10398096, -0.08373605, -0.0021684708, 0.02395524, -0.08373605, 0.0017682279, -0.10398096, 0.09341772, -0.0021684708, -0.10398096, -0.08373605, 0.0017682279, 0.02395524, -0.07588304, -0.0021684708, 0.13812137, 0.020578653, 0.0037510816, 0.1322199, 0.020578653, 0.00336551, 0.049551964, 0.07961932, 0.0036193344, 0.049551964, 0.09341772, 0.0017682279, -0.10398096, 0.24106707, -0.0021684708, -0.071511045, -0.07588304, 0.0017682279, 0.13812137, -0.0050151646, -0.0021684708, 0.13812137, 0.07961932, 0.0040055104, 0.1322199, 0.24106707, 0.0017682279, -0.071511045, 0.24106707, -0.0021684708, 0.10565145, -0.0050151646, 0.0017682279, 0.13812137, 0.07961932, -0.00097368215, 0.1322199, 0.24106707, 0.0017682279, 0.10565145)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2emdh"]
+size = Vector3(0.51226807, 0.12231445, 0.9490967)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4l11y"]
 resource_name = "Material.001"
@@ -1602,8 +1602,8 @@ albedo_texture = SubResource("NoiseTexture2D_3p3ts")
 metallic_specular = 0.0
 refraction_texture = SubResource("NoiseTexture2D_osf3r")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rqxgg"]
-points = PackedVector3Array(-5.2309847, -1.2784841, -8.117102, 5.181714, 1.2611983, 8.130503, 5.064437, -1.0015353, 7.9475074, 5.181714, 1.2611983, -8.117102, -5.2309847, 1.2611983, 8.130503, -5.2309847, 1.2611983, -8.117102, -5.2309847, -1.2784841, 8.130503, 4.165518, -1.2784841, -8.117102, 4.165518, -1.2784841, 8.130503, 5.0638065, -1.0014124, -7.933123)
+[sub_resource type="BoxShape3D" id="BoxShape3D_betw8"]
+size = Vector3(17.82605, 44.574615, 20.572998)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioqme"]
 resource_name = "Piso_casa_01"
@@ -1773,8 +1773,8 @@ albedo_color = Color(0.3080563, 0.3102761, 0.22984889, 1)
 albedo_texture = SubResource("NoiseTexture2D_omvsm")
 metallic_specular = 0.0
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_of0uw"]
-points = PackedVector3Array(0.5573526, -0.94658464, -0.56810206, -1.7510934, 1.9195263, -0.252215, 0.962508, 0.89994895, -0.05862683, -0.003094082, -0.47108567, 1.0368345, -0.95252746, -0.638021, -0.012417449, -0.007280629, 0.035823517, -1.0952221, 0.07752787, 0.93231887, 0.9238591, 0.8177648, -0.19651996, 0.8080064, 0.63851124, 0.89866906, -0.74449784, -0.8150157, -0.18436915, -0.8178141, -0.76990783, -0.1839582, 0.837347, 0.17968872, -0.9277678, 0.6718497, 1.0014603, -0.562485, -0.058290314, -1.8945547, 1.8716673, -0.061367564, -0.50389355, -0.92090917, -0.6030013, 0.6219931, 1.0266726, 0.617079, 0.82070655, -0.24402198, -0.7899291, -0.5925314, -0.9061909, 0.57171386, 0.040501412, 0.8956566, -0.9658998, -1.8464354, 1.8240932, -0.3000413, -0.0036596449, -0.5150712, -1.0151854, 0.5470496, -0.9308728, 0.5817215, -0.7699628, -0.5419132, 0.7480022, -0.0013995017, -0.1543111, 1.1333048, -0.36788738, 0.92545354, 0.8226005, 0.80010384, 1.0258487, -0.1470604, 1.0985875, -0.24571769, 0.03266919, 0.7312079, 0.8991771, 0.67383957, 0.5777153, 1.0271602, -0.6426898, -1.8464354, 1.8716673, -0.01377012, 0.77009535, -0.559659, -0.74093986, -0.9878512, -0.53229165, 0.12072861)
+[sub_resource type="BoxShape3D" id="BoxShape3D_bah7x"]
+size = Vector3(11.735107, 16.965027, 10.594849)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8iacc"]
 resource_name = "Mesa_casa_01"
@@ -2129,6 +2129,12 @@ vertices = PackedVector3Array(-1.6140349, 0, -2.8080204, -4.617544, 0, -2.788937
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
+[node name="NavigationObstacle3D6" type="NavigationObstacle3D" parent="NavigationRegion3D" groups=["navigation_mesh_source_group"]]
+height = 3.0
+vertices = PackedVector3Array(-1.7504311, 0, -6.1561494, -1.7635857, 0, -4.1931553, -0.6022959, 0, -4.504878, -0.8331143, 0, -6.1479745)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7989624, 0, 2.4634986)
 
@@ -2286,7 +2292,8 @@ text_content = "Niños y mujeres trabajaban sin salario en La Forestal abriendo 
 La empresa sólo reconocía al varón como empleado."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuertasYVentanas/Puerta_001/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_v525p")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06933594, 0.05038452, 0)
+shape = SubResource("BoxShape3D_32thr")
 
 [node name="Puerta_002" type="MeshInstance3D" parent="PuertasYVentanas"]
 transform = Transform3D(-0.8817889, 0, 0.47164404, 0, 1, 0, -0.47164404, 0, -0.8817889, -2.1263855, 1.1035223, 0.8837831)
@@ -2413,7 +2420,8 @@ text_content = "La Forestal imponía su propia moneda de intercambio y no permit
 Eran monedas de cobre de 5, 10 y 50 pesos, también había de intercambio por carne u otra mercadería previo arreglo con el almacenero."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Cajoncito/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_5f8ho")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13104248, 0.767231, 0.10171509)
+shape = SubResource("BoxShape3D_g4gg2")
 
 [node name="Cama" type="MeshInstance3D" parent="Props"]
 transform = Transform3D(1.4577442e-10, 0, 0.0029659143, 0, 0.00351261, 0, -0.002445689, 0, 1.7678227e-10, -4.0272655, 0.0015488284, 3.7995744)
@@ -2501,7 +2509,8 @@ Capturaron rostros, costumbres y paisajes que de otro modo se habrían perdido p
 "
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Cuadros/Cuadros3/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_iawy3")
+transform = Transform3D(1, 1.4210855e-14, 0, 0, 1, 3.5527137e-15, 0, 6.2341243e-12, 1, -0.06460572, 0.009888053, -0.21295184)
+shape = SubResource("BoxShape3D_2emdh")
 
 [node name="Libro" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0130781885, 0.0001657981, -0.021773685, -8.5369495e-05, 0.025399458, 0.00014213042, 0.021774149, 0, 0.013078467, -0.7377428, 0.036896385, 0.7809092)
@@ -2522,7 +2531,8 @@ text_content = "- [s]Llevar a diario el cintillo celeste[/s]
 - [s]Manuel: dejarle la caja[/s]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Libro/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_rqxgg")
+transform = Transform3D(1.0000029, 5.6074256e-08, 0, -4.125759e-07, 1, 4.3259934e-07, -4.7683716e-06, -4.7460667e-08, 1, -0.57719326, 21.78731, 0.48909378)
+shape = SubResource("BoxShape3D_betw8")
 
 [node name="Piso" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.5911417, 0, 0, 0, 4.28927, 0, 0, 0, 5.4107094, -1.0290464, 0, -0.69139063)
@@ -2555,7 +2565,8 @@ text_content = "Los guaraníes descubrieron la yerba mate silvestre y preparaban
 El nombre proviene de “mati”, calabaza en guaraní, que era el recipiente originario de consumo."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mate/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_of0uw")
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, -1.0252724, -4.4234447, -0.47455025)
+shape = SubResource("BoxShape3D_bah7x")
 
 [node name="Mesa" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.99540955, 0, -0.09570676, 0, 1, 0, 0.09570676, 0, 0.99540955, 1.4172679, 0.651379, 1.0859256)
@@ -2700,6 +2711,9 @@ shape = SubResource("ConvexPolygonShape3D_n7by7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, -0.451, -0.004)
 
 [node name="VolumetricFog" type="Node3D" parent="Shading"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.041158915)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Shading/VolumetricFog" groups=["hq_only"]]

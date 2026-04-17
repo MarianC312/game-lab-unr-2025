@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cns8fuoa5meg7"]
+
+[ext_resource type="Shader" uid="uid://v8avm1eu1b0p" path="res://Shaders/sky.gdshader" id="1_aoco0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nrg0r"]
+seed = 38
+frequency = 0.0089
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aoco0"]
+noise = SubResource("FastNoiseLite_nrg0r")
+seamless = true
+in_3d_space = true
+
+[resource]
+shader = ExtResource("1_aoco0")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_aoco0")
+shader_parameter/wind_dir = Vector2(-2, -3.235)
+shader_parameter/speed = 0.001
+shader_parameter/cloud_scale_big = 0.6
+shader_parameter/cloud_scale_detail = 2.5
+shader_parameter/cloud_density = 0.6
+shader_parameter/cloud_softness = 0.4
+shader_parameter/cloud_contrast = 2.0
+shader_parameter/sky_top = Color(0.01, 0.02, 0.05, 1)
+shader_parameter/sky_horizon = Color(0.02817689, 0.04717853, 0.08734917, 1)
+shader_parameter/cloud_color = Color(0.49973744, 0.46077162, 0.52968454, 1)
+shader_parameter/stars_intensity = 0.45
+shader_parameter/stars_density = 0.445
+shader_parameter/stars_twinkle_speed = 40.0
+shader_parameter/stars_twinkle_strength = 0.3
+shader_parameter/stars_twinkle_ratio = 0.5
+shader_parameter/star_size_min = 0.001
+shader_parameter/star_size_max = 0.025
+shader_parameter/sun_size = 0.0
+shader_parameter/sun_softness = 0.0
+shader_parameter/sun_intensity = -1.0
+shader_parameter/sun_color = Color(0, 0, 0, 1)

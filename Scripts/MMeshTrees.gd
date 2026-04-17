@@ -112,61 +112,69 @@ func _generate() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = random_seed
 
-	var transforms_per_mesh: Array = []
-	for i in tree_meshes.size():
-		transforms_per_mesh.append([])
+	var mesh_count := tree_meshes.size()
 
-	var placed := 0
-	var attempts := 0
-	var max_attempts := tree_count * 20
+	# Distribuir tree_count equitativamente entre los meshes.
+	# Si no divide exacto, los sobrantes se reparten uno a uno
+	# desde el primer mesh (ej: 151 árboles / 6 meshes = 25,25,25,25,25,26)
+	var base_per_mesh := tree_count / mesh_count
+	var remainder := tree_count % mesh_count
 
-	while placed < tree_count and attempts < max_attempts:
-		attempts += 1
+	var counts: Array[int] = []
+	for i in mesh_count:
+		counts.append(base_per_mesh + (1 if i < remainder else 0))
 
-		var x := rng.randf_range(-area_size.x * 0.5, area_size.x * 0.5) + area_offset.x
-		var z := rng.randf_range(-area_size.y * 0.5, area_size.y * 0.5) + area_offset.y
+	for mesh_index in mesh_count:
+		var target := counts[mesh_index]
 
-		if exclusion_radius > 0.0 and Vector2(x - exclusion_offset.x, z - exclusion_offset.y).length() < exclusion_radius:
-			continue
+		var transforms: Array[Transform3D] = []
+		var placed := 0
+		var attempts := 0
+		var max_attempts := target * 20
 
-		var y := y_offset + rng.randf_range(-y_random_range * 0.5, y_random_range * 0.5)
+		while placed < target and attempts < max_attempts:
+			attempts += 1
 
-		var s: Vector3
-		if uniform_scale:
-			var sv := rng.randf_range(scale_min, scale_max)
-			s = Vector3(sv, sv, sv)
-		else:
-			s = Vector3(
-				rng.randf_range(scale_min, scale_max),
-				rng.randf_range(scale_min, scale_max),
-				rng.randf_range(scale_min, scale_max)
-			)
+			var x := rng.randf_range(-area_size.x * 0.5, area_size.x * 0.5) + area_offset.x
+			var z := rng.randf_range(-area_size.y * 0.5, area_size.y * 0.5) + area_offset.y
 
-		var rot_y := 0.0
-		if random_rotation_y:
-			rot_y = snappedf(rng.randf_range(0.0, TAU), PI * 0.5) if snap_rotation_90 else rng.randf_range(0.0, TAU)
+			if exclusion_radius > 0.0 and Vector2(x - exclusion_offset.x, z - exclusion_offset.y).length() < exclusion_radius:
+				continue
 
-		var t := Transform3D()
-		t = t.scaled(s)
-		t = t.rotated(Vector3.UP, rot_y)
-		t.origin = Vector3(x, y, z)
+			var y := y_offset + rng.randf_range(-y_random_range * 0.5, y_random_range * 0.5)
 
-		var mesh_index := rng.randi() % tree_meshes.size()
-		transforms_per_mesh[mesh_index].append(t)
-		placed += 1
+			var s: Vector3
+			if uniform_scale:
+				var sv := rng.randf_range(scale_min, scale_max)
+				s = Vector3(sv, sv, sv)
+			else:
+				s = Vector3(
+					rng.randf_range(scale_min, scale_max),
+					rng.randf_range(scale_min, scale_max),
+					rng.randf_range(scale_min, scale_max)
+				)
 
-	for mesh_index in tree_meshes.size():
-		var ts: Array = transforms_per_mesh[mesh_index]
-		if ts.is_empty():
+			var rot_y := 0.0
+			if random_rotation_y:
+				rot_y = snappedf(rng.randf_range(0.0, TAU), PI * 0.5) if snap_rotation_90 else rng.randf_range(0.0, TAU)
+
+			var t := Transform3D()
+			t = t.scaled(s)
+			t = t.rotated(Vector3.UP, rot_y)
+			t.origin = Vector3(x, y, z)
+
+			transforms.append(t)
+			placed += 1
+
+		if transforms.is_empty():
 			continue
 
 		var mm := MultiMesh.new()
 		mm.transform_format = MultiMesh.TRANSFORM_3D
 		mm.mesh = tree_meshes[mesh_index]
-		mm.instance_count = ts.size()
-
-		for i in ts.size():
-			mm.set_instance_transform(i, ts[i])
+		mm.instance_count = transforms.size()
+		for i in transforms.size():
+			mm.set_instance_transform(i, transforms[i])
 
 		var mmi := MultiMeshInstance3D.new()
 		mmi.multimesh = mm
@@ -177,5 +185,7 @@ func _generate() -> void:
 		if Engine.is_editor_hint():
 			mmi.owner = get_tree().edited_scene_root
 
-	if placed < tree_count and Engine.is_editor_hint():
-		push_warning("Arboleda: solo se colocaron %d/%d árboles." % [placed, tree_count])
+		if placed < target and Engine.is_editor_hint():
+			push_warning("Arboleda [Mesh %d]: solo se colocaron %d/%d árboles." % [mesh_index, placed, target])
+
+	set_physics_process(false)

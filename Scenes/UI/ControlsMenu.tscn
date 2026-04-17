@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqagf7wha1au0"]
+[gd_scene load_steps=11 format=3 uid="uid://bqagf7wha1au0"]
 
 [ext_resource type="Script" uid="uid://n33vquwmij0x" path="res://Scripts/UI/ControlsMenu.gd" id="1_x4b4u"]
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="2_at3t3"]
-[ext_resource type="Texture2D" uid="uid://bx1dsekiq5351" path="res://Textures/UI/puntero.png" id="3_at3t3"]
 
 [sub_resource type="Gradient" id="Gradient_238ko"]
 offsets = PackedFloat32Array(0.082539685, 1)
@@ -16,6 +15,33 @@ fill_to = Vector2(1, 0.875)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2bpff"]
 texture = SubResource("GradientTexture2D_ktw36")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4b4u"]
+bg_color = Color(0.83033526, 0.83033514, 0.830335, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.5649616, 0.5649617, 0.5649613, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+shadow_color = Color(0, 0, 0, 0.29411766)
+shadow_size = 4
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_at3t3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x057d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ktw36"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u4f6y"]
 
 [node name="ControlsMenu" type="Control"]
 layout_mode = 3
@@ -37,148 +63,199 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_2bpff")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(220, 0)
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 280.5
-offset_bottom = -280.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 45
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/line_spacing = -25
+theme_override_font_sizes/font_size = 28
+text = "MOVIMIENTO
+"
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 165
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(750, 35)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-theme = ExtResource("2_at3t3")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
-text = "Caminar: click izquierdo en el piso"
-autowrap_mode = 0
-autowrap_trim_flags = 0
+theme_override_font_sizes/font_size = 26
+text = "Caminar"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_at3t3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x057d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktw36")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u4f6y")
+text = "Click Izq."
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 150
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(750, 35)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 6
-theme = ExtResource("2_at3t3")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
-text = "Correr: doble click izquierdo"
-autowrap_mode = 0
-autowrap_trim_flags = 0
+theme_override_font_sizes/font_size = 26
+text = "Correr"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_at3t3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x057d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktw36")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u4f6y")
+text = "Click Izq. x 2"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 12
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(750, 35)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-theme = ExtResource("2_at3t3")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
-text = "Pistas: Click derecho"
-autowrap_mode = 0
-autowrap_trim_flags = 0
+theme_override_constants/line_spacing = -25
+theme_override_font_sizes/font_size = 28
+text = "INTERACCIÓN
+"
+vertical_alignment = 1
+uppercase = true
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_direction = 2
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 150
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer4"]
-custom_minimum_size = Vector2(750, 35)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-theme = ExtResource("2_at3t3")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
-text = "Saltar diálogo: click izquierdo"
-autowrap_mode = 0
-autowrap_trim_flags = 0
+theme_override_font_sizes/font_size = 26
+text = "Interactuar"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_at3t3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x057d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktw36")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u4f6y")
+text = "E"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 150
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer5"]
-custom_minimum_size = Vector2(750, 35)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 6
-theme = ExtResource("2_at3t3")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
-text = "Tecla P: Menú de pausa"
-autowrap_mode = 0
-autowrap_trim_flags = 0
+theme_override_font_sizes/font_size = 26
+text = "Pistas"
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer2"]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_at3t3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x057d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktw36")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u4f6y")
+text = "Click Der."
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
+theme_override_constants/separation = 60
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer6"]
-custom_minimum_size = Vector2(750, 35)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer3"]
 layout_mode = 2
-size_flags_horizontal = 6
-theme = ExtResource("2_at3t3")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
-text = "Tecla C: Menú de controles"
-autowrap_mode = 0
-autowrap_trim_flags = 0
+theme_override_font_sizes/font_size = 26
+text = "Saltar diálogo"
 
-[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer3"]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
-size_flags_vertical = 4
-alignment = 1
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_at3t3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x057d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktw36")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u4f6y")
+text = "Click Der."
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer7"]
-custom_minimum_size = Vector2(750, 35)
-layout_mode = 2
-size_flags_horizontal = 6
-theme = ExtResource("2_at3t3")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
-text = "Tecla J: Abrir cuaderno de anotaciones"
-autowrap_mode = 0
-autowrap_trim_flags = 0
-
-[node name="HBoxContainer8" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer8"]
-custom_minimum_size = Vector2(750, 35)
-layout_mode = 2
-size_flags_horizontal = 6
-theme = ExtResource("2_at3t3")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_icons/horizontal_rule = ExtResource("3_at3t3")
-text = "Tecla E: Interactuar"
-autowrap_mode = 0
-autowrap_trim_flags = 0
-
-[node name="Volver" type="Button" parent="VBoxContainer"]
+[node name="Volver" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -189,5 +266,5 @@ text = "menu_btn_back"
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
 
-[connection signal="mouse_entered" from="VBoxContainer/Volver" to="." method="_on_hover"]
-[connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Volver" to="." method="_on_hover"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Volver" to="." method="_on_volver_pressed"]

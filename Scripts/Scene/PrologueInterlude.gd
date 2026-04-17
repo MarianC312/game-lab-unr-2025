@@ -6,6 +6,9 @@ extends Control
 @onready var animation_player_p1: AnimationPlayer = $AnimationPlayerP1
 @onready var container_p1: Control = $CanvasLayer20/ContainerP1
 @onready var container_p2: Control = $CanvasLayer20/ContainerP2
+@onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
+const CONTINUAR_HACHAZO_2 = preload("res://Sounds/SFX/UI/Seleccionar menu/Continuar hachazo 2.ogg")
+const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.ogg")
 
 func _ready() -> void:
 	# start_dialogue()
@@ -46,10 +49,23 @@ func start_dialogue() -> void:
 func _on_button_01_pressed() -> void:
 	animation_player_p1.speed_scale = 1.0
 	animation_player_p1.play("clearparagraph01")
+	_play_sfx(CONTINUAR_HACHAZO_2)
 	await animation_player_p1.animation_finished
 	_play_second_paragraph()
 
 func _on_button_02_pressed() -> void:
 	animation_player_p1.play("clearparagraph02")
+	_play_sfx(CONTINUAR_HACHAZO_2)
 	await animation_player_p1.animation_finished
 	GameManager.load_new_map("")
+
+func _play_sfx(sfx : Resource) -> void:
+	sfx_stream_player.stream = sfx
+	sfx_stream_player.play()
+
+func _on_hover() -> void:
+	sfx_stream_player.stream = HOVER
+	sfx_stream_player.play()
+
+func _on_button_mouse_entered() -> void:
+	_on_hover()

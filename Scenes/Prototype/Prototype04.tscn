@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cifkgfhho45vn"]
+[gd_scene load_steps=35 format=3 uid="uid://cifkgfhho45vn"]
 
 [ext_resource type="Script" uid="uid://cs1q5ah2qoce1" path="res://Scripts/Scene/Prototype04/Prototype04.gd" id="1_8ei1d"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_0t8de"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://ywl7m0qshqv" path="res://Scripts/Scene/Prototype/Objeto.gd" id="5_k6idn"]
 [ext_resource type="Texture2D" uid="uid://sd5bkhmlaaeq" path="res://Textures/Quebracho.png" id="6_k6idn"]
 [ext_resource type="Texture2D" uid="uid://b2qxk7l1vnvgg" path="res://Textures/hacha.png" id="7_a5eq5"]
-[ext_resource type="Script" uid="uid://1grii64tosog" path="res://Scripts/Worldenvironment/world_environment.gd" id="8_a5eq5"]
+[ext_resource type="Material" uid="uid://cns8fuoa5meg7" path="res://Textures/Prototype03_sky_material_v2.tres" id="8_5g1e4"]
 [ext_resource type="Script" uid="uid://dqhlhhpx3p8k0" path="res://Scripts/MMeshGrass.gd" id="9_75p1r"]
 [ext_resource type="QuadMesh" uid="uid://bausuvo1bopp4" path="res://Models/Yuyos.tres" id="10_5g1e4"]
 [ext_resource type="AudioStream" uid="uid://blt4vak8m8oi0" path="res://Sounds/Music/menu_bg_music_02.ogg" id="11_75p1r"]
@@ -28,32 +28,8 @@ texture = SubResource("GradientTexture2D_eothy")
 [sub_resource type="BoxShape3D" id="BoxShape3D_86wte"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="Gradient" id="Gradient_k6idn"]
-offsets = PackedFloat32Array(0.43165466, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.044939704, 0.04518809, 0.0996478, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_a5eq5"]
-frequency = 0.05
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_86wte"]
-noise = SubResource("FastNoiseLite_a5eq5")
-color_ramp = SubResource("Gradient_k6idn")
-seamless = true
-normalize = false
-
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_75p1r"]
-rayleigh_coefficient = 2.5
-rayleigh_color = Color(0.050980393, 0.105882354, 0.2901961, 1)
-mie_coefficient = 0.015
-mie_eccentricity = 0.9
-mie_color = Color(1, 0.8, 0.26666668, 1)
-turbidity = 6.0
-sun_disk_scale = 0.4
-ground_color = Color(0.23921569, 0.101960786, 0, 1)
-night_sky = SubResource("NoiseTexture2D_86wte")
-
 [sub_resource type="Sky" id="Sky_5g1e4"]
-sky_material = SubResource("PhysicalSkyMaterial_75p1r")
+sky_material = ExtResource("8_5g1e4")
 
 [sub_resource type="Environment" id="Environment_dso7c"]
 background_mode = 2
@@ -323,9 +299,6 @@ process_thread_group = 2
 process_thread_group_order = 0
 process_thread_messages = 0
 environment = SubResource("Environment_dso7c")
-script = ExtResource("8_a5eq5")
-offset = 0.05
-offvel = 0.5
 
 [node name="Shading" type="Node3D" parent="Mundo"]
 
@@ -413,7 +386,7 @@ bus = &"Ambience"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9477684, 0.055386707, 0.31411362, 0, 0.9848077, -0.17364818, -0.31895933, 0.16457826, 0.93336964, 6.1234875, 0.5754409, 30.907928)
 size = 0.05
-far = 80.0
+far = 150.0
 
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0

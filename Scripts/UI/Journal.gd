@@ -162,5 +162,6 @@ func _update_content(photo: Resource, text_content: String, interacted := false)
 		photo_container.texture = photo
 		text_content_label.text = text_content
 	else:
+		photo_container.texture = null
 		print("Debes desbloquear este contenido antes de poder verlo.")
 		text_content_label.text = "Debes desbloquear este contenido antes de poder verlo."

@@ -1,0 +1,14 @@
+[gd_resource type="PhysicalSkyMaterial" load_steps=2 format=3 uid="uid://b36v2qk8pga5s"]
+
+[ext_resource type="Texture2D" uid="uid://b0hiy1ev1kgfa" path="res://Textures/Prototype03_night_sky.tres" id="1_68plg"]
+
+[resource]
+rayleigh_coefficient = 2.5
+rayleigh_color = Color(0.050980393, 0.105882354, 0.2901961, 1)
+mie_coefficient = 0.015
+mie_eccentricity = 0.9
+mie_color = Color(1, 0.8, 0.26666668, 1)
+turbidity = 6.0
+sun_disk_scale = 0.4
+ground_color = Color(0.23921569, 0.101960786, 0, 1)
+night_sky = ExtResource("1_68plg")

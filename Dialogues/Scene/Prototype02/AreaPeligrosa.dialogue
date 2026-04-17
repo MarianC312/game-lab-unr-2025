@@ -1,0 +1,10 @@
+~ start
+if not already_chusmieited:
+	do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+	[center][b]{{ GameManager.get_player_name() }}[/b][/center]
+		Esto se ve [b]peligroso[/b], no debería husmear ahí...
+else:
+	do GameManager.set_balloon_color(GameManager.get_text_color("player"))
+	[center][b]{{ GameManager.get_player_name() }}[/b][/center]
+		Esto se ve [b]peligroso[/b], [[esto no parece buena idea|no vale la pena arriesgarse|mejor no tentar la suerte|algo no me gusta de esto|nope… mejor paso|no me convence para nada]]...
+=> END

@@ -4,7 +4,7 @@ extends WorldEnvironment
 @export var offvel := 0.01
 
 # frecuencia de actualización (menos = más liviano)
-@export var update_interval := 0.1
+@export var update_interval := 0.125
 
 var noise_instance: FastNoiseLite
 var noise_tex: NoiseTexture2D
@@ -25,6 +25,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	offset += delta * offvel
 	_accum += delta
+	
+	if Engine.get_process_frames() % 20 != 0:
+		return
+	
+	print("frame:", Engine.get_process_frames())
 	
 	# solo actualiza cada X tiempo (ej: 10 veces por segundo)
 	if _accum < update_interval:

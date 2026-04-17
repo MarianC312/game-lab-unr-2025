@@ -115,3 +115,5 @@ func _distribute() -> void:
 
 	if transforms.size() < instance_count:
 		push_warning("MultiMeshDistributor: solo se colocaron %d/%d instancias (zona de exclusión muy grande?)." % [transforms.size(), instance_count])
+		
+	set_physics_process(false)

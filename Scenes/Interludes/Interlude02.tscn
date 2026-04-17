@@ -1802,5 +1802,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_l1isa")
 }
 
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="CanvasLayer20/ContainerP2/VBoxContainer/MarginContainer/Button02" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer20/ContainerP2/VBoxContainer/MarginContainer/Button02" to="." method="_on_button_02_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer20/ContainerP1/VBoxContainer/MarginContainer/Button01" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer20/ContainerP1/VBoxContainer/MarginContainer/Button01" to="." method="_on_button_01_pressed"]

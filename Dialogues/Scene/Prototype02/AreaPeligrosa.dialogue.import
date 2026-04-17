@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ck8vray7fl6tx"
+path="res://.godot/imported/AreaPeligrosa.dialogue-f942dae65ed25bd905df5549f43161a2.tres"
+
+[deps]
+
+source_file="res://Dialogues/Scene/Prototype02/AreaPeligrosa.dialogue"
+dest_files=["res://.godot/imported/AreaPeligrosa.dialogue-f942dae65ed25bd905df5549f43161a2.tres"]
+
+[params]
+
+defaults=true
