@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://dkp53ary6lvah"]
+[gd_scene load_steps=77 format=4 uid="uid://dkp53ary6lvah"]
 
 [ext_resource type="Script" uid="uid://c2k3xdanb5thv" path="res://Scripts/Player/Player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://bickw7f30y52t" path="res://Textures/Player/PaisanaSkin.png" id="2_h54ih"]
@@ -7637,13 +7637,21 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_io2mu"]
 material = SubResource("StandardMaterial3D_i2g7t")
 
-[sub_resource type="InputEventKey" id="InputEventKey_ude3g"]
+[sub_resource type="InputEventKey" id="InputEventKey_8cj01"]
 device = -1
 keycode = 69
 unicode = 101
 
-[sub_resource type="Shortcut" id="Shortcut_jmcll"]
-events = [SubResource("InputEventKey_ude3g")]
+[sub_resource type="Shortcut" id="Shortcut_i2g7t"]
+events = [SubResource("InputEventKey_8cj01")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_i2g7t"]
+device = -1
+keycode = 81
+unicode = 113
+
+[sub_resource type="Shortcut" id="Shortcut_io2mu"]
+events = [SubResource("InputEventKey_i2g7t")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_0objx"]
 device = -1
@@ -8110,8 +8118,15 @@ alignment = 2
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme = ExtResource("4_ude3g")
-shortcut = SubResource("Shortcut_jmcll")
+shortcut = SubResource("Shortcut_i2g7t")
 text = "[ E ]"
+
+[node name="CluesButton" type="Button" parent="CanvasLayer5/UI/HFlowContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_ude3g")
+shortcut = SubResource("Shortcut_io2mu")
+text = "[ Q ]"
 
 [node name="JournalButton" type="Button" parent="CanvasLayer5/UI/HFlowContainer"]
 visible = false
@@ -8177,6 +8192,8 @@ bus = &"SFX"
 
 [connection signal="mouse_entered" from="CanvasLayer5/UI/HFlowContainer/InteractButton" to="." method="_on_hover"]
 [connection signal="pressed" from="CanvasLayer5/UI/HFlowContainer/InteractButton" to="." method="_on_interact_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer5/UI/HFlowContainer/CluesButton" to="." method="_on_hover"]
+[connection signal="pressed" from="CanvasLayer5/UI/HFlowContainer/CluesButton" to="." method="_on_clues_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer5/UI/HFlowContainer/JournalButton" to="." method="_on_hover"]
 [connection signal="pressed" from="CanvasLayer5/UI/HFlowContainer/JournalButton" to="." method="_on_journal_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer5/UI/HFlowContainer2/PauseButton" to="." method="_on_hover"]

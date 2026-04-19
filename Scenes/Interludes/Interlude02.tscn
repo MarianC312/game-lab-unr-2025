@@ -1544,10 +1544,14 @@ dialogue = ExtResource("2_5tvnj")
 [node name="CanvasLayer20" type="CanvasLayer" parent="."]
 layer = 20
 
-[node name="Interlude02Bgimage" type="Sprite2D" parent="CanvasLayer20"]
-position = Vector2(574, 281)
-scale = Vector2(1.5178674, 1.5178677)
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer20"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_5tvnj")
+expand_mode = 5
 
 [node name="Panel" type="Panel" parent="CanvasLayer20"]
 anchors_preset = 15

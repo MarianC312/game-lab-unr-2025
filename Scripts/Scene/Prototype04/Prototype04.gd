@@ -22,6 +22,8 @@ func _ready() -> void:
 	player = get_tree().get_nodes_in_group("Player")
 	for interactable in get_tree().get_nodes_in_group("Interactable"):
 		SceneManagerMap04.set_interactable(interactable)
+		var interactable_name = interactable.get_object_name() if interactable.has_method("get_object_name") else interactable.get_npc_name()
+		SceneManagerMap04._register_interaction(interactable_name)
 	emit_signal("map_ready")
 	SceneManagerMap04._get_interactables_names()
 	print("Mapa listo!")

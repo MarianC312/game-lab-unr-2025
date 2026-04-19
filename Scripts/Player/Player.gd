@@ -137,17 +137,7 @@ func _input(event: InputEvent) -> void:
 		_handle_click()
 	
 	if event.is_action_pressed("right_click"):
-		_clear_movement()
-		# rotación cámara
-		if can_glow_interactables:
-			can_glow_interactables = false
-			interactable_item_list = get_tree().get_nodes_in_group("Interactable")
-			if interactable_item_list.size() > 0:
-				for interactable in interactable_item_list:
-					if interactable.has_method("_glow"):
-						interactable.call("_glow", true)
-					elif interactable.has_method("_glow"):
-						interactable.call("_glow", true)
+		_handle_right_click()
 
 func _handle_click() -> void:
 	var ui_clicked = get_viewport().gui_get_hovered_control()
@@ -220,6 +210,19 @@ func _handle_click() -> void:
 		has_target = true
 	else:
 		print("No hit")
+
+func _handle_right_click() -> void:
+	_clear_movement()
+	# rotación cámara
+	if can_glow_interactables:
+		can_glow_interactables = false
+		interactable_item_list = get_tree().get_nodes_in_group("Interactable")
+		if interactable_item_list.size() > 0:
+			for interactable in interactable_item_list:
+				if interactable.has_method("_glow"):
+					interactable.call("_glow", true)
+				elif interactable.has_method("_glow"):
+					interactable.call("_glow", true)
 
 func get_mouse_dir() -> Vector3:
 	var cam := get_viewport().get_camera_3d()
@@ -871,3 +874,9 @@ func _handle_hover() -> void:
 
 func set_first_dialogue_state() -> void:
 	is_first_dialogue_done = true
+	await get_tree().create_timer(.75).timeout
+	_on_controls_button_pressed()
+
+
+func _on_clues_button_pressed() -> void:
+	_handle_right_click()

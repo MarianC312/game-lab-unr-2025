@@ -1545,10 +1545,16 @@ dialogue = ExtResource("2_munh3")
 [node name="CanvasLayer20" type="CanvasLayer" parent="."]
 layer = 20
 
-[node name="PrologueBgimage" type="Sprite2D" parent="CanvasLayer20"]
-position = Vector2(576, -135)
-scale = Vector2(2.0998168, 2.0998168)
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer20"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -902.384
+offset_bottom = 17.264465
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_86wtw")
+expand_mode = 5
 
 [node name="Panel" type="Panel" parent="CanvasLayer20"]
 anchors_preset = 15
@@ -1782,7 +1788,7 @@ theme_override_constants/outline_size = 1
 theme_override_fonts/normal_font = ExtResource("5_nv56c")
 theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
-text = "ingleses, franceses y alemanes, la forestal."
+text = "ingleses, franceses y alemanes, La Forestal."
 scroll_active = false
 horizontal_alignment = 1
 

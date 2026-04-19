@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cs1q5ah2qoce1" path="res://Scripts/Scene/Prototype04/Prototype04.gd" id="1_8ei1d"]
 [ext_resource type="FontFile" uid="uid://bnaqtadcgaen8" path="res://Base/Fonts/Caveat-VariableFont_wght.ttf" id="2_0t8de"]
-[ext_resource type="FontFile" uid="uid://dpc4p18b1pqep" path="res://Base/Fonts/SpecialElite-Regular.ttf" id="3_0t8de"]
+[ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="3_75p1r"]
 [ext_resource type="PackedScene" uid="uid://fbg1kvyrik1h" path="res://Scenes/Assets/Forestal.tscn" id="3_qte2i"]
 [ext_resource type="Script" uid="uid://ywl7m0qshqv" path="res://Scripts/Scene/Prototype/Objeto.gd" id="5_k6idn"]
 [ext_resource type="Texture2D" uid="uid://sd5bkhmlaaeq" path="res://Textures/Quebracho.png" id="6_k6idn"]
@@ -230,28 +230,26 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_uvvlf")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/CanvasLayer15"]
+[node name="RichTextLabel" type="Label" parent="UI/CanvasLayer15"]
 custom_minimum_size = Vector2(450, 200)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -225.0
+offset_top = -100.0
+offset_right = 225.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_fonts/normal_font = ExtResource("3_0t8de")
-theme_override_font_sizes/normal_font_size = 26
-text = "Escenario final en desarrollo...
-¡Gracias por probar el juego!
+theme = ExtResource("3_75p1r")
+theme_override_font_sizes/font_size = 26
+text = "¡Gracias por probar el juego!
 
-Equipo 5: Ecos del Monte
-UNR GameLab 2025/2026"
+Equipo Ecos del Monte
+UNR GameLab 2025"
 horizontal_alignment = 1
 
 [node name="MinigameLayer" type="CanvasLayer" parent="UI" groups=["minigame_layer"]]
@@ -272,7 +270,7 @@ transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 0.9999994, 3.9580517, 0.
 script = ExtResource("5_k6idn")
 object_name = "14. Quebracho"
 required = false
-map = "Mapa03"
+map = "Mapa04"
 photo = ExtResource("6_k6idn")
 text_content = "Quebracho es el nombre colonial español, quiebra hacha. En qom es naalá y en wichi es sachaj. Nativo del noroeste argentino y presente en Bolivia, Paraguay y Brasil, crece en bosques densos. Fue explotado por su tanino y madera, dejando los montes vulnerables. Los obreros lo pelaban a mano hasta el centro rojo, el oro rojo."
 should_highlight = false
@@ -286,7 +284,7 @@ shape = SubResource("BoxShape3D_86wte")
 script = ExtResource("5_k6idn")
 object_name = "15. Hacha"
 required = false
-map = "Mapa03"
+map = "Mapa04"
 photo = ExtResource("7_a5eq5")
 text_content = "El hacha, reforzada y de acero grueso, tenía cabo fuerte por la dureza del quebracho. Dos o tres hacheros tardaban 2 horas en talarlo y hasta día y medio en llegar al corazón rojo. Niños y mujeres abrían camino entre matorrales y telas de arañas; no cobraban salario."
 should_highlight = false
@@ -385,6 +383,7 @@ bus = &"Ambience"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9477684, 0.055386707, 0.31411362, 0, 0.9848077, -0.17364818, -0.31895933, 0.16457826, 0.93336964, 6.1234875, 0.5754409, 30.907928)
+current = true
 size = 0.05
 far = 150.0
 

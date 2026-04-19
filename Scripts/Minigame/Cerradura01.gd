@@ -6,6 +6,7 @@ extends Control
 
 @export var mouse_sens := 0.00075
 @export var max_angle := 180
+@export var unlock_tolerance := 0.15
 
 signal completed(success : bool)
 
@@ -43,7 +44,7 @@ func _process(_delta: float) -> void:
 	pivot.rotation = deg_to_rad(angle)
 
 func try_unlock():
-	if abs(pick_position - unlock_spot) < 0.05:
+	if abs(pick_position - unlock_spot) < unlock_tolerance:
 		_play_sfx(DESTRABAR_CERRADURA_2)
 		is_locked = false
 		animation_player.play("unlock")

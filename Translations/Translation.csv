@@ -28,3 +28,15 @@ menu_options_text_quality,Calidad,Quality
 menu_options_text_quality_op1,Alta,High
 menu_options_text_quality_op2,Media,Medium
 menu_options_text_quality_op3,Baja,Low
+controls_text,Controles,Controls
+controls_movement_text,MOVIMIENTO,MOVEMENT
+controls_interaction_text,INTERACCIÓN,INTERACTION
+controls_menu_text,MENÚES,MENU
+controls_movement_text_01,Caminar,Walk
+controls_movement_text_02,Correr,Run
+controls_interaction_text_01,Saltar diálogo,Skip dialogue
+controls_interaction_text_02,Pistas,Clues
+controls_interaction_text_03,Interactuar,Interact
+controls_menu_text_01,Pausa,Pause
+controls_menu_text_02,Controles,Controls
+controls_menu_text_03,Cuaderno,Journal

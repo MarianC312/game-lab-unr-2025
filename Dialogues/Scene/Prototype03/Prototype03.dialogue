@@ -44,7 +44,8 @@ do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 	Gracias, mi familia las necesita.
 do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
 [center][b]BANDOLERO[/b][/center]
-	Buena suerte con tu búsqueda. Sé valiente y que no corrompan tu alma. Te pareces a Martina Chapanay, una rebelde de corazón. Ten para que te guíe.
+	Buena suerte con tu búsqueda. Sé valiente y que no corrompan tu alma. 
+	Te pareces a Martina Chapanay, una rebelde de corazón. Ten para que te guíe.
 	[pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]Recibes un brazalete huarpe.[/color][/i][/pulse]
 if not SceneManagerMap03._already_interacted("14. Brazalete HUARPE"):
 	do SceneManagerMap03._register_interaction("14. Brazalete HUARPE")
@@ -55,7 +56,8 @@ do GameManager.set_balloon_color(GameManager.get_text_color("bandolero"))
 do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 [center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	[pulse freq=1.0 ease=-2.0][i][color={{GameManager.get_text_color()}}]El bandolero se aleja por el camino en su caballo[/color][/i][/pulse]
-do GameManager.load_new_map("")
+- Continuar hacia La Forestal => loadmap
+- Ver cuaderno => loadjournal
 => END!
 
 ~ rechazar_monedas
@@ -86,5 +88,16 @@ if not SceneManagerMap03._already_interacted("13. Juan Moreira"):
 do GameManager.set_balloon_color(GameManager.get_text_color("player"))
 [center][b]{{ GameManager.get_player_name() }}[/b][/center]
 	[i][color={{GameManager.get_text_color("player") + "D5"}}]... Ese gaucho me hizo acordar a Juan Moreira de los folletines que leen mamá y papá. Debo continuar mi camino. Siguiendo las vías voy a llegar a La Forestal.[/color][/i]
+- Continuar hacia La Forestal => loadmap
+- Ver cuaderno => loadjournal
+=> END!
+
+~ loadjournal
+do GameManager._toggle_journal()
+- Continuar hacia La Forestal => loadmap
+- Ver cuaderno => loadjournal
+=> END!
+
+~ loadmap
 do GameManager.load_new_map("")
 => END!

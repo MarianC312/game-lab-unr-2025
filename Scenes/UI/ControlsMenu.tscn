@@ -1,7 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqagf7wha1au0"]
+[gd_scene load_steps=12 format=3 uid="uid://bqagf7wha1au0"]
 
 [ext_resource type="Script" uid="uid://n33vquwmij0x" path="res://Scripts/UI/ControlsMenu.gd" id="1_x4b4u"]
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="2_at3t3"]
+[ext_resource type="Texture2D" uid="uid://b6cknekuuoegu" path="res://Textures/tap_on_screen.png" id="3_at3t3"]
+[ext_resource type="Texture2D" uid="uid://upg86wbvw8a2" path="res://Textures/left_click.png" id="3_x057d"]
+[ext_resource type="Texture2D" uid="uid://difdeybsafpns" path="res://Textures/tap_on_screen_x2.png" id="4_x057d"]
+[ext_resource type="Texture2D" uid="uid://cqd66d4xs6jmg" path="res://Textures/left_click_x2.png" id="5_u4f6y"]
+[ext_resource type="Texture2D" uid="uid://cfpyoj805e6rb" path="res://Textures/right_click.png" id="7_lmbnm"]
 
 [sub_resource type="Gradient" id="Gradient_238ko"]
 offsets = PackedFloat32Array(0.082539685, 1)
@@ -20,17 +25,17 @@ texture = SubResource("GradientTexture2D_ktw36")
 bg_color = Color(0.83033526, 0.83033514, 0.830335, 1)
 border_width_left = 2
 border_width_top = 2
-border_width_right = 4
-border_width_bottom = 4
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(0.5649616, 0.5649617, 0.5649613, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
 shadow_color = Color(0, 0, 0, 0.29411766)
 shadow_size = 4
 shadow_offset = Vector2(2, 2)
@@ -65,54 +70,186 @@ grow_vertical = 2
 theme_override_constants/margin_top = 45
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 8
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
+theme = ExtResource("2_at3t3")
 theme_override_constants/line_spacing = -25
 theme_override_font_sizes/font_size = 28
-text = "MOVIMIENTO
-"
-horizontal_alignment = 1
+text = "controls_movement_text"
 vertical_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme_override_constants/separation = 75
+size_flags_horizontal = 8
+theme_override_constants/separation = 12
+alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(350, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_constants/separation = 60
+theme_override_constants/separation = 90
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme = ExtResource("2_at3t3")
 theme_override_font_sizes/font_size = 26
-text = "Caminar"
+text = "controls_movement_text_01"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer"]
-custom_minimum_size = Vector2(35, 35)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="LeftClick" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer/VBoxContainer2"]
+position = Vector2(55, 15)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_x057d")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="TapOnScreen" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer/VBoxContainer3"]
+position = Vector2(66, 18)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_at3t3")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 90
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/font_size = 26
+text = "controls_movement_text_02"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="LeftClick" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer/VBoxContainer2"]
+position = Vector2(55, 18)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_u4f6y")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="TapOnScreenX2" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer/VBoxContainer3"]
+position = Vector2(66, 20)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_x057d")
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme = ExtResource("2_at3t3")
+theme_override_constants/line_spacing = -25
+theme_override_font_sizes/font_size = 28
+text = "controls_interaction_text"
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 90
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/font_size = 26
+text = "controls_interaction_text_01"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="LeftClick" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer/VBoxContainer2"]
+position = Vector2(55, 15)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_x057d")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer/VBoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
@@ -120,144 +257,88 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
 text = "Click Izq."
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(350, 0)
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_constants/separation = 60
+theme_override_constants/separation = 90
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme = ExtResource("2_at3t3")
 theme_override_font_sizes/font_size = 26
-text = "Correr"
-horizontal_alignment = 2
+text = "controls_interaction_text_02"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2"]
-custom_minimum_size = Vector2(35, 35)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
-theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
-text = "Click Izq. x 2"
+theme_override_constants/separation = -16
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="LeftClick" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer/VBoxContainer2"]
+position = Vector2(61, 15)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_lmbnm")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0.31764707, 0.32156864, 0.32941177, 1)
-theme_override_constants/line_spacing = -25
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 28
-text = "INTERACCIÓN
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="HBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-layout_direction = 2
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/separation = 32
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-theme_override_constants/separation = 75
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/separation = 129
-alignment = 1
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer3"]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 26
-text = "Saltar diálogo"
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer3"]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
 theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
-text = "Click Izq."
+text = "Q"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4"]
-custom_minimum_size = Vector2(350, 0)
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_constants/separation = 60
+theme_override_constants/separation = 90
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer3/VBoxContainer"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme = ExtResource("2_at3t3")
 theme_override_font_sizes/font_size = 26
-text = "Pistas"
-horizontal_alignment = 2
+text = "controls_interaction_text_03"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer2"]
-custom_minimum_size = Vector2(35, 35)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer3"]
 layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer3/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
-theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
-text = "Click Der."
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/separation = 125
-alignment = 1
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer"]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 26
-text = "Interactuar"
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer3/HBoxContainer"]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
-theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
@@ -265,60 +346,83 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
 text = "E"
 
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer3/HBoxContainer3/HBoxContainer/VBoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
+text = "E"
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 8
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0.31764707, 0.32156864, 0.32941177, 1)
+theme = ExtResource("2_at3t3")
 theme_override_constants/line_spacing = -25
-theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 28
-text = "MENÚES"
-horizontal_alignment = 1
+text = "controls_menu_text"
 vertical_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
-layout_direction = 2
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/separation = 32
+theme_override_constants/separation = 12
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-theme_override_constants/separation = 75
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_constants/separation = 125
+theme_override_constants/separation = 90
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme = ExtResource("2_at3t3")
 theme_override_font_sizes/font_size = 26
-text = "Pausa"
+text = "controls_menu_text_01"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer"]
-custom_minimum_size = Vector2(35, 35)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
@@ -326,27 +430,58 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
 text = "P"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4"]
-custom_minimum_size = Vector2(350, 0)
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer/VBoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
+text = "P"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_constants/separation = 60
+theme_override_constants/separation = 90
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+theme = ExtResource("2_at3t3")
 theme_override_font_sizes/font_size = 26
-text = "Controles"
-horizontal_alignment = 2
+text = "controls_menu_text_02"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer4/HBoxContainer2"]
-custom_minimum_size = Vector2(35, 35)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer2"]
 layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
@@ -354,26 +489,58 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
 text = "C"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(350, 0)
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/separation = 125
-alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer3"]
-custom_minimum_size = Vector2(180, 0)
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer2/HBoxContainer/VBoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
-text = "Cuaderno"
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/HBoxContainer3"]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
 theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
+text = "C"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 90
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/font_size = 26
+text = "controls_menu_text_03"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer3/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
@@ -381,16 +548,62 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
 theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
 text = "J"
 
-[node name="Volver" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 75)
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer5/VBoxContainer/VBoxContainer3/HBoxContainer3/HBoxContainer/VBoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.46229136, 0.46229023, 0.46229064, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4b4u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x4b4u")
+text = "J"
+
+[node name="Volver" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -97.0
+offset_right = 322.0
+offset_bottom = -22.0
+grow_vertical = 0
 size_flags_horizontal = 4
 theme = ExtResource("2_at3t3")
 theme_override_font_sizes/font_size = 32
 text = "menu_btn_back"
 
+[node name="TextLoading" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9852431
+anchor_top = 0.9768519
+anchor_right = 0.9852431
+anchor_bottom = 0.9768519
+offset_left = -515.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_at3t3")
+theme_override_font_sizes/font_size = 48
+text = "controls_text"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_direction = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
 
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Volver" to="." method="_on_hover"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Volver" to="." method="_on_volver_pressed"]
+[connection signal="mouse_entered" from="Volver" to="." method="_on_hover"]
+[connection signal="pressed" from="Volver" to="." method="_on_volver_pressed"]

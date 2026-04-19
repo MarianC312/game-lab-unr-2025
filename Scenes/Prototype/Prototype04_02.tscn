@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2077bhxn2e54"]
+
+[ext_resource type="Script" uid="uid://cs1q5ah2qoce1" path="res://Scripts/Scene/Prototype04/Prototype04.gd" id="1_q6ryq"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_rav77"]
+file = "res://Base/output.ogv"
+
+[node name="Prototype04_02" type="Node3D"]
+script = ExtResource("1_q6ryq")
+metadata/_edit_group_ = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 1344.0
+offset_bottom = 756.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+stream = SubResource("VideoStreamTheora_rav77")
+autoplay = true

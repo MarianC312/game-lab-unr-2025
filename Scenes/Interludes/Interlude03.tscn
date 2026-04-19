@@ -1545,10 +1545,14 @@ dialogue = ExtResource("2_q7nws")
 [node name="CanvasLayer20" type="CanvasLayer" parent="."]
 layer = 20
 
-[node name="Interlude02Bgimage" type="Sprite2D" parent="CanvasLayer20"]
-position = Vector2(576.00006, 325)
-scale = Vector2(1.135998, 1.1359984)
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer20"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_q7nws")
+expand_mode = 5
 
 [node name="Panel" type="Panel" parent="CanvasLayer20"]
 anchors_preset = 15
@@ -1597,7 +1601,7 @@ theme_override_constants/outline_size = 1
 theme_override_fonts/normal_font = ExtResource("5_csp7e")
 theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
-text = "La forestal tenía 400km de vías propias hasta chaco, de uso exclusivo"
+text = "La Forestal tenía 400km de vías propias hasta Chaco, de uso exclusivo"
 scroll_active = false
 horizontal_alignment = 1
 
@@ -1615,7 +1619,7 @@ theme_override_constants/outline_size = 1
 theme_override_fonts/normal_font = ExtResource("5_csp7e")
 theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
-text = "por atravesar sus tierras: un \"estado dentro del estado\"."
+text = "por atravesar sus tierras: un \"Estado dentro del Estado\"."
 scroll_active = false
 horizontal_alignment = 1
 

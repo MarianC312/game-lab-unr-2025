@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3oqoxwbrcl47"
-path="res://.godot/imported/fondo arreglado.png-4f44a97eff0919577bd9872976a97666.ctex"
+uid="uid://upg86wbvw8a2"
+path="res://.godot/imported/left_click.png-b72f1bb5a4bdcf73e4d1dd645a9fa9d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Screenshots/fondo arreglado.png"
-dest_files=["res://.godot/imported/fondo arreglado.png-4f44a97eff0919577bd9872976a97666.ctex"]
+source_file="res://Textures/left_click.png"
+dest_files=["res://.godot/imported/left_click.png-b72f1bb5a4bdcf73e4d1dd645a9fa9d5.ctex"]
 
 [params]
 

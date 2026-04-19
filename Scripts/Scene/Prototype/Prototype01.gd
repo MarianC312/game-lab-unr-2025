@@ -18,6 +18,7 @@ func _ready() -> void:
 	for interactable in get_tree().get_nodes_in_group("Interactable"):
 		SceneManagerMap01.set_interactable(interactable)
 	emit_signal("map_ready")
+	
 	print("Mapa listo!")
 
 func _process(_delta: float) -> void:
