@@ -194,6 +194,7 @@ draw_pass_1 = SubResource("SphereMesh_22wq2")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_kg7t3")
 bus = &"Ambience"
+parameters/looping = true
 
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0

@@ -9,7 +9,7 @@ var show_all_interacts := false # false
 var game_scene_flow := {
 	#"Test":
 		#{
-			#"res": "res://Scenes/Prototype/Prototype02.tscn",
+			#"res": "res://Scenes/Prototype/Prototype03.tscn",
 			#"status": false,
 			#"loadDialogue": false,
 			#"playable": true,

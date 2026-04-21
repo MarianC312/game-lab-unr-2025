@@ -178,6 +178,7 @@ texel_scale = 0.35
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ww1bx")
 bus = &"Ambience"
+parameters/looping = true
 
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0

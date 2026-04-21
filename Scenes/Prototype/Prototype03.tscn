@@ -1453,6 +1453,7 @@ stream = ExtResource("13_uf1bb")
 volume_db = -7.5
 autoplay = true
 bus = &"Ambience"
+parameters/looping = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.371139e-08, -0.05233596, 0.9986295, 0, 0.9986295, 0.05233596, -1, 2.2876774e-09, -4.3651482e-08, 26.305, 1.25, 0)

@@ -164,6 +164,7 @@ visible = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_6487p")
 bus = &"Music"
+parameters/looping = true
 
 [node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"

@@ -380,6 +380,7 @@ mesh = ExtResource("10_5g1e4")
 stream = ExtResource("11_75p1r")
 autoplay = true
 bus = &"Ambience"
+parameters/looping = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9477684, 0.055386707, 0.31411362, 0, 0.9848077, -0.17364818, -0.31895933, 0.16457826, 0.93336964, 6.1234875, 0.5754409, 30.907928)
