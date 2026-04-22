@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnssbo807u3pw"]
+
+[ext_resource type="Texture2D" uid="uid://bwinfup51mmjc" path="res://Textures/Screenshots/foto_bar_04.png" id="1_eg3jt"]
+[ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="1_habdp"]
+[ext_resource type="Script" uid="uid://8c2an5cp5thw" path="res://Scripts/UI/Credits.gd" id="1_u63pf"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u63pf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_eg3jt")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -772.0
+offset_top = 13.0
+offset_right = -22.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(560, 620)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_habdp")
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+bbcode_enabled = true
+text = "[font s=\"28 px\"  emb=1]Créditos[/font]
+
+[b]Mentores[/b]
+Gastón Flores, Cecilia Verino, Manuel Sanchez, Angelina Perotti, por la orientación, el tiempo y la confianza depositada en este proyecto desde el primer GDD hasta el prototipo final.
+
+[b]Compañeros y compañeras[/b]
+Por el trabajo en equipo, las ideas compartidas y el esfuerzo colectivo que hizo posible cada mapa, ítem y línea de código.
+
+[b]Universidad Nacional de Rosario[/b]
+Por el espacio, las herramientas, el equipo de trabajo y la formación que permitieron convertir una idea en un videojuego con identidad propia.
+
+Por estar presentes y hacer que esta historia sobre La Forestal y sus hacheros encuentre a quien quiera escucharla.
+
+[font s=\"28 px\"  emb=1]Licencias[/font]
+
+[b]\"Player Model\"[/b] by Damazo26, [url=https://sketchfab.com/3d-models/cazador-86370dc3ba39490d9ab0388586965b5a]SketchFab[/url], CC BY 4.0
+[b]Modified[/b]"
+fit_content = true
+horizontal_alignment = 2
+vertical_alignment = 1
+justification_flags = 233
+
+[node name="Volver" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -64.0
+offset_right = 248.0
+offset_bottom = -15.0
+grow_vertical = 0
+theme = ExtResource("1_habdp")
+theme_override_font_sizes/font_size = 32
+text = "menu_btn_back"
+
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[connection signal="pressed" from="Volver" to="." method="_on_volver_pressed"]

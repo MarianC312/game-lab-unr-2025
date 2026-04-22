@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://kei4fk24oicn"]
+[gd_scene load_steps=10 format=3 uid="uid://kei4fk24oicn"]
 
 [ext_resource type="Script" uid="uid://pbkn4u2sgrgk" path="res://Scripts/UI/Menu.gd" id="1_5cock"]
 [ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="2_6487p"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cu711dkfvtjjj" path="res://Scenes/Prototype/Prototype01.tscn" id="3_6487p"]
 [ext_resource type="FontFile" uid="uid://bbum0t01os8q3" path="res://Base/Fonts/Thicker Destroy.ttf" id="4_3hayu"]
 [ext_resource type="AudioStream" uid="uid://blt4vak8m8oi0" path="res://Sounds/Music/menu_bg_music_02.ogg" id="7_6487p"]
+[ext_resource type="PackedScene" uid="uid://dnssbo807u3pw" path="res://Scenes/UI/Credits.tscn" id="7_v3kjt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6sq0"]
 bg_color = Color(0.34509805, 0.17254902, 0.043137256, 1)
@@ -158,7 +159,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_s6sq0")
 
+[node name="Creditos" type="Button" parent="CanvasLayer2/Principal"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -43.0
+offset_right = 190.0
+offset_bottom = -13.0
+grow_vertical = 0
+theme = ExtResource("2_6487p")
+theme_override_font_sizes/font_size = 16
+text = "menu_btn_credits"
+
 [node name="OptionsMenu" parent="CanvasLayer2" instance=ExtResource("2_s6sq0")]
+visible = false
+
+[node name="Credits" parent="CanvasLayer2" instance=ExtResource("7_v3kjt")]
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -180,3 +198,4 @@ current = true
 [connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer2/Principal/VBoxContainer/Salir" to="." method="_on_hover"]
 [connection signal="pressed" from="CanvasLayer2/Principal/VBoxContainer/Salir" to="." method="_on_salir_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Principal/Creditos" to="." method="_on_creditos_pressed"]

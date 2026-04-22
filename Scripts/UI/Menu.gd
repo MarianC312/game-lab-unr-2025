@@ -3,6 +3,7 @@ extends Control
 @onready var panel: Panel = $CanvasLayer2/Principal/Panel
 @onready var principal: Control = $CanvasLayer2/Principal
 @onready var options_menu: Control = $CanvasLayer2/OptionsMenu
+@onready var credits_menu: Control = $CanvasLayer2/Credits
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var sfx_stream_player: AudioStreamPlayer = $SFXStreamPlayer
 const HOVER = preload("res://Sounds/SFX/UI/Seleccionar y hover/Hover.ogg")
@@ -63,3 +64,17 @@ func _play_sfx(sfx : Resource) -> void:
 func _on_hover() -> void:
 	sfx_stream_player.stream = HOVER
 	sfx_stream_player.play()
+
+
+func _on_creditos_pressed() -> void:
+	_play_sfx(SELECCIONAR_OPCIONES)
+	SceneTransitions.fade_out()
+	await SceneTransitions.fade_complete
+	if credits_menu.visible:
+		credits_menu.hide()
+		# principal.move_to_front()
+	else:
+		credits_menu.show()
+		# credits_menu.move_to_front()
+	SceneTransitions.fade_in()
+	await SceneTransitions.fade_complete

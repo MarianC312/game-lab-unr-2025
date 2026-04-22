@@ -396,9 +396,9 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 0
 offset_left = 88.0
-offset_top = 300.0
+offset_top = 294.0
 offset_right = 739.0
-offset_bottom = 360.00284
+offset_bottom = 354.00284
 theme_override_constants/separation = 40
 
 [node name="Sonido" type="Label" parent="HBoxContainer2"]
@@ -421,9 +421,9 @@ value = 1.0
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 0
 offset_left = 88.0
-offset_top = 370.0
+offset_top = 358.0
 offset_right = 739.0
-offset_bottom = 430.0
+offset_bottom = 418.0
 theme_override_constants/separation = 40
 
 [node name="Lenguaje" type="Label" parent="HBoxContainer3"]
@@ -509,7 +509,6 @@ bus = &"SFX"
 
 [connection signal="item_selected" from="HBoxContainer3/LenguajeOptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="mouse_entered" from="HBoxContainer3/LenguajeOptionButton" to="." method="_on_hover"]
-[connection signal="item_selected" from="HBoxContainer4/QualityOptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="item_selected" from="HBoxContainer4/QualityOptionButton" to="." method="_on_quality_option_button_item_selected"]
 [connection signal="mouse_entered" from="HBoxContainer4/QualityOptionButton" to="." method="_on_hover"]
 [connection signal="mouse_entered" from="VBoxContainer/Volver" to="." method="_on_hover"]

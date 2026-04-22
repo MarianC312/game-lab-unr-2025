@@ -17,7 +17,7 @@ environment_file_directory="res://AmbientCG/Environments"
 [application]
 
 config/name="Game Lab UNR 2025"
-run/main_scene="uid://kei4fk24oicn"
+run/main_scene="uid://c71jif8a25bd"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

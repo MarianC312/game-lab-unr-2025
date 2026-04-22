@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://c71jif8a25bd"]
+
+[ext_resource type="Script" uid="uid://2sdc57xwosx1" path="res://Scripts/UI/SplashScreen.gd" id="1_4l8wv"]
+[ext_resource type="Theme" uid="uid://c6ss7muty7ypp" path="res://Materials/MenuStyle01.tres" id="1_418jb"]
+
+[node name="SplashScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4l8wv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25046697, 0.11868567, 0.022538872, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -105.0
+offset_right = 715.0
+offset_bottom = -15.0
+grow_vertical = 0
+theme = ExtResource("1_418jb")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[b]E10+
+Violencia leve
+Lenguaje moderado[/b]"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(755, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -34.5
+offset_right = 350.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_418jb")
+theme_override_font_sizes/normal_font_size = 24
+text = "Este juego es una obra de ficción inspirada en elementos históricos. 
+Cualquier semejanza con personas o hechos reales es coincidencia 
+o ha sido adaptada con fines narrativos."
+fit_content = true
+horizontal_alignment = 1
